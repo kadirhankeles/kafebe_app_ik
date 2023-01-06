@@ -13,4 +13,6 @@ class AppConstant{
 
 
   //padding 
+
+  static BoxDecoration homeProfilePhoto = BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50));
 }
