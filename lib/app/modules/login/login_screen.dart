@@ -48,6 +48,33 @@ class LoginScreen extends GetView<LoginController> {
                   scale: 1.4,
                 ),
               )),
+          Positioned(
+            top: 33.h,
+            left: 5.w,
+            child: Container(width: 81.w, child: AppConstant.loginInfo),
+          ),
+          Obx(() => Positioned(
+              top: 40.h,
+              left: 5.w,
+              child: Row(
+                children: [
+                  SizedBox(width: 60.w, child: AppConstant.loginSms),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 3.w),
+                    child: Switch(
+                      activeColor: AppConstant.loginSw,
+                      activeTrackColor: AppConstant.loginSwTrack,
+                      inactiveThumbColor: AppConstant.loginInSw,
+                      inactiveTrackColor: AppConstant.loginInSwTrack,
+                      value: controller.switchControl.value,
+                      onChanged: (value) {
+                        controller.switchControl.value =
+                            !controller.switchControl.value;
+                      },
+                    ),
+                  )
+                ],
+              ))),
           Obx(
             () => Positioned(
               top: 50.h,
@@ -95,26 +122,40 @@ class LoginScreen extends GetView<LoginController> {
                       height: 3.h,
                     ),
                     loginTextFormField(
-                          "Kullanıcı Adı",
-                          controller.userName,
-                          TextInputType.text,
-                          false,
-                          AppConstant.loginTextFormFieldIcon),
+                        "Kullanıcı Adı",
+                        controller.userName,
+                        TextInputType.text,
+                        false,
+                        AppConstant.loginTextFormFieldIcon),
                     SizedBox(
                       height: 2.h,
                     ),
                     passwordTextFormField(
-                          "Şifre",
-                          controller.password,
-                          TextInputType.visiblePassword,
-                          true,
-                          AppConstant.passwordTextFormFieldIcon,
-                          AppConstant.loginSufIcon)
+                        "Şifre",
+                        controller.password,
+                        TextInputType.visiblePassword,
+                        true,
+                        AppConstant.passwordTextFormFieldIcon,
+                        AppConstant.loginSufIcon)
                   ],
                 ),
               ),
             ),
           ),
+          Positioned(
+              top: 90.h,
+              left: 65.w,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size(30.w, 6.h),
+                      side: BorderSide(color: Colors.white, width: 0.5.w),
+                      backgroundColor: AppConstant.loginButton,
+                      foregroundColor: Colors.white),
+                  onPressed: () {},
+                  child: Text(
+                    "Giriş",
+                    style: TextStyle(fontSize: 2.5.h),
+                  ))),
         ]),
       ),
     );

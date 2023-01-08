@@ -27,7 +27,12 @@ class AppConstant{
 
 
   //TextStyle
-  
+  static const loginInfoStyle = TextStyle(fontSize: 15);
+  static const loginSmsStyle = TextStyle(fontSize: 15);
+
+  //Text
+  static const loginInfo = Text("Mobil uygulamayı kullanmak için lütfen giriş yapınız.",style: loginInfoStyle,);
+  static const loginSms = Text("Bilgisayar şifrem yok. SMS ile şifre almak istiyorum.", style: loginSmsStyle,);
 
 
   //padding 
