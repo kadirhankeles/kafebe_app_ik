@@ -151,7 +151,9 @@ class LoginScreen extends GetView<LoginController> {
                       side: BorderSide(color: Colors.white, width: 0.5.w),
                       backgroundColor: AppConstant.loginButton,
                       foregroundColor: Colors.white),
-                  onPressed: () {},
+                  onPressed: () {
+                  //  controller.loginToHome();
+                  },
                   child: Text(
                     "Giriş",
                     style: TextStyle(fontSize: 2.5.h),
