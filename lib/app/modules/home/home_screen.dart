@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                 print("Tıklandı izinlerim");
               },
               child: Container(
-                height: 15.5.h,
+                height: 23.h,
                 width: double.infinity,
                 decoration: AppConstant.homeButton,
                 child: Column(
@@ -170,28 +170,46 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       children: [
                         SizedBox(width: 5.w,),
-                        Column(crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("İzin Bakiyesi", style: AppConstant.homeIzinlerimAciklama,),
-                            SizedBox(height: 0.5.h,),
-                            Text("data",style: AppConstant.homeIzinlerimAciklama,),
-                          ],
+                        Container(
+                          height: 10.h,
+                          width: 10.h,
+                          decoration: AppConstant.homeIzinlerimduzen,
+                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("İzin\nBakiyesi", style: AppConstant.homeIzinlerimAciklama, textAlign: TextAlign.center,),
+                              SizedBox(height: 2.h,),
+                              Text("data",style: AppConstant.homeIzinlerimAciklama,),
+                            ],
+                          ),
                         ),
-                        SizedBox(width: 3.w,),
-                        Column(crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("İzin Hakediş Tarihi", style: AppConstant.homeIzinlerimAciklama,),
-                            SizedBox(height: 0.5.h,),
-                            Text("data",style: AppConstant.homeIzinlerimAciklama,),
-                          ],
+                        SizedBox(width: 10.w,),
+                        Container(
+                          height: 10.h,
+                          width: 10.h,
+                          decoration: AppConstant.homeIzinlerimduzen,
+                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("İzin\nHakediş\nTarihi", style: AppConstant.homeIzinlerimAciklama, textAlign: TextAlign.center,),
+                              SizedBox(height: 0.5.h,),
+                              Text("data",style: AppConstant.homeIzinlerimAciklama,),
+                            ],
+                          ),
                         ),
-                        SizedBox(width: 3.w,),
-                        Column(crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("İzin Hakediş Gün Sayısı", style: AppConstant.homeIzinlerimAciklama,),
-                            SizedBox(height: 0.5.h,),
-                            Text("data", style: AppConstant.homeIzinlerimAciklama,),
-                          ],
+                        SizedBox(width: 10.w,),
+                        Container(
+                          height: 10.h,
+                          width: 10.h,
+                           decoration: AppConstant.homeIzinlerimduzen,
+                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("İzin Hakediş Gün Sayısı", style: AppConstant.homeIzinlerimAciklama,textAlign: TextAlign.center,),
+                              SizedBox(height: 2.h,),
+                              Text("data", style: AppConstant.homeIzinlerimAciklama,),
+                            ],
+                          ),
                         )
                       ],
                     )
