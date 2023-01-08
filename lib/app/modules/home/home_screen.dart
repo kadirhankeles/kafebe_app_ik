@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -31,7 +32,33 @@ class HomeScreen extends StatelessWidget {
                     ))),
             IconButton(
                 splashRadius: 2.h,
-                onPressed: () {},
+                onPressed: () {
+                  Get.defaultDialog(
+                    title: "Uyarı",
+                    middleText: "Profilinizi güncellemeyi unutmayınız.",
+                    backgroundColor: Colors.grey.withOpacity(.9),
+                    titleStyle: TextStyle(color: Colors.white),
+                    middleTextStyle: TextStyle(color: Colors.white),
+                    radius: 10,
+                    actions: [
+                      SizedBox(
+                        width: 45.w,
+                      ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide(width: .1.h, color: Colors.white),
+                        ),
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: const Text(
+                          'Close',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  );
+                },
                 icon: Icon(Icons.info_outline_rounded)),
           ],
         ),
@@ -91,7 +118,8 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             "TEXT",
                             style: TextStyle(
-                                color: Colors.white, fontWeight: FontWeight.bold),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           )
                         ],
                       ),
@@ -100,7 +128,9 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 2.h,),
+            SizedBox(
+              height: 2.h,
+            ),
             //Bordrolarım butonunun tasarımı
             GestureDetector(
               onTap: () {
@@ -129,7 +159,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 2.h,),
+            SizedBox(
+              height: 2.h,
+            ),
             // İZİNLERİM BUTON TASARIMI
             GestureDetector(
               onTap: () {
@@ -157,57 +189,102 @@ class HomeScreen extends StatelessWidget {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18)),
-                        SizedBox(width: 33.w,),
+                        SizedBox(
+                          width: 33.w,
+                        ),
                         IconButton(
-                          splashColor: Colors.white,
-                          splashRadius: 1.h,
-                          onPressed: () {
-                          print("Tıklandı artı");
-                        }, icon: Icon(Icons.add, color: Colors.white, size: 32,))
+                            splashColor: Colors.white,
+                            splashRadius: 1.h,
+                            onPressed: () {
+                              print("Tıklandı artı");
+                            },
+                            icon: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 32,
+                            ))
                       ],
                     ),
-                    SizedBox(height: 1.h,),
+                    SizedBox(
+                      height: 1.h,
+                    ),
                     Row(
                       children: [
-                        SizedBox(width: 5.w,),
+                        SizedBox(
+                          width: 5.w,
+                        ),
                         Container(
                           height: 10.h,
                           width: 10.h,
                           decoration: AppConstant.homeIzinlerimduzen,
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("İzin\nBakiyesi", style: AppConstant.homeIzinlerimAciklama, textAlign: TextAlign.center,),
-                              SizedBox(height: 2.h,),
-                              Text("data",style: AppConstant.homeIzinlerimAciklama,),
+                              Text(
+                                "İzin\nBakiyesi",
+                                style: AppConstant.homeIzinlerimAciklama,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: 2.h,
+                              ),
+                              Text(
+                                "data",
+                                style: AppConstant.homeIzinlerimAciklama,
+                              ),
                             ],
                           ),
                         ),
-                        SizedBox(width: 10.w,),
+                        SizedBox(
+                          width: 10.w,
+                        ),
                         Container(
                           height: 10.h,
                           width: 10.h,
                           decoration: AppConstant.homeIzinlerimduzen,
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("İzin\nHakediş\nTarihi", style: AppConstant.homeIzinlerimAciklama, textAlign: TextAlign.center,),
-                              SizedBox(height: 0.5.h,),
-                              Text("data",style: AppConstant.homeIzinlerimAciklama,),
+                              Text(
+                                "İzin\nHakediş\nTarihi",
+                                style: AppConstant.homeIzinlerimAciklama,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: 0.5.h,
+                              ),
+                              Text(
+                                "data",
+                                style: AppConstant.homeIzinlerimAciklama,
+                              ),
                             ],
                           ),
                         ),
-                        SizedBox(width: 10.w,),
+                        SizedBox(
+                          width: 10.w,
+                        ),
                         Container(
                           height: 10.h,
                           width: 10.h,
-                           decoration: AppConstant.homeIzinlerimduzen,
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          decoration: AppConstant.homeIzinlerimduzen,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("İzin Hakediş Gün Sayısı", style: AppConstant.homeIzinlerimAciklama,textAlign: TextAlign.center,),
-                              SizedBox(height: 2.h,),
-                              Text("data", style: AppConstant.homeIzinlerimAciklama,),
+                              Text(
+                                "İzin Hakediş Gün Sayısı",
+                                style: AppConstant.homeIzinlerimAciklama,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: 2.h,
+                              ),
+                              Text(
+                                "data",
+                                style: AppConstant.homeIzinlerimAciklama,
+                              ),
                             ],
                           ),
                         )
