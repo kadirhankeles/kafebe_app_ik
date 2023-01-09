@@ -69,8 +69,7 @@ class LoginScreen extends GetView<LoginController> {
                       inactiveTrackColor: AppConstant.loginInSwTrack,
                       value: controller.switchControl.value,
                       onChanged: (value) {
-                        controller.switchControl.value =
-                            !controller.switchControl.value;
+                        controller.switchControl.value = value;
                       },
                     ),
                   )
