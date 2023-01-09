@@ -89,12 +89,17 @@ class LoginScreen extends GetView<LoginController> {
                       width: 90.w,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2.w),
-                          border: Border.all(color: Colors.grey, width: 0.5.w)),
+                          border: Border.all(color: Colors.grey,)),
                       child: DropdownButtonHideUnderline(
                         child: DropdownButtonFormField(
                           decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent
+                              )
+                            ),
                             focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
+                                borderSide: BorderSide(color: Colors.transparent)),
                             prefixIcon: Icon(
                               Icons.table_rows_rounded,
                               color: Color(0xffe53935),
