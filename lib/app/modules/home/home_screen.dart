@@ -254,7 +254,7 @@ class HomeScreen extends StatelessWidget {
                                       Container(
                                         height: 11.h,
                                         width: 10.h,
-                                        decoration: AppConstant.homeButton,
+                                        decoration: AppConstant.homeIzinlerimContainer,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -284,7 +284,7 @@ class HomeScreen extends StatelessWidget {
                                       Container(
                                         height: 11.h,
                                         width: 10.h,
-                                        decoration: AppConstant.homeButton,
+                                        decoration: AppConstant.homeIzinlerimContainer,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -314,7 +314,7 @@ class HomeScreen extends StatelessWidget {
                                       Container(
                                         height: 11.h,
                                         width: 10.h,
-                                        decoration: AppConstant.homeButton,
+                                        decoration: AppConstant.homeIzinlerimContainer,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,

@@ -10,10 +10,10 @@ class AppConstant {
 
   //TextStyle
    static TextStyle homeIzinlerimAciklama =
-      TextStyle(color: Colors.black, fontSize: 13);
+      TextStyle(color: Colors.white, fontSize: 13);
   
   //Box decoration
-  static BoxDecoration homeTopContainer = BoxDecoration(color: Color(0xffa51818), borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)));
+  static BoxDecoration homeTopContainer = BoxDecoration(color: Color(0xff850000), borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)));
 
   static BoxDecoration homeProfilePhoto = BoxDecoration(
       color: Colors.white, borderRadius: BorderRadius.circular(50));
@@ -31,18 +31,20 @@ class AppConstant {
     ],
   );
 
+  static BoxDecoration homeIzinlerimContainer = BoxDecoration(color: Color(0xff850000).withOpacity(.8), borderRadius: BorderRadius.circular(15));
+
  
 
  
-  ClipRRect homeCircularPhoto(String path) {
-    return ClipRRect(
-        borderRadius: BorderRadius.circular(50),
-        child: Container(
-            height: 7.h,
-            width: 7.h,
-            child: Image(
-              image: NetworkImage("${path}"),
-              fit: BoxFit.cover,
-            )));
+  Container homeCircularPhoto(String path) {
+    return Container(
+      height: 6.h,
+      width: 6.h,
+      child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network("${path}", height: 2.h , width: 2.h,fit: BoxFit.cover,),
+                ),
+    );
+    
   }
 }
