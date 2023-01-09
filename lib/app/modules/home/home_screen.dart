@@ -13,11 +13,11 @@ class HomeScreen extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              backgroundColor: Color(0xffa51818),
+              backgroundColor: Color(0xff850000),
               toolbarHeight: 12.2.h,
               leadingWidth: 35.w,
               elevation: 0,
-              //PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
+              //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Row(
                 children: [
                   SizedBox(width: 3.w),
@@ -34,13 +34,13 @@ class HomeScreen extends StatelessWidget {
                               decoration: BoxDecoration(),
                               child: Image(
                                 image: NetworkImage(
-                                    "https://www.wanhaber.com/images/haberler/2020/04/vanli-is-adami-erdogan-in-cagrisina-5-milyon-tl-ile-destek-verdi_b5483.jpg"),
+                                    "https://www.fortuneturkey.com/wp-content/uploads/2021/07/BI%CC%87ROL-BAS%CC%A7ARAN-1.jpg"),
                                 fit: BoxFit.cover,
                               ))),
                       SizedBox(
                         height: 0.5.h,
                       ),
-                      Text("Sinan K.")
+                      Text("Birol B.")
                     ],
                   ),
                   IconButton(
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                       },
                       icon: Icon(
                         Icons.info_outline_rounded,
-                        color: Color(0xff8e0000),
+                        color: Colors.white,
                       )),
                 ],
               ),
@@ -115,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: AppConstant.homeTopContainer,
                     )),
-                    // Gridview'ın bulunduğu container yapısı
+                    // ! Gridview'ın bulunduğu container yapısı
                     Padding(
                       padding: EdgeInsets.only(left: 3.h, right: 3.h),
                       child: Column(
@@ -142,6 +142,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
+
                                       children: [
                                         AppConstant().homeCircularPhoto(
                                             "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
@@ -149,10 +150,11 @@ class HomeScreen extends StatelessWidget {
                                           height: 1.5.h,
                                         ),
                                         Text(
-                                          "TEXT",
+                                          "My Task",
                                           style: TextStyle(
+                                              fontSize: 16,
                                               color: Colors.black,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w700),
                                         )
                                       ],
                                     ),
@@ -165,7 +167,7 @@ class HomeScreen extends StatelessWidget {
                             height: 3.h,
                           ),
 
-                          //Bordrolarım butonunun tasarımı
+                          //!Bordrolarım butonunun tasarımı
                           GestureDetector(
                             onTap: () {
                               print("Tıklandı Bordrolarım");
@@ -179,8 +181,10 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     width: 5.w,
                                   ),
-                                  AppConstant().homeCircularPhoto(
-                                      "https://cdn-icons-png.flaticon.com/512/6626/6626226.png"),
+                                  Container(
+                                    child: AppConstant().homeCircularPhoto(
+                                        "https://cdn-icons-png.flaticon.com/512/769/769226.png?w=1060&t=st=1673273165~exp=1673273765~hmac=3fdc7697f965728894049283b18668f27de1431a345307406a5f36ad667562c4"),
+                                  ),
                                   SizedBox(
                                     width: 3.w,
                                   ),
@@ -196,7 +200,7 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             height: 3.h,
                           ),
-                          // İZİNLERİM BUTON TASARIMI
+                          //! İZİNLERİM BUTON TASARIMI
                           GestureDetector(
                             onTap: () {
                               print("Tıklandı izinlerim");
@@ -214,7 +218,7 @@ class HomeScreen extends StatelessWidget {
                                         width: 5.w,
                                       ),
                                       AppConstant().homeCircularPhoto(
-                                          "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
+                                          "https://cdn-icons-png.flaticon.com/512/2284/2284211.png"),
                                       SizedBox(
                                         width: 3.w,
                                       ),
@@ -275,7 +279,7 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 10.w,
+                                        width: 7.w,
                                       ),
                                       Container(
                                         height: 11.h,
@@ -305,7 +309,7 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 10.w,
+                                        width: 7.w,
                                       ),
                                       Container(
                                         height: 11.h,
@@ -368,9 +372,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                                    width: 3.w,
-                                  ),
+                         
                         ],
                       ),
                     ),
