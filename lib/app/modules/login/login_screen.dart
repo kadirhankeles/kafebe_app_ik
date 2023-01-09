@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/widgets/login_widgets.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../utils/app_constant.dart';
 import 'login_controller.dart';
@@ -130,13 +131,15 @@ class LoginScreen extends GetView<LoginController> {
                     SizedBox(
                       height: 2.h,
                     ),
-                    passwordTextFormField(
+                    /* passwordTextFormField(
                         "Şifre",
                         controller.password,
                         TextInputType.visiblePassword,
                         true,
                         AppConstant.passwordTextFormFieldIcon,
-                        AppConstant.loginSufIcon)
+                        AppConstant.loginSufIcon), */
+                    PasswordTextFormField(
+                        controllerr: controller.password, hintText: "Şifre")
                   ],
                 ),
               ),
@@ -152,12 +155,23 @@ class LoginScreen extends GetView<LoginController> {
                       backgroundColor: AppConstant.loginButton,
                       foregroundColor: Colors.white),
                   onPressed: () {
-                  //  controller.loginToHome();
+                     // controller.loginToHome();
+                     controller.loginTransition();
                   },
                   child: Text(
                     "Giriş",
                     style: TextStyle(fontSize: 2.5.h),
                   ))),
+          /* Positioned(
+              top: 80.h,
+              child: Container(
+                height: 10.h,
+                width: 80.w,
+                child: PasswordTextFormField(
+                  controllerr: controller.password,
+                  hintText: "Şifre deneme",
+                ),
+              )) */
         ]),
       ),
     );
