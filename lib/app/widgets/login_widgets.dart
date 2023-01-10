@@ -21,7 +21,7 @@ class PasswordTextFormField extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Obx(
       () => TextFormField(
-        controller: controller.password,
+        controller: controller.passwordController,
         cursorColor: AppConstant.loginCursor,
         keyboardType: TextInputType.visiblePassword,
         obscureText: controller.loginVisibility.value,

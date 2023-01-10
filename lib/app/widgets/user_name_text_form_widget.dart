@@ -17,7 +17,7 @@ class UserNameTextFormField extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller.userName,
+      controller: controller.userNameController,
       cursorColor: AppConstant.loginCursor,
       keyboardType: TextInputType.emailAddress,
       cursorHeight: 3.h,

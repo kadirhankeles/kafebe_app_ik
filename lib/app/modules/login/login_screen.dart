@@ -128,12 +128,12 @@ class LoginScreen extends GetView<LoginController> {
                     SizedBox(
                       height: 3.h,
                     ),
-                    UserNameTextFormField("Kullanıcı Adı", controller.userName),
+                    UserNameTextFormField("Kullanıcı Adı", controller.userNameController),
                     SizedBox(
                       height: 2.h,
                     ),
                     PasswordTextFormField(
-                        controllerr: controller.password, hintText: "Şifre"),
+                        controllerr: controller.passwordController, hintText: "Şifre"),
                   ],
                 ),
               ),
@@ -151,6 +151,7 @@ class LoginScreen extends GetView<LoginController> {
                   onPressed: () {
                     // controller.loginToHome();
                     controller.loginTransition();
+                    controller.loginData(controller.userNameController.text, controller.passwordController.text);
                   },
                   child: Text(
                     "Giriş",

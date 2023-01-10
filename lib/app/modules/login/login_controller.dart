@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/data/models/login_model.dart';
+
+import '../../data/services/login_service.dart';
 
 class LoginController extends GetxController {
   RxBool loginVisibility = true.obs;
@@ -8,8 +11,11 @@ class LoginController extends GetxController {
   RxString companySelect = "Şirket Seçiniz".obs;
   RxList<String> companyList = <String>["Şirket Seçiniz", "Sun"].obs;
 
-  TextEditingController userName = TextEditingController();
-  TextEditingController password = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  LoginModel? loginModel;
+  RxBool isLoading = false.obs;
 
   bool dene = true;
 
@@ -50,16 +56,23 @@ class LoginController extends GetxController {
   loginTransition() async {
     if (dene == true) {
       Get.dialog(
-        barrierDismissible: false,
-        Center(
-        child: CircularProgressIndicator(),
-      ));
+          barrierDismissible: false,
+          Center(
+            child: CircularProgressIndicator(),
+          ));
     }
     await Future.delayed(Duration(milliseconds: 3000));
     dene = false;
     if (Get.isDialogOpen!) {
       Get.back();
-    dene = true; //Görmek için koydum proje devam ederken sil.
+      dene = true; //Görmek için koydum proje devam ederken sil.
     }
+  }
+
+  loginData(String user, String password) async {
+    /* user = userNameController.text;
+    password = passwordController.text; */
+    loginModel = await getLoginService(user, password);
+    isLoading.value = true;
   }
 }
