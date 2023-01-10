@@ -4,6 +4,8 @@ import 'package:kafebe_app_ik/app/modules/home/home_controller.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../routes/app_pages.dart';
+
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
 
@@ -28,23 +30,38 @@ class HomeScreen extends GetView<HomeController> {
                         height: .6.h,
                       ),
                       Obx(
-                        () => controller.isProfilPicture==true?  ClipRRect(
-                            
-                            borderRadius: BorderRadius.circular(50),
-                            child: Container(
-                                height: 8.h,
-                                width: 8.h,
-                                child: controller.baseToImage(controller.getProfilPictureModel!.data!.profilePicture.toString())
-                                )):Container(child: Center(child: CircularProgressIndicator(),),) ,
-
+                        () => controller.isProfilPicture == true
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Container(
+                                    height: 8.h,
+                                    width: 8.h,
+                                    child: controller.baseToImage(controller
+                                        .getProfilPictureModel!
+                                        .data!
+                                        .profilePicture
+                                        .toString())))
+                            : Container(
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
                       ),
                       SizedBox(
                         height: 0.5.h,
                       ),
                       Obx(
                         () {
-                          return controller.isLoading==true? Container(width: 22.w,child: Text("${controller.getLandingPageInfoModel!.data!.nameSurname}", style: AppConstant.homeNameSurname, overflow: TextOverflow.ellipsis )): Container();
-                        },)
+                          return controller.isLoading == true
+                              ? Container(
+                                  width: 22.w,
+                                  child: Text(
+                                      "${controller.getLandingPageInfoModel!.data!.nameSurname}",
+                                      style: AppConstant.homeNameSurname,
+                                      overflow: TextOverflow.ellipsis))
+                              : Container();
+                        },
+                      )
                     ],
                   ),
                   IconButton(
@@ -86,7 +103,6 @@ class HomeScreen extends GetView<HomeController> {
               // LOGO
               title: Row(
                 children: [
-                 
                   Container(
                     height: 10.h,
                     width: 9.h,
@@ -125,49 +141,57 @@ class HomeScreen extends GetView<HomeController> {
                           Container(
                             width: 100.w,
                             child: Obx(
-                              () => controller.isLoading==true ? GridView.builder(
-                                shrinkWrap: true,
-                                itemCount: controller.getLandingPageInfoModel!.data!.menuInfo!.length,
-                                physics: NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        crossAxisSpacing: 4.h,
-                                        mainAxisSpacing: 3.h,
-                                        childAspectRatio: 0.15.h),
-                                itemBuilder: (context, index) {
-                                  return  GestureDetector(
-                                            onTap: () {
-                                              print("Tıklandı $index");
-                                            },
-                                            child: Container(
-                                              decoration: AppConstant.homeButton,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  AppConstant().homeCircularPhoto(
-                                                      "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
-                                                  SizedBox(
-                                                    height: 1.5.h,
-                                                  ),
-                                                  Text(
-                                                    "${controller.getLandingPageInfoModel!.data!.menuInfo![index].mENUNAME}",
-                                                    style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  )
-                                                ],
-                                              ),
+                              () => controller.isLoading == true
+                                  ? GridView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: controller
+                                          .getLandingPageInfoModel!
+                                          .data!
+                                          .menuInfo!
+                                          .length,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 2,
+                                              crossAxisSpacing: 4.h,
+                                              mainAxisSpacing: 3.h,
+                                              childAspectRatio: 0.15.h),
+                                      itemBuilder: (context, index) {
+                                        return GestureDetector(
+                                          onTap: () {
+                                            print("Tıklandı $index");
+                                          },
+                                          child: Container(
+                                            decoration: AppConstant.homeButton,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                AppConstant().homeCircularPhoto(
+                                                    "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
+                                                SizedBox(
+                                                  height: 1.5.h,
+                                                ),
+                                                Text(
+                                                  "${controller.getLandingPageInfoModel!.data!.menuInfo![index].mENUNAME}",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                )
+                                              ],
                                             ),
-                                          );
-                                        
-                                  
-                                },
-                              ): Container(height: 30.h, child: Center(child: CircularProgressIndicator(),),) ,
-
+                                          ),
+                                        );
+                                      },
+                                    )
+                                  : Container(
+                                      height: 30.h,
+                                      child: Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    ),
                             ),
                           ),
                           SizedBox(
@@ -177,7 +201,7 @@ class HomeScreen extends GetView<HomeController> {
                           //!Bordrolarım butonunun tasarımı
                           GestureDetector(
                             onTap: () {
-                              print("Tıklandı Bordrolarım");
+                              Get.toNamed(Routes.PAYROLL);
                             },
                             child: Container(
                               height: 10.h,
@@ -279,11 +303,20 @@ class HomeScreen extends GetView<HomeController> {
                                               height: 2.5.h,
                                             ),
                                             Obx(
-                                              () => controller.isLoading==true?Text(
-                                                controller.getLandingPageInfoModel!.data!.vacationInfo!.employeeEarnedRightsList![0].aNNUALLEAVEBALANCE.toString(),
-                                                style: AppConstant
-                                                    .homeIzinlerimAciklama,
-                                              ):Container(),
+                                              () => controller.isLoading == true
+                                                  ? Text(
+                                                      controller
+                                                          .getLandingPageInfoModel!
+                                                          .data!
+                                                          .vacationInfo!
+                                                          .employeeEarnedRightsList![
+                                                              0]
+                                                          .aNNUALLEAVEBALANCE
+                                                          .toString(),
+                                                      style: AppConstant
+                                                          .homeIzinlerimAciklama,
+                                                    )
+                                                  : Container(),
                                             ),
                                           ],
                                         ),
@@ -312,11 +345,21 @@ class HomeScreen extends GetView<HomeController> {
                                               height: 1.5.h,
                                             ),
                                             Obx(
-                                              () => controller.isLoading==true?Text(
-                                                controller.getLandingPageInfoModel!.data!.vacationInfo!.employeeEarnedRightsList![0].nEXTLEAVEALLOWANCEDATE.toString().substring(0,10),
-                                                style: AppConstant
-                                                    .homeIzinlerimAciklama,
-                                              ):Container() ,
+                                              () => controller.isLoading == true
+                                                  ? Text(
+                                                      controller
+                                                          .getLandingPageInfoModel!
+                                                          .data!
+                                                          .vacationInfo!
+                                                          .employeeEarnedRightsList![
+                                                              0]
+                                                          .nEXTLEAVEALLOWANCEDATE
+                                                          .toString()
+                                                          .substring(0, 10),
+                                                      style: AppConstant
+                                                          .homeIzinlerimAciklama,
+                                                    )
+                                                  : Container(),
                                             ),
                                           ],
                                         ),
@@ -345,11 +388,20 @@ class HomeScreen extends GetView<HomeController> {
                                               height: 2.5.h,
                                             ),
                                             Obx(
-                                              () => controller.isLoading==true?Text(
-                                                controller.getLandingPageInfoModel!.data!.vacationInfo!.employeeEarnedRightsList![0].nEXTLEAVEALLOWANCEDAYS.toString(),
-                                                style: AppConstant
-                                                    .homeIzinlerimAciklama,
-                                              ):Container(),
+                                              () => controller.isLoading == true
+                                                  ? Text(
+                                                      controller
+                                                          .getLandingPageInfoModel!
+                                                          .data!
+                                                          .vacationInfo!
+                                                          .employeeEarnedRightsList![
+                                                              0]
+                                                          .nEXTLEAVEALLOWANCEDAYS
+                                                          .toString(),
+                                                      style: AppConstant
+                                                          .homeIzinlerimAciklama,
+                                                    )
+                                                  : Container(),
                                             ),
                                           ],
                                         ),
