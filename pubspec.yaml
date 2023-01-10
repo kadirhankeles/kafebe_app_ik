@@ -40,7 +40,10 @@ dependencies:
   pdf: ^3.8.4
   responsive_sizer: ^3.1.1
   shared_preferences: ^0.5.5
+
+
   syncfusion_flutter_pdfviewer: ^20.4.42
+develop
   http: ^0.13.5
 
 dev_dependencies:
