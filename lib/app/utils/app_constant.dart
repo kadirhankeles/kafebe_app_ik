@@ -14,6 +14,7 @@ class AppConstant {
     
    static TextStyle homeNameSurname = TextStyle(fontSize: 12);
   
+
   //Box decoration
   static BoxDecoration homeTopContainer = BoxDecoration(color: Color(0xff7f0000), borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)));
 
@@ -34,6 +35,19 @@ class AppConstant {
   );
 
   static BoxDecoration homeIzinlerimContainer = BoxDecoration(color: Color(0xff7f0000).withOpacity(.8), borderRadius: BorderRadius.circular(15));
+
+  static BoxDecoration payrollLastpayroll =BoxDecoration(color: Color(0xffe53935), borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15) ),boxShadow: [
+      BoxShadow(
+        color: Colors.white.withOpacity(.2),
+        spreadRadius: 2,
+        blurRadius: 6,
+        offset: Offset(3, 6), // changes position of shadow
+      ),
+    ], );
+
+  static TextStyle payrollLastStyle = TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
+  static TextStyle payrollStyle = TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 14, letterSpacing: .1.h);
+ develop
 
  
 
