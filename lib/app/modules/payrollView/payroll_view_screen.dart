@@ -15,7 +15,7 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
             body: Obx(() => controller.isLoading == true
                 ? SfPdfViewer.memory(
                     controller.resultData!,
-                    initialZoomLevel: 1,
+                    initialZoomLevel: 2,
                   )
                 : const Center(
                     child: Text("NULL"),

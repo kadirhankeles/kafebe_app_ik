@@ -14,25 +14,22 @@ class PayrollViewController extends GetxController {
 
   @override
   void onInit() async {
-    getData();
+    await getData();
     super.onInit();
   }
 
   getData() async {
     try {
       isLoading.value = false;
-      PayrollDataModel? payrollData = await monthService.getPayrollPeriodMonth(
-          PayrollPeriodModel(
-              year: 2021,
-              month: 2,
-              documentid: "e5fa86c3-2cd0-4ca2-b9b9-95b1c0e54544"));
-      print(payrollData);
+      PayrollDataModel? payrollData =
+          await monthService.getPayrollPeriodMonth();
+      print("payrolldata: $payrollData");
 
       Uint8List? bytes = base64.decode(payrollData!.data.toString());
       resultData = bytes;
       isLoading.value = true;
     } catch (e) {
-      print("controller->null");
+      print("controller: null");
     }
   }
 }
