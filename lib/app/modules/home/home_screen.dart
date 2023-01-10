@@ -11,6 +11,16 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> icons = [
+      "assets/request.png",
+      "assets/approvals.png",
+      "assets/works.png",
+      "assets/profile.png",
+      "assets/team.png",
+      "assets/payroll.png",
+      "assets/vacation.png",
+      "assets/educations.png",
+    ];
     return Scaffold(
         backgroundColor: Color(0xffF4F5FA),
         body: CustomScrollView(
@@ -18,7 +28,7 @@ class HomeScreen extends GetView<HomeController> {
             SliverAppBar(
               backgroundColor: Color(0xff7f0000),
               toolbarHeight: 12.2.h,
-              leadingWidth: 38.w,
+              leadingWidth: 39.w,
               elevation: 0,
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Row(
@@ -65,7 +75,7 @@ class HomeScreen extends GetView<HomeController> {
                     ],
                   ),
                   IconButton(
-                      splashRadius: 2.h,
+                      splashRadius: 1.h,
                       onPressed: () {
                         Get.defaultDialog(
                           title: "Uyarı",
@@ -162,23 +172,18 @@ class HomeScreen extends GetView<HomeController> {
                                             print("Tıklandı $index");
                                           },
                                           child: Container(
-                                            decoration: AppConstant.homeButton,
+                                            decoration: index>=4? AppConstant.homeRedButton :AppConstant.homeButton,
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                AppConstant().homeCircularPhoto(
-                                                    "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
+                                                index>=4? AppConstant().homeCircularWhite(icons[index]): AppConstant().homeCircularPhoto(icons[index]),
                                                 SizedBox(
                                                   height: 1.5.h,
                                                 ),
                                                 Text(
                                                   "${controller.getLandingPageInfoModel!.data!.menuInfo![index].mENUNAME}",
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.w700),
+                                                  style: index>=4? AppConstant.homeButtonWhite:AppConstant.homeButtonBlack,
                                                 )
                                               ],
                                             ),
@@ -214,7 +219,7 @@ class HomeScreen extends GetView<HomeController> {
                                   ),
                                   Container(
                                     child: AppConstant().homeCircularPhoto(
-                                        "https://cdn-icons-png.flaticon.com/512/769/769226.png?w=1060&t=st=1673273165~exp=1673273765~hmac=3fdc7697f965728894049283b18668f27de1431a345307406a5f36ad667562c4"),
+                                        "assets/payroll.png"),
                                   ),
                                   SizedBox(
                                     width: 3.w,
@@ -249,7 +254,7 @@ class HomeScreen extends GetView<HomeController> {
                                         width: 5.w,
                                       ),
                                       AppConstant().homeCircularPhoto(
-                                          "https://cdn-icons-png.flaticon.com/512/2284/2284211.png"),
+                                          "assets/vacation.png"),
                                       SizedBox(
                                         width: 3.w,
                                       ),
@@ -429,7 +434,7 @@ class HomeScreen extends GetView<HomeController> {
                                     width: 5.w,
                                   ),
                                   AppConstant().homeCircularPhoto(
-                                      "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
+                                      "assets/exit.png"),
                                   SizedBox(
                                     width: 3.w,
                                   ),
@@ -437,11 +442,12 @@ class HomeScreen extends GetView<HomeController> {
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 18))
+                                          fontSize: 18)),
                                 ],
                               ),
                             ),
                           ),
+                          SizedBox(height: 5.h,),
                         ],
                       ),
                     ),

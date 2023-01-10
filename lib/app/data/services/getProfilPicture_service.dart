@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/get_ProfilPicture_model.dart';
+import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 Future<GetProfilPictureModel?> getProfilPictureService() async {
   GetProfilPictureModel? data = GetProfilPictureModel();
@@ -9,7 +10,7 @@ Future<GetProfilPictureModel?> getProfilPictureService() async {
     var headers = {
       'Accept': 'application/json',
       'vbtauthorization':
-          'fwjsDtQ5LOOSrVyWHJZ8WtpMbyULaoqLqhsKVFPxsaOLK6Q6hVxv6RY029XG+f04~1~string~638089957386235973',
+          '$apiToken',
     };
 
     var url = Uri.parse(

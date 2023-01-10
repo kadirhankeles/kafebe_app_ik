@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 import '../models/payroll_data_model.dart';
 import '../models/payroll_period_model.dart';
@@ -13,7 +14,7 @@ class PayrollMonthService extends GetConnect {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'vbtauthorization':
-            'fwjsDtQ5LOOSrVyWHJZ8WtpMbyULaoqLqhsKVFPxsaOLK6Q6hVxv6RY029XG+f04~1~string~638089957386235973',
+            '$apiToken',
         'userId': '5',
       };
 

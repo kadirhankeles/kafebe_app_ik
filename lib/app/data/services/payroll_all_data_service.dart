@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/payroll_list_data_model.dart';
+import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 import '../models/payroll_all_model.dart';
 
@@ -13,7 +14,7 @@ class PayrollAllDataService extends GetConnect {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'vbtauthorization':
-            'fwjsDtQ5LOOSrVyWHJZ8WtpMbyULaoqLqhsKVFPxsaOLK6Q6hVxv6RY029XG+f04~1~string~638089957386235973',
+            '$apiToken',
       };
 
       var data = {"Date": "2023-01-10T17:36:46.601Z"};

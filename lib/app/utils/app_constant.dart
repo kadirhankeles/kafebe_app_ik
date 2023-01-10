@@ -10,9 +10,14 @@ class AppConstant {
 
   //TextStyle
   static TextStyle homeIzinlerimAciklama =
-      TextStyle(color: Colors.white, fontSize: 13);
+      TextStyle(color: Colors.black, fontSize: 13);
 
   static TextStyle homeNameSurname = TextStyle(fontSize: 12);
+
+  static TextStyle homeButtonWhite =
+      TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w700);
+  static TextStyle homeButtonBlack =
+      TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w700);
 
   //Box decoration
   static BoxDecoration homeTopContainer = BoxDecoration(
@@ -35,9 +40,21 @@ class AppConstant {
       ),
     ],
   );
+  static BoxDecoration homeRedButton = BoxDecoration(
+    color: Color(0xff7f0000),
+    borderRadius: BorderRadius.circular(20),
+    boxShadow: [
+      BoxShadow(
+        color: Color(0xffECECF4),
+        spreadRadius: .2,
+        blurRadius: 0.8,
+        offset: Offset(0, 2), // changes position of shadow
+      ),
+    ],
+  );
 
   static BoxDecoration homeIzinlerimContainer = BoxDecoration(
-      color: Color(0xff7f0000).withOpacity(.8),
+      color: Color(0xffe0e0e0).withOpacity(.8),
       borderRadius: BorderRadius.circular(15));
 
   static BoxDecoration payrollLastpayroll = BoxDecoration(
@@ -66,14 +83,24 @@ class AppConstant {
     return Container(
       height: 6.h,
       width: 6.h,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.network(
-          "${path}",
-          height: 2.h,
-          width: 2.h,
-          fit: BoxFit.cover,
-        ),
+      child: Image.asset(
+        "${path}",
+        height: 3.h,
+        width: 3.h,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+  Container homeCircularWhite(String path) {
+    return Container(
+      height: 6.h,
+      width: 6.h,
+      child: Image.asset(
+        "${path}",
+        height: 3.h,
+        width: 3.h,
+        fit: BoxFit.cover,
+        color: Colors.white,
       ),
     );
   }

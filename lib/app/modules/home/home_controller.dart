@@ -2,10 +2,10 @@ import 'dart:typed_data';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kafebe_app_ik/app/data/models/GetLandingPageInfo_model.dart';
-import 'package:kafebe_app_ik/app/data/models/getProfilPicture_model.dart';
-import 'package:kafebe_app_ik/app/data/services/GetLandingPageInfo_service.dart';
 import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
+import '../../data/models/getLanding_PageInfo_model.dart';
+import '../../data/models/get_ProfilPicture_model.dart';
+import '../../data/services/getLanding_Page_Info_service.dart';
 
 class HomeController extends GetxController{
   GetLandingPageInfoModel? getLandingPageInfoModel;

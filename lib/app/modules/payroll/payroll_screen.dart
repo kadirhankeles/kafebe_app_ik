@@ -33,11 +33,15 @@ class PayrollScreen extends GetView<PayrollController> {
                       width: 8.w,
                     ),
                     Obx(() => controller.isLoading == true
-                        ? Text(
-                            "Son Bordronuz: ${controller.payrollListDataModel!.data!.first.dOCUMENTPERIOD}",
-                            style: AppConstant.payrollLastStyle,
-                            textAlign: TextAlign.start,
-                          )
+                        ? Container(
+                          width: 47.w,
+                          child: Text(
+                            
+                              "Bordrolarım",
+                              style: AppConstant.payrollLastStyle,
+                              textAlign: TextAlign.center,
+                            ),
+                        )
                         : Center(child: CircularProgressIndicator())),
                   ],
                 ),
@@ -51,7 +55,7 @@ class PayrollScreen extends GetView<PayrollController> {
                         children: [
                           Padding(
                               padding:
-                                  EdgeInsets.only(right: 2.5.h, left: 2.5.h),
+                                  EdgeInsets.only(right: 2.5.h, left: 2.5.h,top: 1.h),
                               child: Container(
                                   height: 100.h,
                                   width: double.infinity,
