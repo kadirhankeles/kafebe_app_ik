@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/widgets/login_widgets.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../utils/app_constant.dart';
+import '../../widgets/user_name_text_form_widget.dart';
 import 'login_controller.dart';
 
 class LoginScreen extends GetView<LoginController> {
@@ -89,17 +90,18 @@ class LoginScreen extends GetView<LoginController> {
                       width: 90.w,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2.w),
-                          border: Border.all(color: Colors.grey,)),
+                          border: Border.all(
+                            color: Colors.grey,
+                          )),
                       child: DropdownButtonHideUnderline(
                         child: DropdownButtonFormField(
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.transparent
-                              )
-                            ),
+                                borderSide:
+                                    BorderSide(color: Colors.transparent)),
                             focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent)),
+                                borderSide:
+                                    BorderSide(color: Colors.transparent)),
                             prefixIcon: Icon(
                               Icons.table_rows_rounded,
                               color: Color(0xffe53935),
@@ -126,24 +128,12 @@ class LoginScreen extends GetView<LoginController> {
                     SizedBox(
                       height: 3.h,
                     ),
-                    loginTextFormField(
-                        "Kullanıcı Adı",
-                        controller.userName,
-                        TextInputType.text,
-                        false,
-                        AppConstant.loginTextFormFieldIcon),
+                    UserNameTextFormField("Kullanıcı Adı", controller.userName),
                     SizedBox(
                       height: 2.h,
                     ),
-                    /* passwordTextFormField(
-                        "Şifre",
-                        controller.password,
-                        TextInputType.visiblePassword,
-                        true,
-                        AppConstant.passwordTextFormFieldIcon,
-                        AppConstant.loginSufIcon), */
                     PasswordTextFormField(
-                        controllerr: controller.password, hintText: "Şifre")
+                        controllerr: controller.password, hintText: "Şifre"),
                   ],
                 ),
               ),
@@ -159,153 +149,15 @@ class LoginScreen extends GetView<LoginController> {
                       backgroundColor: AppConstant.loginButton,
                       foregroundColor: Colors.white),
                   onPressed: () {
-                     // controller.loginToHome();
-                     controller.loginTransition();
+                    // controller.loginToHome();
+                    controller.loginTransition();
                   },
                   child: Text(
                     "Giriş",
                     style: TextStyle(fontSize: 2.5.h),
                   ))),
-          /* Positioned(
-              top: 80.h,
-              child: Container(
-                height: 10.h,
-                width: 80.w,
-                child: PasswordTextFormField(
-                  controllerr: controller.password,
-                  hintText: "Şifre deneme",
-                ),
-              )) */
         ]),
       ),
     );
   }
-
-  TextFormField loginTextFormField(String hintText, controller,
-      TextInputType inputKeyboardType, bool obsecure, Icon textFormIcon) {
-    return TextFormField(
-      obscureText: obsecure,
-      keyboardType: inputKeyboardType,
-      controller: controller,
-      cursorColor: AppConstant.loginCursor,
-      decoration: InputDecoration(
-          hintText: hintText,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.w),
-            borderSide: BorderSide(color: Colors.grey),
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(2.w),
-              borderSide: BorderSide(color: Colors.grey)),
-          prefixIcon: textFormIcon),
-    );
-  }
-
-  TextFormField passwordTextFormField(
-      String hintText,
-      controller,
-      TextInputType inputKeyboardType,
-      bool obsecure,
-      Icon textFormIcon,
-      Icon sufIcon) {
-    return TextFormField(
-      obscureText: obsecure,
-      keyboardType: inputKeyboardType,
-      controller: controller,
-      cursorColor: AppConstant.loginCursor,
-      decoration: InputDecoration(
-          hintText: hintText,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.w),
-            borderSide: BorderSide(color: Colors.grey),
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(2.w),
-              borderSide: BorderSide(color: Colors.grey)),
-          prefixIcon: textFormIcon,
-          suffixIcon: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.visibility,
-                color: Colors.grey,
-              ))),
-    );
-  }
 }
-
-/* class PasswordTextFormField extends GetView<LoginController> {
-  final String hintText;
-  final  controller;
-  final bool obscureText;
-  final TextInputType inputKeyboardType;
-  final Icon textFormIcon;
-  final Function onPressed;
-
-  const PasswordTextFormField({
-    Key? key,
-    required this.hintText,
-    required this.controller,
-    required this.obscureText,
-    required this.inputKeyboardType,
-    required this.textFormIcon,
-    required this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller.userName,
-      obscureText: obscureText,
-      keyboardType: inputKeyboardType,
-      cursorColor: AppConstant.loginCursor,
-      decoration: InputDecoration(
-          hintText: hintText,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.w),
-            borderSide: BorderSide(color: Colors.grey),
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(2.w),
-              borderSide: BorderSide(color: Colors.grey)),
-          prefixIcon: textFormIcon,
-          suffixIcon: IconButton(onPressed: onPressed(), icon: Icon(controller.chanceVisibilityIcon()) )
-          ),
-    );
-  }
-} */
-
-/* class UserTextFormField extends GetView<LoginController> {
-  final String hintText;
-  final  controller;
-  final bool obsecureText;
-  final TextInputType inputKeyboardType;
-  final Icon textFormIcon;
-  const UserTextFormField({
-    Key? key,
-    required this.hintText,
-    required this.controller,
-    required this.obsecureText,
-    required this.inputKeyboardType,
-    required this.textFormIcon,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller.password,
-      obscureText: obsecureText,
-      keyboardType: inputKeyboardType,
-      cursorColor: AppConstant.loginCursor,
-      decoration: InputDecoration(
-          hintText: hintText,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.w),
-            borderSide: BorderSide(color: Colors.grey),
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(2.w),
-              borderSide: BorderSide(color: Colors.grey)),
-          prefixIcon: textFormIcon),
-    );
-  }
-} */

@@ -19,29 +19,31 @@ class PasswordTextFormField extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => TextFormField(
-          controller: controller.password,
-          cursorColor: AppConstant.loginCursor,
-          keyboardType: TextInputType.visiblePassword,
-          obscureText: controller.loginVisibility.value,
-          cursorHeight: 3.h,
-          textAlignVertical: TextAlignVertical.center,
-          decoration: InputDecoration(
-            hintText: hintText,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: AppConstant.globalRadius,
-              borderSide: BorderSide(color: Colors.grey),
-            ),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: AppConstant.globalRadius,
-                borderSide: BorderSide(color: Colors.grey)),
-            prefixIcon: AppConstant.passwordTextFormFieldIcon,
-            suffixIcon: IconButton(
-                onPressed: () {
-                  controller.chanceVisibility();
-                },
-                icon: controller.chanceVisibilityIcon()),
+    return Obx(
+      () => TextFormField(
+        controller: controller.password,
+        cursorColor: AppConstant.loginCursor,
+        keyboardType: TextInputType.visiblePassword,
+        obscureText: controller.loginVisibility.value,
+        cursorHeight: 3.h,
+        textAlignVertical: TextAlignVertical.center,
+        decoration: InputDecoration(
+          hintText: hintText,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: AppConstant.globalRadius,
+            borderSide: BorderSide(color: Colors.grey),
           ),
-        ));
+          focusedBorder: OutlineInputBorder(
+              borderRadius: AppConstant.globalRadius,
+              borderSide: BorderSide(color: Colors.grey)),
+          prefixIcon: AppConstant.passwordTextFormFieldIcon,
+          suffixIcon: IconButton(
+              onPressed: () {
+                controller.chanceVisibility();
+              },
+              icon: controller.chanceVisibilityIcon()),
+        ),
+      ),
+    );
   }
 }
