@@ -18,7 +18,7 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
                     initialZoomLevel: 2,
                   )
                 : const Center(
-                    child: Text("NULL"),
+                    child: CircularProgressIndicator(),
                   ))));
   }
 }
