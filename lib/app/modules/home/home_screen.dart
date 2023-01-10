@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/modules/home/home_controller.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
 
   @override
@@ -13,9 +14,9 @@ class HomeScreen extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              backgroundColor: Color(0xff850000),
+              backgroundColor: Color(0xff7f0000),
               toolbarHeight: 12.2.h,
-              leadingWidth: 35.w,
+              leadingWidth: 38.w,
               elevation: 0,
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Row(
@@ -26,21 +27,24 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         height: .6.h,
                       ),
-                      ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Container(
-                              height: 8.h,
-                              width: 8.h,
-                              decoration: BoxDecoration(),
-                              child: Image(
-                                image: NetworkImage(
-                                    "https://www.fortuneturkey.com/wp-content/uploads/2021/07/BI%CC%87ROL-BAS%CC%A7ARAN-1.jpg"),
-                                fit: BoxFit.cover,
-                              ))),
+                      Obx(
+                        () => controller.isProfilPicture==true?  ClipRRect(
+                            
+                            borderRadius: BorderRadius.circular(50),
+                            child: Container(
+                                height: 8.h,
+                                width: 8.h,
+                                child: controller.baseToImage(controller.getProfilPictureModel!.data!.profilePicture.toString())
+                                )):Container(child: Center(child: CircularProgressIndicator(),),) ,
+
+                      ),
                       SizedBox(
                         height: 0.5.h,
                       ),
-                      Text("Birol B.")
+                      Obx(
+                        () {
+                          return controller.isLoading==true? Container(width: 22.w,child: Text("${controller.getLandingPageInfoModel!.data!.nameSurname}", style: AppConstant.homeNameSurname, overflow: TextOverflow.ellipsis )): Container();
+                        },)
                     ],
                   ),
                   IconButton(
@@ -82,9 +86,7 @@ class HomeScreen extends StatelessWidget {
               // LOGO
               title: Row(
                 children: [
-                  SizedBox(
-                    width: 4.w,
-                  ),
+                 
                   Container(
                     height: 10.h,
                     width: 9.h,
@@ -122,45 +124,50 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Container(
                             width: 100.w,
-                            child: GridView.builder(
-                              shrinkWrap: true,
-                              itemCount: 4,
-                              physics: NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 4.h,
-                                      mainAxisSpacing: 3.h,
-                                      childAspectRatio: 0.15.h),
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    print("Tıklandı $index");
-                                  },
-                                  child: Container(
-                                    decoration: AppConstant.homeButton,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                            child: Obx(
+                              () => controller.isLoading==true ? GridView.builder(
+                                shrinkWrap: true,
+                                itemCount: controller.getLandingPageInfoModel!.data!.menuInfo!.length,
+                                physics: NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 4.h,
+                                        mainAxisSpacing: 3.h,
+                                        childAspectRatio: 0.15.h),
+                                itemBuilder: (context, index) {
+                                  return  GestureDetector(
+                                            onTap: () {
+                                              print("Tıklandı $index");
+                                            },
+                                            child: Container(
+                                              decoration: AppConstant.homeButton,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  AppConstant().homeCircularPhoto(
+                                                      "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
+                                                  SizedBox(
+                                                    height: 1.5.h,
+                                                  ),
+                                                  Text(
+                                                    "${controller.getLandingPageInfoModel!.data!.menuInfo![index].mENUNAME}",
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w700),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        
+                                  
+                                },
+                              ): Container(height: 30.h, child: Center(child: CircularProgressIndicator(),),) ,
 
-                                      children: [
-                                        AppConstant().homeCircularPhoto(
-                                            "https://i.pinimg.com/originals/82/45/11/8245110ee348458df3733d514ee64446.jpg"),
-                                        SizedBox(
-                                          height: 1.5.h,
-                                        ),
-                                        Text(
-                                          "My Task",
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w700),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
                             ),
                           ),
                           SizedBox(
@@ -254,7 +261,8 @@ class HomeScreen extends StatelessWidget {
                                       Container(
                                         height: 11.h,
                                         width: 10.h,
-                                        decoration: AppConstant.homeIzinlerimContainer,
+                                        decoration:
+                                            AppConstant.homeIzinlerimContainer,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -270,10 +278,12 @@ class HomeScreen extends StatelessWidget {
                                             SizedBox(
                                               height: 2.5.h,
                                             ),
-                                            Text(
-                                              "data",
-                                              style: AppConstant
-                                                  .homeIzinlerimAciklama,
+                                            Obx(
+                                              () => controller.isLoading==true?Text(
+                                                controller.getLandingPageInfoModel!.data!.vacationInfo!.employeeEarnedRightsList![0].aNNUALLEAVEBALANCE.toString(),
+                                                style: AppConstant
+                                                    .homeIzinlerimAciklama,
+                                              ):Container(),
                                             ),
                                           ],
                                         ),
@@ -284,7 +294,8 @@ class HomeScreen extends StatelessWidget {
                                       Container(
                                         height: 11.h,
                                         width: 10.h,
-                                        decoration: AppConstant.homeIzinlerimContainer,
+                                        decoration:
+                                            AppConstant.homeIzinlerimContainer,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -300,10 +311,12 @@ class HomeScreen extends StatelessWidget {
                                             SizedBox(
                                               height: 1.5.h,
                                             ),
-                                            Text(
-                                              "data",
-                                              style: AppConstant
-                                                  .homeIzinlerimAciklama,
+                                            Obx(
+                                              () => controller.isLoading==true?Text(
+                                                controller.getLandingPageInfoModel!.data!.vacationInfo!.employeeEarnedRightsList![0].nEXTLEAVEALLOWANCEDATE.toString().substring(0,10),
+                                                style: AppConstant
+                                                    .homeIzinlerimAciklama,
+                                              ):Container() ,
                                             ),
                                           ],
                                         ),
@@ -314,7 +327,8 @@ class HomeScreen extends StatelessWidget {
                                       Container(
                                         height: 11.h,
                                         width: 10.h,
-                                        decoration: AppConstant.homeIzinlerimContainer,
+                                        decoration:
+                                            AppConstant.homeIzinlerimContainer,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -330,10 +344,12 @@ class HomeScreen extends StatelessWidget {
                                             SizedBox(
                                               height: 2.5.h,
                                             ),
-                                            Text(
-                                              "data",
-                                              style: AppConstant
-                                                  .homeIzinlerimAciklama,
+                                            Obx(
+                                              () => controller.isLoading==true?Text(
+                                                controller.getLandingPageInfoModel!.data!.vacationInfo!.employeeEarnedRightsList![0].nEXTLEAVEALLOWANCEDAYS.toString(),
+                                                style: AppConstant
+                                                    .homeIzinlerimAciklama,
+                                              ):Container(),
                                             ),
                                           ],
                                         ),
@@ -344,7 +360,9 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 3.h,),
+                          SizedBox(
+                            height: 3.h,
+                          ),
                           GestureDetector(
                             onTap: () {
                               print("ÇıkışYap");
@@ -372,7 +390,6 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                         
                         ],
                       ),
                     ),

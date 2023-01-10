@@ -11,9 +11,11 @@ class AppConstant {
   //TextStyle
    static TextStyle homeIzinlerimAciklama =
       TextStyle(color: Colors.white, fontSize: 13);
+    
+   static TextStyle homeNameSurname = TextStyle(fontSize: 12);
   
   //Box decoration
-  static BoxDecoration homeTopContainer = BoxDecoration(color: Color(0xff850000), borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)));
+  static BoxDecoration homeTopContainer = BoxDecoration(color: Color(0xff7f0000), borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)));
 
   static BoxDecoration homeProfilePhoto = BoxDecoration(
       color: Colors.white, borderRadius: BorderRadius.circular(50));
@@ -31,7 +33,7 @@ class AppConstant {
     ],
   );
 
-  static BoxDecoration homeIzinlerimContainer = BoxDecoration(color: Color(0xff850000).withOpacity(.8), borderRadius: BorderRadius.circular(15));
+  static BoxDecoration homeIzinlerimContainer = BoxDecoration(color: Color(0xff7f0000).withOpacity(.8), borderRadius: BorderRadius.circular(15));
 
  
 
