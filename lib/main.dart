@@ -6,7 +6,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'app/translation/test.dart';
 import 'di.dart';
 
-void main() async{
+void main() async {
   await DependencyInjection.init();
   runApp(const MyApp());
 }
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, screenType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.LOGIN,
+          initialRoute: Routes.PAYROLL,
           getPages: AppPages.routes,
           locale: Get.deviceLocale,
           translations: Messages(),
