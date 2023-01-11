@@ -28,7 +28,7 @@ class HomeScreen extends GetView<HomeController> {
             SliverAppBar(
               backgroundColor: Color(0xff7f0000),
               toolbarHeight: 12.2.h,
-              leadingWidth: 42.w,
+              leadingWidth: 34.w,
               elevation: 0,
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Row(
@@ -112,20 +112,16 @@ class HomeScreen extends GetView<HomeController> {
                 ],
               ),
               // LOGO
-              title: Row(
-                children: [
-                  SizedBox(width: 4.w,),
-                  Container(
-                    height: 10.h,
-                    width: 9.h,
-                    //color: Colors.white,
-                    child: Image(
-                      image: AssetImage("assets/logo.png"),
-                      fit: BoxFit.cover,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+              centerTitle: true,
+              title: Container(
+                height: 10.h,
+                width: 9.h,
+                //color: Colors.white,
+                child: Image(
+                  image: AssetImage("assets/logo.png"),
+                  fit: BoxFit.cover,
+                  color: Colors.white,
+                ),
               ),
 
               actions: [
