@@ -7,8 +7,33 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class AppConstant {
   //Color
   static Color loginBackground = Color(0xffe53935);
+  static Color loginLanguage = Color(0xffbdbdbd);
+  static const loginCursor = Color(0xffe53935);
+  static const loginPrefix = Color(0xffe53935);
+  static const loginButton = Color(0xffe53935);
+  static const loginSw = Color(0xffe53935);
+  static const loginSwTrack = Color(0xffef9a9a);
+  static const loginInSw = Color(0xffe0e0e0);
+  static const loginInSwTrack = Color(0xff9e9e9e);
+
+  //BorderRadius
+  static BorderRadius globalRadius = BorderRadius.circular(2.w);
+
+  //Icon
+  static const loginTextFieldIcon = Icons.person;
+  static const loginTextFormFieldIcon = Icon(Icons.person, color: Color(0xffe53935));
+  static const passwordTextFormFieldIcon = Icon(Icons.key, color: Color(0xffe53935));
+  static const loginSufIcon = Icon(Icons.visibility, color: Colors.grey);
 
   //TextStyle
+
+  static const loginInfoStyle = TextStyle(fontSize: 15);
+  static const loginSmsStyle = TextStyle(fontSize: 15);
+
+  //Text
+  static const loginInfo = Text("Mobil uygulamayı kullanmak için lütfen giriş yapınız.",style: loginInfoStyle,);
+  static const loginSms = Text("Bilgisayar şifrem yok. SMS ile şifre almak istiyorum.", style: loginSmsStyle,);
+
   static TextStyle homeIzinlerimAciklama =
       TextStyle(color: Colors.black, fontSize: 13);
 
@@ -70,6 +95,7 @@ class AppConstant {
       ),
     ],
   );
+
 
   static TextStyle payrollLastStyle =
       TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
