@@ -58,7 +58,7 @@ class AppConstant {
       borderRadius: BorderRadius.circular(15));
 
   static BoxDecoration payrollLastpayroll = BoxDecoration(
-    color: Color(0xffe53935),
+    color: Color(0xff7f0000),
     borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15)),
     boxShadow: [

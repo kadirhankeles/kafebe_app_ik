@@ -28,12 +28,12 @@ class HomeScreen extends GetView<HomeController> {
             SliverAppBar(
               backgroundColor: Color(0xff7f0000),
               toolbarHeight: 12.2.h,
-              leadingWidth: 39.w,
+              leadingWidth: 42.w,
               elevation: 0,
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Row(
                 children: [
-                  SizedBox(width: 3.w),
+                  SizedBox(width: 1.w),
                   Column(
                     children: [
                       SizedBox(
@@ -64,7 +64,7 @@ class HomeScreen extends GetView<HomeController> {
                         () {
                           return controller.isLoading == true
                               ? Container(
-                                  width: 22.w,
+                                  width: 19.7.w,
                                   child: Text(
                                       "${controller.getLandingPageInfoModel!.data!.nameSurname}",
                                       style: AppConstant.homeNameSurname,
@@ -75,6 +75,7 @@ class HomeScreen extends GetView<HomeController> {
                     ],
                   ),
                   IconButton(
+                    padding: EdgeInsets.zero,
                       splashRadius: 1.h,
                       onPressed: () {
                         Get.defaultDialog(
@@ -113,6 +114,7 @@ class HomeScreen extends GetView<HomeController> {
               // LOGO
               title: Row(
                 children: [
+                  SizedBox(width: 4.w,),
                   Container(
                     height: 10.h,
                     width: 9.h,

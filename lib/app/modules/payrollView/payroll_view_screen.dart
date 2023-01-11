@@ -4,6 +4,7 @@ import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_binding.dart'
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_controller.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
+
 class PayrollViewScreen extends GetView<PayrollViewController> {
   const PayrollViewScreen({super.key});
 
