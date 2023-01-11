@@ -69,10 +69,22 @@ class LoginController extends GetxController {
     }
   }
 
-  loginData(String user, String password) async {
+  /*  loginData(String user, String password) async {
     /* user = userNameController.text;
     password = passwordController.text; */
     loginModel = await getLoginService(user, password);
     isLoading.value = true;
+  } */
+
+  loginApp(String user, String password) async {
+    isLoading.value = true;
+    if (user.isEmpty || password.isEmpty) {
+      Get.defaultDialog(
+          title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
+      isLoading.value = false;
+    } else {
+      loginModel = await getLoginService(user, password);
+      isLoading.value = false;
+    }
   }
 }

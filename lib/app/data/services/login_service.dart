@@ -1,13 +1,15 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/login_model.dart';
 
-Future<LoginModel> getLoginService(String user, String password) async {
-  print("deneme");
+Future<LoginModel?> getLoginService(String user, String password) async {
+  
   LoginModel loginData = LoginModel();
-  var headers = {
+  try {
+    var headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   };
@@ -31,4 +33,9 @@ Future<LoginModel> getLoginService(String user, String password) async {
   loginData = LoginModel.fromJson(jsonDecode(res.body));
 
   return loginData;
+  } catch (e) {
+    Get.defaultDialog(title: "Girmiş olduğunuz bilgiler hatalıdır.",middleText: "Lütfen tekrar deneyiniz.",);
+    return null;
+  }
+  
 }

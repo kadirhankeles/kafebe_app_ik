@@ -13,7 +13,9 @@ class LoginScreen extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Stack(children: [
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
           Positioned(
             child: Container(
                 height: 100.h,
@@ -42,7 +44,7 @@ class LoginScreen extends GetView<LoginController> {
                 ),
               )),
           Positioned(
-              //top: 3.h,
+              top: 0.h,
               left: 42.w,
               child: SafeArea(
                 child: Image.asset(
@@ -149,14 +151,17 @@ class LoginScreen extends GetView<LoginController> {
                       backgroundColor: AppConstant.loginButton,
                       foregroundColor: Colors.white),
                   onPressed: () {
-                    // controller.loginToHome();
-                    controller.loginTransition();
-                    controller.loginData(controller.userNameController.text, controller.passwordController.text);
+                    
+                  controller.loginApp(controller.userNameController.text, controller.passwordController.text);
                   },
                   child: Text(
                     "Giriş",
                     style: TextStyle(fontSize: 2.5.h),
                   ))),
+          Obx(()=> controller.isLoading.value == true
+          ? Center(child: CircularProgressIndicator(),)
+          : Container(),
+          )        
         ]),
       ),
     );
