@@ -5,16 +5,13 @@ import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/payroll_list_data_model.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
-import '../models/payroll_all_model.dart';
-
 class PayrollAllDataService extends GetConnect {
   Future<PayrollListDataModel?> getPayrollAllData() async {
     try {
       var headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'vbtauthorization':
-            '$apiToken',
+        'vbtauthorization': '$apiToken',
       };
 
       var data = {"Date": "2023-01-10T17:36:46.601Z"};

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/login_model.dart';
 
 import '../../data/services/login_service.dart';
+import '../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
   RxBool loginVisibility = true.obs;
@@ -84,7 +85,9 @@ class LoginController extends GetxController {
       isLoading.value = false;
     } else {
       loginModel = await getLoginService(user, password);
+
       isLoading.value = false;
+      Get.toNamed(Routes.HOME);
     }
   }
 }

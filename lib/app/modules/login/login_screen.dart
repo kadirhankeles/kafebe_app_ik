@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/widgets/login_widgets.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import '../../routes/app_pages.dart';
 import '../../utils/app_constant.dart';
 import '../../widgets/user_name_text_form_widget.dart';
 import 'login_controller.dart';
@@ -13,9 +14,7 @@ class LoginScreen extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
+        child: Stack(alignment: Alignment.center, children: [
           Positioned(
             child: Container(
                 height: 100.h,
@@ -130,12 +129,14 @@ class LoginScreen extends GetView<LoginController> {
                     SizedBox(
                       height: 3.h,
                     ),
-                    UserNameTextFormField("Kullanıcı Adı", controller.userNameController),
+                    UserNameTextFormField(
+                        "Kullanıcı Adı", controller.userNameController),
                     SizedBox(
                       height: 2.h,
                     ),
                     PasswordTextFormField(
-                        controllerr: controller.passwordController, hintText: "Şifre"),
+                        controllerr: controller.passwordController,
+                        hintText: "Şifre"),
                   ],
                 ),
               ),
@@ -151,17 +152,20 @@ class LoginScreen extends GetView<LoginController> {
                       backgroundColor: AppConstant.loginButton,
                       foregroundColor: Colors.white),
                   onPressed: () {
-                    
-                  controller.loginApp(controller.userNameController.text, controller.passwordController.text);
+                    controller.loginApp(controller.userNameController.text,
+                        controller.passwordController.text);
                   },
                   child: Text(
                     "Giriş",
                     style: TextStyle(fontSize: 2.5.h),
                   ))),
-          Obx(()=> controller.isLoading.value == true
-          ? Center(child: CircularProgressIndicator(),)
-          : Container(),
-          )        
+          Obx(
+            () => controller.isLoading.value == true
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Container(),
+          )
         ]),
       ),
     );

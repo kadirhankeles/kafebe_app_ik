@@ -45,7 +45,6 @@ dependencies:
 
   syncfusion_flutter_pdfviewer: ^20.4.42
 
-  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
