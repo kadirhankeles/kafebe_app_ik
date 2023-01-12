@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/modules/notification/notification_binding.dart';
+import 'package:kafebe_app_ik/app/modules/notification/notification_screen.dart';
 import 'package:kafebe_app_ik/app/modules/payroll/payroll_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_screen.dart';
@@ -27,5 +30,9 @@ class AppPages {
         name: Paths.PAYROLLVIEW,
         page: () => PayrollViewScreen(),
         binding: PayrollViewBinding()),
+    GetPage(
+        name: Paths.NOTIFICATION,
+        page: () => NotificationScreen(),
+        binding: NotificationBinding()),
   ];
 }

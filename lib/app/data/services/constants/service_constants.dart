@@ -12,6 +12,7 @@ class ServiceConstants {
   static const ACCOUNT_TOKEN = "Account/Token";
   static const GET_PROFILE_PICTURE = "EmployeeReport/GetProfilPicture";
   static const GET_LANDING_PAGE_INFO = "EmployeeReport/GetLandingPageInfo?";
+  static const GET_PUSH_MESSAGES = "PushNotification/GetPushMessages";
 
 //header
   static const HEADER = {'vbtauthorization': apiToken};
