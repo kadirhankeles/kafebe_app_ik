@@ -28,7 +28,7 @@ class HomeScreen extends GetView<HomeController> {
             SliverAppBar(
               backgroundColor: Color(0xff7f0000),
               toolbarHeight: 12.2.h,
-              leadingWidth: 42.w,
+              leadingWidth: 34.w,
               elevation: 0,
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Row(
