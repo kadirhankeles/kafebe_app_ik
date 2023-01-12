@@ -19,11 +19,12 @@ class ServiceConstants {
 
 //status code göre response code controlü
   responseControll(statusCode) {
-    if (statusCode != 200) {
-      Get.snackbar("ERROR", "!");
-      throw Exception('http.get error: statusCode= $statusCode');
-    } else if (statusCode == null) {
-      Get.snackbar("ERROR", "Bad Connection");
+    try {
+      if (statusCode == 200) {
+        print("DONE!");
+      }
+    } catch (e) {
+      Get.snackbar("ERROR", e.toString());
     }
   }
 }

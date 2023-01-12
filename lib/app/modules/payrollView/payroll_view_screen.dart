@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_controller.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PayrollViewScreen extends GetView<PayrollViewController> {
@@ -18,8 +19,11 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
             IconButton(
                 onPressed: () async {
                   final temp = await getTemporaryDirectory();
-                  final path = '${temp.path}/bordro.pdf';
-                  File(path).writeAsBytes(controller.resultData!.toList());
+                  final path = '${temp.path}/payroll.pdf';
+                  print(path);
+                  File(path).writeAsBytes(controller.resultData!);
+                  print(File(path).writeAsBytes(controller.resultData!));
+                  await Share.share(path);
                 },
                 icon: Icon(Icons.share))
           ],
