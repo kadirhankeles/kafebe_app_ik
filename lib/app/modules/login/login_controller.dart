@@ -9,7 +9,7 @@ import '../../data/services/login_service.dart';
 import '../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  LoginService loginService = LoginService();
+  //LoginService loginService = LoginService();
 
   RxBool loginVisibility = true.obs;
   RxBool switchControl = false.obs;
@@ -75,24 +75,32 @@ class LoginController extends GetxController {
     }
   }
 
-  /*  loginData(String user, String password) async {
+  loginData(String user, String password) async {
+    isLoading.value = true;
     /* user = userNameController.text;
     password = passwordController.text; */
-    loginModel = await getLoginService(user, password);
-    isLoading.value = true;
-  } */
-
-  loginApp(String user, String password) async {
-    isLoading.value = true;
     if (user.isEmpty || password.isEmpty) {
       Get.defaultDialog(
           title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
       isLoading.value = false;
     } else {
-      loginModel = await loginService.getLoginService(user, password);
-
+      loginModel = await getLoginService(user, password);
       isLoading.value = false;
-      Get.toNamed(Routes.HOME);
     }
   }
+
+  // loginApp(String user, String password) async {
+  //   isLoading.value = true;
+  //   if (user.isEmpty || password.isEmpty) {
+  //     Get.defaultDialog(
+  //         title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
+  //     isLoading.value = false;
+  //   } else {
+
+  //     loginModel = await loginService.getLoginService(user, password).then((value) =>  Get.toNamed(Routes.HOME));
+
+  //     isLoading.value = false;
+
+  //   }
+  // }
 }

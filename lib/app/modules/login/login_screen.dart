@@ -152,7 +152,7 @@ class LoginScreen extends GetView<LoginController> {
                       backgroundColor: AppConstant.loginButton,
                       foregroundColor: Colors.white),
                   onPressed: () {
-                    controller.loginApp(controller.userNameController.text,
+                    controller.loginData(controller.userNameController.text,
                         controller.passwordController.text);
                   },
                   child: Text(
