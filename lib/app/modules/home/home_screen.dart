@@ -11,15 +11,31 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> icons = [
+   
+    List<String> managerFalseSun = [
       "assets/request.png",
       "assets/approvals.png",
       "assets/works.png",
-      "assets/profile.png",
-      "assets/team.png",
-      "assets/payroll.png",
-      "assets/vacation.png",
       "assets/educations.png",
+    ];
+    List<String> managerFalse = [
+      "assets/request.png",
+      "assets/approvals.png",
+      "assets/works.png",
+    ];
+
+    List<String> managerTrueSun = [
+      "assets/request.png",
+      "assets/approvals.png",
+      "assets/team.png",
+      "assets/works.png",
+      "assets/educations.png",
+    ];
+    List<String> managerTrue = [
+      "assets/request.png",
+      "assets/approvals.png",
+      "assets/team.png",
+      "assets/works.png",
     ];
     return Scaffold(
         backgroundColor: Color(0xffF4F5FA),
@@ -28,43 +44,86 @@ class HomeScreen extends GetView<HomeController> {
             SliverAppBar(
               backgroundColor: Color(0xff7f0000),
               toolbarHeight: 12.2.h,
-              leadingWidth: 34.w,
+              leadingWidth: 30.w,
               elevation: 0,
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
-              leading: Row(
+              leading: Column(
                 children: [
-                  SizedBox(width: 1.w),
-                  Column(
+                  Row(
                     children: [
-                      // SizedBox(
-                      //   height: .6.h,
-                      // ),
-                      // Obx(
-                      //   () => controller.isProfilPicture == true
-                      //       ? ClipRRect(
-                      //           borderRadius: BorderRadius.circular(50),
-                      //           child: Container(
-                      //               height: 8.h,
-                      //               width: 8.h,
-                      //               child: controller.baseToImage(controller
-                      //                   .getProfilPictureModel!
-                      //                   .data!
-                      //                   .profilePicture
-                      //                   .toString())))
-                      //       : Container(
-                      //           child: Center(
-                      //             child: CircularProgressIndicator(),
-                      //           ),
-                      //         ),
-                      // ),
-                      // SizedBox(
-                      //   height: 0.5.h,
-                      // ),
+                      SizedBox(width: 5.w),
+                      SizedBox(
+                        height: .7.h,
+                      ),
                       Obx(
+                        () => controller.isProfilPicture == true
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Container(
+                                    height: 8.h,
+                                    width: 8.h,
+                                    child: controller.baseToImage(controller
+                                        .getProfilPictureModel!
+                                        .data!
+                                        .profilePicture
+                                        .toString())))
+                            : Container(
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
+                      ),
+                      SizedBox(
+                       width: 2.w,
+                      ),
+                      Container(
+                        height: 3.h,
+                        width: 3.h,
+                        child: IconButton(
+                            padding: EdgeInsets.zero,
+                            splashRadius: 1.h,
+                            onPressed: () {
+                              Get.defaultDialog(
+                                title: "Uyarı",
+                                middleText: "Profilinizi güncellemeyi unutmayınız.",
+                                backgroundColor: Colors.grey.withOpacity(.9),
+                                titleStyle: TextStyle(color: Colors.white),
+                                middleTextStyle: TextStyle(color: Colors.white),
+                                radius: 10,
+                                actions: [
+                                  SizedBox(
+                                    width: 45.w,
+                                  ),
+                                  OutlinedButton(
+                                    style: OutlinedButton.styleFrom(
+                                      side: BorderSide(
+                                          width: .1.h, color: Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: const Text(
+                                      'Close',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                            icon: Icon(
+                              Icons.info_outline_rounded,
+                              color: Colors.white,
+                            )),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: .7.h,),
+                   Obx(
                         () {
                           return controller.isLoading == true
                               ? Container(
-                                  width: 19.7.w,
+                                padding: EdgeInsets.only(left: 3.w),
+                                  width: 34.w,
                                   child: Text(
                                       "${controller.getLandingPageInfoModel!.data!.nameSurname}",
                                       style: AppConstant.homeNameSurname,
@@ -72,51 +131,11 @@ class HomeScreen extends GetView<HomeController> {
                               : Container();
                         },
                       )
-                    ],
-                  ),
-                  IconButton(
-                      padding: EdgeInsets.zero,
-                      splashRadius: 1.h,
-                      onPressed: () {
-                        Get.defaultDialog(
-                          title: "Uyarı",
-                          middleText: "Profilinizi güncellemeyi unutmayınız.",
-                          backgroundColor: Colors.grey.withOpacity(.9),
-                          titleStyle: TextStyle(color: Colors.white),
-                          middleTextStyle: TextStyle(color: Colors.white),
-                          radius: 10,
-                          actions: [
-                            SizedBox(
-                              width: 45.w,
-                            ),
-                            OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                side: BorderSide(
-                                    width: .1.h, color: Colors.white),
-                              ),
-                              onPressed: () {
-                                Get.back();
-                              },
-                              child: const Text(
-                                'Close',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                      icon: Icon(
-                        Icons.info_outline_rounded,
-                        color: Colors.white,
-                      )),
                 ],
               ),
               // LOGO
-              title: Row(
-                children: [
-                  SizedBox(
-                    width: 4.w,
-                  ),
+              centerTitle: true,
+              title: 
                   Container(
                     height: 10.h,
                     width: 9.h,
@@ -127,14 +146,14 @@ class HomeScreen extends GetView<HomeController> {
                       color: Colors.white,
                     ),
                   ),
-                ],
-              ),
+               
 
               actions: [
                 IconButton(
                     onPressed: () {},
                     icon: Icon(Icons.notifications_active),
                     color: Colors.yellow),
+                    SizedBox(width: 3.w,),
               ],
             ),
             SliverToBoxAdapter(
@@ -158,11 +177,12 @@ class HomeScreen extends GetView<HomeController> {
                               () => controller.isLoading == true
                                   ? GridView.builder(
                                       shrinkWrap: true,
-                                      itemCount: controller
+                                      itemCount: controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==true? 5: controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==false?4: controller.getLandingPageInfoModel!.data!.isManager==false && controller.getLandingPageInfoModel!.data!.sunAkademi ==true?4: 3,
+                                      /*controller
                                           .getLandingPageInfoModel!
                                           .data!
                                           .menuInfo!
-                                          .length,
+                                          .length,*/
                                       physics: NeverScrollableScrollPhysics(),
                                       gridDelegate:
                                           SliverGridDelegateWithFixedCrossAxisCount(
@@ -176,29 +196,22 @@ class HomeScreen extends GetView<HomeController> {
                                             print("Tıklandı $index");
                                           },
                                           child: Container(
-                                            decoration: index >= 4
-                                                ? AppConstant.homeRedButton
-                                                : AppConstant.homeButton,
+                                            decoration: 
+                                                 AppConstant.homeButton,
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                index >= 4
-                                                    ? AppConstant()
-                                                        .homeCircularWhite(
-                                                            icons[index])
-                                                    : AppConstant()
+                                                 AppConstant()
                                                         .homeCircularPhoto(
-                                                            icons[index]),
+                                                            controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==true?managerTrueSun[index]:controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==false?managerTrue[index]: controller.getLandingPageInfoModel!.data!.isManager==false && controller.getLandingPageInfoModel!.data!.sunAkademi ==true?managerFalseSun[index]: managerFalse[index] ),
                                                 SizedBox(
                                                   height: 1.5.h,
                                                 ),
                                                 Text(
                                                   "${controller.getLandingPageInfoModel!.data!.menuInfo![index].mENUNAME}",
-                                                  style: index >= 4
-                                                      ? AppConstant
-                                                          .homeButtonWhite
-                                                      : AppConstant
+                                                  style: 
+                                                       AppConstant
                                                           .homeButtonBlack,
                                                 )
                                               ],
@@ -443,20 +456,20 @@ class HomeScreen extends GetView<HomeController> {
                             child: Container(
                               height: 10.h,
                               width: double.infinity,
-                              decoration: AppConstant.homeButton,
+                              decoration: AppConstant.homeRedButton,
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width: 5.w,
                                   ),
                                   AppConstant()
-                                      .homeCircularPhoto("assets/exit.png"),
+                                      .homeCircularWhite("assets/exit.png"),
                                   SizedBox(
                                     width: 3.w,
                                   ),
                                   Text("Çıkış Yap",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 18)),
                                 ],

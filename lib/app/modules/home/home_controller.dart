@@ -33,21 +33,13 @@ class HomeController extends GetxController {
 
   Image baseToImage(String path) {
     Uint8List bytes = base64.decode(path);
-    return Image.memory(
-      bytes,
-      fit: BoxFit.cover,
-    );
+    if (path == "null") {
+      return Image.network(
+          "https://media.licdn.com/dms/image/C4D0BAQGw5l4DIigpiQ/company-logo_200_200/0/1625655631414?e=2147483647&v=beta&t=zgHGi-aH97kbaaaEv2dPW4ZFM1sMNwvCpWJgoF0AxMM");
+    } else
+      return Image.memory(
+        bytes,
+        fit: BoxFit.cover,
+      );
   }
-
-  // Image baseToImage(String path) {
-  //   Uint8List bytes = base64.decode(path);
-  //   if (path == "null") {
-  //     return Image.network(
-  //         "https://media.licdn.com/dms/image/C4D0BAQGw5l4DIigpiQ/company-logo_200_200/0/1625655631414?e=2147483647&v=beta&t=zgHGi-aH97kbaaaEv2dPW4ZFM1sMNwvCpWJgoF0AxMM");
-  //   } else
-  //     return Image.memory(
-  //       bytes,
-  //       fit: BoxFit.cover,
-  //     );
-  // }
 }
