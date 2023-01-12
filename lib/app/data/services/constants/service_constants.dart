@@ -1,4 +1,5 @@
 // ignore_for_file: constant_identifier_names
+import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 class ServiceConstants {
@@ -19,7 +20,10 @@ class ServiceConstants {
 //status code göre response code controlü
   responseControll(statusCode) {
     if (statusCode != 200) {
+      Get.snackbar("ERROR", "!");
       throw Exception('http.get error: statusCode= $statusCode');
+    } else if (statusCode == null) {
+      Get.snackbar("ERROR", "Bad Connection");
     }
   }
 }

@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_controller.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PayrollViewScreen extends GetView<PayrollViewController> {
@@ -12,7 +14,15 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff850000),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.share))],
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  final temp = await getTemporaryDirectory();
+                  final path = '${temp.path}/bordro.pdf';
+                  File(path).writeAsBytes(controller.resultData!.toList());
+                },
+                icon: Icon(Icons.share))
+          ],
         ),
         backgroundColor: Colors.white,
         body: Scaffold(
