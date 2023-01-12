@@ -1,29 +1,26 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/get_ProfilPicture_model.dart';
-import 'package:kafebe_app_ik/app/utils/api_token.dart';
+import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 
-Future<GetProfilPictureModel?> getProfilPictureService() async {
-  GetProfilPictureModel? data = GetProfilPictureModel();
-  try {
-    var headers = {
-      'Accept': 'application/json',
-      'vbtauthorization':
-          '$apiToken',
-    };
+class ProfilPictureService extends GetConnect {
+  Future<GetProfilPictureModel?> getProfilPictureService() async {
+    GetProfilPictureModel? data = GetProfilPictureModel();
 
-    var url = Uri.parse(
-        'https://suniktest.suntekstil.com.tr/mobileapi/api/EmployeeReport/GetProfilPicture');
-    var res = await http.get(url, headers: headers);
-    if (res.statusCode != 200)
-      throw Exception('http.get error: statusCode= ${res.statusCode}');
+    var headers = ServiceConstants.HEADER;
+
+    var url =
+        '${ServiceConstants.BASE_URL}${ServiceConstants.GET_PROFILE_PICTURE}';
+
+    var res = await get(url, headers: headers);
+
+    ServiceConstants().responseControll(res.statusCode);
+
     print(res.body);
-    data = GetProfilPictureModel.fromJson(jsonDecode(res.body));
+    data = GetProfilPictureModel.fromJson(res.body);
 
     return data;
-  } catch (e) {
-    print(e);
-    return null;
   }
 }

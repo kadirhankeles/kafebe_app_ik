@@ -7,7 +7,7 @@ import '../../data/models/getLanding_PageInfo_model.dart';
 import '../../data/models/get_ProfilPicture_model.dart';
 import '../../data/services/getLanding_Page_Info_service.dart';
 
-class HomeController extends GetxController{
+class HomeController extends GetxController {
   GetLandingPageInfoModel? getLandingPageInfoModel;
   GetProfilPictureModel? getProfilPictureModel;
   RxBool isLoading = false.obs;
@@ -15,22 +15,27 @@ class HomeController extends GetxController{
 
   void onInit() async {
     await getLandingPageInfoData();
-    getProfilPictureData();
+    await getProfilPictureData();
     super.onInit();
   }
+
   getLandingPageInfoData() async {
-    getLandingPageInfoModel=await GetLandingPageInfoService();
+    getLandingPageInfoModel =
+        await LandingPageInfoService().getLandingPageInfoService();
     isLoading.value = true;
   }
 
-  getProfilPictureData() async{
-    getProfilPictureModel = await getProfilPictureService();
+  getProfilPictureData() async {
+    getProfilPictureModel =
+        await ProfilPictureService().getProfilPictureService();
     isProfilPicture.value = true;
   }
 
-  Image baseToImage(String path){
-   Uint8List bytes = base64.decode(path);
-   return Image.memory(bytes, fit: BoxFit.cover,);
+  Image baseToImage(String path) {
+    Uint8List bytes = base64.decode(path);
+    return Image.memory(
+      bytes,
+      fit: BoxFit.cover,
+    );
   }
-
 }

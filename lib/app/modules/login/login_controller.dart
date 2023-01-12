@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/login_model.dart';
+import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
+import 'package:kafebe_app_ik/app/data/services/payroll_all_data_service.dart';
+import 'package:kafebe_app_ik/app/data/services/payroll_month_service.dart';
 
 import '../../data/services/login_service.dart';
 import '../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
+  LoginService loginService = LoginService();
+
   RxBool loginVisibility = true.obs;
   RxBool switchControl = false.obs;
 
@@ -25,7 +30,7 @@ class LoginController extends GetxController {
   }
 
   chanceVisibilityIcon() {
-    if (loginVisibility == false) {
+    if (loginVisibility.value == false) {
       return Icon(
         Icons.visibility,
         color: Colors.blue,
@@ -84,7 +89,7 @@ class LoginController extends GetxController {
           title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
       isLoading.value = false;
     } else {
-      loginModel = await getLoginService(user, password);
+      loginModel = await loginService.getLoginService(user, password);
 
       isLoading.value = false;
       Get.toNamed(Routes.HOME);

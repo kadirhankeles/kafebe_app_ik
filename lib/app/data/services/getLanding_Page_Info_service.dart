@@ -1,18 +1,16 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
-import 'package:kafebe_app_ik/app/utils/api_token.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 
 import '../models/getLanding_PageInfo_model.dart';
 
-Future<GetLandingPageInfoModel?> GetLandingPageInfoService() async {
-  GetLandingPageInfoModel? data = GetLandingPageInfoModel();
-  try {
-    var headers = {
-      'Accept': 'application/json',
-      'vbtauthorization':
-          '$apiToken',
-    };
+class LandingPageInfoService extends GetConnect {
+  Future<GetLandingPageInfoModel?> getLandingPageInfoService() async {
+    GetLandingPageInfoModel? data = GetLandingPageInfoModel();
+
+    var headers = ServiceConstants.HEADER;
 
     var params = {
       'isFirstLogin': 'true',
@@ -20,15 +18,18 @@ Future<GetLandingPageInfoModel?> GetLandingPageInfoService() async {
     var query = params.entries.map((p) => '${p.key}=${p.value}').join('&');
 
     var url = Uri.parse(
-        'https://suniktest.suntekstil.com.tr/mobileapi/api/EmployeeReport/GetLandingPageInfo?$query');
-    var res = await http.get(url, headers: headers);
-    if (res.statusCode != 200)
-      throw Exception('http.get error: statusCode= ${res.statusCode}');
+        '${ServiceConstants.BASE_URL}${ServiceConstants.GET_LANDING_PAGE_INFO}$query');
+    var res = await get(
+      url,
+      headers: headers,
+    );
+
+    await ServiceConstants()
+        .responseControll(res.statusCode); //respons controlü yapan fonskiyon
+
     print(res.body);
     data = GetLandingPageInfoModel.fromJson(jsonDecode(res.body));
 
     return data;
-  } catch (e) {
-    print(e);
   }
 }

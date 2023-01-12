@@ -36,30 +36,30 @@ class HomeScreen extends GetView<HomeController> {
                   SizedBox(width: 1.w),
                   Column(
                     children: [
-                      SizedBox(
-                        height: .6.h,
-                      ),
-                      Obx(
-                        () => controller.isProfilPicture == true
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(50),
-                                child: Container(
-                                    height: 8.h,
-                                    width: 8.h,
-                                    child: controller.baseToImage(controller
-                                        .getProfilPictureModel!
-                                        .data!
-                                        .profilePicture
-                                        .toString())))
-                            : Container(
-                                child: Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
-                      ),
-                      SizedBox(
-                        height: 0.5.h,
-                      ),
+                      // SizedBox(
+                      //   height: .6.h,
+                      // ),
+                      // Obx(
+                      //   () => controller.isProfilPicture == true
+                      //       ? ClipRRect(
+                      //           borderRadius: BorderRadius.circular(50),
+                      //           child: Container(
+                      //               height: 8.h,
+                      //               width: 8.h,
+                      //               child: controller.baseToImage(controller
+                      //                   .getProfilPictureModel!
+                      //                   .data!
+                      //                   .profilePicture
+                      //                   .toString())))
+                      //       : Container(
+                      //           child: Center(
+                      //             child: CircularProgressIndicator(),
+                      //           ),
+                      //         ),
+                      // ),
+                      // SizedBox(
+                      //   height: 0.5.h,
+                      // ),
                       Obx(
                         () {
                           return controller.isLoading == true
@@ -75,7 +75,7 @@ class HomeScreen extends GetView<HomeController> {
                     ],
                   ),
                   IconButton(
-                    padding: EdgeInsets.zero,
+                      padding: EdgeInsets.zero,
                       splashRadius: 1.h,
                       onPressed: () {
                         Get.defaultDialog(
@@ -114,7 +114,9 @@ class HomeScreen extends GetView<HomeController> {
               // LOGO
               title: Row(
                 children: [
-                  SizedBox(width: 4.w,),
+                  SizedBox(
+                    width: 4.w,
+                  ),
                   Container(
                     height: 10.h,
                     width: 9.h,
@@ -174,18 +176,30 @@ class HomeScreen extends GetView<HomeController> {
                                             print("Tıklandı $index");
                                           },
                                           child: Container(
-                                            decoration: index>=4? AppConstant.homeRedButton :AppConstant.homeButton,
+                                            decoration: index >= 4
+                                                ? AppConstant.homeRedButton
+                                                : AppConstant.homeButton,
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                index>=4? AppConstant().homeCircularWhite(icons[index]): AppConstant().homeCircularPhoto(icons[index]),
+                                                index >= 4
+                                                    ? AppConstant()
+                                                        .homeCircularWhite(
+                                                            icons[index])
+                                                    : AppConstant()
+                                                        .homeCircularPhoto(
+                                                            icons[index]),
                                                 SizedBox(
                                                   height: 1.5.h,
                                                 ),
                                                 Text(
                                                   "${controller.getLandingPageInfoModel!.data!.menuInfo![index].mENUNAME}",
-                                                  style: index>=4? AppConstant.homeButtonWhite:AppConstant.homeButtonBlack,
+                                                  style: index >= 4
+                                                      ? AppConstant
+                                                          .homeButtonWhite
+                                                      : AppConstant
+                                                          .homeButtonBlack,
                                                 )
                                               ],
                                             ),
@@ -435,8 +449,8 @@ class HomeScreen extends GetView<HomeController> {
                                   SizedBox(
                                     width: 5.w,
                                   ),
-                                  AppConstant().homeCircularPhoto(
-                                      "assets/exit.png"),
+                                  AppConstant()
+                                      .homeCircularPhoto("assets/exit.png"),
                                   SizedBox(
                                     width: 3.w,
                                   ),
@@ -449,7 +463,9 @@ class HomeScreen extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 5.h,),
+                          SizedBox(
+                            height: 5.h,
+                          ),
                         ],
                       ),
                     ),

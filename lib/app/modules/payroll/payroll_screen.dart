@@ -32,17 +32,16 @@ class PayrollScreen extends GetView<PayrollController> {
                     SizedBox(
                       width: 8.w,
                     ),
-                    Obx(() => controller.isLoading == true
+                    Obx(() => controller.isLoading.value == true
                         ? Container(
-                          width: 47.w,
-                          child: Text(
-                            
+                            width: 47.w,
+                            child: Text(
                               "Bordrolarım",
                               style: AppConstant.payrollLastStyle,
                               textAlign: TextAlign.center,
                             ),
-                        )
-                        : Center(child: CircularProgressIndicator())),
+                          )
+                        : const Center(child: CircularProgressIndicator())),
                   ],
                 ),
               ),
@@ -50,12 +49,12 @@ class PayrollScreen extends GetView<PayrollController> {
             SliverToBoxAdapter(
               child: SingleChildScrollView(
                   child: Obx(
-                () => controller.isLoading == true
+                () => controller.isLoading.value == true
                     ? Column(
                         children: [
                           Padding(
-                              padding:
-                                  EdgeInsets.only(right: 2.5.h, left: 2.5.h,top: 1.h),
+                              padding: EdgeInsets.only(
+                                  right: 2.5.h, left: 2.5.h, top: 1.h),
                               child: Container(
                                   height: 100.h,
                                   width: double.infinity,
