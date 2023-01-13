@@ -44,6 +44,8 @@ class AppConstant {
   static TextStyle homeButtonBlack =
       TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w700);
 
+  static TextStyle detailGrey = TextStyle(color: Colors.grey.shade500);
+
   //Box decoration
   static BoxDecoration homeTopContainer = BoxDecoration(
       color: Color(0xff7f0000),
