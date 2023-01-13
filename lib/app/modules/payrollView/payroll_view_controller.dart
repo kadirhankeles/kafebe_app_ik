@@ -12,6 +12,7 @@ import '../../data/services/payroll_month_service.dart';
 class PayrollViewController extends GetxController {
   PayrollMonthService monthService = PayrollMonthService();
   PayrollListDataModel? payrollListDataModel;
+  RxString monthPayroll = "".obs;
 
   Uint8List? resultData;
   RxBool isLoading = false.obs;
@@ -40,6 +41,9 @@ class PayrollViewController extends GetxController {
     // print("y $y");
     print(arguments);
     getData(arguments[0]['year'], arguments[1]['month'], arguments[2]['uid']);
+    monthPayroll.value = arguments[3]['period'];
+    print(monthPayroll);
+
     super.onInit();
   }
 }

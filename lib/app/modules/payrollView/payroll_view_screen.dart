@@ -19,12 +19,15 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
             IconButton(
                 onPressed: () async {
                   final temp = await getTemporaryDirectory();
-                  final path = '${temp.path}/payroll.pdf';
+                  final path =
+                      '${temp.path}/${controller.monthPayroll} Bordro.pdf';
 
                   final file = File(path);
                   file.writeAsBytesSync(controller.resultData!);
                   final xFile = XFile(path);
-                  await Share.shareXFiles([xFile], text: 'Payroll');
+                  await Share.shareXFiles([xFile],
+                      text: '${controller.monthPayroll} Payroll',
+                      subject: '${controller.monthPayroll} Payroll');
                 },
                 icon: Icon(Icons.share))
           ],
