@@ -6,11 +6,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AppConstant {
   //Color
-  static Color loginBackground = Color(0xffe53935);
+  static Color loginBackground = Color(0xff7f0000);
   static Color loginLanguage = Color(0xffbdbdbd);
-  static const loginCursor = Color(0xffe53935);
-  static const loginPrefix = Color(0xffe53935);
-  static const loginButton = Color(0xffe53935);
+  static const loginCursor = Color(0xff7f0000);
+  static const loginPrefix = Color(0xff7f0000);
+  static const loginButton = Color(0xff7f0000);
   static const loginSw = Color(0xffe53935);
   static const loginSwTrack = Color(0xffef9a9a);
   static const loginInSw = Color(0xffe0e0e0);

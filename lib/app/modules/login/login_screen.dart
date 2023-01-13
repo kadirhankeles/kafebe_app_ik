@@ -43,12 +43,13 @@ class LoginScreen extends GetView<LoginController> {
                 ),
               )),
           Positioned(
-              top: 0.h,
-              left: 42.w,
+              top: -2.h,
+              left: 32.w,
               child: SafeArea(
                 child: Image.asset(
-                  "assets/im_sun_new.png",
+                  "assets/logo.png",
                   scale: 1.4,
+                  color: Colors.white,
                 ),
               )),
           Positioned(
