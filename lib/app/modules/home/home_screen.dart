@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/data/models/get_ProfilPicture_model.dart';
 import 'package:kafebe_app_ik/app/modules/home/home_controller.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -11,7 +12,6 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-   
     List<String> managerFalseSun = [
       "assets/request.png",
       "assets/approvals.png",
@@ -34,8 +34,8 @@ class HomeScreen extends GetView<HomeController> {
     List<String> managerTrue = [
       "assets/request.png",
       "assets/approvals.png",
-      "assets/team.png",
       "assets/works.png",
+      "assets/team.png",
     ];
     return Scaffold(
         backgroundColor: Color(0xffF4F5FA),
@@ -74,7 +74,7 @@ class HomeScreen extends GetView<HomeController> {
                               ),
                       ),
                       SizedBox(
-                       width: 2.w,
+                        width: 2.w,
                       ),
                       Container(
                         height: 3.h,
@@ -85,7 +85,8 @@ class HomeScreen extends GetView<HomeController> {
                             onPressed: () {
                               Get.defaultDialog(
                                 title: "Uyarı",
-                                middleText: "Profilinizi güncellemeyi unutmayınız.",
+                                middleText:
+                                    "Profilinizi güncellemeyi unutmayınız.",
                                 backgroundColor: Colors.grey.withOpacity(.9),
                                 titleStyle: TextStyle(color: Colors.white),
                                 middleTextStyle: TextStyle(color: Colors.white),
@@ -117,44 +118,67 @@ class HomeScreen extends GetView<HomeController> {
                       ),
                     ],
                   ),
-                  SizedBox(height: .7.h,),
-                   Obx(
-                        () {
-                          return controller.isLoading == true
-                              ? Container(
-                                padding: EdgeInsets.only(left: 3.w),
-                                  width: 34.w,
-                                  child: Text(
-                                      "${controller.getLandingPageInfoModel!.data!.nameSurname}",
-                                      style: AppConstant.homeNameSurname,
-                                      overflow: TextOverflow.ellipsis))
-                              : Container();
-                        },
-                      )
+                  SizedBox(
+                    height: .7.h,
+                  ),
+                  Obx(
+                    () {
+                      return controller.isLoading == true
+                          ? Container(
+                              padding: EdgeInsets.only(left: 3.w),
+                              width: 34.w,
+                              child: Text(
+                                  "${controller.getLandingPageInfoModel!.data!.nameSurname}",
+                                  style: AppConstant.homeNameSurname,
+                                  overflow: TextOverflow.ellipsis))
+                          : Container();
+                    },
+                  )
                 ],
               ),
-              // LOGO
-              centerTitle: true,
-              title: 
-                  Container(
-                    height: 10.h,
-                    width: 9.h,
-                    //color: Colors.white,
-                    child: Image(
-                      image: AssetImage("assets/logo.png"),
-                      fit: BoxFit.cover,
-                      color: Colors.white,
-                    ),
-                  ),
-               
+              //! Profil fotoğrafı, isim ve bilgi butonu işlemi bitişi
 
+              //! LOGO Başlangıç
+              centerTitle: true,
+              title: Container(
+                height: 10.h,
+                width: 9.h,
+                //color: Colors.white,
+                child: Image(
+                  image: AssetImage("assets/logo.png"),
+                  fit: BoxFit.cover,
+                  color: Colors.white,
+                ),
+              ),
+              //! LOGO Bitiş
+
+              //! Bildirim başlangıç
               actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.notifications_active),
-                    color: Colors.yellow),
-                    SizedBox(width: 3.w,),
+                Stack(
+                  children: [ IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.notifications_active),
+                      color: Colors.yellow),
+                      Positioned(child: Obx(
+                        () => controller.isNotiCount==true && controller.getLandingPageInfoModel!.data!.unReadedNotificationCount!=0?Container(
+                                                    height: 2.4.h,
+                                                    width: 2.4.h,
+                                                    decoration:
+                                                        AppConstant.notiContainerWhite,
+                                                    child: Center(
+                                                        child: Text(
+                                                      "${controller.getLandingPageInfoModel!.data!.unReadedNotificationCount}",
+                                                      style: AppConstant.notiStyleBlack,
+                                                    )),
+                                                  ):Container(),
+
+                      ), top: 0.4.h, left: 7.w,)
+              ]),
+                SizedBox(
+                  width: 3.w,
+                ),
               ],
+              //! Bildirim bitiş
             ),
             SliverToBoxAdapter(
               child: SingleChildScrollView(
@@ -166,18 +190,48 @@ class HomeScreen extends GetView<HomeController> {
                       width: double.infinity,
                       decoration: AppConstant.homeTopContainer,
                     )),
-                    // ! Gridview'ın bulunduğu container yapısı
+                    
                     Padding(
                       padding: EdgeInsets.only(left: 3.h, right: 3.h),
                       child: Column(
                         children: [
+                          // ! Gridview'ın bulunduğu container yapısı
                           Container(
                             width: 100.w,
                             child: Obx(
                               () => controller.isLoading == true
                                   ? GridView.builder(
                                       shrinkWrap: true,
-                                      itemCount: controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==true? 5: controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==false?4: controller.getLandingPageInfoModel!.data!.isManager==false && controller.getLandingPageInfoModel!.data!.sunAkademi ==true?4: 3,
+                                      itemCount: controller
+                                                      .getLandingPageInfoModel!
+                                                      .data!
+                                                      .isManager ==
+                                                  true &&
+                                              controller
+                                                      .getLandingPageInfoModel!
+                                                      .data!
+                                                      .sunAkademi ==
+                                                  true
+                                          ? 5
+                                          : controller.getLandingPageInfoModel!
+                                                          .data!.isManager ==
+                                                      true &&
+                                                  controller
+                                                          .getLandingPageInfoModel!
+                                                          .data!
+                                                          .sunAkademi ==
+                                                      false
+                                              ? 4
+                                              : controller.getLandingPageInfoModel!
+                                                              .data!.isManager ==
+                                                          false &&
+                                                      controller
+                                                              .getLandingPageInfoModel!
+                                                              .data!
+                                                              .sunAkademi ==
+                                                          true
+                                                  ? 4
+                                                  : 3,
                                       /*controller
                                           .getLandingPageInfoModel!
                                           .data!
@@ -195,28 +249,92 @@ class HomeScreen extends GetView<HomeController> {
                                           onTap: () {
                                             print("Tıklandı $index");
                                           },
-                                          child: Container(
-                                            decoration: 
-                                                 AppConstant.homeButton,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                 AppConstant()
-                                                        .homeCircularPhoto(
-                                                            controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==true?managerTrueSun[index]:controller.getLandingPageInfoModel!.data!.isManager==true && controller.getLandingPageInfoModel!.data!.sunAkademi ==false?managerTrue[index]: controller.getLandingPageInfoModel!.data!.isManager==false && controller.getLandingPageInfoModel!.data!.sunAkademi ==true?managerFalseSun[index]: managerFalse[index] ),
-                                                SizedBox(
-                                                  height: 1.5.h,
-                                                ),
-                                                Text(
-                                                  "${controller.getLandingPageInfoModel!.data!.menuInfo![index].mENUNAME}",
-                                                  style: 
-                                                       AppConstant
-                                                          .homeButtonBlack,
-                                                )
-                                              ],
+                                          child: Stack(children: [
+                                            Container(
+                                              width: 17.5.h,
+                                              decoration:
+                                                  AppConstant.homeButton,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  //! Menü icon dizilimi başlangıç
+                                                  AppConstant().homeCircularPhoto(controller
+                                                                  .getLandingPageInfoModel!
+                                                                  .data!
+                                                                  .isManager ==
+                                                              true &&
+                                                          controller
+                                                                  .getLandingPageInfoModel!
+                                                                  .data!
+                                                                  .sunAkademi ==
+                                                              true
+                                                      ? managerTrueSun[index]
+                                                      : controller
+                                                                      .getLandingPageInfoModel!
+                                                                      .data!
+                                                                      .isManager ==
+                                                                  true &&
+                                                              controller
+                                                                      .getLandingPageInfoModel!
+                                                                      .data!
+                                                                      .sunAkademi ==
+                                                                  false
+                                                          ? managerTrue[index]
+                                                          : controller
+                                                                          .getLandingPageInfoModel!
+                                                                          .data!
+                                                                          .isManager ==
+                                                                      false &&
+                                                                  controller
+                                                                          .getLandingPageInfoModel!
+                                                                          .data!
+                                                                          .sunAkademi ==
+                                                                      true
+                                                              ? managerFalseSun[
+                                                                  index]
+                                                              : managerFalse[
+                                                                  index]),
+                                                  //! Menü icon dizilimi bitiş
+                                                  SizedBox(
+                                                    height: 1.5.h,
+                                                  ),
+                                                  //! Kategori ismi başlangıç
+                                                  Obx(
+                                                    () => controller
+                                                                .isCategoryName ==
+                                                            true
+                                                        ? Text(
+                                                            "${controller.getLandingPageInfoModel!.data!.isManager == true && controller.getLandingPageInfoModel!.data!.sunAkademi == true ? controller.managerSun[index] : controller.getLandingPageInfoModel!.data!.isManager == true && controller.getLandingPageInfoModel!.data!.sunAkademi == false ? controller.manager[index] : controller.getLandingPageInfoModel!.data!.isManager == false && controller.getLandingPageInfoModel!.data!.sunAkademi == true ? controller.employeeSun[index] : controller.employee[index]}",
+                                                            style: AppConstant
+                                                                .homeButtonBlack,
+                                                          )
+                                                        : Container(),
+                                                  )
+                                                  //! Kategori ismi bitiş
+                                                ],
+                                              ),
                                             ),
-                                          ),
+                                            //! Bildirim Sıralaması başlangıç
+                                            Positioned(
+                                              child: Obx(
+                                                () => controller.isNotiCount==true && index <= 2 && controller.notificationCount[index]>0?Container(
+                                                  height: 2.4.h,
+                                                  width: 2.4.h,
+                                                  decoration:
+                                                      AppConstant.notiContainer,
+                                                  child: Center(
+                                                      child: Text(
+                                                    "${controller.notificationCount[index]}",
+                                                    style: AppConstant.notiStyle,
+                                                  )),
+                                                ): Container(),
+                                              ),
+                                              left: 19.w,
+                                              top: 3.h,
+                                            ),
+                                            //! Bildirim Sıralaması bitiş
+                                          ]),
                                         );
                                       },
                                     )
@@ -228,6 +346,7 @@ class HomeScreen extends GetView<HomeController> {
                                     ),
                             ),
                           ),
+                          //! Gridview bitiş
                           SizedBox(
                             height: 3.h,
                           ),
@@ -463,7 +582,7 @@ class HomeScreen extends GetView<HomeController> {
                                     width: 5.w,
                                   ),
                                   AppConstant()
-                                      .homeCircularWhite("assets/exit.png"),
+                                      .homeCircularWhite("assets/exit.png",),
                                   SizedBox(
                                     width: 3.w,
                                   ),
@@ -489,4 +608,6 @@ class HomeScreen extends GetView<HomeController> {
           ],
         ));
   }
+
+  menuAyir() {}
 }

@@ -12,6 +12,15 @@ class HomeController extends GetxController {
   GetProfilPictureModel? getProfilPictureModel;
   RxBool isLoading = false.obs;
   RxBool isProfilPicture = false.obs;
+  RxBool isCategoryName =false.obs;
+  RxBool isNotiCount = false.obs;
+
+  //! Menülerin isimlerinin ayıklanması için liste
+  List<dynamic> manager =[];
+  List<dynamic> managerSun =[];
+  List<dynamic> employee =[];
+  List<dynamic> employeeSun =[];
+  List<dynamic> notificationCount = [];
 
   void onInit() async {
     await getLandingPageInfoData();
@@ -23,23 +32,67 @@ class HomeController extends GetxController {
     getLandingPageInfoModel =
         await LandingPageInfoService().getLandingPageInfoService();
     isLoading.value = true;
+    
   }
 
   getProfilPictureData() async {
     getProfilPictureModel =
         await ProfilPictureService().getProfilPictureService();
+    await menuNameAndNotification(getLandingPageInfoModel, getLandingPageInfoModel!.data!.isManager, getLandingPageInfoModel!.data!.sunAkademi);    
     isProfilPicture.value = true;
+    isCategoryName.value = true;
+    isNotiCount.value= true;
+    print("True oldu");
   }
 
   Image baseToImage(String path) {
     Uint8List bytes = base64.decode(path);
     if (path == "null") {
       return Image.network(
-          "https://media.licdn.com/dms/image/C4D0BAQGw5l4DIigpiQ/company-logo_200_200/0/1625655631414?e=2147483647&v=beta&t=zgHGi-aH97kbaaaEv2dPW4ZFM1sMNwvCpWJgoF0AxMM");
+          "https://static.vecteezy.com/system/resources/previews/007/409/979/original/people-icon-design-avatar-icon-person-icons-people-icons-are-set-in-trendy-flat-style-user-icon-set-vector.jpg");
     } else
       return Image.memory(
         bytes,
         fit: BoxFit.cover,
       );
+  }
+
+  menuNameAndNotification(GetLandingPageInfoModel? getLandingPageInfoModel, bool? isManager, bool? sunAkademi){
+    int index =0;
+    getLandingPageInfoModel!.data!.menuInfo!.forEach((element) {
+      
+      print(element.mENUNAME.toString());
+      
+      if(isManager==true && sunAkademi ==true){index++;
+        if(element.mENUNAME.toString() == "MyRequests" || element.mENUNAME.toString() =="MyApprovals" || element.mENUNAME.toString()=="MyTeam" || element.mENUNAME.toString()=="MyWorks" ||element.mENUNAME.toString()=="SunAkademi"){
+          managerSun.add(element.mENUNAME.toString());
+          
+        }
+      }
+      else if(isManager==true && sunAkademi ==false){index++;
+        if( element.mENUNAME == "MyRequests" || element.mENUNAME =="MyApprovals" ||  element.mENUNAME=="MyTeam" || element.mENUNAME=="MyWorks" ){
+          manager.add(element.mENUNAME.toString());
+         
+        }
+      }
+      else if(isManager==false && sunAkademi ==true){index++;
+         if(element.mENUNAME == "MyRequests" || element.mENUNAME =="MyApprovals"|| element.mENUNAME=="MyWorks" ||element.mENUNAME=="SunAkademi"){
+          employeeSun.add(element.mENUNAME.toString());
+
+
+         }
+      }
+      else if(isManager==false && sunAkademi ==false){index++;
+         if(element.mENUNAME == "MyRequests" || element.mENUNAME =="MyApprovals"|| element.mENUNAME=="MyWorks"){
+          employeeSun.add(element.mENUNAME.toString());
+          
+         }
+      }
+      
+     },
+     ); 
+     notificationCount.add(getLandingPageInfoModel.data!.myRequestCount);
+     notificationCount.add(getLandingPageInfoModel.data!.getMyApprovalCount);
+     notificationCount.add(getLandingPageInfoModel.data!.getMyWorks);
   }
 }
