@@ -14,6 +14,7 @@ class NotificationScreen extends GetView<NotificationController> {
     return Scaffold(
         backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Color(0xff850000),
           title: Center(
             child: Text(
@@ -39,15 +40,57 @@ class NotificationScreen extends GetView<NotificationController> {
                     child: ListView.builder(
                       itemCount: controller.notificationListModel!.data!.length,
                       itemBuilder: (context, index) {
-                        return NotificationWidget(
-                            date: controller.notificationListModel!.data![index]
-                                .nOTIFICATIONDATE!,
-                            title: controller.notificationListModel!
-                                .data![index].mESSAGETITLE!,
-                            message: controller.notificationListModel!
-                                .data![index].mESSAGEBODY!,
-                            isRead: (controller
-                                .notificationListModel!.data![index].iSREAD)!);
+                        return GestureDetector(
+                          onTap: () {
+                            if (controller.notificationListModel!.data![index]
+                                    .rEQDIRECTION ==
+                                1) {
+                              print("req 1 -> TaleplerimDetaySayfasınaGidecek");
+                              // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
+                              // .notificationListModel!.data![index].iDMASTER]);
+                            } else if (controller.notificationListModel!
+                                    .data![index].rEQDIRECTION ==
+                                2) {
+                              if (controller.notificationListModel!.data![index]
+                                      .rEQTYPE ==
+                                  6) {
+                                print(
+                                    "req 2 --> reqtype 6 --> taleplerim detay");
+                                // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
+                                // .notificationListModel!.data![index].iDMASTER]),
+                              } else {
+                                print(
+                                    "req2 --> reqtype else --> onaylarım detay");
+                                // Get.toNamed(OnaylarımDetaySayfasıYazılacak,arguments:["idMaster":controller
+                                // .notificationListModel!.data![index].iDMASTER]),
+
+                              }
+                            } else {
+                              Get.toNamed(Routes.NOTIFICATION_DETAIL,
+                                  arguments: [
+                                    {
+                                      "title": controller.notificationListModel!
+                                          .data![index].mESSAGETITLE!
+                                    },
+                                    {
+                                      "body": controller.notificationListModel!
+                                          .data![index].mESSAGEBODY!
+                                    }
+                                  ]);
+                            }
+                          },
+                          child: NotificationWidget(
+                              date: DateTime.parse(
+                                controller.notificationListModel!.data![index]
+                                    .nOTIFICATIONDATE!,
+                              ).toString().substring(0, 16),
+                              title: controller.notificationListModel!
+                                  .data![index].mESSAGETITLE!,
+                              message: controller.notificationListModel!
+                                  .data![index].mESSAGEBODY!,
+                              isRead: (controller.notificationListModel!
+                                  .data![index].iSREAD)!),
+                        );
                       },
                     ),
                   )
@@ -130,12 +173,10 @@ class NotificationWidget extends StatelessWidget {
                             backgroundColor: Colors.green),
                         onPressed: () async {
                           Get.back();
-                          Get.snackbar(
-                            "Başarılı",
-                            "Bildirim Silindi",
-                            overlayBlur: 1.1,
-                            barBlur: 30,
-                          );
+                          Get.snackbar("Başarılı", "Bildirim Silindi",
+                              overlayBlur: 1.1,
+                              barBlur: 30,
+                              duration: Duration(milliseconds: 900));
                         },
                         child: const Text("Onayla")),
                   );
@@ -155,7 +196,7 @@ class NotificationTextWidget extends StatelessWidget {
   const NotificationTextWidget({
     Key? key,
     required this.text,
-    this.color = Colors.grey,
+    this.color = Colors.black87,
     this.fontWeight = FontWeight.normal,
   }) : super(key: key);
   final String text;
