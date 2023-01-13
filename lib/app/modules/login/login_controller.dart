@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/login_model.dart';
+import 'package:kafebe_app_ik/app/data/models/saved_data_model.dart';
 import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
 import 'package:kafebe_app_ik/app/data/services/payroll_all_data_service.dart';
 import 'package:kafebe_app_ik/app/data/services/payroll_month_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/services/login_service.dart';
 import '../../routes/app_pages.dart';
@@ -22,6 +26,9 @@ class LoginController extends GetxController {
 
   LoginModel? loginModel;
   RxBool isLoading = false.obs;
+
+  SharedPreferences? prefs;
+  SavedDataModel? savedData;
 
   bool dene = true;
 
@@ -85,6 +92,7 @@ class LoginController extends GetxController {
       isLoading.value = false;
     } else {
       loginModel = await getLoginService(user, password);
+
       isLoading.value = false;
     }
   }
@@ -103,4 +111,18 @@ class LoginController extends GetxController {
 
   //   }
   // }
+  setSavedData(SavedDataModel parameters) async {
+    prefs!.setString("userInfo", jsonEncode(parameters.toJson()));
+  }
+
+  getSavedData() {
+    savedData = jsonDecode(prefs!.getString("userInfo").toString());
+   
+  }
+
+  @override
+  void onInit() {
+    savedData ??= SavedDataModel();
+    super.onInit();
+  }
 }
