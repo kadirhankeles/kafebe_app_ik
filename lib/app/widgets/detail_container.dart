@@ -19,7 +19,6 @@ class DetailContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
       body: Container(
         height: 33.h,
         width: double.infinity,
