@@ -43,6 +43,8 @@ class AppConstant {
       TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w700);
   static TextStyle homeButtonBlack =
       TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w700);
+  static TextStyle notiStyle = TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold);
+  static TextStyle notiStyleBlack = TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.bold);
 
   static TextStyle detailGrey = TextStyle(color: Colors.grey.shade500);
 
@@ -110,6 +112,9 @@ class AppConstant {
     ],
   );
 
+  static BoxDecoration notiContainer = BoxDecoration(color: Color(0xff7f0000), borderRadius: BorderRadius.circular(50));
+  static BoxDecoration notiContainerWhite = BoxDecoration(color: Color(0xffffffff), borderRadius: BorderRadius.circular(50));
+
 
   static TextStyle payrollLastStyle =
       TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
@@ -133,8 +138,8 @@ class AppConstant {
   }
   Container homeCircularWhite(String path) {
     return Container(
-      height: 6.h,
-      width: 6.h,
+      height: 4.5.h,
+      width: 4.5.h,
       child: Image.asset(
         "${path}",
         height: 3.h,
