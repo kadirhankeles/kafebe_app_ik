@@ -4,21 +4,25 @@ import 'package:kafebe_app_ik/app/data/services/notification/get_push_messages_s
 
 class NotificationController extends GetxController {
   NotificationListModel? notificationListModel;
+  RxBool hasData = false.obs;
+
   RxBool isLoading = false.obs;
 
   @override
   void onInit() async {
     getPushMessagesData();
-    // await NotificationListService().getPushMessagesService();
 
     super.onInit();
   }
 
   getPushMessagesData() async {
     isLoading.value = false;
+    hasData.value = false;
     notificationListModel =
         await NotificationListService().getPushMessagesService();
-
     isLoading.value = true;
+    if (notificationListModel!.data!.isNotEmpty) {
+      hasData.value = true;
+    }
   }
 }

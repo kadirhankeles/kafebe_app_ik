@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/sockets/src/socket_notifier.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
+import 'package:kafebe_app_ik/app/data/services/notification/bulk_delete_messages_services.dart';
+import 'package:kafebe_app_ik/app/data/services/notification/read_push_messages_service.dart';
 import 'package:kafebe_app_ik/app/modules/notification/notification_controller.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../data/services/notification/delete_push_messages_service.dart';
 import '../../routes/app_pages.dart';
 
 class NotificationScreen extends GetView<NotificationController> {
   const NotificationScreen({super.key});
+
+  deleteFunction(index) async {
+    {
+      print("onpressed");
+
+      await DeletePushMessagesService().deletePushMessages(controller
+          .notificationListModel!.data![index].iDPUSHNOTIFICATIONDETAIL);
+      controller.getPushMessagesData();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,78 +39,143 @@ class NotificationScreen extends GetView<NotificationController> {
             ),
           ),
           actions: [
-            IconButton(
-                onPressed: () {
-                  //tüm bildirimleri sil butonu
-                },
-                icon: const Icon(Icons.delete_forever))
+            Obx(() => controller.hasData.value == true
+                ? IconButton(
+                    onPressed: () {
+                      Get.dialog(AlertDialog(
+                          actionsAlignment: MainAxisAlignment.center,
+                          title: Center(child: Text("Dikkat!")),
+                          actions: [
+                            Center(
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.green),
+                                        onPressed: () {
+                                          BulkDeleteMessagesService()
+                                              .bulkDeleteMessages(2);
+                                          controller.getPushMessagesData();
+                                          Get.back();
+                                        },
+                                        child: const Text("Hepsini Sil!")),
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.green),
+                                        onPressed: () {
+                                          BulkDeleteMessagesService()
+                                              .bulkDeleteMessages(1);
+                                          controller.getPushMessagesData();
+                                          Get.back();
+                                        },
+                                        child: const Text(
+                                            "Sadece Okunanları  Sil!")),
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.red),
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        child: const Text("Vazgeç!")),
+                                  ]),
+                            ),
+                          ]));
+                    },
+                    icon: const Icon(Icons.delete_forever),
+                  )
+                : Text(""))
           ],
         ),
         body: Obx(() => controller.isLoading.value == true
-            ? Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: controller.notificationListModel!.data!.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            if (controller.notificationListModel!.data![index]
-                                    .rEQDIRECTION ==
-                                1) {
-                              print("req 1 -> TaleplerimDetaySayfasınaGidecek");
-                              // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
-                              // .notificationListModel!.data![index].iDMASTER]);
-                            } else if (controller.notificationListModel!
-                                    .data![index].rEQDIRECTION ==
-                                2) {
-                              if (controller.notificationListModel!.data![index]
-                                      .rEQTYPE ==
-                                  6) {
-                                print(
-                                    "req 2 --> reqtype 6 --> taleplerim detay");
-                                // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
-                                // .notificationListModel!.data![index].iDMASTER]),
-                              } else {
-                                print(
-                                    "req2 --> reqtype else --> onaylarım detay");
-                                // Get.toNamed(OnaylarımDetaySayfasıYazılacak,arguments:["idMaster":controller
-                                // .notificationListModel!.data![index].iDMASTER]),
+            ? controller.hasData.value == true
+                ? Column(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount:
+                              controller.notificationListModel!.data!.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                ReadPushMessagesService().readPushMessages(
+                                    controller.notificationListModel!
+                                        .data![index].iDPUSHNOTIFICATIONDETAIL);
+                                controller.getPushMessagesData();
 
-                              }
-                            } else {
-                              Get.toNamed(Routes.NOTIFICATION_DETAIL,
-                                  arguments: [
-                                    {
-                                      "title": controller.notificationListModel!
-                                          .data![index].mESSAGETITLE!
-                                    },
-                                    {
-                                      "body": controller.notificationListModel!
-                                          .data![index].mESSAGEBODY!
-                                    }
-                                  ]);
-                            }
+                                if (controller.notificationListModel!
+                                        .data![index].rEQDIRECTION ==
+                                    1) {
+                                  print(
+                                      "req 1 -> TaleplerimDetaySayfasınaGidecek");
+                                  // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
+                                  // .notificationListModel!.data![index].iDMASTER]);
+                                } else if (controller.notificationListModel!
+                                        .data![index].rEQDIRECTION ==
+                                    2) {
+                                  if (controller.notificationListModel!
+                                          .data![index].rEQTYPE ==
+                                      6) {
+                                    print(
+                                        "req 2 --> reqtype 6 --> taleplerim detay");
+                                    // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
+                                    // .notificationListModel!.data![index].iDMASTER]),
+                                  } else {
+                                    print(
+                                        "req2 --> reqtype else --> onaylarım detay");
+                                    // Get.toNamed(OnaylarımDetaySayfasıYazılacak,arguments:["idMaster":controller
+                                    // .notificationListModel!.data![index].iDMASTER]),
+
+                                  }
+                                } else {
+                                  Get.toNamed(Routes.NOTIFICATION_DETAIL,
+                                      arguments: [
+                                        {
+                                          "title": controller
+                                              .notificationListModel!
+                                              .data![index]
+                                              .mESSAGETITLE!
+                                        },
+                                        {
+                                          "body": controller
+                                              .notificationListModel!
+                                              .data![index]
+                                              .mESSAGEBODY!
+                                        }
+                                      ]);
+                                }
+                              },
+                              child: NotificationWidget(
+                                date: DateTime.parse(
+                                  controller.notificationListModel!.data![index]
+                                      .nOTIFICATIONDATE!,
+                                ).toString().substring(0, 16),
+                                title: controller.notificationListModel!
+                                    .data![index].mESSAGETITLE!,
+                                message: controller.notificationListModel!
+                                    .data![index].mESSAGEBODY!,
+                                isRead: (controller.notificationListModel!
+                                    .data![index].iSREAD)!,
+                                onPressedDelete: () {
+                                  deleteFunction(index);
+                                  Get.back();
+                                },
+                              ),
+                            );
                           },
-                          child: NotificationWidget(
-                              date: DateTime.parse(
-                                controller.notificationListModel!.data![index]
-                                    .nOTIFICATIONDATE!,
-                              ).toString().substring(0, 16),
-                              title: controller.notificationListModel!
-                                  .data![index].mESSAGETITLE!,
-                              message: controller.notificationListModel!
-                                  .data![index].mESSAGEBODY!,
-                              isRead: (controller.notificationListModel!
-                                  .data![index].iSREAD)!),
-                        );
-                      },
-                    ),
+                        ),
+                      )
+                    ],
                   )
-                ],
-              )
+                : Center(
+                    child: Text(
+                    "Kayıt Yok!",
+                    style: Theme.of(context).textTheme.headline5,
+                  ))
             : const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Colors.red,
+                ),
               )));
   }
 }
@@ -111,10 +189,12 @@ class NotificationWidget extends StatelessWidget {
     this.title = "-",
     this.message = "-",
     required this.isRead,
+    required this.onPressedDelete,
   }) : super(key: key);
   final String date;
   final String title;
   final String message;
+  final Callback onPressedDelete;
 
   final bool isRead;
 
@@ -161,23 +241,17 @@ class NotificationWidget extends StatelessWidget {
                   Get.defaultDialog(
                     title: "Dikkat!",
                     middleText: "Bildirimi Silmek Üzeresiniz",
-                    confirm: ElevatedButton(
+                    cancel: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red),
                         onPressed: () {
                           Get.back();
                         },
                         child: const Text("Vazgeç")),
-                    cancel: ElevatedButton(
+                    confirm: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green),
-                        onPressed: () async {
-                          Get.back();
-                          Get.snackbar("Başarılı", "Bildirim Silindi",
-                              overlayBlur: 1.1,
-                              barBlur: 30,
-                              duration: Duration(milliseconds: 900));
-                        },
+                        onPressed: onPressedDelete,
                         child: const Text("Onayla")),
                   );
                 },
