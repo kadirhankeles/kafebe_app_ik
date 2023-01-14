@@ -14,7 +14,9 @@ class PayrollMonthService extends GetConnect {
         url, {"YEAR": year, "MONTH": month, "DOCUMENTUID": dId},
         headers: headers);
 
-    await ServiceConstants().responseControll(res.statusCode);
+    if (res.statusCode != 200) {
+      throw Exception('http.post error: statusCode= ${res.statusCode}');
+    }
 
     print("service->${res.body}");
 

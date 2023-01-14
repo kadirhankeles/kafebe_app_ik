@@ -46,6 +46,8 @@ class AppConstant {
   static TextStyle notiStyle = TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold);
   static TextStyle notiStyleBlack = TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.bold);
 
+  static TextStyle detailGrey = TextStyle(color: Colors.grey.shade500);
+
   //Box decoration
   static BoxDecoration homeTopContainer = BoxDecoration(
       color: Color(0xff7f0000),
@@ -63,6 +65,18 @@ class AppConstant {
         color: Color(0xffECECF4),
         spreadRadius: .2,
         blurRadius: 0.8,
+        offset: Offset(0, 2), // changes position of shadow
+      ),
+    ],
+  );
+  static BoxDecoration infoContainer = BoxDecoration(
+    color: Color(0xffFDFDFC),
+    borderRadius: BorderRadius.circular(10),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey,
+        spreadRadius: .6,
+        blurRadius: 2,
         offset: Offset(0, 2), // changes position of shadow
       ),
     ],

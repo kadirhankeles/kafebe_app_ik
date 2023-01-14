@@ -154,6 +154,7 @@ class HomeScreen extends GetView<HomeController> {
 
               //! Bildirim başlangıç
               actions: [
+
                 Stack(
                   children: [ IconButton(
                       onPressed: () {},
@@ -177,6 +178,14 @@ class HomeScreen extends GetView<HomeController> {
                 SizedBox(
                   width: 3.w,
                 ),
+
+                IconButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.NOTIFICATION);
+                    },
+                    icon: Icon(Icons.notifications_active),
+                    color: Colors.yellow),
+
               ],
               //! Bildirim bitiş
             ),
