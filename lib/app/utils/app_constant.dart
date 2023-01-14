@@ -67,6 +67,18 @@ class AppConstant {
       ),
     ],
   );
+  static BoxDecoration infoContainer = BoxDecoration(
+    color: Color(0xffFDFDFC),
+    borderRadius: BorderRadius.circular(10),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey,
+        spreadRadius: .6,
+        blurRadius: 2,
+        offset: Offset(0, 2), // changes position of shadow
+      ),
+    ],
+  );
   static BoxDecoration homeRedButton = BoxDecoration(
     color: Color(0xff7f0000),
     borderRadius: BorderRadius.circular(20),
