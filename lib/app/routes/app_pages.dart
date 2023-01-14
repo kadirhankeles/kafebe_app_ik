@@ -3,6 +3,7 @@ import 'package:kafebe_app_ik/app/modules/payroll/payroll_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_screen.dart';
 import 'package:kafebe_app_ik/app/modules/requests/requests_screen.dart';
+import 'package:kafebe_app_ik/app/modules/requests_detail/request_detail_screen.dart';
 
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_screen.dart';
@@ -10,6 +11,7 @@ import '../modules/login/login_binding.dart';
 import '../modules/login/login_screen.dart';
 import '../modules/payroll/payroll_screen.dart';
 import '../modules/requests/requests_binding.dart';
+import '../modules/requests_detail/request_detail_binding.dart';
 
 part 'app_routes.dart';
 
@@ -33,5 +35,9 @@ class AppPages {
         name: Paths.REQUESTS,
         page: () => RequestsScreen(),
         binding: RequestsBinding()),
+    GetPage(
+        name: Paths.REQUESTSDETAIL,
+        page: () => RequestDetailScreen(),
+        binding: RequestDetailBinding()),
   ];
 }

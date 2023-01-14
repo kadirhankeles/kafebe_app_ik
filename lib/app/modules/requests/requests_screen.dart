@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/modules/requests/requests_controller.dart';
+import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 import 'package:kafebe_app_ik/app/widgets/detail_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -135,35 +136,40 @@ class RequestsScreen extends GetView<RequestsController> {
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
-                              DetailContainer(
-                                  name1: DateTime.tryParse(controller
-                                          .getMyRequestMasterMobileModel!
-                                          .data!
-                                          .myRequestList![index]
-                                          .rEQDATE!)
-                                      .toString()
-                                      .substring(0, 16),
-                                  description1:
-                                      "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].rEQNAME}",
-                                  name2: "Talep No",
-                                  description2:
-                                      "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].iDMASTER}",
-                                  name3: "Atanan Kişi",
-                                  description3: controller
-                                              .getMyRequestMasterMobileModel!
-                                              .data!
-                                              .myRequestList![index]
-                                              .aSSIGNEMPLOYEE ==
-                                          null
-                                      ? "-"
-                                      : "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].aSSIGNEMPLOYEE}",
-                                  name4: "Açıklama",
-                                  description4:
-                                      "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].rEQEMPLOYEE}",
-                                  name5: "Durum",
-                                  description5:
-                                      "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].sTATUNAME}",
-                                  icons: "assets/taleplerim.png"),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(Paths.REQUESTSDETAIL, arguments: [{'id': '${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].iDMASTER}'}]);
+                                },
+                                child: DetailContainer(
+                                    name1: DateTime.tryParse(controller
+                                            .getMyRequestMasterMobileModel!
+                                            .data!
+                                            .myRequestList![index]
+                                            .rEQDATE!)
+                                        .toString()
+                                        .substring(0, 16),
+                                    description1:
+                                        "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].rEQNAME}",
+                                    name2: "Talep No",
+                                    description2:
+                                        "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].iDMASTER}",
+                                    name3: "Atanan Kişi",
+                                    description3: controller
+                                                .getMyRequestMasterMobileModel!
+                                                .data!
+                                                .myRequestList![index]
+                                                .aSSIGNEMPLOYEE ==
+                                            null
+                                        ? "-"
+                                        : "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].aSSIGNEMPLOYEE}",
+                                    name4: "Açıklama",
+                                    description4:
+                                        "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].rEQEMPLOYEE}",
+                                    name5: "Durum",
+                                    description5:
+                                        "${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].sTATUNAME}",
+                                    icons: "assets/taleplerim.png"),
+                              ),
                               SizedBox(
                                 height: 1.5.h,
                               ),
