@@ -49,19 +49,18 @@ class HomeScreen extends GetView<HomeController> {
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Column(
                 children: [
+                  SizedBox(height: 0.9.h,),
                   Row(
                     children: [
                       SizedBox(width: 5.w),
-                      SizedBox(
-                        height: .7.h,
-                      ),
+                      
                       Obx(
                         () => controller.isProfilPicture == true
                             ? ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
                                 child: Container(
-                                    height: 8.h,
-                                    width: 8.h,
+                                    height: 7.h,
+                                    width: 7.h,
                                     child: controller.baseToImage(controller
                                         .getProfilPictureModel!
                                         .data!
@@ -141,7 +140,7 @@ class HomeScreen extends GetView<HomeController> {
               //! LOGO Başlangıç
               centerTitle: true,
               title: Container(
-                height: 10.h,
+                height: 12.2.h,
                 width: 9.h,
                 //color: Colors.white,
                 child: Image(
@@ -154,16 +153,18 @@ class HomeScreen extends GetView<HomeController> {
 
               //! Bildirim başlangıç
               actions: [
-
+                  SizedBox(height: 1.h,),
                 Stack(
-                  children: [ IconButton(
-                      onPressed: () {},
+                  children: [
+                     IconButton(
+                      padding: EdgeInsets.only(top: 3.h),
+                      onPressed: () { Get.toNamed(Routes.NOTIFICATION);},
                       icon: Icon(Icons.notifications_active),
                       color: Colors.yellow),
                       Positioned(child: Obx(
                         () => controller.isNotiCount==true && controller.getLandingPageInfoModel!.data!.unReadedNotificationCount!=0?Container(
-                                                    height: 2.4.h,
-                                                    width: 2.4.h,
+                                                    height: 2.h,
+                                                    width: 2.h,
                                                     decoration:
                                                         AppConstant.notiContainerWhite,
                                                     child: Center(
@@ -173,18 +174,13 @@ class HomeScreen extends GetView<HomeController> {
                                                     )),
                                                   ):Container(),
 
-                      ), top: 0.4.h, left: 7.w,)
+                      ), top: 2.2.h, left: 6.4.w,)
               ]),
                 SizedBox(
                   width: 3.w,
                 ),
 
-                IconButton(
-                    onPressed: () {
-                      Get.toNamed(Routes.NOTIFICATION);
-                    },
-                    icon: Icon(Icons.notifications_active),
-                    color: Colors.yellow),
+               
 
               ],
               //! Bildirim bitiş
@@ -260,7 +256,7 @@ class HomeScreen extends GetView<HomeController> {
                                           },
                                           child: Stack(children: [
                                             Container(
-                                              width: 17.5.h,
+                                              width: 20.h,
                                               decoration:
                                                   AppConstant.homeButton,
                                               child: Column(
@@ -339,7 +335,7 @@ class HomeScreen extends GetView<HomeController> {
                                                   )),
                                                 ): Container(),
                                               ),
-                                              left: 19.w,
+                                              left: 21.w,
                                               top: 3.h,
                                             ),
                                             //! Bildirim Sıralaması bitiş
