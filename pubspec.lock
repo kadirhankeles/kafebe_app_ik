@@ -530,7 +530,6 @@ packages:
     description:
       name: vector_math
       url: "https://pub.dartlang.org"
-
     source: hosted
     version: "2.1.2"
   win32:
@@ -547,7 +546,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0+3"
-
   xml:
     dependency: transitive
     description:

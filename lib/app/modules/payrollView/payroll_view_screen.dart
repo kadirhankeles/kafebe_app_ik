@@ -16,20 +16,22 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
         appBar: AppBar(
           backgroundColor: Color(0xff850000),
           actions: [
-            IconButton(
-                onPressed: () async {
-                  final temp = await getTemporaryDirectory();
-                  final path =
-                      '${temp.path}/${controller.monthPayroll} Bordro.pdf';
+            Obx(() => controller.isLoading.value == true
+                ? IconButton(
+                    onPressed: () async {
+                      final temp = await getTemporaryDirectory();
+                      final path =
+                          '${temp.path}/${controller.monthPayroll} Bordro.pdf';
 
-                  final file = File(path);
-                  file.writeAsBytesSync(controller.resultData!);
-                  final xFile = XFile(path);
-                  await Share.shareXFiles([xFile],
-                      text: '${controller.monthPayroll} Payroll',
-                      subject: '${controller.monthPayroll} Payroll');
-                },
-                icon: Icon(Icons.share))
+                      final file = File(path);
+                      file.writeAsBytesSync(controller.resultData!);
+                      final xFile = XFile(path);
+                      await Share.shareXFiles([xFile],
+                          text: '${controller.monthPayroll} Bordro',
+                          subject: '${controller.monthPayroll} Bordro');
+                    },
+                    icon: Icon(Icons.share))
+                : Text(""))
           ],
         ),
         backgroundColor: Colors.white,
