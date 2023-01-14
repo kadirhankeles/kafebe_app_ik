@@ -1,4 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/modules/notification/notification_binding.dart';
+import 'package:kafebe_app_ik/app/modules/notification/notification_detail/notification_detail_binding.dart';
+import 'package:kafebe_app_ik/app/modules/notification/notification_detail/notification_detail_screen.dart';
+import 'package:kafebe_app_ik/app/modules/notification/notification_screen.dart';
 import 'package:kafebe_app_ik/app/modules/payroll/payroll_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_screen.dart';
@@ -32,6 +37,15 @@ class AppPages {
         page: () => PayrollViewScreen(),
         binding: PayrollViewBinding()),
     GetPage(
+
+        name: Paths.NOTIFICATION,
+        page: () => NotificationScreen(),
+        binding: NotificationBinding()),
+    GetPage(
+        name: Paths.NOTIFICATION_DETAIL,
+        page: () => NotificationDetailScreen(),
+        binding: NotificationDetailBinding()),
+
         name: Paths.REQUESTS,
         page: () => RequestsScreen(),
         binding: RequestsBinding()),
@@ -39,5 +53,6 @@ class AppPages {
         name: Paths.REQUESTSDETAIL,
         page: () => RequestDetailScreen(),
         binding: RequestDetailBinding()),
+
   ];
 }
