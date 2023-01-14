@@ -12,7 +12,7 @@ class LanguageService extends GetConnect {
     var headers = {
       'Accept': 'application/json',
       'vbtauthorization':
-          '7UInyw1F9pwFVESoVY1+l3MsLYeHNNNjjJUwxqvwpg+1/LlDhy8xKsRmT6KJGowY~2270~string~638092514895929163',
+          '5ldhVpE+x0e1woIhKJDy0DZaWM5FX8fNrIFHVeQJljGU7GqDvXSnfcSDZCxoih/+~2270~string~638093270751002182',
     };
 
     var url = Uri.parse(

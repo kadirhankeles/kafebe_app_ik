@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/language_model.dart';
+import 'package:kafebe_app_ik/app/routes/app_pages.dart';
+
 
 import '../../data/services/language_service.dart';
 
 class LanguageController extends GetxController{
   LanguageModel? getLanguageModel;
   RxBool isLoading = false.obs;
+  RxInt languageIndex = 0.obs;
+  
 
   void onInit() async {   
     await getLanguageData();
@@ -27,5 +31,11 @@ class LanguageController extends GetxController{
       bytes,
       fit: BoxFit.cover,
     );
+  }
+
+  selectLanguage(int language){
+    languageIndex.value = language;
+    Get.toNamed(Routes.LOGIN, parameters: {"selectedLanguage":"${languageIndex}"});
+    print(languageIndex);
   }
 }
