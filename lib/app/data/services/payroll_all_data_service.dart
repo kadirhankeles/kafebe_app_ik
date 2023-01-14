@@ -15,10 +15,11 @@ class PayrollAllDataService extends GetConnect {
         "${ServiceConstants.BASE_URL}${ServiceConstants.PAYROLL_ALL_DATA_SERVICE}";
     var res = await post(url, data, headers: headers);
 
-    await ServiceConstants().responseControll(res.statusCode);
-    // if (res.statusCode != 200) {
-    //   throw Exception('http.post error: statusCode= ${res.statusCode}');
-    // }
+
+    if (res.statusCode != 200) {
+      throw Exception('http.post error: statusCode= ${res.statusCode}');
+    }
+
 
     print(res.body);
 
