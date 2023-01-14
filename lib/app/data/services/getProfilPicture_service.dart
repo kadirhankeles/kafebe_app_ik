@@ -16,7 +16,9 @@ class ProfilPictureService extends GetConnect {
 
     var res = await get(url, headers: headers);
 
-    ServiceConstants().responseControll(res.statusCode);
+    if (res.statusCode != 200) {
+      throw Exception('http.post error: statusCode= ${res.statusCode}');
+    }
 
     print(res.body);
     data = GetProfilPictureModel.fromJson(res.body);

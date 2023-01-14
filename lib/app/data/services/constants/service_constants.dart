@@ -18,17 +18,17 @@ class ServiceConstants {
   static const READ_PUSH_MESSAGES = "PushNotification/ReadPushMessage?";
   static const BULK_DELETE_MESSAGES = "PushNotification/BulkDeletePushMessage?";
 
-  static const GET_MY_REQUEST_MASTER_MOBILE = "RequestManagement/GetMyRequestMasterMobile?";
+  static const GET_MY_REQUEST_MASTER_MOBILE =
+      "RequestManagement/GetMyRequestMasterMobile?";
   static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
-
 
 //header
   static const HEADER = {'vbtauthorization': apiToken};
 
 //status code göre response code controlü
-  responseControll(statusCode) {
-    if (statusCode != 200) {
-      throw Exception('http.get error: statusCode= $statusCode');
-    }
-  }
+  // responseControll(statusCode) {
+  //   if (statusCode != 200) {
+  //     throw Exception('http.get error: statusCode= $statusCode');
+  //   }
+  // }
 }

@@ -132,7 +132,9 @@ class HomeScreen extends GetView<HomeController> {
 
               actions: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.NOTIFICATION);
+                    },
                     icon: Icon(Icons.notifications_active),
                     color: Colors.yellow),
               ],

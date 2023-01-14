@@ -108,8 +108,16 @@ class NotificationScreen extends GetView<NotificationController> {
                                     1) {
                                   print(
                                       "req 1 -> TaleplerimDetaySayfasınaGidecek");
-                                  // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
-                                  // .notificationListModel!.data![index].iDMASTER]);
+                                  Get.toNamed(Routes.REQUESTSDETAIL,
+                                      arguments: [
+                                        {
+                                          "id": controller
+                                              .notificationListModel!
+                                              .data![index]
+                                              .iDMASTER
+                                              .toString()
+                                        }
+                                      ]);
                                 } else if (controller.notificationListModel!
                                         .data![index].rEQDIRECTION ==
                                     2) {
@@ -118,8 +126,16 @@ class NotificationScreen extends GetView<NotificationController> {
                                       6) {
                                     print(
                                         "req 2 --> reqtype 6 --> taleplerim detay");
-                                    // Get.toNamed(TaleplerimDetaySayfasıYazılacak,arguments:["idMaster":controller
-                                    // .notificationListModel!.data![index].iDMASTER]),
+                                    Get.toNamed(Routes.REQUESTSDETAIL,
+                                        arguments: [
+                                          {
+                                            "id": controller
+                                                .notificationListModel!
+                                                .data![index]
+                                                .iDMASTER
+                                                .toString()
+                                          }
+                                        ]);
                                   } else {
                                     print(
                                         "req2 --> reqtype else --> onaylarım detay");
