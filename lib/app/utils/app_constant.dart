@@ -44,6 +44,8 @@ class AppConstant {
   static TextStyle homeButtonBlack =
       TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w700);
 
+  static TextStyle detailGrey = TextStyle(color: Colors.grey.shade500);
+
   //Box decoration
   static BoxDecoration homeTopContainer = BoxDecoration(
       color: Color(0xff7f0000),
@@ -61,6 +63,18 @@ class AppConstant {
         color: Color(0xffECECF4),
         spreadRadius: .2,
         blurRadius: 0.8,
+        offset: Offset(0, 2), // changes position of shadow
+      ),
+    ],
+  );
+  static BoxDecoration infoContainer = BoxDecoration(
+    color: Color(0xffFDFDFC),
+    borderRadius: BorderRadius.circular(10),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey,
+        spreadRadius: .6,
+        blurRadius: 2,
         offset: Offset(0, 2), // changes position of shadow
       ),
     ],
