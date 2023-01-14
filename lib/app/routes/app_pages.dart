@@ -37,7 +37,6 @@ class AppPages {
         page: () => PayrollViewScreen(),
         binding: PayrollViewBinding()),
     GetPage(
-
         name: Paths.NOTIFICATION,
         page: () => NotificationScreen(),
         binding: NotificationBinding()),
@@ -45,7 +44,7 @@ class AppPages {
         name: Paths.NOTIFICATION_DETAIL,
         page: () => NotificationDetailScreen(),
         binding: NotificationDetailBinding()),
-
+    GetPage(
         name: Paths.REQUESTS,
         page: () => RequestsScreen(),
         binding: RequestsBinding()),
@@ -53,6 +52,5 @@ class AppPages {
         name: Paths.REQUESTSDETAIL,
         page: () => RequestDetailScreen(),
         binding: RequestDetailBinding()),
-
   ];
 }
