@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/getMyRequestMasterMobile_model.dart';
 import 'package:kafebe_app_ik/app/data/models/getRequestById_model.dart';
-import 'package:kafebe_app_ik/app/data/services/getRequestById_service.dart';
+import 'package:kafebe_app_ik/app/data/services/requests/getRequestById_service.dart';
 
 class RequestDetailController extends GetxController {
   GetRequestByIdModel? getRequestByIdModel;
