@@ -13,6 +13,7 @@ class ServiceConstants {
   static const GET_PROFILE_PICTURE = "EmployeeReport/GetProfilPicture";
   static const GET_LANDING_PAGE_INFO = "EmployeeReport/GetLandingPageInfo?";
   static const GET_MY_REQUEST_MASTER_MOBILE = "RequestManagement/GetMyRequestMasterMobile?";
+  static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
 
 //header
   static const HEADER = {'vbtauthorization': apiToken};
