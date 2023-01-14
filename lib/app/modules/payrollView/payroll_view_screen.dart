@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_binding.dart';
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_controller.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PayrollViewScreen extends GetView<PayrollViewController> {
@@ -12,7 +15,22 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff850000),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.share))],
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  final temp = await getTemporaryDirectory();
+                  final path =
+                      '${temp.path}/${controller.monthPayroll} Bordro.pdf';
+
+                  final file = File(path);
+                  file.writeAsBytesSync(controller.resultData!);
+                  final xFile = XFile(path);
+                  await Share.shareXFiles([xFile],
+                      text: '${controller.monthPayroll} Payroll',
+                      subject: '${controller.monthPayroll} Payroll');
+                },
+                icon: Icon(Icons.share))
+          ],
         ),
         backgroundColor: Colors.white,
         body: Scaffold(

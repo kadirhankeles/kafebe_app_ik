@@ -1,4 +1,5 @@
 // ignore_for_file: constant_identifier_names
+import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 class ServiceConstants {
@@ -25,10 +26,4 @@ class ServiceConstants {
 //header
   static const HEADER = {'vbtauthorization': apiToken};
 
-//status code göre response code controlü
-  // responseControll(statusCode) {
-  //   if (statusCode != 200) {
-  //     throw Exception('http.get error: statusCode= $statusCode');
-  //   }
-  // }
 }
