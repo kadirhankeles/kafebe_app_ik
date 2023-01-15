@@ -6,7 +6,7 @@ import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 
 class SplashController extends GetxController {
   final cacheToken = GetStorage();
-  String isim = "assets/splash.png";
+  String splashPhoto = "assets/splash.png";
   
   @override
   void onInit() {

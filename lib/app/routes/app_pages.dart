@@ -44,6 +44,7 @@ class AppPages {
       page: () => HomeScreen(),
       binding: HomeBinding(),
     ),
+    
     GetPage(
       name: Paths.PAYROLL,
       page: () => PayrollScreen(),

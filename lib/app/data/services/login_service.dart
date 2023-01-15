@@ -53,13 +53,14 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:kafebe_app_ik/app/modules/login/login_controller.dart';
 import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 
 import '../models/login_model.dart';
 
 Future<LoginModel?> getLoginService(String user, String password) async {
   LoginModel loginData = LoginModel();
-
+  
   try {
     var headers = {
       'Content-Type': 'application/json',
@@ -83,12 +84,14 @@ Future<LoginModel?> getLoginService(String user, String password) async {
       throw Exception('http.post error: statusCode= ${res.statusCode}');
     print(res.body + "dasdas");
     loginData = LoginModel.fromJson(jsonDecode(res.body));
-    //Get.toNamed(Routes.HOME);
+    Get.toNamed(Routes.HOME);
     return loginData;
   } catch (e) {
-    Get.defaultDialog(
+   Get.defaultDialog(
       title: "Girmiş olduğunuz bilgiler hatalıdır.",
       middleText: "Lütfen tekrar deneyiniz.",
+      
     );
+    
   }
 }

@@ -20,6 +20,7 @@ class LoginController extends GetxController {
   RxBool switchControl = false.obs;
 
   RxString companySelect = "Şirket Seçiniz".obs;
+  RxString companySelectControl = "Şirket Seçiniz".obs;
   RxList<String> companyList = <String>["Şirket Seçiniz", "Sun"].obs;
 
   TextEditingController userNameController = TextEditingController();
@@ -30,8 +31,6 @@ class LoginController extends GetxController {
 
   SharedPreferences? prefs;
   SavedDataModel? savedData;
-
-  
 
   GetStorage cacheToken = GetStorage();
 
@@ -53,57 +52,48 @@ class LoginController extends GetxController {
     }
   }
 
-  /* loginToHome() async {
-    if (userName.text.isNotEmpty && password.text.isNotEmpty) {
-      print("dialog penceresi açıldı.");
-      Get.dialog(
-          barrierDismissible: false,
-          Center(
-            child: CircularProgressIndicator(),
-          ));
-    }
-    await Duration(milliseconds: 3000);
-    print("dialog pençeresi kapandı.");
-    if (Get.isDialogOpen!) {
-      Get.back();
-    }
-  } */
+  // loginData(String user, String password) async {
+  //   isLoading.value = true;
+  //
+  //   if (user.isEmpty || password.isEmpty) {
+  //     Get.defaultDialog(
+  //         title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
+  //     isLoading.value = false;
+  //   } else {
+  //     loginModel = (await getLoginService(user, password))!;
+  //     await cacheToken.write("token", loginModel.token);
+  //     await cacheToken.write("isManager", loginModel.isManager);
+  //     await cacheToken.write("refleshToken", loginModel.refreshToken);
+  //     await cacheToken.write("userId", loginModel.userID);
 
-  // loginTransition() async {
-  //   if (dene == true) {
-  //     Get.dialog(
-  //         barrierDismissible: false,
-  //         Center(
-  //           child: CircularProgressIndicator(),
-  //         ));
-  //   }
-  //   await Future.delayed(Duration(milliseconds: 3000));
-  //   dene = false;
-  //   if (Get.isDialogOpen!) {
-  //     Get.back();
-  //     dene = true; //Görmek için koydum proje devam ederken sil.
+  //     isLoading.value = false;
   //   }
   // }
-
   loginData(String user, String password) async {
     isLoading.value = true;
-    /* user = userNameController.text;
-    password = passwordController.text; */
+
     if (user.isEmpty || password.isEmpty) {
       Get.defaultDialog(
           title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
       isLoading.value = false;
+    } else if (companySelect.value == companySelectControl.value) {
+      Get.defaultDialog(title: "Lütfen şirket seçiniz");
+      isLoading.value = false;
     } else {
       loginModel = (await getLoginService(user, password))!;
+
       await cacheToken.write("token", loginModel.token);
       await cacheToken.write("isManager", loginModel.isManager);
       await cacheToken.write("refleshToken", loginModel.refreshToken);
       await cacheToken.write("userId", loginModel.userID);
-      Get.toNamed(Routes.HOME);
       isLoading.value = false;
     }
+    
   }
+  
 
+  
+ 
   // loginApp(String user, String password) async {
   //   isLoading.value = true;
   //   if (user.isEmpty || password.isEmpty) {
@@ -124,7 +114,7 @@ class LoginController extends GetxController {
 
   // getSavedData() {
   //   savedData = jsonDecode(prefs!.getString("userInfo").toString());
-   
+
   // }
 
   // @override
@@ -132,6 +122,5 @@ class LoginController extends GetxController {
   //   savedData ??= SavedDataModel();
   //   super.onInit();
   // }
-
 
 }
