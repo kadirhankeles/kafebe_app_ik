@@ -25,7 +25,7 @@ class LoginController extends GetxController {
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  LoginModel? loginModel;
+  LoginModel loginModel = LoginModel();
   RxBool isLoading = false.obs;
 
   SharedPreferences? prefs;
@@ -94,11 +94,11 @@ class LoginController extends GetxController {
           title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
       isLoading.value = false;
     } else {
-      loginModel = await getLoginService(user, password);
-      await cacheToken.write("token", loginModel?.token);
-      await cacheToken.write("isManager", loginModel?.isManager);
-      await cacheToken.write("refleshToken", loginModel?.refreshToken);
-      await cacheToken.write("userId", loginModel?.userID);
+      loginModel = (await getLoginService(user, password))!;
+      await cacheToken.write("token", loginModel.token);
+      await cacheToken.write("isManager", loginModel.isManager);
+      await cacheToken.write("refleshToken", loginModel.refreshToken);
+      await cacheToken.write("userId", loginModel.userID);
       Get.toNamed(Routes.HOME);
       isLoading.value = false;
     }
@@ -118,20 +118,20 @@ class LoginController extends GetxController {
 
   //   }
   // }
-  setSavedData(SavedDataModel parameters) async {
-    prefs!.setString("userInfo", jsonEncode(parameters.toJson()));
-  }
+  // setSavedData(SavedDataModel parameters) async {
+  //   prefs!.setString("userInfo", jsonEncode(parameters.toJson()));
+  // }
 
-  getSavedData() {
-    savedData = jsonDecode(prefs!.getString("userInfo").toString());
+  // getSavedData() {
+  //   savedData = jsonDecode(prefs!.getString("userInfo").toString());
    
-  }
+  // }
 
-  @override
-  void onInit() {
-    savedData ??= SavedDataModel();
-    super.onInit();
-  }
+  // @override
+  // void onInit() {
+  //   savedData ??= SavedDataModel();
+  //   super.onInit();
+  // }
 
 
 }

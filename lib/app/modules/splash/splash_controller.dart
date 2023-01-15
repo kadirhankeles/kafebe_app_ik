@@ -1,26 +1,31 @@
+// ignore_for_file: avoid_print, prefer_const_constructors
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 
-class SplashController extends GetxController{
-
+class SplashController extends GetxController {
+  final cacheToken = GetStorage();
   @override
   void onInit() {
-    print("Önbellekte tutulan token: ${cacheToken.read("token")}");
+    print("splash view");
     super.onInit();
   }
 
   @override
-  void onReady() async{
-    if(cacheToken.read("token") != null){
-      Get.offAndToNamed(Routes.LOGIN);
-    }else{
-      Get.offAndToNamed(Routes.HOME);
+  void onReady() async {
+    
+    if (cacheToken.read("token") != null) {
+    await  Future.delayed(Duration(milliseconds: 400), () {
+        Get.toNamed(Routes.HOME);
+      });
+    } else {
+    await  Future.delayed(Duration(milliseconds: 400), () {
+        Get.offAllNamed(Routes.LOGIN);
+      });
     }
     super.onReady();
   }
-
-  GetStorage cacheToken = GetStorage();
 
   
 }

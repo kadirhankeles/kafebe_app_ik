@@ -21,10 +21,12 @@ class HomeController extends GetxController {
   List<dynamic> employee =[];
   List<dynamic> employeeSun =[];
   List<dynamic> notificationCount = [];
-
+@override
   void onInit() async {
+    print("dfssssssssssss");
     await getLandingPageInfoData();
     await getProfilPictureData();
+    
     super.onInit();
   }
 

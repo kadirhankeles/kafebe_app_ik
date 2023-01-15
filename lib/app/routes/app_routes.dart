@@ -2,7 +2,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes();
-  static const SPLAH = Paths.SPLASH;
+  static const SPLASH = Paths.SPLASH;
   static const LOGIN = Paths.LOGIN;
   static const HOME = Paths.HOME;
   static const PAYROLL = Paths.PAYROLL;
