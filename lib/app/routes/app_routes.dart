@@ -13,6 +13,7 @@ abstract class Routes {
   static const REQUESTS = Paths.REQUESTS;
   static const REQUESTSDETAIL = Paths.REQUESTSDETAIL;
 
+  static const APPROVAL = Paths.APPROVAL;
 }
 
 abstract class Paths {
@@ -26,6 +27,8 @@ abstract class Paths {
 
   static const REQUESTS = "/requests";
   static const REQUESTSDETAIL = "/requestsdetail";
+
+  static const APPROVAL = "/approval";
 
   
 

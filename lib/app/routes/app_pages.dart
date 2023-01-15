@@ -10,6 +10,8 @@ import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_screen.dart';
 import 'package:kafebe_app_ik/app/modules/requests/requests_screen.dart';
 import 'package:kafebe_app_ik/app/modules/requests_detail/request_detail_screen.dart';
 
+import '../modules/approval/approval_binding.dart';
+import '../modules/approval/approval_screen.dart';
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_screen.dart';
 import '../modules/login/login_binding.dart';
@@ -52,5 +54,9 @@ class AppPages {
         name: Paths.REQUESTSDETAIL,
         page: () => RequestDetailScreen(),
         binding: RequestDetailBinding()),
+    GetPage(
+        name: Paths.APPROVAL,
+        page: () => ApprovalScreen(),
+        binding: ApprovalBinding()),
   ];
 }
