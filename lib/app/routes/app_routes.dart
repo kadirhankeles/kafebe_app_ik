@@ -12,7 +12,7 @@ abstract class Routes {
 
   static const REQUESTS = Paths.REQUESTS;
   static const REQUESTSDETAIL = Paths.REQUESTSDETAIL;
-
+  static const LEAVE_ADD = Paths.LEAVE_ADD;
 }
 
 abstract class Paths {
@@ -26,7 +26,5 @@ abstract class Paths {
 
   static const REQUESTS = "/requests";
   static const REQUESTSDETAIL = "/requestsdetail";
-
-  
-
+  static const LEAVE_ADD = "/leaveadd";
 }

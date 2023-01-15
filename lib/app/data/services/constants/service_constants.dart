@@ -5,6 +5,8 @@ import 'package:kafebe_app_ik/app/utils/api_token.dart';
 class ServiceConstants {
 //baseurl
   static const BASE_URL = "https://suniktest.suntekstil.com.tr/mobileapi/api/";
+//header
+  static const HEADER = {'vbtauthorization': apiToken};
 
 //endpoints
   static const PAYROLL_ALL_DATA_SERVICE = "EmployeeDocuments/GetPayrollPeriods";
@@ -23,7 +25,6 @@ class ServiceConstants {
       "RequestManagement/GetMyRequestMasterMobile?";
   static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
 
-//header
-  static const HEADER = {'vbtauthorization': apiToken};
-
+  //Leave
+  static const LEAVE_TYPES = "EmployeeLeave/GetLeaveTypes";
 }
