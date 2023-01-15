@@ -9,6 +9,8 @@ class LeaveAddController extends GetxController {
   RxBool isLoading = false.obs;
   RxString selectedStartDate = "-".obs;
   RxString selectedFinishDate = "-".obs;
+  RxString startDay = "-".obs;
+  RxString leaveDay = "-".obs;
 
   @override
   void onInit() async {
