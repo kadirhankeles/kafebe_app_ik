@@ -25,7 +25,7 @@ import '../modules/requests_detail/request_detail_binding.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  AppPages();
+ // AppPages();
   static const INITIAL = Routes.LOGIN;
 
   static final routes = [

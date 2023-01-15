@@ -13,13 +13,15 @@ class SplashScreen extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: 
+      Container(
         height: 100.h,
         width: 100.w,
         child: Image.asset(
-          "assets/splash.png",
+          controller.isim,
           fit: BoxFit.fitWidth,
-        ),
+         ),
+       
       ),
     );
   }

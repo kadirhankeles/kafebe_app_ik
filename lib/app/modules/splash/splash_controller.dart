@@ -6,6 +6,8 @@ import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 
 class SplashController extends GetxController {
   final cacheToken = GetStorage();
+  String isim = "assets/splash.png";
+  
   @override
   void onInit() {
     print("splash view");
@@ -16,11 +18,11 @@ class SplashController extends GetxController {
   void onReady() async {
     
     if (cacheToken.read("token") != null) {
-    await  Future.delayed(Duration(milliseconds: 400), () {
+    await  Future.delayed(Duration(milliseconds: 2000), () {
         Get.toNamed(Routes.HOME);
       });
     } else {
-    await  Future.delayed(Duration(milliseconds: 400), () {
+    await  Future.delayed(Duration(milliseconds: 2000), () {
         Get.offAllNamed(Routes.LOGIN);
       });
     }
