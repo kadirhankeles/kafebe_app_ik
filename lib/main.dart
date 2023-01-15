@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'app/translation/test.dart';
 import 'di.dart';
 
-void main() async {
+Future<void> main() async {
   await DependencyInjection.init();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 

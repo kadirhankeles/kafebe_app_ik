@@ -1,15 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/data/models/login_model.dart';
+import 'package:kafebe_app_ik/app/data/models/saved_data_model.dart';
 import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
 import 'package:kafebe_app_ik/app/data/services/payroll_all_data_service.dart';
 import 'package:kafebe_app_ik/app/data/services/payroll_month_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/services/login_service.dart';
 import '../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  LoginService loginService = LoginService();
+  //LoginService loginService = LoginService();
 
   RxBool loginVisibility = true.obs;
   RxBool switchControl = false.obs;
@@ -23,7 +28,12 @@ class LoginController extends GetxController {
   LoginModel? loginModel;
   RxBool isLoading = false.obs;
 
-  bool dene = true;
+  SharedPreferences? prefs;
+  SavedDataModel? savedData;
+
+  
+
+  GetStorage cacheToken = GetStorage();
 
   chanceVisibility() {
     loginVisibility.value = !loginVisibility.value;
@@ -59,40 +69,69 @@ class LoginController extends GetxController {
     }
   } */
 
-  loginTransition() async {
-    if (dene == true) {
-      Get.dialog(
-          barrierDismissible: false,
-          Center(
-            child: CircularProgressIndicator(),
-          ));
-    }
-    await Future.delayed(Duration(milliseconds: 3000));
-    dene = false;
-    if (Get.isDialogOpen!) {
-      Get.back();
-      dene = true; //Görmek için koydum proje devam ederken sil.
-    }
-  }
+  // loginTransition() async {
+  //   if (dene == true) {
+  //     Get.dialog(
+  //         barrierDismissible: false,
+  //         Center(
+  //           child: CircularProgressIndicator(),
+  //         ));
+  //   }
+  //   await Future.delayed(Duration(milliseconds: 3000));
+  //   dene = false;
+  //   if (Get.isDialogOpen!) {
+  //     Get.back();
+  //     dene = true; //Görmek için koydum proje devam ederken sil.
+  //   }
+  // }
 
-  /*  loginData(String user, String password) async {
+  loginData(String user, String password) async {
+    isLoading.value = true;
     /* user = userNameController.text;
     password = passwordController.text; */
-    loginModel = await getLoginService(user, password);
-    isLoading.value = true;
-  } */
-
-  loginApp(String user, String password) async {
-    isLoading.value = true;
     if (user.isEmpty || password.isEmpty) {
       Get.defaultDialog(
           title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
       isLoading.value = false;
     } else {
-      loginModel = await loginService.getLoginService(user, password);
-
-      isLoading.value = false;
+      loginModel = await getLoginService(user, password);
+      await cacheToken.write("token", loginModel?.token);
+      await cacheToken.write("isManager", loginModel?.isManager);
+      await cacheToken.write("refleshToken", loginModel?.refreshToken);
+      await cacheToken.write("userId", loginModel?.userID);
       Get.toNamed(Routes.HOME);
+      isLoading.value = false;
     }
   }
+
+  // loginApp(String user, String password) async {
+  //   isLoading.value = true;
+  //   if (user.isEmpty || password.isEmpty) {
+  //     Get.defaultDialog(
+  //         title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
+  //     isLoading.value = false;
+  //   } else {
+
+  //     loginModel = await loginService.getLoginService(user, password).then((value) =>  Get.toNamed(Routes.HOME));
+
+  //     isLoading.value = false;
+
+  //   }
+  // }
+  setSavedData(SavedDataModel parameters) async {
+    prefs!.setString("userInfo", jsonEncode(parameters.toJson()));
+  }
+
+  getSavedData() {
+    savedData = jsonDecode(prefs!.getString("userInfo").toString());
+   
+  }
+
+  @override
+  void onInit() {
+    savedData ??= SavedDataModel();
+    super.onInit();
+  }
+
+
 }
