@@ -8,7 +8,7 @@
 // import '../models/login_model.dart';
 
 // class LoginService extends GetConnect {
-  
+
 //   Future<LoginModel?> getLoginService(String user, String password) async {
 //     LoginModel loginData = LoginModel();
 //     LoginController dd = LoginController();
@@ -43,7 +43,6 @@
 //         title: "Girmiş olduğunuz bilgiler hatalıdır.",
 //         middleText: "Lütfen tekrar deneyiniz.",
 //       );
-      
 
 //       return null;
 //     }
@@ -59,38 +58,37 @@ import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 import '../models/login_model.dart';
 
 Future<LoginModel?> getLoginService(String user, String password) async {
-  
   LoginModel loginData = LoginModel();
 
   try {
     var headers = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-  };
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
 
-  var data = {
-    "SelectedIdLanguage": 0,
-    "Email": user,
-    "Password": password,
-    "FirmId": 5,
-    "PinCode": "string",
-    "DeviceID": "string",
-    "DomainFirmId": 0
-  };
+    var data = {
+      "SelectedIdLanguage": 0,
+      "Email": user,
+      "Password": password,
+      "FirmId": 5,
+      "PinCode": "string",
+      "DeviceID": "string",
+      "DomainFirmId": 0
+    };
 
-  var url = Uri.parse(
-      'https://suniktest.suntekstil.com.tr/mobileapi/api/Account/Token');
-  var res = await http.post(url, headers: headers, body: jsonEncode(data));
-  if (res.statusCode != 200)
-    throw Exception('http.post error: statusCode= ${res.statusCode}');
-  print(res.body+"dasdas");
-  loginData = LoginModel.fromJson(jsonDecode(res.body));
- Get.toNamed(Routes.HOME);
-  return loginData;
+    var url = Uri.parse(
+        'https://suniktest.suntekstil.com.tr/mobileapi/api/Account/Token');
+    var res = await http.post(url, headers: headers, body: jsonEncode(data));
+    if (res.statusCode != 200)
+      throw Exception('http.post error: statusCode= ${res.statusCode}');
+    print(res.body + "dasdas");
+    loginData = LoginModel.fromJson(jsonDecode(res.body));
+    //Get.toNamed(Routes.HOME);
+    return loginData;
   } catch (e) {
     Get.defaultDialog(
-         title: "Girmiş olduğunuz bilgiler hatalıdır.",
-        middleText: "Lütfen tekrar deneyiniz.",
-       );
+      title: "Girmiş olduğunuz bilgiler hatalıdır.",
+      middleText: "Lütfen tekrar deneyiniz.",
+    );
   }
 }

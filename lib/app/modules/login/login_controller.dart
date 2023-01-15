@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/data/models/login_model.dart';
 import 'package:kafebe_app_ik/app/data/models/saved_data_model.dart';
 import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
@@ -30,7 +31,9 @@ class LoginController extends GetxController {
   SharedPreferences? prefs;
   SavedDataModel? savedData;
 
-  bool dene = true;
+  
+
+  GetStorage cacheToken = GetStorage();
 
   chanceVisibility() {
     loginVisibility.value = !loginVisibility.value;
@@ -66,21 +69,21 @@ class LoginController extends GetxController {
     }
   } */
 
-  loginTransition() async {
-    if (dene == true) {
-      Get.dialog(
-          barrierDismissible: false,
-          Center(
-            child: CircularProgressIndicator(),
-          ));
-    }
-    await Future.delayed(Duration(milliseconds: 3000));
-    dene = false;
-    if (Get.isDialogOpen!) {
-      Get.back();
-      dene = true; //Görmek için koydum proje devam ederken sil.
-    }
-  }
+  // loginTransition() async {
+  //   if (dene == true) {
+  //     Get.dialog(
+  //         barrierDismissible: false,
+  //         Center(
+  //           child: CircularProgressIndicator(),
+  //         ));
+  //   }
+  //   await Future.delayed(Duration(milliseconds: 3000));
+  //   dene = false;
+  //   if (Get.isDialogOpen!) {
+  //     Get.back();
+  //     dene = true; //Görmek için koydum proje devam ederken sil.
+  //   }
+  // }
 
   loginData(String user, String password) async {
     isLoading.value = true;
@@ -92,7 +95,11 @@ class LoginController extends GetxController {
       isLoading.value = false;
     } else {
       loginModel = await getLoginService(user, password);
-
+      await cacheToken.write("token", loginModel?.token);
+      await cacheToken.write("isManager", loginModel?.isManager);
+      await cacheToken.write("refleshToken", loginModel?.refreshToken);
+      await cacheToken.write("userId", loginModel?.userID);
+      Get.toNamed(Routes.HOME);
       isLoading.value = false;
     }
   }
@@ -125,4 +132,6 @@ class LoginController extends GetxController {
     savedData ??= SavedDataModel();
     super.onInit();
   }
+
+
 }
