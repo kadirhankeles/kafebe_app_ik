@@ -12,7 +12,7 @@ import '../../data/services/language_service.dart';
 class LanguageController extends GetxController{
   LanguageModel? getLanguageModel;
   RxBool isLoading = false.obs;
-  RxInt languageIndex = 0.obs;
+  
   
 
   void onInit() async {   
@@ -33,9 +33,13 @@ class LanguageController extends GetxController{
     );
   }
 
+
+//Dil saçimi yapılmak istenirse bu method(selectLanguage) kullanılabilir.
+
+/* RxInt languageIndex = 0.obs;
   selectLanguage(int language){
     languageIndex.value = language;
     Get.toNamed(Routes.LOGIN, parameters: {"selectedLanguage":"${languageIndex}"});
     print(languageIndex);
-  }
+  } */
 }

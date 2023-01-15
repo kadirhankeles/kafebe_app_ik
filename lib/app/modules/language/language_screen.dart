@@ -21,35 +21,40 @@ class LanguageScreen extends GetView<LanguageController> {
             Expanded(
                 child: Obx(
               () => controller.isLoading == true
-
-            ?  ListView.builder(
-                itemCount: controller.getLanguageModel?.data?.length,
-                itemBuilder: (context, index) => Container(
-                    margin: EdgeInsets.only(bottom: 2.h),
-                    child: GestureDetector(
-                      onTap: () {
-                        controller.selectLanguage(index);
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 2.h,
-                            width: 4.w,
-                            child: controller.baseToImage(controller
-                                .getLanguageModel!.data![index].lANGUAGELOGO
-                                .toString()),
-                          ),
-                          SizedBox(
-                            height: 10.w,
-                            width: 5.w,
-                          ),
-                          Text(
-                            "${controller.getLanguageModel?.data?[index].lANGUAGENAME}",
-                          ),
-                        ],
-                      ),
+                  ? ListView.builder(
+                      itemCount: controller.getLanguageModel?.data?.length,
+                      itemBuilder: (context, index) => Container(
+                          margin: EdgeInsets.only(bottom: 2.h),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 2.h,
+                                  width: 4.w,
+                                  child: controller.baseToImage(controller
+                                      .getLanguageModel!
+                                      .data![index]
+                                      .lANGUAGELOGO
+                                      .toString()),
+                                ),
+                                SizedBox(
+                                  height: 10.w,
+                                  width: 5.w,
+                                ),
+                                Text(
+                                  "${controller.getLanguageModel?.data?[index].lANGUAGENAME}",
+                                ),
+                              ],
+                            ),
+                          )),
+                    )
+                  : Container(
+                      child: Center(
+                      child: CircularProgressIndicator(),
                     )),
-              ): Container(child: Center(child: CircularProgressIndicator(),)),
             ))
           ],
         ),
