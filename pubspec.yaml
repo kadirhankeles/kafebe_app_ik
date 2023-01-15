@@ -45,6 +45,7 @@ dependencies:
 
 
   syncfusion_flutter_pdfviewer: ^20.4.42
+  get_storage: ^2.0.3
 
 
 dev_dependencies:
