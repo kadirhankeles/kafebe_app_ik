@@ -28,10 +28,8 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                           text: "İzin Türü",
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 1.w, right: 1.w),
                           decoration: BoxDecoration(
                               color: Colors.white70,
-                              borderRadius: BorderRadius.circular(2.w),
                               border:
                                   Border.all(color: Colors.black, width: 0.4)),
                           child: DropdownButton<int>(
@@ -165,10 +163,11 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         ),
                         const CustomDivider(),
                         Container(
+                          margin: EdgeInsets.only(bottom: 1.h),
                           width: 100.w,
                           height: 6.h,
                           decoration: BoxDecoration(
-                            color: Color(0xff850000),
+                            color: const Color(0xff850000),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Material(
