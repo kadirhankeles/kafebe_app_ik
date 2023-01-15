@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, screenType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.LOGIN,
+          initialRoute: Routes.HOME,
           getPages: AppPages.routes,
           locale: Get.deviceLocale,
           translations: Messages(),

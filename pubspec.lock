@@ -57,6 +57,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  cross_file:
+    dependency: transitive
+    description:
+      name: cross_file
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3+2"
   crypto:
     dependency: transitive
     description:
@@ -191,6 +198,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  mime:
+    dependency: transitive
+    description:
+      name: mime
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   path:
     dependency: transitive
     description:
@@ -206,7 +220,11 @@ packages:
     source: hosted
     version: "1.0.1"
   path_provider:
+
     dependency: transitive
+
+    dependency: "direct main"
+
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -239,7 +257,9 @@ packages:
       name: path_provider_macos
       url: "https://pub.dartlang.org"
     source: hosted
+
     version: "2.0.7"
+
   path_provider_platform_interface:
     dependency: transitive
     description:
@@ -310,11 +330,26 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  share_plus:
+    dependency: "direct main"
+    description:
+      name: share_plus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.3.0"
+  share_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: share_plus_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.0"
   shared_preferences:
     dependency: "direct main"
     description:
       name: shared_preferences
       url: "https://pub.dartlang.org"
+
     source: hosted
     version: "2.0.16"
   shared_preferences_android:
@@ -329,12 +364,10 @@ packages:
     description:
       name: shared_preferences_foundation
       url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
-  shared_preferences_linux:
-    dependency: transitive
-    description:
+
+
       name: shared_preferences_linux
+
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"

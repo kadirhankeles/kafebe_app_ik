@@ -24,8 +24,9 @@ class LandingPageInfoService extends GetConnect {
       headers: headers,
     );
 
-    await ServiceConstants()
-        .responseControll(res.statusCode); //respons controlü yapan fonskiyon
+    if (res.statusCode != 200) {
+      throw Exception('http.post error: statusCode= ${res.statusCode}');
+    }
 
     print(res.body);
     data = GetLandingPageInfoModel.fromJson(jsonDecode(res.body));

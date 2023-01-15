@@ -87,6 +87,12 @@ class PayrollScreen extends GetView<PayrollController> {
                                                       .payrollListDataModel!
                                                       .data![index]
                                                       .uID
+                                                },
+                                                {
+                                                  "period": controller
+                                                      .payrollListDataModel!
+                                                      .data![index]
+                                                      .dOCUMENTPERIOD
                                                 }
                                               ],
                                             );
