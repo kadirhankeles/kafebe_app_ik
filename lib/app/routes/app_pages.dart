@@ -9,6 +9,8 @@ import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_binding.dart'
 import 'package:kafebe_app_ik/app/modules/payrollView/payroll_view_screen.dart';
 import 'package:kafebe_app_ik/app/modules/requests/requests_screen.dart';
 import 'package:kafebe_app_ik/app/modules/requests_detail/request_detail_screen.dart';
+import 'package:kafebe_app_ik/app/modules/splash/splash_binding.dart';
+import 'package:kafebe_app_ik/app/modules/splash/splash_screen.dart';
 
 import '../modules/approval/approval_binding.dart';
 import '../modules/approval/approval_screen.dart';
@@ -28,35 +30,54 @@ class AppPages {
 
   static final routes = [
     GetPage(
-        name: Paths.LOGIN, page: () => LoginScreen(), binding: LoginBinding()),
-    GetPage(name: Paths.HOME, page: () => HomeScreen(), binding: HomeBinding()),
+      name: Paths.SPLASH,
+      page: () => SplashScreen(),
+      binding: SplashBinding(),
+    ),
     GetPage(
-        name: Paths.PAYROLL,
-        page: () => PayrollScreen(),
-        binding: PayrollBinding()),
+      name: Paths.LOGIN,
+      page: () => LoginScreen(),
+      binding: LoginBinding(),
+    ),
     GetPage(
-        name: Paths.PAYROLLVIEW,
-        page: () => PayrollViewScreen(),
-        binding: PayrollViewBinding()),
+      name: Paths.HOME,
+      page: () => HomeScreen(),
+      binding: HomeBinding(),
+    ),
     GetPage(
-        name: Paths.NOTIFICATION,
-        page: () => NotificationScreen(),
-        binding: NotificationBinding()),
+      name: Paths.PAYROLL,
+      page: () => PayrollScreen(),
+      binding: PayrollBinding(),
+    ),
     GetPage(
-        name: Paths.NOTIFICATION_DETAIL,
-        page: () => NotificationDetailScreen(),
-        binding: NotificationDetailBinding()),
+      name: Paths.PAYROLLVIEW,
+      page: () => PayrollViewScreen(),
+      binding: PayrollViewBinding(),
+    ),
     GetPage(
-        name: Paths.REQUESTS,
-        page: () => RequestsScreen(),
-        binding: RequestsBinding()),
+      name: Paths.NOTIFICATION,
+      page: () => NotificationScreen(),
+      binding: NotificationBinding(),
+    ),
     GetPage(
-        name: Paths.REQUESTSDETAIL,
-        page: () => RequestDetailScreen(),
-        binding: RequestDetailBinding()),
+      name: Paths.NOTIFICATION_DETAIL,
+      page: () => NotificationDetailScreen(),
+      binding: NotificationDetailBinding(),
+    ),
     GetPage(
-        name: Paths.APPROVAL,
-        page: () => ApprovalScreen(),
-        binding: ApprovalBinding()),
+      name: Paths.REQUESTS,
+      page: () => RequestsScreen(),
+      binding: RequestsBinding(),
+    ),
+    GetPage(
+      name: Paths.REQUESTSDETAIL,
+      page: () => RequestDetailScreen(),
+      binding: RequestDetailBinding(),
+    ),
+    GetPage(
+      name: Paths.APPROVAL,
+      page: () => ApprovalScreen(),
+      binding: ApprovalBinding(),
+    ),
   ];
 }
