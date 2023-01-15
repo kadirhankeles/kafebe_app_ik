@@ -155,6 +155,7 @@ class LoginScreen extends GetView<LoginController> {
                   onPressed: () {
                     controller.loginData(controller.userNameController.text,
                         controller.passwordController.text);
+                        
                   },
                   child: Text(
                     "Giriş",
