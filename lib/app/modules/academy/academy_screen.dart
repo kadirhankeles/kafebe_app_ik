@@ -15,6 +15,13 @@ class AcademyScreen extends StatelessWidget {
       backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
         backgroundColor: AppConstant.loginBackground,
+        title: Text("Sun Akademi"),
+        centerTitle: true,
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.turn_left)),
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: Icon(Icons.filter_vintage_outlined))
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.only(right: 5.w, left: 5.w, top: 2.h),
@@ -97,7 +104,7 @@ class AcademyScreen extends StatelessWidget {
                             height: 2.6.h,
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(right: .8.w, left: .8.w),
+                            padding: EdgeInsets.only(right: .8.w, left: .8.w),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -114,9 +121,8 @@ class AcademyScreen extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(right: 47.w),
+                            padding: EdgeInsets.only(right: 47.w),
                             child: Column(
-                              
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -154,59 +160,6 @@ class AcademyScreen extends StatelessWidget {
                               ],
                             ),
                           )
-                          /* Row(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Score",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  SizedBox(
-                                    height: 0.5.h,
-                                  ),
-                                  Text(
-                                    "0",
-                                    style: TextStyle(fontSize: 2.h),
-                                  ),
-                                  SizedBox(
-                                    height: 1.5.h,
-                                  ),
-                                  Text(
-                                    "Status",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  SizedBox(
-                                    height: 0.5.h,
-                                  ),
-                                  Text(
-                                    "Tamamlanmamış",
-                                    style: TextStyle(fontSize: 2.h),
-                                  ),
-                                  SizedBox(
-                                    height: 1.5.h,
-                                  ),
-                                  Text(
-                                    "Success Status",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  SizedBox(
-                                    height: 0.5.h,
-                                  ),
-                                  Text(
-                                    "Devam Ediyor",
-                                    style: TextStyle(fontSize: 2.h),
-                                  ),
-                                ],
-                              ),
-                              Align(
-                                  alignment: Alignment.topRight,
-                                  child: Text(
-                                    "Completed Date",
-                                  ))
-                            ],
-                          ), */
                         ],
                       ),
                     ),
