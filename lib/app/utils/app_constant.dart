@@ -15,6 +15,7 @@ class AppConstant {
   static const loginSwTrack = Color(0xffef9a9a);
   static const loginInSw = Color(0xffe0e0e0);
   static const loginInSwTrack = Color(0xff9e9e9e);
+  static BorderSide textFieldBorderColor = BorderSide(color: Colors.grey);
 
   //BorderRadius
   static BorderRadius globalRadius = BorderRadius.circular(2.w);
@@ -24,6 +25,7 @@ class AppConstant {
   static const loginTextFormFieldIcon = Icon(Icons.person, color: Color(0xffe53935));
   static const passwordTextFormFieldIcon = Icon(Icons.key, color: Color(0xffe53935));
   static const loginSufIcon = Icon(Icons.visibility, color: Colors.grey);
+  static const searchIcon = Icon(Icons.search, color: Colors.grey,size: 40,);
 
   //TextStyle
 

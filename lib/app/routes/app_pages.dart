@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/modules/academy/academy_binding.dart';
+import 'package:kafebe_app_ik/app/modules/academy/academy_screen.dart';
 
 import 'package:kafebe_app_ik/app/modules/language/language_binding.dart';
 import 'package:kafebe_app_ik/app/modules/language/language_screen.dart';
@@ -16,7 +18,6 @@ import 'package:kafebe_app_ik/app/modules/requests_detail/request_detail_screen.
 import 'package:kafebe_app_ik/app/modules/splash/splash_binding.dart';
 import 'package:kafebe_app_ik/app/modules/splash/splash_screen.dart';
 
-
 import '../modules/approval/approval_binding.dart';
 import '../modules/approval/approval_screen.dart';
 import '../modules/home/home_binding.dart';
@@ -30,15 +31,15 @@ import '../modules/requests_detail/request_detail_binding.dart';
 part 'app_routes.dart';
 
 class AppPages {
- // AppPages();
+  // AppPages();
   static const INITIAL = Routes.LOGIN;
 
   static final routes = [
-
-  
-    GetPage(name: Paths.LANGUAGE, page: () =>  LanguageScreen(), binding: LanguageBinding()),
-    
-
+    GetPage(
+      name: Paths.LANGUAGE,
+      page: () => LanguageScreen(),
+      binding: LanguageBinding(),
+    ),
     GetPage(
       name: Paths.SPLASH,
       page: () => SplashScreen(),
@@ -53,6 +54,11 @@ class AppPages {
       name: Paths.HOME,
       page: () => HomeScreen(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Paths.ACADEMY,
+      page: () => AcademyScreen(),
+      binding: AcademyBinding(),
     ),
     GetPage(
       name: Paths.PAYROLL,
@@ -89,6 +95,5 @@ class AppPages {
       page: () => ApprovalScreen(),
       binding: ApprovalBinding(),
     ),
-
   ];
 }
