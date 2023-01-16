@@ -15,7 +15,7 @@ class LanguageScreen extends GetView<LanguageController> {
         backgroundColor: Color(0xff850000),
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 5.w, right: 5.w),
+        padding: EdgeInsets.only(left: 5.w, right: 5.w, top: 2.h),
         child: Column(
           children: [
             Expanded(
