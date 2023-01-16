@@ -12,6 +12,7 @@ class AcademyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
         backgroundColor: AppConstant.loginBackground,
