@@ -30,7 +30,7 @@ class LoginScreen extends GetView<LoginController> {
               left: 80.w,
               child: InkWell(
                 onTap: () {
-             //     Get.toNamed(Routes.LANGUAGE)
+                  //     Get.toNamed(Routes.LANGUAGE)
                 },
                 child: Container(
                   height: 4.h,
@@ -116,7 +116,7 @@ class LoginScreen extends GetView<LoginController> {
                             ),
                           ),
                           iconSize: 8.w,
-                            borderRadius: BorderRadius.circular(2.w),
+                          borderRadius: BorderRadius.circular(2.w),
                           hint: Text(
                             "Şehir Seçiniz",
                           ),
@@ -129,7 +129,6 @@ class LoginScreen extends GetView<LoginController> {
                           value: controller.companySelect.value,
                           onChanged: (String? value) {
                             controller.companySelect.value = value!;
-                            
                           },
                         ),
                       ),
@@ -173,7 +172,7 @@ class LoginScreen extends GetView<LoginController> {
                     child: CircularProgressIndicator(),
                   )
                 : Container(),
-          )
+          ),
         ]),
       ),
     );

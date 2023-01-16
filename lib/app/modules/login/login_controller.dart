@@ -81,19 +81,14 @@ class LoginController extends GetxController {
       isLoading.value = false;
     } else {
       loginModel = (await getLoginService(user, password))!;
-
+      isLoading.value = false;
       await cacheToken.write("token", loginModel.token);
       await cacheToken.write("isManager", loginModel.isManager);
       await cacheToken.write("refleshToken", loginModel.refreshToken);
       await cacheToken.write("userId", loginModel.userID);
-      isLoading.value = false;
     }
-    
   }
-  
 
-  
- 
   // loginApp(String user, String password) async {
   //   isLoading.value = true;
   //   if (user.isEmpty || password.isEmpty) {
@@ -123,4 +118,5 @@ class LoginController extends GetxController {
   //   super.onInit();
   // }
 
+  
 }
