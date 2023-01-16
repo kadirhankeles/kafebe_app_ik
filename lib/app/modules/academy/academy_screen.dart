@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -10,7 +12,7 @@ class AcademyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    backgroundColor: Color(0xffF4F5FA),
+      backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
         backgroundColor: AppConstant.loginBackground,
       ),
@@ -39,7 +41,10 @@ class AcademyScreen extends StatelessWidget {
             SizedBox(
               height: 4.h,
             ),
-            Text("Tümü",style: Theme.of(context).textTheme.headline6,),
+            Text(
+              "Tümü",
+              style: Theme.of(context).textTheme.headline6,
+            ),
             SizedBox(
               height: 4.h,
             ),
@@ -49,17 +54,165 @@ class AcademyScreen extends StatelessWidget {
               child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 2.h),
-                  height: 30.h,
-                  width: 100.w,
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(179, 243, 210, 210),
-                    borderRadius: BorderRadius.circular(2.w),
-                    border: Border.all(color: Colors.grey, width: 0.5.w)
-                  ),
-                );
-              },),
+                  return Container(
+                    margin: EdgeInsets.only(bottom: 2.h),
+                    height: 30.h,
+                    width: 100.w,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(179, 243, 210, 210),
+                        borderRadius: BorderRadius.circular(2.w),
+                        border: Border.all(color: Colors.grey, width: 0.5.w)),
+                    child: Padding(
+                      padding: EdgeInsets.all(2.h),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              SizedBox(
+                                  height: 5.h,
+                                  width: 10.w,
+                                  child: Image.asset("assets/myJobs.png")),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "16.02.2023 17:09 - 31.01.2023 23:59",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: 1.h,
+                                  ),
+                                  Text(
+                                    "Kurum İçi Veri Sızıntısı Eğitimi",
+                                    style: TextStyle(fontSize: 2.h),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 2.6.h,
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only(right: .8.w, left: .8.w),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Score",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                Text(
+                                  "Completed Date",
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 2.h),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only(right: 47.w),
+                            child: Column(
+                              
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "0",
+                                  style: TextStyle(fontSize: 2.h),
+                                ),
+                                SizedBox(
+                                  height: 1.5.h,
+                                ),
+                                Text(
+                                  "Status",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                SizedBox(
+                                  height: 0.5.h,
+                                ),
+                                Text(
+                                  "Tamamlanmamış",
+                                  style: TextStyle(fontSize: 2.h),
+                                ),
+                                SizedBox(
+                                  height: 1.5.h,
+                                ),
+                                Text(
+                                  "Success Status",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                SizedBox(
+                                  height: 0.5.h,
+                                ),
+                                Text(
+                                  "Devam Ediyor",
+                                  style: TextStyle(fontSize: 2.h),
+                                ),
+                              ],
+                            ),
+                          )
+                          /* Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Score",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: 0.5.h,
+                                  ),
+                                  Text(
+                                    "0",
+                                    style: TextStyle(fontSize: 2.h),
+                                  ),
+                                  SizedBox(
+                                    height: 1.5.h,
+                                  ),
+                                  Text(
+                                    "Status",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: 0.5.h,
+                                  ),
+                                  Text(
+                                    "Tamamlanmamış",
+                                    style: TextStyle(fontSize: 2.h),
+                                  ),
+                                  SizedBox(
+                                    height: 1.5.h,
+                                  ),
+                                  Text(
+                                    "Success Status",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: 0.5.h,
+                                  ),
+                                  Text(
+                                    "Devam Ediyor",
+                                    style: TextStyle(fontSize: 2.h),
+                                  ),
+                                ],
+                              ),
+                              Align(
+                                  alignment: Alignment.topRight,
+                                  child: Text(
+                                    "Completed Date",
+                                  ))
+                            ],
+                          ), */
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             )
           ],
         ),
