@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
+import 'package:kafebe_app_ik/app/modules/language/language_binding.dart';
+import 'package:kafebe_app_ik/app/modules/language/language_screen.dart';
+
 import 'package:kafebe_app_ik/app/modules/notification/notification_binding.dart';
 import 'package:kafebe_app_ik/app/modules/notification/notification_detail/notification_detail_binding.dart';
 import 'package:kafebe_app_ik/app/modules/notification/notification_detail/notification_detail_screen.dart';
@@ -11,6 +15,7 @@ import 'package:kafebe_app_ik/app/modules/requests/requests_screen.dart';
 import 'package:kafebe_app_ik/app/modules/requests_detail/request_detail_screen.dart';
 import 'package:kafebe_app_ik/app/modules/splash/splash_binding.dart';
 import 'package:kafebe_app_ik/app/modules/splash/splash_screen.dart';
+
 
 import '../modules/approval/approval_binding.dart';
 import '../modules/approval/approval_screen.dart';
@@ -29,6 +34,11 @@ class AppPages {
   static const INITIAL = Routes.LOGIN;
 
   static final routes = [
+
+  
+    GetPage(name: Paths.LANGUAGE, page: () =>  LanguageScreen(), binding: LanguageBinding()),
+    
+
     GetPage(
       name: Paths.SPLASH,
       page: () => SplashScreen(),
@@ -79,5 +89,6 @@ class AppPages {
       page: () => ApprovalScreen(),
       binding: ApprovalBinding(),
     ),
+
   ];
 }

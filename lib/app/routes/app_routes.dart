@@ -5,6 +5,9 @@ abstract class Routes {
   static const SPLASH = Paths.SPLASH;
   static const LOGIN = Paths.LOGIN;
   static const HOME = Paths.HOME;
+
+  static const LANGUAGE = Paths.LANGUAGE;
+
   static const PAYROLL = Paths.PAYROLL;
   static const PAYROLLVIEW = Paths.PAYROLLVIEW;
 
@@ -15,12 +18,17 @@ abstract class Routes {
   static const REQUESTSDETAIL = Paths.REQUESTSDETAIL;
 
   static const APPROVAL = Paths.APPROVAL;
+
 }
 
 abstract class Paths {
   static const SPLASH = '/splash';
   static const LOGIN = "/login";
   static const HOME = "/home";
+
+  static const LANGUAGE = '/language';
+}
+
   static const PAYROLL = "/payroll";
   static const PAYROLLVIEW = "/payrollview";
 
@@ -35,3 +43,4 @@ abstract class Paths {
   
 
 }
+
