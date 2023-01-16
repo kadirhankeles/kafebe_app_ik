@@ -86,6 +86,8 @@ class LoginController extends GetxController {
       await cacheToken.write("isManager", loginModel.isManager);
       await cacheToken.write("refleshToken", loginModel.refreshToken);
       await cacheToken.write("userId", loginModel.userID);
+
+      
     }
   }
 

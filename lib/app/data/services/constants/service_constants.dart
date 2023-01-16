@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 class ServiceConstants {
@@ -23,9 +24,11 @@ class ServiceConstants {
       "RequestManagement/GetMyRequestMasterMobile?";
   static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
 
-  static const GET_PENDING_REQUEST_MASTER_MOBILE = "RequestManagement/GetPendingRequestMasterMobile?";
+  static const GET_PENDING_REQUEST_MASTER_MOBILE =
+      "RequestManagement/GetPendingRequestMasterMobile?";
 
 //header
-  static const HEADER = {'vbtauthorization': apiToken};
-
+   static Map<String, String>?  HEADER = GetStorage().read("token") == null
+      ? {}
+      : {'vbtauthorization': GetStorage().read("token")};
 }
