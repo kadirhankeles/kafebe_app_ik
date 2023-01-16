@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_controller.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:intl/intl.dart';
 
 class LeaveAddScreen extends GetView<LeaveAddController> {
   LeaveAddScreen({super.key});
@@ -70,11 +71,22 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                               DateTime? newDate = await showDatePicker(
                                 context: context,
                                 initialDate: DateTime.now(),
-                                firstDate: DateTime(2023),
+                                firstDate: DateTime.now(),
                                 lastDate: DateTime(2030),
+                                // locale: Locale('tr', 'TR'),
                               );
-                              controller.selectedStartDate.value =
-                                  newDate.toString();
+
+                              if (newDate != null) {
+                                controller.tempStartDate = newDate;
+                                var x = newDate.toString().split(' ')[0];
+
+                                List<String> startDateParts = x.split('-');
+                                controller.selectedStartDate.value =
+                                    '${startDateParts[2]}.${startDateParts[1]}.${startDateParts[0]}';
+                              } else {
+                                controller.selectedValue.value = "-";
+                              }
+                              controller.deleteData();
                             },
                             child: CustomContainerDate(
                                 obxValue: Obx(
@@ -85,14 +97,35 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         const TitleTextWidget(text: "İzin Bitiş Tarihi"),
                         GestureDetector(
                           onTap: () async {
-                            DateTime? newDate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2023),
-                              lastDate: DateTime(2030),
-                            );
-                            controller.selectedFinishDate.value =
-                                newDate.toString();
+                            if (controller.selectedStartDate.value == "-") {
+                              Get.snackbar('Uyarı', "Başlangıç Değeri Giriniz");
+                            } else {
+                              DateTime? newDate = await showDatePicker(
+                                context: context,
+                                initialDate: controller.tempStartDate!,
+                                firstDate: controller.tempStartDate!,
+                                lastDate: DateTime(2030),
+                                // locale: Locale('tr', 'TR'),
+                              );
+
+                              // if(startDate.compareTo(endDate)==-1)
+                              //    print("tarih seçimi hatalı ");
+
+                              if (newDate != null) {
+                                controller.tempFinishDate = newDate;
+                                if (controller.tempStartDate!.compareTo(
+                                        controller.tempFinishDate!) ==
+                                    -1) {
+                                  var x = newDate.toString().split(' ')[0];
+
+                                  List<String> finishDateParts = x.split('-');
+                                  controller.selectedFinishDate.value =
+                                      '${finishDateParts[2]}.${finishDateParts[1]}.${finishDateParts[0]}';
+                                }
+                              } else {
+                                controller.selectedValue.value = "-";
+                              }
+                            }
                           },
                           child: CustomContainerDate(
                               obxValue: Obx(
@@ -105,7 +138,12 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         CustomContainerDate(
                           obxValue: Obx(
                             () => TitleTextWidget(
-                                text: controller.startDay.value),
+                                text: controller.selectedFinishDate.value == "-"
+                                    ? "-"
+                                    : controller
+                                        .nextWorkDay(controller.tempFinishDate!,
+                                            controller.jobStart)
+                                        .toString()),
                           ),
                         ),
                         const CustomDivider(),
@@ -113,13 +151,18 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         CustomContainerDate(
                           obxValue: Obx(
                             () => TitleTextWidget(
-                                text: controller.leaveDay.value),
+                                text: controller.selectedFinishDate.value == "-"
+                                    ? "-"
+                                    : daysOff(controller.tempStartDate!,
+                                            controller.leaveDay!)
+                                        .toString()),
                           ),
                         ),
                         const CustomDivider(),
                         const TitleTextWidget(
                             text: "İzni Geçireceği Adres/Telefon"),
                         Container(
+                          margin: EdgeInsets.only(left: 1.w, right: 1.w),
                           width: 100.w,
                           height: 10.h,
                           color: Colors.white70,
@@ -142,6 +185,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         const CustomDivider(),
                         const TitleTextWidget(text: "Açıklama"),
                         Container(
+                          margin: EdgeInsets.only(left: 1.w, right: 1.w),
                           width: 100.w,
                           height: 10.h,
                           color: Colors.white70,
@@ -173,7 +217,10 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                // if(startDate.compareTo(endDate)==-1)
+                                //    print("tarih seçimi hatalı ");
+                              },
                               child: Center(
                                 child: Text(
                                   "Uygula",
