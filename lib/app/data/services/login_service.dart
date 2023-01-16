@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/routes/app_pages.dart';
@@ -30,7 +31,7 @@ Future<LoginModel?> getLoginService(String user, String password) async {
   print(res.body + "dasdas");
   loginData = LoginModel.fromJson(jsonDecode(res.body));
   if (res.statusCode == 200) {
-    Get.toNamed(Routes.HOME);
+    Get.offAllNamed(Routes.HOME);
   } else {
     Get.defaultDialog(
       title: "Girmiş olduğunuz bilgiler hatalıdır.",
