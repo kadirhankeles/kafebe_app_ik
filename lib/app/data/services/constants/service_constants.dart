@@ -24,8 +24,12 @@ class ServiceConstants {
   static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
 
   static const GET_PENDING_REQUEST_MASTER_MOBILE = "RequestManagement/GetPendingRequestMasterMobile?";
+  static const GET_EMPLOYEES_LEAVE_BY_PAST_MONTH = "EmployeeLeave/GetEmployeesLeaveByPastMonth?";
+  static const FINALIZE_REQUEST="RequestManagement/FinalizeRequest";
 
 //header
   static const HEADER = {'vbtauthorization': apiToken};
+  static const HEADER2 = {'vbtauthorization': apiToken,
+                          'Accept': 'application/json'};
 
 }

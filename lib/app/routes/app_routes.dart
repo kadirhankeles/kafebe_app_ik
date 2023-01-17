@@ -18,6 +18,9 @@ abstract class Routes {
   static const REQUESTSDETAIL = Paths.REQUESTSDETAIL;
 
   static const APPROVAL = Paths.APPROVAL;
+  static const APPROVALDETAIL = Paths.APPROVALDETAIL;
+
+  static const EMPLOYEELEAVE = Paths.EMPLOYEELEAVE;
 
 }
 
@@ -39,7 +42,10 @@ abstract class Paths {
   static const REQUESTSDETAIL = "/requestsdetail";
 
   static const APPROVAL = "/approval";
-  
+  static const APPROVALDETAIL = "/approvaldetail";
+
+  static const EMPLOYEELEAVE = "/employeeleave";
+
   
 
 }
