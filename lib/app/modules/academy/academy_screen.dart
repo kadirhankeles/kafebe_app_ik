@@ -3,10 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/modules/academy/academy_controller.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class AcademyScreen extends StatelessWidget {
+class AcademyScreen extends GetView<AcademyController> {
   const AcademyScreen({super.key});
 
   @override
@@ -57,117 +59,144 @@ class AcademyScreen extends StatelessWidget {
               height: 4.h,
             ),
             Container(
-              height: 69.h,
-              width: 100.w,
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 2.h),
-                    height: 30.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(179, 243, 210, 210),
-                        borderRadius: BorderRadius.circular(2.w),
-                        border: Border.all(color: Colors.grey, width: 0.5.w)),
-                    child: Padding(
-                      padding: EdgeInsets.all(2.h),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              SizedBox(
-                                  height: 5.h,
-                                  width: 10.w,
-                                  child: Image.asset("assets/myJobs.png")),
-                              SizedBox(
-                                width: 5.w,
+                height: 69.h,
+                width: 100.w,
+                child: Obx(
+                  () => controller.isLoading == true
+                      ? ListView.builder(
+                          itemCount: controller.learningGlobalModel?.data
+                              ?.talentActivityList?.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.only(bottom: 2.h),
+                              height: 30.h,
+                              width: 100.w,
+                              decoration: AppConstant.homeButton,
+                              child: Padding(
+                                padding: EdgeInsets.all(1.h),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          height: 5.h,
+                                          width: 10.w,
+                                          /* child: Image.asset(
+                                                "assets/myJobs.png") */
+                                        ),
+                                        SizedBox(
+                                          width: 5.w,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYSTARTDATE}-${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYENDDATE}",
+                                              // "16.02.2023 17:09 - 31.01.2023 23:59",
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                            SizedBox(
+                                              height: 1.h,
+                                            ),
+                                            SizedBox(
+                                              width: 65.w,
+                                              child: Text(
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYNAME}",
+                                                style: TextStyle(fontSize: 2.h),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 2.2.h,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          right: .8.w, left: .8.w),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Score",
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                          ),
+                                          Text(
+                                            // "Completed Date",
+                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE}",
+                                            //    .replaceRange(9, 22, "."),
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 2.h),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 47.w),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            // "0",
+                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYSCORE}"
+                                                .substring(0, 3),
+                                            style: TextStyle(fontSize: 2.h),
+                                          ),
+                                          SizedBox(
+                                            height: 1.5.h,
+                                          ),
+                                          Text(
+                                            "Status",
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                          ),
+                                          SizedBox(
+                                            height: 0.5.h,
+                                          ),
+                                          Text(
+                                            // "Tamamlanmamış",
+                                            "${controller.educationCompleteStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
+                                            style: TextStyle(fontSize: 2.h),
+                                          ),
+                                          SizedBox(
+                                            height: 1.5.h,
+                                          ),
+                                          Text(
+                                            "Success Status",
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                          ),
+                                          SizedBox(
+                                            height: 0.5.h,
+                                          ),
+                                          Text(
+                                            //"Devam Ediyor",
+                                            "${controller.educationSuccessStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
+                                            style: TextStyle(fontSize: 2.h),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "16.02.2023 17:09 - 31.01.2023 23:59",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  SizedBox(
-                                    height: 1.h,
-                                  ),
-                                  Text(
-                                    "Kurum İçi Veri Sızıntısı Eğitimi",
-                                    style: TextStyle(fontSize: 2.h),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 2.6.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: .8.w, left: .8.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Score",
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                Text(
-                                  "Completed Date",
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 2.h),
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 47.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "0",
-                                  style: TextStyle(fontSize: 2.h),
-                                ),
-                                SizedBox(
-                                  height: 1.5.h,
-                                ),
-                                Text(
-                                  "Status",
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                SizedBox(
-                                  height: 0.5.h,
-                                ),
-                                Text(
-                                  "Tamamlanmamış",
-                                  style: TextStyle(fontSize: 2.h),
-                                ),
-                                SizedBox(
-                                  height: 1.5.h,
-                                ),
-                                Text(
-                                  "Success Status",
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                SizedBox(
-                                  height: 0.5.h,
-                                ),
-                                Text(
-                                  "Devam Ediyor",
-                                  style: TextStyle(fontSize: 2.h),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            )
+                            );
+                          },
+                        )
+                      : Container(
+                          child: Center(
+                          child: CircularProgressIndicator(),
+                        )),
+                ))
           ],
         ),
       ),

@@ -77,26 +77,26 @@ class TalentPositionAndEmp {
 }
 
 class TalentActivityList {
-  int? iDACTIVITY;
+  dynamic? iDACTIVITY;
   String? uID;
-  int? iDHREMPLOYEE;
+  dynamic? iDHREMPLOYEE;
   String? aCTIVITYNAME;
-  int? aCTIVITYSUCCESSSTATUS;
+  dynamic? aCTIVITYSUCCESSSTATUS;
   String? aCTIVITYSUCCESSSTATUSTXT;
   String? aCTIVITYSTARTDATE;
   String? aCTIVITYENDDATE;
-  int? cOURSETYPE;
+  dynamic? cOURSETYPE;
   String? cOURSETYPENAME;
   String? cOURSETYPEDESCRIPTION;
-  int? aCTIVITYSTATUS;
-  int? iDSINGLESTATUS;
+  dynamic? aCTIVITYSTATUS;
+  dynamic? iDSINGLESTATUS;
   String? cOMPLETIONDATE;
-  int? cOMPLETIONPERCENTAGE;
+  dynamic? cOMPLETIONPERCENTAGE;
   String? aCTIVITYCODE;
   String? sINGLESTATUSNAME;
-  int? aCTIVITYCOMPLETESTATUS;
+  dynamic? aCTIVITYCOMPLETESTATUS;
   String? aCTIVITYCOMPLETESTATUSTXT;
-  int? aCTIVITYSCORE;
+  dynamic? aCTIVITYSCORE;
   String? aSSIGNMENTDATE;
 
   TalentActivityList(
