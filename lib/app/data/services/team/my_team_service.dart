@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/my_team_model.dart';
+import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 class MyTeamService extends GetConnect {
 Future<MyTeamModel> myTeamService(String date, int eType, int idHR) async {
@@ -10,7 +11,7 @@ Future<MyTeamModel> myTeamService(String date, int eType, int idHR) async {
   var headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'vbtauthorization': 'EQrWaeQAVQljt7bQbxQCQzYr9+YcZqU++ooxc4Fi7Jian/b5V/MBkCPD8nE3GiGr~2270~string~638095705466102004',
+    'vbtauthorization': apiToken,
   };
 
   var data = { 

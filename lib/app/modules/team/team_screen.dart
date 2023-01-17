@@ -10,7 +10,7 @@ class TeamScreen extends GetView<TeamController> {
 
   @override
   Widget build(BuildContext context) {
-    String statuString = "Direkt Bağlı Çalışanlar";
+    
     return Scaffold(
       backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
@@ -35,7 +35,7 @@ class TeamScreen extends GetView<TeamController> {
                                     DateTime.now().toString(),
                                     controller.statuCode[0],
                                     7217);
-                                statuString = controller.statuString[0];
+                                controller.screenString.value = controller.statuString[0];
                                 Get.back();
                               },
                               child: Text("Direkt Bağlı Çalışanlar")),
@@ -48,7 +48,7 @@ class TeamScreen extends GetView<TeamController> {
                                     DateTime.now().toString(),
                                     controller.statuCode[1],
                                     7217);
-                                statuString = controller.statuString[1];
+                                controller.screenString.value = controller.statuString[1];
                                 Get.back();
                               },
                               child: Text("Vekaleten Bağlı Çalışanlar")),
@@ -61,7 +61,7 @@ class TeamScreen extends GetView<TeamController> {
                                     DateTime.now().toString(),
                                     controller.statuCode[2],
                                     7217);
-                                statuString = controller.statuString[2];
+                                controller.screenString.value = controller.statuString[2];
                                 Get.back();
                               },
                               child: Text("Fonksiyonel Bağlı Çalışanlar")),
@@ -88,7 +88,7 @@ class TeamScreen extends GetView<TeamController> {
                     height: 4.5.h,
                     width: double.infinity,
                     child: Center(
-                      child: Text(statuString),
+                      child: Text(controller.screenString.value),
                     ),
                   )
                 : Container()),
@@ -156,7 +156,7 @@ class TeamScreen extends GetView<TeamController> {
                             );
                           },
                         )
-                      :controller.isLoading ==true && controller.myTeamModel!.data!.length==0?Container(height: 70.h, child: Center(child: Text("Çalışan Bulunamamıştır!\nFiltre Seçenekleri Değiştirip Tekrar Deneyiniz.", textAlign: TextAlign.center, style: TextStyle(color: Color(0xff7f0000), fontSize: 16, fontWeight: FontWeight.bold),),),):
+                      :controller.isLoading ==true && controller.myTeamModel!.data!.length==0?Container(height: 70.h, child: Center(child: Text("Çalışan Bulunmamaktadır!\nFiltre Seçenekleri Değiştirip Tekrar Deneyiniz.", textAlign: TextAlign.center, style: TextStyle(color: Color(0xff7f0000), fontSize: 16, fontWeight: FontWeight.bold),),),):
                        Container(
                               height: 80.h,
                               child: Center(

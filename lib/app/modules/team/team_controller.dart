@@ -18,6 +18,8 @@ class TeamController extends GetxController {
     "Vekaleten Bağlı Çalışanlar",
     "Fonksiyonel Bağlı Çalışanlar",
   ];
+
+  RxString screenString = "Direkt Bağlı Çalışanlar".obs;
   @override
   void onInit() {
     getMyTeamData(DateTime.now().toString(), statuCode[0],7217 );
