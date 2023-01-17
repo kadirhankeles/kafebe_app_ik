@@ -252,7 +252,35 @@ class HomeScreen extends GetView<HomeController> {
                                       itemBuilder: (context, index) {
                                         return GestureDetector(
                                           onTap: () {
-                                            print("Tıklandı $index");
+                                            if(controller.getLandingPageInfoModel!.data!.isManager == true && controller.getLandingPageInfoModel!.data!.sunAkademi == true){
+                                              if(index==0){
+                                                Get.toNamed(Paths.REQUESTS);
+                                              }else if(index ==1){
+                                                Get.toNamed(Paths.APPROVAL);
+                                              }
+                                            }
+                                            if(controller.getLandingPageInfoModel!.data!.isManager == true && controller.getLandingPageInfoModel!.data!.sunAkademi == false){
+                                              if(index==0){
+                                                Get.toNamed(Paths.REQUESTS);
+                                              }else if(index ==1){
+                                                Get.toNamed(Paths.APPROVAL);
+                                              }
+                                            }
+                                            if(controller.getLandingPageInfoModel!.data!.isManager == false && controller.getLandingPageInfoModel!.data!.sunAkademi == true){
+                                              if(index==0){
+                                                Get.toNamed(Paths.REQUESTS);
+                                              }else if(index ==1){
+                                                Get.toNamed(Paths.APPROVAL);
+                                              }
+                                            }
+                                            if(controller.getLandingPageInfoModel!.data!.isManager == false && controller.getLandingPageInfoModel!.data!.sunAkademi == false){
+                                              if(index==0){
+                                                Get.toNamed(Paths.REQUESTS);
+                                              }else if(index ==1){
+                                                Get.toNamed(Paths.APPROVAL);
+                                              }
+                                            }
+
                                           },
                                           child: Stack(children: [
                                             Container(

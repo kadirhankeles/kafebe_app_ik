@@ -27,7 +27,7 @@ abstract class Paths {
   static const HOME = "/home";
 
   static const LANGUAGE = '/language';
-}
+
 
   static const PAYROLL = "/payroll";
   static const PAYROLLVIEW = "/payrollview";

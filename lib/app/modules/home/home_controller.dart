@@ -21,9 +21,9 @@ class HomeController extends GetxController {
   List<dynamic> employee =[];
   List<dynamic> employeeSun =[];
   List<dynamic> notificationCount = [];
+  List<dynamic> menuName=[];
 @override
   void onInit() async {
-    print("dfssssssssssss");
     await getLandingPageInfoData();
     await getProfilPictureData();
     
@@ -44,7 +44,6 @@ class HomeController extends GetxController {
     isProfilPicture.value = true;
     isCategoryName.value = true;
     isNotiCount.value= true;
-    print("True oldu");
   }
 
   Image baseToImage(String path) {
@@ -62,7 +61,7 @@ class HomeController extends GetxController {
   menuNameAndNotification(GetLandingPageInfoModel? getLandingPageInfoModel, bool? isManager, bool? sunAkademi){
     int index =0;
     getLandingPageInfoModel!.data!.menuInfo!.forEach((element) {
-      
+      menuName.add(element.mENUNAME.toString());
       print(element.mENUNAME.toString());
       
       if(isManager==true && sunAkademi ==true){index++;
@@ -86,7 +85,7 @@ class HomeController extends GetxController {
       }
       else if(isManager==false && sunAkademi ==false){index++;
          if(element.mENUNAME == "MyRequests" || element.mENUNAME =="MyApprovals"|| element.mENUNAME=="MyWorks"){
-          employeeSun.add(element.mENUNAME.toString());
+          employee.add(element.mENUNAME.toString());
           
          }
       }
