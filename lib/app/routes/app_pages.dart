@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
+import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
+
 import 'package:kafebe_app_ik/app/modules/employeeLeave/employeeLeave_binding.dart';
 import 'package:kafebe_app_ik/app/modules/employeeLeave/employeeLeave_screen.dart';
 import 'package:kafebe_app_ik/app/modules/language/language_binding.dart';
 import 'package:kafebe_app_ik/app/modules/language/language_screen.dart';
+
 import 'package:kafebe_app_ik/app/modules/notification/notification_binding.dart';
 import 'package:kafebe_app_ik/app/modules/notification/notification_detail/notification_detail_binding.dart';
 import 'package:kafebe_app_ik/app/modules/notification/notification_detail/notification_detail_screen.dart';
@@ -23,6 +27,7 @@ import '../modules/approval_detail/approval_detail_binding.dart';
 import '../modules/approval_detail/approval_detail_screen.dart';
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_screen.dart';
+import '../modules/leaveAdd/leave_add_screen.dart';
 import '../modules/login/login_binding.dart';
 import '../modules/login/login_screen.dart';
 import '../modules/payroll/payroll_screen.dart';
@@ -77,6 +82,15 @@ class AppPages {
       binding: NotificationDetailBinding(),
     ),
     GetPage(
+
+        name: Paths.REQUESTSDETAIL,
+        page: () => RequestDetailScreen(),
+        binding: RequestDetailBinding()),
+    GetPage(
+        name: Paths.LEAVE_ADD,
+        page: () => LeaveAddScreen(),
+        binding: LeaveAddBinding()),
+
       name: Paths.REQUESTS,
       page: () => RequestsScreen(),
       binding: RequestsBinding(),
@@ -97,6 +111,7 @@ class AppPages {
       page: () => RequestDetailScreen(),
       binding: RequestDetailBinding(),
     ),
+
 
   ];
 }
