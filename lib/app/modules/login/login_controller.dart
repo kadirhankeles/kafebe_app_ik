@@ -3,14 +3,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kafebe_app_ik/app/data/models/login_model.dart';
+import 'package:kafebe_app_ik/app/data/models/login_model/login_model.dart';
 import 'package:kafebe_app_ik/app/data/models/saved_data_model.dart';
 import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
 import 'package:kafebe_app_ik/app/data/services/payroll_all_data_service.dart';
 import 'package:kafebe_app_ik/app/data/services/payroll_month_service.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/services/login_service.dart';
+import '../../data/services/login/login_service.dart';
 import '../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
@@ -74,10 +75,57 @@ class LoginController extends GetxController {
 
     if (user.isEmpty || password.isEmpty) {
       Get.defaultDialog(
-          title: "Lütfen kullanıcı adı ve şifre bilgilerini giriniz.");
+        title: "Uyarı",
+        middleText: "Lütfen kullanıcı adı ve şifre bilgilerinizi giriniz.",
+        backgroundColor: Colors.grey.withOpacity(.9),
+        titleStyle: TextStyle(color: Colors.white),
+        middleTextStyle: TextStyle(color: Colors.white),
+        radius: 10,
+        actions: [
+          SizedBox(
+            width: 45.w,
+          ),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              side: BorderSide(width: .1.h, color: Colors.white),
+            ),
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      );
       isLoading.value = false;
     } else if (companySelect.value == companySelectControl.value) {
-      Get.defaultDialog(title: "Lütfen şirket seçiniz");
+      Get.defaultDialog(
+        title: "Uyarı",
+        middleText: "Lütfen şirket seçiniz.",
+        backgroundColor: Colors.grey.withOpacity(.9),
+        titleStyle: TextStyle(color: Colors.white),
+        middleTextStyle: TextStyle(color: Colors.white),
+        radius: 10,
+        actions: [
+          SizedBox(
+            width: 45.w,
+          ),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              side: BorderSide(width: .1.h, color: Colors.white),
+            ),
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      );
       isLoading.value = false;
     } else {
       loginModel = (await getLoginService(user, password))!;
@@ -86,8 +134,6 @@ class LoginController extends GetxController {
       await cacheToken.write("isManager", loginModel.isManager);
       await cacheToken.write("refleshToken", loginModel.refreshToken);
       await cacheToken.write("userId", loginModel.userID);
-
-      
     }
   }
 
@@ -120,5 +166,4 @@ class LoginController extends GetxController {
   //   super.onInit();
   // }
 
-  
 }

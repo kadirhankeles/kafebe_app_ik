@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/routes/app_pages.dart';
-import '../models/login_model.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+import '../../models/login_model/login_model.dart';
 
 Future<LoginModel?> getLoginService(String user, String password) async {
   LoginModel loginData = LoginModel();
@@ -34,8 +36,29 @@ Future<LoginModel?> getLoginService(String user, String password) async {
     Get.offAllNamed(Routes.HOME);
   } else {
     Get.defaultDialog(
-      title: "Girmiş olduğunuz bilgiler hatalıdır.",
+      title: "Girmiş olduğunuz bilgiler hatalıdır",
       middleText: "Lütfen tekrar deneyiniz.",
+      backgroundColor: Colors.grey.withOpacity(.9),
+      titleStyle: TextStyle(color: Colors.white),
+      middleTextStyle: TextStyle(color: Colors.white),
+      radius: 10,
+      actions: [
+        SizedBox(
+          width: 45.w,
+        ),
+        OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(width: .1.h, color: Colors.white),
+          ),
+          onPressed: () {
+            Get.back();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
     );
   }
 
