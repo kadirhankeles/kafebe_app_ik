@@ -665,7 +665,7 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print("ÇıkışYap");
+                              controller.cacheRemoveAndGoToLogin();
                             },
                             child: Container(
                               height: 10.h,

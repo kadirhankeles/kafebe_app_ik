@@ -2,7 +2,9 @@ import 'dart:typed_data';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
+import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 import '../../data/models/getLanding_PageInfo_model.dart';
 import '../../data/models/get_ProfilPicture_model.dart';
 import '../../data/services/getLanding_Page_Info_service.dart';
@@ -22,6 +24,8 @@ class HomeController extends GetxController {
   List<dynamic> employeeSun =[];
   List<dynamic> notificationCount = [];
   List<dynamic> menuName=[];
+
+  final cacheToken = GetStorage();
 @override
   void onInit() async {
     await getLandingPageInfoData();
@@ -95,5 +99,10 @@ class HomeController extends GetxController {
      notificationCount.add(getLandingPageInfoModel.data!.myRequestCount);
      notificationCount.add(getLandingPageInfoModel.data!.getMyApprovalCount);
      notificationCount.add(getLandingPageInfoModel.data!.getMyWorks);
+  }
+  //Model Sıfırlama eklenecek 
+  cacheRemoveAndGoToLogin() async{
+    await cacheToken.remove("token");
+    Get.offAllNamed(Routes.LOGIN);
   }
 }

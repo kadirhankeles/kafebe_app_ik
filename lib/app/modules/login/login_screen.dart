@@ -30,7 +30,7 @@ class LoginScreen extends GetView<LoginController> {
               left: 80.w,
               child: InkWell(
                 onTap: () {
-                      Get.toNamed(Routes.LANGUAGE)
+                      Get.toNamed(Routes.LANGUAGE);
                 },
                 child: Container(
                   height: 4.h,

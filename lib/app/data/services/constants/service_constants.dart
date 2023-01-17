@@ -45,13 +45,11 @@ class ServiceConstants {
   static const WORK_START = "EmployeeLeave/GetWorkStartDate";
   static const SEND_FOR_APPROVAL = "EmployeeLeave/SendForApproval";
 
-  static const GET_PENDING_REQUEST_MASTER_MOBILE =
-      "RequestManagement/GetPendingRequestMasterMobile?";
   static const GET_EMPLOYEES_LEAVE_BY_PAST_MONTH =
       "EmployeeLeave/GetEmployeesLeaveByPastMonth?";
   static const FINALIZE_REQUEST = "RequestManagement/FinalizeRequest";
 
-  static const HEADER2 = {
+  static final HEADER2 = {
     'vbtauthorization': apiToken,
     'Accept': 'application/json'
   };

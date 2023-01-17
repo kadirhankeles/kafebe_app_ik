@@ -134,14 +134,15 @@ class NotificationScreen extends GetView<NotificationController> {
                                                 .notificationListModel!
                                                 .data![index]
                                                 .iDMASTER
-                                                .toString()
+                                                .toString(),
+                                              
                                           }
                                         ]);
                                   } else {
                                     print(
                                         "req2 --> reqtype else --> onaylarım detay");
 
-                                    Get.toNamed(Routes.APPROVALDETAIL,
+                                   /* Get.toNamed(Routes.APPROVALDETAIL,
                                         arguments: [
                                           {
                                             "id": controller
@@ -150,7 +151,7 @@ class NotificationScreen extends GetView<NotificationController> {
                                                 .iDMASTER
                                                 .toString()
                                           }
-                                        ]);
+                                        ]);*/
                                   }
                                 } else {
                                   Get.toNamed(Routes.NOTIFICATION_DETAIL,
