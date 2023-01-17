@@ -26,6 +26,8 @@ import '../modules/login/login_screen.dart';
 import '../modules/payroll/payroll_screen.dart';
 import '../modules/requests/requests_binding.dart';
 import '../modules/requests_detail/request_detail_binding.dart';
+import '../modules/team/team_binding.dart';
+import '../modules/team/team_screen.dart';
 
 part 'app_routes.dart';
 
@@ -88,6 +90,12 @@ class AppPages {
       name: Paths.APPROVAL,
       page: () => ApprovalScreen(),
       binding: ApprovalBinding(),
+    ),
+
+    GetPage(
+      name: Paths.TEAM,
+      page: () => TeamScreen(),
+      binding: TeamBinding(),
     ),
 
   ];

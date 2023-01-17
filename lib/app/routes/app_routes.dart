@@ -19,6 +19,8 @@ abstract class Routes {
 
   static const APPROVAL = Paths.APPROVAL;
 
+  static const TEAM = Paths.TEAM;
+
 }
 
 abstract class Paths {
@@ -27,6 +29,7 @@ abstract class Paths {
   static const HOME = "/home";
 
   static const LANGUAGE = '/language';
+
 
 
   static const PAYROLL = "/payroll";
@@ -40,6 +43,8 @@ abstract class Paths {
 
   static const APPROVAL = "/approval";
   
+
+  static const TEAM = "/team";
   
 
 }
