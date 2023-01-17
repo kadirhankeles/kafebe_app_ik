@@ -33,7 +33,7 @@ class LanguageScreen extends GetView<LanguageController> {
                               children: [
                                 Container(
                                   height: 2.h,
-                                  width: 4.w,
+                                  width: 2.h,
                                   child: controller.baseToImage(controller
                                       .getLanguageModel!
                                       .data![index]
@@ -53,7 +53,7 @@ class LanguageScreen extends GetView<LanguageController> {
                     )
                   : Container(
                       child: Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(color:Color(0xff7f0000) ,),
                     )),
             ))
           ],

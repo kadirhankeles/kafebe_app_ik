@@ -232,7 +232,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                     )
                   : const Center(
                       child: CircularProgressIndicator(
-                        color: Colors.red,
+                        color: Color(0xff7f0000),
                       ),
                     ),
             ),

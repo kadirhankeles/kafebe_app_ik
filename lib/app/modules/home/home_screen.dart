@@ -69,7 +69,7 @@ class HomeScreen extends GetView<HomeController> {
                                         .toString())))
                             : Container(
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(color: Color(0xff7f0000),),
                                 ),
                               ),
                       ),
@@ -140,14 +140,20 @@ class HomeScreen extends GetView<HomeController> {
 
               //! LOGO Başlangıç
               centerTitle: true,
-              title: Container(
-                height: 12.2.h,
-                width: 9.h,
-                //color: Colors.white,
-                child: Image(
-                  image: AssetImage("assets/logo.png"),
-                  fit: BoxFit.cover,
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () async{
+                  await controller.getLandingPageInfoData();
+    await controller.getProfilPictureData();
+                },
+                child: Container(
+                  height: 12.2.h,
+                  width: 9.h,
+                  //color: Colors.white,
+                  child: Image(
+                    image: AssetImage("assets/logo.png"),
+                    fit: BoxFit.cover,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               //! LOGO Bitiş
@@ -424,7 +430,7 @@ class HomeScreen extends GetView<HomeController> {
                                   : Container(
                                       height: 30.h,
                                       child: Center(
-                                        child: CircularProgressIndicator(),
+                                        child: CircularProgressIndicator(color: Color(0xff7f0000),),
                                       ),
                                     ),
                             ),

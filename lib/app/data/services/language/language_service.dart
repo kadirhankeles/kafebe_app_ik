@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 
-import '../models/language_model.dart';
+import '../../models/language_model.dart';
 
 class LanguageService extends GetConnect {
   Future<LanguageModel?> getLanguageService() async {

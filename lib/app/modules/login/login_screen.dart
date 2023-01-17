@@ -34,7 +34,7 @@ class LoginScreen extends GetView<LoginController> {
                 },
                 child: Container(
                   height: 4.h,
-                  width: 8.w,
+                  width: 10.w,
                   decoration: BoxDecoration(
                       color: AppConstant.loginLanguage,
                       borderRadius: AppConstant.globalRadius),
@@ -112,7 +112,7 @@ class LoginScreen extends GetView<LoginController> {
                                     BorderSide(color: Colors.transparent)),
                             prefixIcon: Icon(
                               Icons.table_rows_rounded,
-                              color: Color(0xffe53935),
+                              color: Color(0xff7f0000),
                             ),
                           ),
                           iconSize: 8.w,
@@ -169,7 +169,7 @@ class LoginScreen extends GetView<LoginController> {
           Obx(
             () => controller.isLoading.value == true
                 ? Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(color:Color(0xff7f0000) ,),
                   )
                 : Container(),
           ),

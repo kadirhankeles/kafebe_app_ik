@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/finalize_request_model.dart';
 import 'package:kafebe_app_ik/app/data/models/getLanding_PageInfo_model.dart';
 import 'package:kafebe_app_ik/app/data/services/approval/finalize_request_service.dart';
-import 'package:kafebe_app_ik/app/data/services/getLanding_Page_Info_service.dart';
+import 'package:kafebe_app_ik/app/data/services/home/getLanding_Page_Info_service.dart';
 import 'package:kafebe_app_ik/app/modules/approval/approval_controller.dart';
 
 import '../../data/models/getPendingRequestMasterMobile_model.dart';

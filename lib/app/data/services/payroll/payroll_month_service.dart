@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 
-import '../models/payroll_data_model.dart';
+import '../../models/payroll_data_model.dart';
 
 class PayrollMonthService extends GetConnect {
   Future<PayrollDataModel?> getPayrollPeriodMonth(year, month, dId) async {

@@ -178,7 +178,7 @@ class RequestsScreen extends GetView<RequestsController> {
                         },
                       )
                     ,
-              ): Container(),
+              ): Container(height: 80.h, child: Center(child: CircularProgressIndicator(color: Color(0xff7f0000),),),),
             );
   }
 }
