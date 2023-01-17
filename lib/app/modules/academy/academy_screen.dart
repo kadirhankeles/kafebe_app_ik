@@ -13,6 +13,7 @@ class AcademyScreen extends GetView<AcademyController> {
 
   @override
   Widget build(BuildContext context) {
+    String statusString = "Tümü";
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xffF4F5FA),
@@ -20,10 +21,56 @@ class AcademyScreen extends GetView<AcademyController> {
         backgroundColor: AppConstant.loginBackground,
         title: Text("Sun Akademi"),
         centerTitle: true,
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.turn_left)),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Icons.filter_vintage_outlined))
+              onPressed: () {
+                Get.dialog(AlertDialog(
+                    backgroundColor: Colors.white.withOpacity(.9),
+                    content: Container(
+                      height: 30.h,
+                      child: Column(
+                        children: [
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                foregroundColor: Colors.black,
+                              ),
+                              onPressed: () async {
+                                await controller.getAcademyData();
+                                controller.educationCompleteStatusControl(
+                                    controller.statuCode[1]);
+                                statusString = controller.statuString[1];
+
+                                Get.back();
+                              },
+                              child: Text("Tamamlanan")),
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                foregroundColor: Colors.black,
+                              ),
+                              onPressed: () async {
+                                await controller.getAcademyData();
+                                controller.educationCompleteStatusControl(
+                                    controller.statuCode[2]);
+                                statusString = controller.statuString[2];
+
+                                Get.back();
+                              },
+                              child: Text("Tamamlanmadı")),
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                foregroundColor: Colors.black,
+                              ),
+                              onPressed: () async {
+                                await controller.getAcademyData();
+                                statusString = controller.statuString[0];
+                                Get.back();
+                              },
+                              child: Text("Tümü")),
+                        ],
+                      ),
+                    )));
+              },
+              icon: Icon(Icons.filter_alt_rounded))
         ],
       ),
       body: Padding(
@@ -52,7 +99,7 @@ class AcademyScreen extends GetView<AcademyController> {
               height: 4.h,
             ),
             Text(
-              "Tümü",
+              statusString,
               style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(
@@ -163,8 +210,14 @@ class AcademyScreen extends GetView<AcademyController> {
                                             height: 0.5.h,
                                           ),
                                           Text(
+                                            controller
+                                                .learningGlobalModel!
+                                                .data!
+                                                .talentActivityList![index]
+                                                .aCTIVITYCOMPLETESTATUSTXT
+                                                .toString(),
                                             // "Tamamlanmamış",
-                                            "${controller.educationCompleteStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
+                                            //   "${controller.educationCompleteStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
                                             style: TextStyle(fontSize: 2.h),
                                           ),
                                           SizedBox(
@@ -179,8 +232,13 @@ class AcademyScreen extends GetView<AcademyController> {
                                             height: 0.5.h,
                                           ),
                                           Text(
-                                            //"Devam Ediyor",
-                                            "${controller.educationSuccessStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
+                                            controller
+                                                .learningGlobalModel!
+                                                .data!
+                                                .talentActivityList![index]
+                                                .aCTIVITYSUCCESSSTATUSTXT
+                                                .toString(), //"Devam Ediyor",
+                                            //  "${controller.educationSuccessStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
                                             style: TextStyle(fontSize: 2.h),
                                           ),
                                         ],

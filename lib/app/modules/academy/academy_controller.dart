@@ -8,6 +8,14 @@ class AcademyController extends GetxController {
 
   LearningGlobalModel? learningGlobalModel;
 
+  List<int> statuCode =[99,0,1];
+  List<String> statuString=[
+    "Tümü",
+    "Tamamlanan",
+    "Tamamlanmamış",
+   
+  ];
+
   @override
   void onInit() async {
     await getAcademyData();
@@ -20,9 +28,7 @@ class AcademyController extends GetxController {
     isLoading.value = true;
   }
 
-  int succesControl0 = 0;
-  int succesControl1 = 1;
-  int succesControl2 = 2;
+  
 
   educationCompleteStatusControl(int index) {
     switch (learningGlobalModel
