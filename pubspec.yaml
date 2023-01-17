@@ -43,6 +43,9 @@ dependencies:
   http: ^0.13.5
   shared_preferences: ^2.0.16
 
+  
+
+
 
   syncfusion_flutter_pdfviewer: ^20.4.42
 
@@ -50,7 +53,12 @@ dependencies:
 
   path_provider: ^2.0.11
   share_plus: ^6.3.0
+  intl: ^0.17.0
+
+
   get_storage: ^2.0.3
+
+
 
 
 
