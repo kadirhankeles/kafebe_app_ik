@@ -8,6 +8,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../data/services/notification/delete_push_messages_service.dart';
 import '../../routes/app_pages.dart';
+import '../approval_detail/approval_detail_screen.dart';
 
 class NotificationScreen extends GetView<NotificationController> {
   const NotificationScreen({super.key});
@@ -139,9 +140,17 @@ class NotificationScreen extends GetView<NotificationController> {
                                   } else {
                                     print(
                                         "req2 --> reqtype else --> onaylarım detay");
-                                    // Get.toNamed(OnaylarımDetaySayfasıYazılacak,arguments:["idMaster":controller
-                                    // .notificationListModel!.data![index].iDMASTER]),
 
+                                    Get.toNamed(Routes.APPROVALDETAIL,
+                                        arguments: [
+                                          {
+                                            "id": controller
+                                                .notificationListModel!
+                                                .data![index]
+                                                .iDMASTER
+                                                .toString()
+                                          }
+                                        ]);
                                   }
                                 } else {
                                   Get.toNamed(Routes.NOTIFICATION_DETAIL,

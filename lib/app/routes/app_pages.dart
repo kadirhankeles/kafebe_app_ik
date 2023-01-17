@@ -20,7 +20,6 @@ import 'package:kafebe_app_ik/app/modules/requests_detail/request_detail_screen.
 import 'package:kafebe_app_ik/app/modules/splash/splash_binding.dart';
 import 'package:kafebe_app_ik/app/modules/splash/splash_screen.dart';
 
-
 import '../modules/approval/approval_binding.dart';
 import '../modules/approval/approval_screen.dart';
 import '../modules/approval_detail/approval_detail_binding.dart';
@@ -37,15 +36,14 @@ import '../modules/requests_detail/request_detail_binding.dart';
 part 'app_routes.dart';
 
 class AppPages {
- // AppPages();
+  // AppPages();
   static const INITIAL = Routes.LOGIN;
 
   static final routes = [
-
-  
-    GetPage(name: Paths.LANGUAGE, page: () =>  LanguageScreen(), binding: LanguageBinding()),
-    
-
+    GetPage(
+        name: Paths.LANGUAGE,
+        page: () => LanguageScreen(),
+        binding: LanguageBinding()),
     GetPage(
       name: Paths.SPLASH,
       page: () => SplashScreen(),
@@ -82,7 +80,6 @@ class AppPages {
       binding: NotificationDetailBinding(),
     ),
     GetPage(
-
         name: Paths.REQUESTSDETAIL,
         page: () => RequestDetailScreen(),
         binding: RequestDetailBinding()),
@@ -90,7 +87,7 @@ class AppPages {
         name: Paths.LEAVE_ADD,
         page: () => LeaveAddScreen(),
         binding: LeaveAddBinding()),
-
+    GetPage(
       name: Paths.REQUESTS,
       page: () => RequestsScreen(),
       binding: RequestsBinding(),
@@ -107,11 +104,10 @@ class AppPages {
         name: Paths.EMPLOYEELEAVE,
         page: () => EmployeeLeaveScreen(),
         binding: EmployeeLeaveBinding()),
+    GetPage(
       name: Paths.REQUESTSDETAIL,
       page: () => RequestDetailScreen(),
       binding: RequestDetailBinding(),
     ),
-
-
   ];
 }

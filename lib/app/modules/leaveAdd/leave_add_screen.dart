@@ -84,6 +84,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                     '${startDateParts[2]}.${startDateParts[1]}.${startDateParts[0]}';
                               }
                               controller.deleteData();
+                              controller.tempFinishDate = null;
                             },
                             child: CustomContainerDate(
                                 obxValue: Obx(

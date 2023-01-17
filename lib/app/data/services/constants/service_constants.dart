@@ -26,21 +26,20 @@ class ServiceConstants {
       "RequestManagement/GetMyRequestMasterMobile?";
   static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
 
-
   //Leave
   static const LEAVE_TYPES = "EmployeeLeave/GetLeaveTypes";
   static const EMPLOYEE_LEAVE = "EmployeeLeave/GetEmployeeLeave";
   static const WORK_START = "EmployeeLeave/GetWorkStartDate";
   static const SEND_FOR_APPROVAL = "EmployeeLeave/SendForApproval";
 
-  static const GET_PENDING_REQUEST_MASTER_MOBILE = "RequestManagement/GetPendingRequestMasterMobile?";
-  static const GET_EMPLOYEES_LEAVE_BY_PAST_MONTH = "EmployeeLeave/GetEmployeesLeaveByPastMonth?";
-  static const FINALIZE_REQUEST="RequestManagement/FinalizeRequest";
+  static const GET_PENDING_REQUEST_MASTER_MOBILE =
+      "RequestManagement/GetPendingRequestMasterMobile?";
+  static const GET_EMPLOYEES_LEAVE_BY_PAST_MONTH =
+      "EmployeeLeave/GetEmployeesLeaveByPastMonth?";
+  static const FINALIZE_REQUEST = "RequestManagement/FinalizeRequest";
 
-
-  static const HEADER = {'vbtauthorization': apiToken};
-  static const HEADER2 = {'vbtauthorization': apiToken,
-                          'Accept': 'application/json'};
-
-
+  static const HEADER2 = {
+    'vbtauthorization': apiToken,
+    'Accept': 'application/json'
+  };
 }
