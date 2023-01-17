@@ -27,4 +27,7 @@ class ServiceConstants {
 
   //Leave
   static const LEAVE_TYPES = "EmployeeLeave/GetLeaveTypes";
+  static const EMPLOYEE_LEAVE = "EmployeeLeave/GetEmployeeLeave";
+  static const WORK_START = "EmployeeLeave/GetWorkStartDate";
+  static const SEND_FOR_APPROVAL = "EmployeeLeave/SendForApproval";
 }

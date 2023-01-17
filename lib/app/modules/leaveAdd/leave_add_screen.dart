@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_controller.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:intl/intl.dart';
 
 class LeaveAddScreen extends GetView<LeaveAddController> {
-  LeaveAddScreen({super.key});
+  const LeaveAddScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +51,17 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                   controller.selectedValue.value = vacationType
                                       .pICKLISTVACATIONTYPENAME
                                       .toString();
+
+                                  //listeden seçilen verinin id'si
+
+                                  controller.selectedLeaveID!.value =
+                                      vacationType.pICKLISTVACATIONTYPEID!;
                                 },
                               );
                             }).toList(),
-                            onChanged: (
-                              selectedId,
-                            ) {
-                              // controller.selectedValue = newvalue ;
-                              print("seçilen id =  $selectedId"); //id değeri
+                            onChanged: (selectedId) {
+                              print(
+                                  "seçilen id =  ${controller.selectedLeaveID}"); //id değeri
                             },
                           ),
                         ),
@@ -108,16 +109,12 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                 // locale: Locale('tr', 'TR'),
                               );
 
-                              // if(startDate.compareTo(endDate)==-1)
-                              //    print("tarih seçimi hatalı ");
-
-                              if (newDate != null) {
+                              if (newDate.runtimeType == DateTime) {
                                 controller.tempFinishDate = newDate;
                                 if (controller.tempStartDate!.compareTo(
-                                        controller.tempFinishDate!) ==
-                                    -1) {
+                                        controller.tempFinishDate!) !=
+                                    1) {
                                   var x = newDate.toString().split(' ')[0];
-
                                   List<String> finishDateParts = x.split('-');
                                   controller.selectedFinishDate.value =
                                       '${finishDateParts[2]}.${finishDateParts[1]}.${finishDateParts[0]}';
@@ -136,6 +133,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         const CustomDivider(),
                         const TitleTextWidget(text: "İşe Başlama Tarihi"),
                         CustomContainerDate(
+                          color: Colors.grey,
                           obxValue: Obx(
                             () => TitleTextWidget(
                                 text: controller.selectedFinishDate.value == "-"
@@ -149,6 +147,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         const CustomDivider(),
                         const TitleTextWidget(text: "İzin Gün Sayısı"),
                         CustomContainerDate(
+                          color: Colors.grey,
                           obxValue: Obx(
                             () => TitleTextWidget(
                                 text: controller.selectedFinishDate.value == "-"
@@ -167,6 +166,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                           height: 10.h,
                           color: Colors.white70,
                           child: TextFormField(
+                            controller: controller.textAddresController,
                             maxLines: 5,
                             decoration: const InputDecoration(
                               focusedBorder: OutlineInputBorder(
@@ -179,7 +179,6 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                               }
                               return null;
                             },
-                            // onSaved: (value) => _address = value,
                           ),
                         ),
                         const CustomDivider(),
@@ -190,6 +189,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                           height: 10.h,
                           color: Colors.white70,
                           child: TextFormField(
+                            controller: controller.textCommentController,
                             maxLines: 5,
                             decoration: const InputDecoration(
                               focusedBorder: OutlineInputBorder(
@@ -202,37 +202,40 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                               }
                               return null;
                             },
-                            // onSaved: (value) => _address = value,
                           ),
                         ),
                         const CustomDivider(),
                         Container(
-                          margin: EdgeInsets.only(bottom: 1.h),
-                          width: 100.w,
-                          height: 6.h,
-                          decoration: BoxDecoration(
-                            color: const Color(0xff850000),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                // if(startDate.compareTo(endDate)==-1)
-                                //    print("tarih seçimi hatalı ");
-                              },
-                              child: Center(
-                                child: Text(
-                                  "Uygula",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .copyWith(color: Colors.white),
-                                ),
-                              ),
+                            margin: EdgeInsets.only(bottom: 1.h),
+                            width: 100.w,
+                            height: 6.h,
+                            decoration: BoxDecoration(
+                              color: const Color(0xff850000),
+                              borderRadius: BorderRadius.circular(5.0),
                             ),
-                          ),
-                        )
+                            child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () async {
+                                    print(
+                                        'idhr ${controller.idHr} LeaveId${controller.selectedLeaveID}');
+
+                                    if (controller.daysOffCheck() == true) {
+                                      await controller.getWorkStartDateData();
+                                      await controller.getSendForApprovalData();
+                                      controller.deleteValues();
+                                    }
+                                  },
+                                  child: Center(
+                                    child: Text(
+                                      "Uygula",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ),
+                                ))),
                       ],
                     )
                   : const Center(
@@ -250,13 +253,14 @@ class CustomContainerDate extends StatelessWidget {
   const CustomContainerDate({
     Key? key,
     required this.obxValue,
+    this.color = Colors.white70,
   }) : super(key: key);
   final Obx obxValue;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 100.w, height: 5.h, color: Colors.white70, child: obxValue);
+    return Container(width: 100.w, height: 5.h, color: color, child: obxValue);
   }
 }
 
