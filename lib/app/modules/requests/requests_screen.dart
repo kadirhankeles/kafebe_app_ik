@@ -138,7 +138,7 @@ class RequestsScreen extends GetView<RequestsController> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Get.toNamed(Paths.REQUESTSDETAIL, arguments: [{'id': '${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].iDMASTER}'}]);
+                                  Get.toNamed(Paths.REQUESTSDETAIL, arguments: [{'id': '${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].iDMASTER}'},{'detail': '1'}]);
                                 },
                                 child: DetailContainer(
                                     name1: DateTime.tryParse(controller

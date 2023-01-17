@@ -1,7 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/getMyRequestMasterMobile_model.dart';
-import 'package:kafebe_app_ik/app/data/services/GetMyRequestMasterMobile_service.dart';
+import 'package:kafebe_app_ik/app/data/services/requests/GetMyRequestMasterMobile_service.dart';
 import 'package:kafebe_app_ik/app/modules/requests_detail/request_detail_controller.dart';
 
 class RequestsController extends GetxController {

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/data/models/getMyRequestMasterMobile_model.dart';
 import 'package:kafebe_app_ik/app/data/models/getRequestById_model.dart';
-import 'package:kafebe_app_ik/app/data/services/getRequestById_service.dart';
+import 'package:kafebe_app_ik/app/data/services/requests/getRequestById_service.dart';
 
 class RequestDetailController extends GetxController {
   GetRequestByIdModel? getRequestByIdModel;
@@ -12,16 +12,16 @@ class RequestDetailController extends GetxController {
   @override
   void onInit() async {
     dynamic argumentData = Get.arguments;
-    getRequestDetailData(argumentData[0]['id']);
+    getRequestDetailData(argumentData[0]['id'],argumentData[1]['detail']);
 
     super.onInit();
   }
 
-  getRequestDetailData(String idMaster) async {
+  getRequestDetailData(String idMaster, String detailType) async {
     print("Buraya girdi");
     isLoading.value = false;
     getRequestByIdModel =
-        await GetRequestByIdService().getRequestByIdService(idMaster);
+        await GetRequestByIdService().getRequestByIdService(idMaster,detailType);
     getRequestByIdModel!.data!.rEQUESTDETAILKEYVALUE!.forEach((element) {
       keyValue.add(element.name.toString());
       if (element.value.toString() == "null") {
