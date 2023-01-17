@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/Leave/error_model.dart';
@@ -39,13 +40,17 @@ class SendForApprovalService extends GetConnect {
             "COMMENT": comment,
             "ATTACHMENT": []
           }));
-      print(SendForApprovalModel.fromJson(jsonDecode(res.body)).data!.mESSAGE);
-    } catch (e) {
-      print(ErrorModel.fromJson(jsonDecode(res.body)).message);
+      print(res.body);
       Get.snackbar(
-          "error", "${ErrorModel.fromJson(jsonDecode(res.body)).message}");
+        "Durum",
+        "Servis Mesajı: ${SendForApprovalModel.fromJson(jsonDecode(res.body)).data!.mESSAGE}",
+      );
+    } catch (e) {
+      print(e);
+      Get.snackbar(
+        "Hata!",
+        "Servis Mesajı: ${ErrorModel.fromJson(jsonDecode(res.body)).message}",
+      );
     }
-    // return SendForApprovalModel.fromJson(jsonDecode(res.body));
-    return null;
   }
 }

@@ -76,20 +76,19 @@ class LeaveAddController extends GetxController {
   getSendForApprovalData() async {
     isLoadingApproval.value = false;
     sendForApprovalModel = await sendForApprovalService.sendForApproval(
-        selectedLeaveID!.value,
-        tempStartDate.toString(),
-        tempFinishDate.toString(),
-        workStartDateModel!.data!.wDATE.toString(),
-        workStartDateModel!.data!.dAY,
-        textAddresController.text,
-        textCommentController.text,
-        startHour.toString(),
-        finisHour.toString());
+      selectedLeaveID!.value,
+      tempStartDate.toString(),
+      tempFinishDate.toString(),
+      workStartDateModel!.data!.wDATE.toString(),
+      workStartDateModel!.data!.dAY,
+      startHour.toString(),
+      finisHour.toString(),
+      textAddresController.text,
+      textCommentController.text,
+    );
     isLoadingApproval.value = true;
-    // print('fdb --> ${sendForApprovalModel!.data!.mESSAGE}');
   }
 
-//işe başlama tarihini veren ve cumartesi,pazar durumunda güne ekleme yapan fonksiyon
   String nextWorkDay(DateTime selectedDate, jobStart) {
     if (selectedDate.runtimeType == DateTime ||
         jobStart.runtimeType == DateTime) {
@@ -112,13 +111,20 @@ class LeaveAddController extends GetxController {
     selectedFinishDate.value = "-";
   }
 
-  bool daysOffCheck() {
-    if (daysOff(tempStartDate!, leaveDay!) >= 20) {
-      Get.snackbar("Dikkat!", "Girilen Değerleri Tekrar Gözden Geçirin");
+//20 değeri kullanıcının izin hakediş tarihi olarak güncellenecek
+  bool sendControl() {
+    if (selectedValue.value == "Seçiniz..." ||
+        tempStartDate.runtimeType != DateTime ||
+        tempFinishDate.runtimeType != DateTime ||
+        (daysOff(tempStartDate!, leaveDay!) > 20)) {
+      Get.snackbar(
+        "Hata",
+        "Lütfen Değerleri Kontrol Ediniz!",
+      );
+
       return false;
-    } else {
-      return true;
     }
+    return true;
   }
 
   deleteValues() {

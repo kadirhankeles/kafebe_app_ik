@@ -52,8 +52,6 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                       .pICKLISTVACATIONTYPENAME
                                       .toString();
 
-                                  //listeden seçilen verinin id'si
-
                                   controller.selectedLeaveID!.value =
                                       vacationType.pICKLISTVACATIONTYPEID!;
                                 },
@@ -84,8 +82,6 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                 List<String> startDateParts = x.split('-');
                                 controller.selectedStartDate.value =
                                     '${startDateParts[2]}.${startDateParts[1]}.${startDateParts[0]}';
-                              } else {
-                                controller.selectedValue.value = "-";
                               }
                               controller.deleteData();
                             },
@@ -119,8 +115,6 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                   controller.selectedFinishDate.value =
                                       '${finishDateParts[2]}.${finishDateParts[1]}.${finishDateParts[0]}';
                                 }
-                              } else {
-                                controller.selectedValue.value = "-";
                               }
                             }
                           },
@@ -217,10 +211,7 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                 color: Colors.transparent,
                                 child: InkWell(
                                   onTap: () async {
-                                    print(
-                                        'idhr ${controller.idHr} LeaveId${controller.selectedLeaveID}');
-
-                                    if (controller.daysOffCheck() == true) {
+                                    if (controller.sendControl() == true) {
                                       await controller.getWorkStartDateData();
                                       await controller.getSendForApprovalData();
                                       controller.deleteValues();

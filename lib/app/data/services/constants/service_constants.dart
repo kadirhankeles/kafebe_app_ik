@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 import 'package:get/get.dart';
-import 'package:kafebe_app_ik/app/utils/api_token.dart';
+
+import '../../../utils/api_token.dart';
 
 class ServiceConstants {
 //baseurl
