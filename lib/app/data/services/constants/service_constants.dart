@@ -1,13 +1,17 @@
 // ignore_for_file: constant_identifier_names
 import 'package:get/get.dart';
 
-import '../../../utils/api_token.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:kafebe_app_ik/app/utils/api_token.dart';
+
+
+
 
 class ServiceConstants {
 //baseurl
   static const BASE_URL = "https://suniktest.suntekstil.com.tr/mobileapi/api/";
-//header
-  static const HEADER = {'vbtauthorization': apiToken};
+
+
 
 //endpoints
   static const PAYROLL_ALL_DATA_SERVICE = "EmployeeDocuments/GetPayrollPeriods";
@@ -26,6 +30,15 @@ class ServiceConstants {
       "RequestManagement/GetMyRequestMasterMobile?";
   static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
 
+
+  static const GET_PENDING_REQUEST_MASTER_MOBILE =
+      "RequestManagement/GetPendingRequestMasterMobile?";
+
+//header
+   static Map<String, String>?  HEADER = GetStorage().read("token") == null
+      ? {}
+      : {'vbtauthorization': GetStorage().read("token")};
+
   //Leave
   static const LEAVE_TYPES = "EmployeeLeave/GetLeaveTypes";
   static const EMPLOYEE_LEAVE = "EmployeeLeave/GetEmployeeLeave";
@@ -42,4 +55,5 @@ class ServiceConstants {
     'vbtauthorization': apiToken,
     'Accept': 'application/json'
   };
+
 }
