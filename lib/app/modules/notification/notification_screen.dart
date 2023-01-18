@@ -253,7 +253,7 @@ class NotificationWidget extends StatelessWidget {
       width: 95.w,
       height: 12.h,
       decoration: BoxDecoration(
-          color: Colors.white60,  borderRadius: BorderRadius.circular(10.w) ),
+          color: Colors.white60,  borderRadius: BorderRadius.circular(3.w) ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

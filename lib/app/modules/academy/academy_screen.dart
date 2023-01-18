@@ -84,31 +84,29 @@ class AcademyScreen extends GetView<AcademyController> {
         padding: EdgeInsets.only(right: 5.w, left: 5.w, top: 2.h),
         child: Column(
           children: [
-            Container(
-              height: 6.h,
-              child: TextFormField(
-                cursorColor: AppConstant.loginCursor,
-                keyboardType: TextInputType.visiblePassword,
-                cursorHeight: 3.h,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(top: 1.5.h),
-                  hintText: "Arama Yap",
-                  hintStyle: TextStyle(fontSize: 2.2.h),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: AppConstant.globalRadius,
-                    borderSide: AppConstant.textFieldBorderColor,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: AppConstant.globalRadius,
-                      borderSide: AppConstant.textFieldBorderColor),
-                  prefixIcon: AppConstant.academySearchIcon,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 3.h,
-            ),
+            // Container(
+            //   height: 6.h,
+            //   child: TextFormField(
+            //     cursorColor: AppConstant.loginCursor,
+            //     keyboardType: TextInputType.visiblePassword,
+            //     cursorHeight: 3.h,
+            //     textAlignVertical: TextAlignVertical.center,
+            //     decoration: InputDecoration(
+            //       contentPadding: EdgeInsets.only(top: 1.5.h),
+            //       hintText: "Arama Yap",
+            //       hintStyle: TextStyle(fontSize: 2.2.h),
+            //       enabledBorder: OutlineInputBorder(
+            //         borderRadius: AppConstant.globalRadius,
+            //         borderSide: AppConstant.textFieldBorderColor,
+            //       ),
+            //       focusedBorder: OutlineInputBorder(
+            //           borderRadius: AppConstant.globalRadius,
+            //           borderSide: AppConstant.textFieldBorderColor),
+            //       prefixIcon: AppConstant.academySearchIcon,
+            //     ),
+            //   ),
+            // ),
+            
             Text(
               statusString,
               style: TextStyle(fontSize: 2.5.h),
@@ -117,10 +115,10 @@ class AcademyScreen extends GetView<AcademyController> {
               height: 3.h,
             ),
             Container(
-                height: 69.h,
+                height: 82.h,
                 width: 100.w,
                 child: Obx(
-                  () => controller.isLoading == true
+                  () => controller.isLoading.value == true
                       ? ListView.builder(
                           itemCount: controller.learningGlobalModel?.data
                               ?.talentActivityList?.length,

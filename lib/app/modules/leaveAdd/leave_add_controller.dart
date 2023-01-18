@@ -125,11 +125,11 @@ class LeaveAddController extends GetxController {
     if (selectedValue.value == "Seçiniz..." ||
         tempStartDate.runtimeType != DateTime ||
         tempFinishDate.runtimeType != DateTime) {
-          Get.dialog(
+      Get.dialog(
         AlertDialog(
           backgroundColor: Colors.white.withOpacity(.9),
           content: Container(
-            height: 12.h,
+            height: 11.8.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -140,8 +140,7 @@ class LeaveAddController extends GetxController {
                 SizedBox(
                   height: 1.h,
                 ),
-                Text(
-                    "Lütfen değerleri kontrol ediniz."),
+                Text("Lütfen değerleri kontrol ediniz."),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -162,7 +161,7 @@ class LeaveAddController extends GetxController {
           ),
         ),
       );
-          
+
       /* Get.snackbar(
         "Hata",
         "Lütfen Değerleri Kontrol Ediniz!",
@@ -171,43 +170,43 @@ class LeaveAddController extends GetxController {
     } else {
       if ((daysOff(tempStartDate!, leaveDay!) > izinHakedis!)) {
         Get.dialog(
-        AlertDialog(
-          backgroundColor: Colors.white.withOpacity(.9),
-          content: Container(
-            height: 12.h,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Hata!",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 1.h,
-                ),
-                Text(
-                    "Yeterli İzin Hakkınız Yok! (İzin Hakkınız: $izinHakedis)"),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        child: Text(
-                          "TAMAM",
-                          style: TextStyle(
-                            color: Color(0xff7f0000),
-                          ),
-                        )),
-                  ],
-                )
-              ],
+          AlertDialog(
+            backgroundColor: Colors.white.withOpacity(.9),
+            content: Container(
+              height: 12.h,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Hata!",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 1.h,
+                  ),
+                  Text(
+                      "Yeterli İzin Hakkınız Yok! (İzin Hakkınız: $izinHakedis)"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          child: Text(
+                            "TAMAM",
+                            style: TextStyle(
+                              color: Color(0xff7f0000),
+                            ),
+                          )),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      );
-       /*  Get.snackbar("Hata!",
+        );
+        /*  Get.snackbar("Hata!",
             "Yeterli İzin Hakkınız Yok! (İzin Hakkınız: $izinHakedis)"); */
         return false;
       }
