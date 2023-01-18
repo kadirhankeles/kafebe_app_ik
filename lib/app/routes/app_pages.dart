@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_binding.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_detail/leave_detail_binding.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_detail/leave_detail_screen.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_screen.dart';
 
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
@@ -117,6 +119,10 @@ class AppPages {
       name: Paths.LEAVE,
       page: () => LeaveScreen(),
       binding: LeaveBinding(),
-    )
+    ),
+    GetPage(
+        name: Paths.LEAVE_DETAIL,
+        page: () => LeaveDetailScreen(),
+        binding: LeaveDetailBinding())
   ];
 }

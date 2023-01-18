@@ -66,7 +66,7 @@ class EmployeeEarnedRightsList {
   double? nEXTLEAVEALLOWANCEDAYS;
   bool? iSHEAD;
   String? pOSITIONNAME;
-  Null? pHOTOADDRESS;
+  dynamic pHOTOADDRESS;
 
   EmployeeEarnedRightsList(
       {this.iDHREMPLOYEE,

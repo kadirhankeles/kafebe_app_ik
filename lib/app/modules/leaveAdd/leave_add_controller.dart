@@ -59,6 +59,7 @@ class LeaveAddController extends GetxController {
   getLeaveTypesData() async {
     isLoading.value = false;
     leaveTypeModel = await LeaveTypesService().getLeaveTypes();
+
     isLoading.value = true;
   }
 
@@ -109,6 +110,14 @@ class LeaveAddController extends GetxController {
       return jobStart;
     } else {
       return "-";
+    }
+  }
+
+  sendService() async {
+    if (sendControl() == true) {
+      await getWorkStartDateData();
+      await getSendForApprovalData();
+      deleteValues();
     }
   }
 
