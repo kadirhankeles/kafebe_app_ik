@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_binding.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_screen.dart';
 
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
 
@@ -33,6 +35,8 @@ import '../modules/payroll/payroll_screen.dart';
 import '../modules/requests/requests_binding.dart';
 import '../modules/requests_detail/request_detail_binding.dart';
 
+//export sayfası yapılacak!
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -59,7 +63,6 @@ class AppPages {
       page: () => HomeScreen(),
       binding: HomeBinding(),
     ),
-    
     GetPage(
       name: Paths.PAYROLL,
       page: () => PayrollScreen(),
@@ -110,5 +113,10 @@ class AppPages {
       page: () => RequestDetailScreen(),
       binding: RequestDetailBinding(),
     ),
+    GetPage(
+      name: Paths.LEAVE,
+      page: () => LeaveScreen(),
+      binding: LeaveBinding(),
+    )
   ];
 }

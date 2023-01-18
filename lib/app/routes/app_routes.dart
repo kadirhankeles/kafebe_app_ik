@@ -18,14 +18,12 @@ abstract class Routes {
   static const REQUESTSDETAIL = Paths.REQUESTSDETAIL;
 
   static const LEAVE_ADD = Paths.LEAVE_ADD;
-
+  static const LEAVE = Paths.LEAVE;
 
   static const APPROVAL = Paths.APPROVAL;
   static const APPROVALDETAIL = Paths.APPROVALDETAIL;
 
   static const EMPLOYEELEAVE = Paths.EMPLOYEELEAVE;
-
-
 }
 
 abstract class Paths {
@@ -34,7 +32,6 @@ abstract class Paths {
   static const HOME = "/home";
 
   static const LANGUAGE = '/language';
-
 
   static const PAYROLL = "/payroll";
   static const PAYROLLVIEW = "/payrollview";
@@ -46,15 +43,10 @@ abstract class Paths {
   static const REQUESTSDETAIL = "/requestsdetail";
 
   static const LEAVE_ADD = "/leaveadd";
-
+  static const LEAVE = "/leave";
 
   static const APPROVAL = "/approval";
   static const APPROVALDETAIL = "/approvaldetail";
 
   static const EMPLOYEELEAVE = "/employeeleave";
-
-  
-
-
 }
-
