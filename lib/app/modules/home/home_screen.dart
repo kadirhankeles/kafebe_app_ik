@@ -294,7 +294,7 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
-                                              } else if (index == 2) {
+                                              } else if (index == 3) {
                                                 Get.toNamed(Paths.TEAM,
                                                     arguments: [
                                                       {
@@ -318,7 +318,9 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
-                                              } else if (index == 2) {
+
+                                              }else if (index == 3) {
+
                                                 Get.toNamed(Paths.TEAM,
                                                     arguments: [
                                                       {

@@ -8,6 +8,7 @@ class RequestsController extends GetxController {
   GetMyRequestMasterMobileModel? getMyRequestMasterMobileModel;
   RequestDetailController? requestDetailController;
   RxBool isLoading=false.obs;
+  RxString statusString="Tümü".obs;
   List<int> statuCode =[-1, 0, 1, 2, 4, 6];
   List<String> statuString=[
     "Tümü",
