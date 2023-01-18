@@ -6,6 +6,7 @@ import 'package:kafebe_app_ik/app/data/services/approval/getPendingRequestMaster
 class ApprovalController extends GetxController {
   GetPendingRequestMasterMobileModel? getPendingRequestMasterMobileModel;
   RxBool isLoading=false.obs;
+  RxString statusString = "Süreç Devam Ediyor".obs;
   List<int> statuCode =[-1, 0, 11, 12, 14, 6];
   List<String> statuString=[
     "Tümü",

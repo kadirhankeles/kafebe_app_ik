@@ -10,7 +10,7 @@ class RequestsScreen extends GetView<RequestsController> {
 
   @override
   Widget build(BuildContext context) {
-    String statusString="Tümü";
+    
     return Scaffold(
       backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
@@ -32,7 +32,7 @@ class RequestsScreen extends GetView<RequestsController> {
                               ),
                               onPressed: () {
                                 controller.getRequestData(controller.statuCode[0]);
-                                statusString = controller.statuString[0];
+                                controller.statusString.value = controller.statuString[0];
                                 Get.back();
                               },
                               child: Text("Tümü")),
@@ -43,7 +43,7 @@ class RequestsScreen extends GetView<RequestsController> {
                               ),
                               onPressed: () {
                                 controller.getRequestData(controller.statuCode[1]);
-                                statusString = controller.statuString[1];
+                                controller.statusString.value = controller.statuString[1];
                                 Get.back();
                               },
                               child: Text("Süreç Devam Ediyor")),
@@ -53,7 +53,7 @@ class RequestsScreen extends GetView<RequestsController> {
                               ),
                               onPressed: () {
                                 controller.getRequestData(controller.statuCode[2]);
-                                statusString = controller.statuString[2];
+                                controller.statusString.value = controller.statuString[2];
                                 Get.back();
                               },
                               child: Text("Onaylandı")),
@@ -63,7 +63,7 @@ class RequestsScreen extends GetView<RequestsController> {
                               ),
                               onPressed: () {
                                 controller.getRequestData(controller.statuCode[3]);
-                                statusString = controller.statuString[3];
+                                controller.statusString.value = controller.statuString[3];
                                  Get.back();
                               },
                               child: Text("Reddedildi")),
@@ -73,7 +73,7 @@ class RequestsScreen extends GetView<RequestsController> {
                               ),
                               onPressed: () {
                                 controller.getRequestData(controller.statuCode[4]);
-                                statusString = controller.statuString[4];
+                                controller.statusString.value = controller.statuString[4];
                                  Get.back();
                               },
                               child: Text("Revize Edildi")),
@@ -83,7 +83,7 @@ class RequestsScreen extends GetView<RequestsController> {
                               ),
                               onPressed: () {
                                 controller.getRequestData(controller.statuCode[5]);
-                                statusString = controller.statuString[5];
+                                controller.statusString.value = controller.statuString[5];
                                  Get.back();
                               },
                               child: Text("Geri Gönderildi")),
@@ -110,7 +110,7 @@ class RequestsScreen extends GetView<RequestsController> {
               Container(
                 height: 3.h,
                 width: double.infinity,
-                child: Center(child: Obx(() =>  controller.isLoading==true?Text(statusString):Container())),
+                child: Center(child: Obx(() =>  controller.isLoading==true?Text(controller.statusString.value):Container())),
               ),
               SizedBox(
                 height: 2.h,
