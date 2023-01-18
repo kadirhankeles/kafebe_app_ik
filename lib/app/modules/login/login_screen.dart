@@ -29,9 +29,12 @@ class LoginScreen extends GetView<LoginController> {
               top: 8.h,
               left: 80.w,
               child: InkWell(
+                onTap: () {
+                      Get.toNamed(Routes.LANGUAGE);
+                },
                 child: Container(
                   height: 4.h,
-                  width: 8.w,
+                  width: 10.w,
                   decoration: BoxDecoration(
                       color: AppConstant.loginLanguage,
                       borderRadius: AppConstant.globalRadius),
@@ -53,31 +56,34 @@ class LoginScreen extends GetView<LoginController> {
                 ),
               )),
           Positioned(
-            top: 33.h,
+            top: 42.h,
             left: 5.w,
             child: Container(width: 81.w, child: AppConstant.loginInfo),
           ),
-          Obx(() => Positioned(
-              top: 40.h,
-              left: 5.w,
-              child: Row(
-                children: [
-                  SizedBox(width: 60.w, child: AppConstant.loginSms),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 3.w),
-                    child: Switch(
-                      activeColor: AppConstant.loginSw,
-                      activeTrackColor: AppConstant.loginSwTrack,
-                      inactiveThumbColor: AppConstant.loginInSw,
-                      inactiveTrackColor: AppConstant.loginInSwTrack,
-                      value: controller.switchControl.value,
-                      onChanged: (value) {
-                        controller.switchControl.value = value;
-                      },
-                    ),
-                  )
-                ],
-              ))),
+          // Obx(
+          //   () => Positioned(
+          //     top: 40.h,
+          //     left: 5.w,
+          //     child: Row(
+          //       children: [
+          //         SizedBox(width: 60.w, child: AppConstant.loginSms),
+          //         Padding(
+          //           padding: EdgeInsets.only(bottom: 3.w),
+          //           child: Switch(
+          //             activeColor: AppConstant.loginSw,
+          //             activeTrackColor: AppConstant.loginSwTrack,
+          //             inactiveThumbColor: AppConstant.loginInSw,
+          //             inactiveTrackColor: AppConstant.loginInSwTrack,
+          //             value: controller.switchControl.value,
+          //             onChanged: (value) {
+          //               controller.switchControl.value = value;
+          //             },
+          //           ),
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
           Obx(
             () => Positioned(
               top: 50.h,
@@ -106,11 +112,11 @@ class LoginScreen extends GetView<LoginController> {
                                     BorderSide(color: Colors.transparent)),
                             prefixIcon: Icon(
                               Icons.table_rows_rounded,
-                              color: Color(0xffe53935),
+                              color: Color(0xff7f0000),
                             ),
                           ),
                           iconSize: 8.w,
-                          //  borderRadius: BorderRadius.circular(2.w),
+                          borderRadius: BorderRadius.circular(2.w),
                           hint: Text(
                             "Şehir Seçiniz",
                           ),
@@ -155,7 +161,6 @@ class LoginScreen extends GetView<LoginController> {
                   onPressed: () {
                     controller.loginData(controller.userNameController.text,
                         controller.passwordController.text);
-                        
                   },
                   child: Text(
                     "Giriş",
@@ -164,10 +169,10 @@ class LoginScreen extends GetView<LoginController> {
           Obx(
             () => controller.isLoading.value == true
                 ? Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(color:Color(0xff7f0000) ,),
                   )
                 : Container(),
-          )
+          ),
         ]),
       ),
     );

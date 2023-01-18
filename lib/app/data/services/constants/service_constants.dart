@@ -1,10 +1,17 @@
 // ignore_for_file: constant_identifier_names
 import 'package:get/get.dart';
+
+import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
+
+
+
 
 class ServiceConstants {
 //baseurl
   static const BASE_URL = "https://suniktest.suntekstil.com.tr/mobileapi/api/";
+
+
 
 //endpoints
   static const PAYROLL_ALL_DATA_SERVICE = "EmployeeDocuments/GetPayrollPeriods";
@@ -23,9 +30,30 @@ class ServiceConstants {
       "RequestManagement/GetMyRequestMasterMobile?";
   static const GET_REQUEST_BY_ID = "RequestManagement/GetRequestById?";
 
-  static const GET_PENDING_REQUEST_MASTER_MOBILE = "RequestManagement/GetPendingRequestMasterMobile?";
+
+  static const GET_PENDING_REQUEST_MASTER_MOBILE =
+      "RequestManagement/GetPendingRequestMasterMobile?";
+
+     
 
 //header
-  static const HEADER = {'vbtauthorization': apiToken};
+   static Map<String, String>?  HEADER = GetStorage().read("token") == null
+      ? {}
+      : {'vbtauthorization': GetStorage().read("token")};
+
+  //Leave
+  static const LEAVE_TYPES = "EmployeeLeave/GetLeaveTypes";
+  static const EMPLOYEE_LEAVE = "EmployeeLeave/GetEmployeeLeave";
+  static const WORK_START = "EmployeeLeave/GetWorkStartDate";
+  static const SEND_FOR_APPROVAL = "EmployeeLeave/SendForApproval";
+
+  static const GET_EMPLOYEES_LEAVE_BY_PAST_MONTH =
+      "EmployeeLeave/GetEmployeesLeaveByPastMonth?";
+  static const FINALIZE_REQUEST = "RequestManagement/FinalizeRequest";
+
+  static final HEADER2 = {
+    'vbtauthorization': apiToken,
+    'Accept': 'application/json'
+  };
 
 }

@@ -19,7 +19,17 @@ abstract class Routes {
   static const REQUESTS = Paths.REQUESTS;
   static const REQUESTSDETAIL = Paths.REQUESTSDETAIL;
 
+  static const LEAVE_ADD = Paths.LEAVE_ADD;
+
+
   static const APPROVAL = Paths.APPROVAL;
+  static const APPROVALDETAIL = Paths.APPROVALDETAIL;
+
+  static const EMPLOYEELEAVE = Paths.EMPLOYEELEAVE;
+
+
+  static const TEAM = Paths.TEAM;
+  static const TEAMDETAIL = Paths.TEAMDETAIL;
 
 }
 
@@ -30,7 +40,11 @@ abstract class Paths {
 
   static const LANGUAGE = '/language';
 
+
   static const ACADEMY = '/academy';
+
+
+
 
   static const PAYROLL = "/payroll";
   static const PAYROLLVIEW = "/payrollview";
@@ -41,9 +55,20 @@ abstract class Paths {
   static const REQUESTS = "/requests";
   static const REQUESTSDETAIL = "/requestsdetail";
 
+  static const LEAVE_ADD = "/leaveadd";
+
+
   static const APPROVAL = "/approval";
+  static const APPROVALDETAIL = "/approvaldetail";
+
+  static const EMPLOYEELEAVE = "/employeeleave";
+
   
+
+  static const TEAM = "/team";
+  static const TEAMDETAIL = "/teamdetail";
   
+
 
 }
 

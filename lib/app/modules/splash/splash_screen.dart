@@ -18,7 +18,7 @@ class SplashScreen extends GetView<SplashController> {
         height: 100.h,
         width: 100.w,
         child: Image.asset(
-          controller.isim,
+          controller.splashPhoto,
           fit: BoxFit.fitWidth,
          ),
        

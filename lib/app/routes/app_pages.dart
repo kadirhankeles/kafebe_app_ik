@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/modules/academy/academy_binding.dart';
 import 'package:kafebe_app_ik/app/modules/academy/academy_screen.dart';
 
+import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
+
+import 'package:kafebe_app_ik/app/modules/employeeLeave/employeeLeave_binding.dart';
+import 'package:kafebe_app_ik/app/modules/employeeLeave/employeeLeave_screen.dart';
 import 'package:kafebe_app_ik/app/modules/language/language_binding.dart';
 import 'package:kafebe_app_ik/app/modules/language/language_screen.dart';
 
@@ -20,13 +24,20 @@ import 'package:kafebe_app_ik/app/modules/splash/splash_screen.dart';
 
 import '../modules/approval/approval_binding.dart';
 import '../modules/approval/approval_screen.dart';
+import '../modules/approval_detail/approval_detail_binding.dart';
+import '../modules/approval_detail/approval_detail_screen.dart';
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_screen.dart';
+import '../modules/leaveAdd/leave_add_screen.dart';
 import '../modules/login/login_binding.dart';
 import '../modules/login/login_screen.dart';
 import '../modules/payroll/payroll_screen.dart';
 import '../modules/requests/requests_binding.dart';
 import '../modules/requests_detail/request_detail_binding.dart';
+import '../modules/team/team_binding.dart';
+import '../modules/team/team_detail/team_detail_binding.dart';
+import '../modules/team/team_detail/team_detail_screen.dart';
+import '../modules/team/team_screen.dart';
 
 part 'app_routes.dart';
 
@@ -36,10 +47,12 @@ class AppPages {
 
   static final routes = [
     GetPage(
+
       name: Paths.LANGUAGE,
       page: () => LanguageScreen(),
       binding: LanguageBinding(),
     ),
+
     GetPage(
       name: Paths.SPLASH,
       page: () => SplashScreen(),
@@ -55,6 +68,7 @@ class AppPages {
       page: () => HomeScreen(),
       binding: HomeBinding(),
     ),
+    
     GetPage(
       name: Paths.ACADEMY,
       page: () => AcademyScreen(),
@@ -81,19 +95,51 @@ class AppPages {
       binding: NotificationDetailBinding(),
     ),
     GetPage(
+        name: Paths.REQUESTSDETAIL,
+        page: () => RequestDetailScreen(),
+        binding: RequestDetailBinding()),
+    GetPage(
+        name: Paths.LEAVE_ADD,
+        page: () => LeaveAddScreen(),
+        binding: LeaveAddBinding()),
+    GetPage(
       name: Paths.REQUESTS,
       page: () => RequestsScreen(),
       binding: RequestsBinding(),
     ),
     GetPage(
+        name: Paths.APPROVAL,
+        page: () => ApprovalScreen(),
+        binding: ApprovalBinding()),
+    GetPage(
+        name: Paths.APPROVALDETAIL,
+        page: () => ApprovalDetailScreen(),
+        binding: ApprovalDetailBinding()),
+    GetPage(
+        name: Paths.EMPLOYEELEAVE,
+        page: () => EmployeeLeaveScreen(),
+        binding: EmployeeLeaveBinding()),
+    GetPage(
       name: Paths.REQUESTSDETAIL,
       page: () => RequestDetailScreen(),
       binding: RequestDetailBinding(),
     ),
+
     GetPage(
-      name: Paths.APPROVAL,
-      page: () => ApprovalScreen(),
-      binding: ApprovalBinding(),
+      name: Paths.TEAM,
+      page: () => TeamScreen(),
+      binding: TeamBinding(),
     ),
+
+    GetPage(
+      name: Paths.TEAMDETAIL,
+      page: () => TeamDetailScreen(),
+      binding: TeamDetailBinding(),
+    ),
+
+
+
+
+
   ];
 }

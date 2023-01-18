@@ -140,7 +140,7 @@ class PayrollScreen extends GetView<PayrollController> {
                                   ))),
                         ],
                       )
-                    : Center(child: CircularProgressIndicator()),
+                    : Center(child: CircularProgressIndicator(color: Color(0xff7f0000),)),
               )),
             )
           ],

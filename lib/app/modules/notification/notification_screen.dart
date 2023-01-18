@@ -8,6 +8,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../data/services/notification/delete_push_messages_service.dart';
 import '../../routes/app_pages.dart';
+import '../approval_detail/approval_detail_screen.dart';
 
 class NotificationScreen extends GetView<NotificationController> {
   const NotificationScreen({super.key});
@@ -53,20 +54,20 @@ class NotificationScreen extends GetView<NotificationController> {
                                     ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.green),
-                                        onPressed: () {
+                                        onPressed: () async{
                                           BulkDeleteMessagesService()
                                               .bulkDeleteMessages(2);
-                                          controller.getPushMessagesData();
+                                          await controller.getPushMessagesData();
                                           Get.back();
                                         },
                                         child: const Text("Hepsini Sil!")),
                                     ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.green),
-                                        onPressed: () {
+                                        onPressed: () async{
                                           BulkDeleteMessagesService()
                                               .bulkDeleteMessages(1);
-                                          controller.getPushMessagesData();
+                                         await controller.getPushMessagesData();
                                           Get.back();
                                         },
                                         child: const Text(
@@ -115,6 +116,13 @@ class NotificationScreen extends GetView<NotificationController> {
                                               .notificationListModel!
                                               .data![index]
                                               .iDMASTER
+                                              .toString(),
+                                        },
+                                        {
+                                          "detail": controller
+                                              .notificationListModel!
+                                              .data![index]
+                                              .iDPUSHNOTIFICATIONDETAIL
                                               .toString()
                                         }
                                       ]);
@@ -133,15 +141,37 @@ class NotificationScreen extends GetView<NotificationController> {
                                                 .notificationListModel!
                                                 .data![index]
                                                 .iDMASTER
+                                                .toString(),
+                                          },
+                                          {
+                                            "detail": controller
+                                                .notificationListModel!
+                                                .data![index]
+                                                .iDPUSHNOTIFICATIONDETAIL
                                                 .toString()
                                           }
                                         ]);
                                   } else {
                                     print(
                                         "req2 --> reqtype else --> onaylarım detay");
-                                    // Get.toNamed(OnaylarımDetaySayfasıYazılacak,arguments:["idMaster":controller
-                                    // .notificationListModel!.data![index].iDMASTER]),
 
+                                    Get.toNamed(Routes.APPROVALDETAIL,
+                                        arguments: [
+                                          {
+                                            "id": controller
+                                                .notificationListModel!
+                                                .data![index]
+                                                .iDMASTER
+                                                .toString()
+                                          },
+                                          {
+                                            "detail": controller
+                                                .notificationListModel!
+                                                .data![index]
+                                                .iDPUSHNOTIFICATIONDETAIL
+                                                .toString()
+                                          }
+                                        ]);
                                   }
                                 } else {
                                   Get.toNamed(Routes.NOTIFICATION_DETAIL,
@@ -190,7 +220,7 @@ class NotificationScreen extends GetView<NotificationController> {
                   ))
             : const Center(
                 child: CircularProgressIndicator(
-                  color: Colors.red,
+                  color: Color(0xff7f0000),
                 ),
               )));
   }
