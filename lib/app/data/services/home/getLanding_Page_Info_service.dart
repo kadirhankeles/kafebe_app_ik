@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 
@@ -10,7 +11,8 @@ class LandingPageInfoService extends GetConnect {
   Future<GetLandingPageInfoModel?> getLandingPageInfoService() async {
     GetLandingPageInfoModel? data = GetLandingPageInfoModel();
 
-    var headers = ServiceConstants.HEADER;
+    var headers = GetStorage().read("token");
+    print(headers);
 
     var params = {
       'isFirstLogin': 'true',
@@ -21,7 +23,7 @@ class LandingPageInfoService extends GetConnect {
         '${ServiceConstants.BASE_URL}${ServiceConstants.GET_LANDING_PAGE_INFO}$query');
     var res = await get(
       url,
-      headers: headers,
+      headers: {'vbtauthorization':headers},
     );
 
     if (res.statusCode != 200) {

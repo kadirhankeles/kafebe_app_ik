@@ -11,7 +11,7 @@ class LeaveTypesService extends GetConnect {
 
     var url = Uri.parse(
         '${ServiceConstants.BASE_URL}${ServiceConstants.LEAVE_TYPES}');
-    var res = await http.post(url, headers: headers);
+    var res = await  http.post(url, headers: headers);
     if (res.statusCode != 200) {
       throw Exception('http.post error: statusCode= ${res.statusCode}');
     }

@@ -129,11 +129,16 @@ class LoginController extends GetxController {
       isLoading.value = false;
     } else {
       loginModel = (await getLoginService(user, password))!;
+      print(loginModel.token);
+      print(loginModel.userID);
+      
       isLoading.value = false;
       await cacheToken.write("token", loginModel.token);
       await cacheToken.write("isManager", loginModel.isManager);
       await cacheToken.write("refleshToken", loginModel.refreshToken);
       await cacheToken.write("userId", loginModel.userID);
+      await cacheToken.write(loginModel.userID.toString(), loginModel.token);
+      
     }
   }
 
@@ -160,10 +165,11 @@ class LoginController extends GetxController {
 
   // }
 
-  // @override
-  // void onInit() {
-  //   savedData ??= SavedDataModel();
-  //   super.onInit();
-  // }
+   @override
+   void onInit() {
+    cacheToken.write("token", "");
+   savedData ??= SavedDataModel();
+     super.onInit();
+   }
 
 }

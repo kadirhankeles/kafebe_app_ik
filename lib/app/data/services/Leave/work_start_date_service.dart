@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 
@@ -14,6 +15,10 @@ class WorkStartDateService extends GetConnect {
     String startDate,
     String endDate,
   ) async {
+    final cacheToken = GetStorage();
+
+    String apiToken = cacheToken.read("token");
+    
     var headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

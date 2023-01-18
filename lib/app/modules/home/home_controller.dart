@@ -14,44 +14,46 @@ class HomeController extends GetxController {
   GetProfilPictureModel? getProfilPictureModel;
   RxBool isLoading = false.obs;
   RxBool isProfilPicture = false.obs;
-  RxBool isCategoryName =false.obs;
+  RxBool isCategoryName = false.obs;
   RxBool isNotiCount = false.obs;
 
   //! Menülerin isimlerinin ayıklanması için liste
-  List<dynamic> manager =[];
-  List<dynamic> managerSun =[];
-  List<dynamic> employee =[];
-  List<dynamic> employeeSun =[];
+  List<dynamic> manager = [];
+  List<dynamic> managerSun = [];
+  List<dynamic> employee = [];
+  List<dynamic> employeeSun = [];
   List<dynamic> notificationCount = [];
-  List<dynamic> menuName=[];
+  List<dynamic> menuName = [];
 
-  final cacheToken = GetStorage();
-@override
+  String cacheToken = GetStorage().read("token");
+  @override
   void onInit() async {
     await getLandingPageInfoData();
     await getProfilPictureData();
-    
+
     super.onInit();
   }
 
   getLandingPageInfoData() async {
-    isLoading.value=false;
+    isLoading.value = false;
     getLandingPageInfoModel =
         await LandingPageInfoService().getLandingPageInfoService();
     isLoading.value = true;
-    
   }
 
   getProfilPictureData() async {
-    isProfilPicture.value=false;
-    isCategoryName.value=false;
-    isNotiCount.value=false;
+    isProfilPicture.value = false;
+    isCategoryName.value = false;
+    isNotiCount.value = false;
     getProfilPictureModel =
         await ProfilPictureService().getProfilPictureService();
-    await menuNameAndNotification(getLandingPageInfoModel, getLandingPageInfoModel!.data!.isManager, getLandingPageInfoModel!.data!.sunAkademi);    
+    await menuNameAndNotification(
+        getLandingPageInfoModel,
+        getLandingPageInfoModel!.data!.isManager,
+        getLandingPageInfoModel!.data!.sunAkademi);
     isProfilPicture.value = true;
     isCategoryName.value = true;
-    isNotiCount.value= true;
+    isNotiCount.value = true;
   }
 
   Image baseToImage(String path) {
@@ -66,47 +68,82 @@ class HomeController extends GetxController {
       );
   }
 
-  menuNameAndNotification(GetLandingPageInfoModel? getLandingPageInfoModel, bool? isManager, bool? sunAkademi){
-    int index =0;
-    getLandingPageInfoModel!.data!.menuInfo!.forEach((element) {
-      menuName.add(element.mENUNAME.toString());
-      print(element.mENUNAME.toString());
-      
-      if(isManager==true && sunAkademi ==true){index++;
-        if(element.mENUNAME.toString() == "MyRequests" || element.mENUNAME.toString() =="MyApprovals" || element.mENUNAME.toString()=="MyTeam" || element.mENUNAME.toString()=="MyWorks" ||element.mENUNAME.toString()=="SunAkademi"){
-          managerSun.add(element.mENUNAME.toString());
-          
-        }
-      }
-      else if(isManager==true && sunAkademi ==false){index++;
-        if( element.mENUNAME == "MyRequests" || element.mENUNAME =="MyApprovals" ||  element.mENUNAME=="MyTeam" || element.mENUNAME=="MyWorks" ){
-          manager.add(element.mENUNAME.toString());
-         
-        }
-      }
-      else if(isManager==false && sunAkademi ==true){index++;
-         if(element.mENUNAME == "MyRequests" || element.mENUNAME =="MyApprovals"|| element.mENUNAME=="MyWorks" ||element.mENUNAME=="SunAkademi"){
-          employeeSun.add(element.mENUNAME.toString());
+  menuNameAndNotification(GetLandingPageInfoModel? getLandingPageInfoModel,
+      bool? isManager, bool? sunAkademi) {
+    int index = 0;
+    getLandingPageInfoModel!.data!.menuInfo!.forEach(
+      (element) {
+        menuName.add(element.mENUNAME.toString());
+        print(element.mENUNAME.toString());
 
-
-         }
-      }
-      else if(isManager==false && sunAkademi ==false){index++;
-         if(element.mENUNAME == "MyRequests" || element.mENUNAME =="MyApprovals"|| element.mENUNAME=="MyWorks"){
-          employee.add(element.mENUNAME.toString());
-          
-         }
-      }
-      
-     },
-     ); 
-     notificationCount.add(getLandingPageInfoModel.data!.myRequestCount);
-     notificationCount.add(getLandingPageInfoModel.data!.getMyApprovalCount);
-     notificationCount.add(getLandingPageInfoModel.data!.getMyWorks);
+        if (isManager == true && sunAkademi == true) {
+          index++;
+          if (element.mENUNAME.toString() == "MyRequests" ||
+              element.mENUNAME.toString() == "MyApprovals" ||
+              element.mENUNAME.toString() == "MyTeam" ||
+              element.mENUNAME.toString() == "MyWorks" ||
+              element.mENUNAME.toString() == "SunAkademi") {
+            managerSun.add(element.mENUNAME.toString());
+          }
+        } else if (isManager == true && sunAkademi == false) {
+          index++;
+          if (element.mENUNAME == "MyRequests" ||
+              element.mENUNAME == "MyApprovals" ||
+              element.mENUNAME == "MyTeam" ||
+              element.mENUNAME == "MyWorks") {
+            manager.add(element.mENUNAME.toString());
+          }
+        } else if (isManager == false && sunAkademi == true) {
+          index++;
+          if (element.mENUNAME == "MyRequests" ||
+              element.mENUNAME == "MyApprovals" ||
+              element.mENUNAME == "MyWorks" ||
+              element.mENUNAME == "SunAkademi") {
+            employeeSun.add(element.mENUNAME.toString());
+          }
+        } else if (isManager == false && sunAkademi == false) {
+          index++;
+          if (element.mENUNAME == "MyRequests" ||
+              element.mENUNAME == "MyApprovals" ||
+              element.mENUNAME == "MyWorks") {
+            employee.add(element.mENUNAME.toString());
+          }
+        }
+      },
+    );
+    notificationCount.add(getLandingPageInfoModel.data!.myRequestCount);
+    notificationCount.add(getLandingPageInfoModel.data!.getMyApprovalCount);
+    notificationCount.add(getLandingPageInfoModel.data!.getMyWorks);
   }
-  //Model Sıfırlama eklenecek 
-  cacheRemoveAndGoToLogin() async{
-    await cacheToken.remove("token");
-    Get.offAllNamed(Routes.LOGIN);
+
+  //Model Sıfırlama eklenecek
+  cacheRemoveAndGoToLogin() async {
+    Get.defaultDialog(
+      title: "Dikkat!",
+      middleText: "Çıkış yapmak isteidiğinize emin misiniz?",
+      cancel: ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+          onPressed: () {
+            Get.back();
+          },
+          child: const Text("Vazgeç")),
+      confirm: ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+          onPressed: () {
+            Get.delete();
+            Get.delete<HomeController>();
+            GetStorage().write("token", "");
+            Get.offAllNamed(Routes.LOGIN);
+          },
+          child: const Text("Onayla")),
+    );
+  }
+
+  @override
+  void onClose() async {
+    GetStorage().write("token", "");
+
+    // TODO: implement onClose
+    super.onClose();
   }
 }

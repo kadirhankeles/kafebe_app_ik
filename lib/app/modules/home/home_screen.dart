@@ -671,7 +671,9 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                           GestureDetector(
                             onTap: () {
+                              controller.cacheToken="";
                               controller.cacheRemoveAndGoToLogin();
+
                             },
                             child: Container(
                               height: 10.h,
