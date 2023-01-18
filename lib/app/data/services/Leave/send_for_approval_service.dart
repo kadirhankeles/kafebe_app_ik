@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
@@ -8,16 +9,15 @@ import 'package:kafebe_app_ik/app/data/models/Leave/error_model.dart';
 import 'package:kafebe_app_ik/app/data/models/Leave/send_for_approval_model.dart';
 import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SendForApprovalService extends GetConnect {
   dynamic res;
   Future<SendForApprovalModel?> sendForApproval(id, startDate, endDate, wDate,
       daysOff, String sHour, String eHour, adress, comment) async {
+    String cacheToken = GetStorage().read("token");
 
-     String cacheToken=GetStorage().read("token");
-
-
-    Map<String,String> headers = {
+    Map<String, String> headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'vbtauthorization': cacheToken
@@ -46,16 +46,90 @@ class SendForApprovalService extends GetConnect {
             "ATTACHMENT": []
           }));
       print(res.body);
-      Get.snackbar(
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white.withOpacity(.9),
+          content: Container(
+            height: 17.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Durum",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Text(
+                    "Servis Mesajı: ${SendForApprovalModel.fromJson(jsonDecode(res.body)).data!.mESSAGE}"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: Text(
+                          "TAMAM",
+                          style: TextStyle(
+                            color: Color(0xff7f0000),
+                          ),
+                        )),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+      /* Get.snackbar(
         "Durum",
         "Servis Mesajı: ${SendForApprovalModel.fromJson(jsonDecode(res.body)).data!.mESSAGE}",
-      );
+      ); */
     } catch (e) {
       print(e);
-      Get.snackbar(
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white.withOpacity(.9),
+          content: Container(
+            height: 17.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Durum",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Text(
+                    "Servis Mesajı: ${ErrorModel.fromJson(jsonDecode(res.body)).message}"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: Text(
+                          "TAMAM",
+                          style: TextStyle(
+                            color: Color(0xff7f0000),
+                          ),
+                        )),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+      /* Get.snackbar(
         "Hata!",
         "Servis Mesajı: ${ErrorModel.fromJson(jsonDecode(res.body)).message}",
-      );
+      ); */
     }
   }
 }

@@ -23,62 +23,62 @@ class AcademyScreen extends GetView<AcademyController> {
         backgroundColor: AppConstant.loginBackground,
         title: Text("Sun Akademi"),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.dialog(AlertDialog(
-                    backgroundColor: Colors.white.withOpacity(.9),
-                    content: Container(
-                      height: 30.h,
-                      child: Column(
-                        children: [
-                          TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.black,
-                              ),
-                              onPressed: () async {
-                                controller.activityIndex.value = 0;
-                                await controller.getAcademyData();
-                                // controller.educationCompleteStatusControl(
-                                //     controller.statuCode[1]);
-                                statusString = controller.statuString[1];
-                                //  AcedemyCompletedModel completedModel2 = AcedemyCompletedModel(activitySuccessStatus2: activitySuccessStatus2, activityCompleteStatus2: activityCompleteStatus2)
-                                // controller.addActivity2(activ2)
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         Get.dialog(AlertDialog(
+        //             backgroundColor: Colors.white.withOpacity(.9),
+        //             content: Container(
+        //               height: 30.h,
+        //               child: Column(
+        //                 children: [
+        //                   TextButton(
+        //                       style: TextButton.styleFrom(
+        //                         foregroundColor: Colors.black,
+        //                       ),
+        //                       onPressed: () async {
+        //                         controller.activityIndex.value = 0;
+        //                         await controller.getAcademyData();
+        //                         // controller.educationCompleteStatusControl(
+        //                         //     controller.statuCode[1]);
+        //                         statusString = controller.statuString[1];
+        //                         //  AcedemyCompletedModel completedModel2 = AcedemyCompletedModel(activitySuccessStatus2: activitySuccessStatus2, activityCompleteStatus2: activityCompleteStatus2)
+        //                         // controller.addActivity2(activ2)
 
-                                Get.back();
-                              },
-                              child: Text("Tamamlanan")),
-                          TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.black,
-                              ),
-                              onPressed: () async {
-                                controller.activityIndex.value = 1;
-                                await controller.getAcademyData();
-                                // controller.educationCompleteStatusControl(
-                                //     controller.statuCode[2]);
-                                statusString = controller.statuString[2];
+        //                         Get.back();
+        //                       },
+        //                       child: Text("Tamamlanan")),
+        //                   TextButton(
+        //                       style: TextButton.styleFrom(
+        //                         foregroundColor: Colors.black,
+        //                       ),
+        //                       onPressed: () async {
+        //                         controller.activityIndex.value = 1;
+        //                         await controller.getAcademyData();
+        //                         // controller.educationCompleteStatusControl(
+        //                         //     controller.statuCode[2]);
+        //                         statusString = controller.statuString[2];
 
-                                Get.back();
-                              },
-                              child: Text("Tamamlanmadı")),
-                          TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.black,
-                              ),
-                              onPressed: () async {
-                                controller.activityIndex.value = 2;
-                                await controller.getAcademyData();
-                                statusString = controller.statuString[0];
-                                Get.back();
-                              },
-                              child: Text("Tümü")),
-                        ],
-                      ),
-                    )));
-              },
-              icon: Icon(Icons.filter_alt_rounded))
-        ],
+        //                         Get.back();
+        //                       },
+        //                       child: Text("Tamamlanmadı")),
+        //                   TextButton(
+        //                       style: TextButton.styleFrom(
+        //                         foregroundColor: Colors.black,
+        //                       ),
+        //                       onPressed: () async {
+        //                         controller.activityIndex.value = 2;
+        //                         await controller.getAcademyData();
+        //                         statusString = controller.statuString[0];
+        //                         Get.back();
+        //                       },
+        //                       child: Text("Tümü")),
+        //                 ],
+        //               ),
+        //             )));
+        //       },
+        //       icon: Icon(Icons.filter_alt_rounded))
+        // ],
       ),
       body: Padding(
         padding: EdgeInsets.only(right: 5.w, left: 5.w, top: 2.h),
@@ -87,7 +87,6 @@ class AcademyScreen extends GetView<AcademyController> {
             Container(
               height: 6.h,
               child: TextFormField(
-                
                 cursorColor: AppConstant.loginCursor,
                 keyboardType: TextInputType.visiblePassword,
                 cursorHeight: 3.h,
@@ -139,11 +138,10 @@ class AcademyScreen extends GetView<AcademyController> {
                                     Row(
                                       children: [
                                         SizedBox(
-                                          height: 5.h,
-                                          width: 10.w,
-                                           child: Image.asset(
-                                                "assets/my_jobs.png")
-                                        ),
+                                            height: 5.h,
+                                            width: 10.w,
+                                            child: Image.asset(
+                                                "assets/my_jobs.png")),
                                         SizedBox(
                                           width: 5.w,
                                         ),

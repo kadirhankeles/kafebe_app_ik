@@ -96,7 +96,43 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                         GestureDetector(
                           onTap: () async {
                             if (controller.selectedStartDate.value == "-") {
-                              Get.snackbar('Uyarı', "Başlangıç Değeri Giriniz");
+                              Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white.withOpacity(.9),
+          content: Container(
+            height: 12.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Uyarı",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Text(
+                    "Başlangıç değeri giriniz"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: Text(
+                          "TAMAM",
+                          style: TextStyle(
+                            color: Color(0xff7f0000),
+                          ),
+                        )),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
                             } else {
                               DateTime? newDate = await showDatePicker(
                                 context: context,

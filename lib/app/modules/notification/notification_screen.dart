@@ -44,6 +44,7 @@ class NotificationScreen extends GetView<NotificationController> {
                 ? IconButton(
                     onPressed: () {
                       Get.dialog(AlertDialog(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.w)),
                           actionsAlignment: MainAxisAlignment.center,
                           title: Center(child: Text("Dikkat!")),
                           actions: [
@@ -252,7 +253,7 @@ class NotificationWidget extends StatelessWidget {
       width: 95.w,
       height: 12.h,
       decoration: BoxDecoration(
-          color: Colors.white60, borderRadius: BorderRadius.circular(3.w)),
+          color: Colors.white60,  borderRadius: BorderRadius.circular(10.w) ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -285,6 +286,7 @@ class NotificationWidget extends StatelessWidget {
             child: IconButton(
                 onPressed: () {
                   Get.defaultDialog(
+                    radius: 2.w,
                     title: "Dikkat!",
                     middleText: "Bildirimi Silmek Üzeresiniz",
                     cancel: ElevatedButton(

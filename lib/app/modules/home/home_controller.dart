@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/data/services/home/getProfilPicture_service.dart';
 import 'package:kafebe_app_ik/app/routes/app_pages.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../data/models/getLanding_PageInfo_model.dart';
 import '../../data/models/get_ProfilPicture_model.dart';
 import '../../data/services/home/getLanding_Page_Info_service.dart';
@@ -151,6 +152,7 @@ class HomeController extends GetxController {
   //Model Sıfırlama eklenecek
   cacheRemoveAndGoToLogin() async {
     Get.defaultDialog(
+      radius: 2.w,
       title: "Dikkat!",
       middleText: "Çıkış yapmak isteidiğinize emin misiniz?",
       cancel: ElevatedButton(

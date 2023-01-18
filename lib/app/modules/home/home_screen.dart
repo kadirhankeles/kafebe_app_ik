@@ -85,32 +85,45 @@ class HomeScreen extends GetView<HomeController> {
                             padding: EdgeInsets.zero,
                             splashRadius: 1.h,
                             onPressed: () {
-                              Get.defaultDialog(
-                                title: "Uyarı",
-                                middleText:
-                                    "Profilinizi güncellemeyi unutmayınız.",
-                                backgroundColor: Colors.grey.withOpacity(.9),
-                                titleStyle: TextStyle(color: Colors.white),
-                                middleTextStyle: TextStyle(color: Colors.white),
-                                radius: 10,
-                                actions: [
-                                  SizedBox(
-                                    width: 45.w,
-                                  ),
-                                  OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      side: BorderSide(
-                                          width: .1.h, color: Colors.white),
+                              Get.dialog(
+                                AlertDialog(
+                                  backgroundColor: Colors.white.withOpacity(.9),
+                                  content: Container(
+                                    height: 12.h,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Uyarı",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          height: 1.h,
+                                        ),
+                                        Text(
+                                            "Profilinizi güncellemeyi unutmayınız."),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                                child: Text(
+                                                  "TAMAM",
+                                                  style: TextStyle(
+                                                    color: Color(0xff7f0000),
+                                                  ),
+                                                )),
+                                          ],
+                                        )
+                                      ],
                                     ),
-                                    onPressed: () {
-                                      Get.back();
-                                    },
-                                    child: const Text(
-                                      'Close',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
                                   ),
-                                ],
+                                ),
                               );
                             },
                             icon: Icon(
@@ -305,7 +318,7 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
-                                              }else if (index == 2) {
+                                              } else if (index == 2) {
                                                 Get.toNamed(Paths.TEAM,
                                                     arguments: [
                                                       {
