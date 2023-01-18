@@ -83,7 +83,17 @@ class HomeController extends GetxController {
               element.mENUNAME.toString() == "MyTeam" ||
               element.mENUNAME.toString() == "MyWorks" ||
               element.mENUNAME.toString() == "SunAkademi") {
-            managerSun.add(element.mENUNAME.toString());
+                if(element.mENUNAME.toString() == "MyRequests"){
+                  managerSun.add("Taleplerim");
+                } else if (element.mENUNAME.toString() == "MyApprovals"){
+                  managerSun.add("Onaylarım");
+                }else if (element.mENUNAME.toString() == "MyTeam"){
+                  managerSun.add("Ekibim");
+                }else if (element.mENUNAME.toString() == "MyWorks"){
+                  managerSun.add("İşlerim");
+                }else if (element.mENUNAME.toString() == "SunAkademi"){
+                  managerSun.add("Sun Akademi");
+                }
           }
         } else if (isManager == true && sunAkademi == false) {
           index++;
@@ -91,7 +101,15 @@ class HomeController extends GetxController {
               element.mENUNAME == "MyApprovals" ||
               element.mENUNAME == "MyTeam" ||
               element.mENUNAME == "MyWorks") {
-            manager.add(element.mENUNAME.toString());
+            if(element.mENUNAME.toString() == "MyRequests"){
+                  manager.add("Taleplerim");
+                } else if (element.mENUNAME.toString() == "MyApprovals"){
+                  manager.add("Onaylarım");
+                }else if (element.mENUNAME.toString() == "MyWorks"){
+                  manager.add("İşlerim");
+                }else if (element.mENUNAME.toString() == "MyTeam"){
+                  manager.add("Ekibim");
+                }
           }
         } else if (isManager == false && sunAkademi == true) {
           index++;
@@ -99,14 +117,28 @@ class HomeController extends GetxController {
               element.mENUNAME == "MyApprovals" ||
               element.mENUNAME == "MyWorks" ||
               element.mENUNAME == "SunAkademi") {
-            employeeSun.add(element.mENUNAME.toString());
+            if(element.mENUNAME.toString() == "MyRequests"){
+                  employeeSun.add("Taleplerim");
+                } else if (element.mENUNAME.toString() == "MyApprovals"){
+                  employeeSun.add("Onaylarım");
+                }else if (element.mENUNAME.toString() == "MyWorks"){
+                  employeeSun.add("İşlerim");
+                }else if (element.mENUNAME.toString() == "SunAkademi"){
+                  employeeSun.add("Sun Akademi");
+                }
           }
         } else if (isManager == false && sunAkademi == false) {
           index++;
           if (element.mENUNAME == "MyRequests" ||
               element.mENUNAME == "MyApprovals" ||
               element.mENUNAME == "MyWorks") {
-            employee.add(element.mENUNAME.toString());
+           if(element.mENUNAME.toString() == "MyRequests"){
+                  employee.add("Taleplerim");
+                } else if (element.mENUNAME.toString() == "MyApprovals"){
+                  employee.add("Onaylarım");
+                }else if (element.mENUNAME.toString() == "MyWorks"){
+                  employee.add("İşlerim");
+                }
           }
         }
       },

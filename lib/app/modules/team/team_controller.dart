@@ -18,15 +18,16 @@ class TeamController extends GetxController {
     "Vekaleten Bağlı Çalışanlar",
     "Fonksiyonel Bağlı Çalışanlar",
   ];
-
+dynamic argumentData = Get.arguments;
   RxString screenString = "Direkt Bağlı Çalışanlar".obs;
   @override
   void onInit() {
-    getMyTeamData(DateTime.now().toString(), statuCode[0],7217 );
+    
+    getMyTeamData(DateTime.now().toString(), statuCode[0],argumentData[0]['idHR'] );
     super.onInit();
   }
 
-  getMyTeamData(String date, int eType, int idHR) async{
+  getMyTeamData(String date, int eType, String idHR) async{
     isLoading.value=false;
     myTeamModel = await MyTeamService().myTeamService(date, eType, idHR);
     isLoading.value=true;

@@ -32,7 +32,7 @@ class Data {
   String? eMPLOYEENAME;
   String? eMPLOYEESURNAME;
   String? pOSITIONNAME;
-  Null? pHOTOADDRESS;
+  dynamic? pHOTOADDRESS;
   bool? iSHEAD;
   String? uID;
 

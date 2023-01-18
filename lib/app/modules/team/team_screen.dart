@@ -5,6 +5,8 @@ import 'package:kafebe_app_ik/app/modules/team/team_controller.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../routes/app_pages.dart';
+
 class TeamScreen extends GetView<TeamController> {
   const TeamScreen({super.key});
 
@@ -34,7 +36,7 @@ class TeamScreen extends GetView<TeamController> {
                                 controller.getMyTeamData(
                                     DateTime.now().toString(),
                                     controller.statuCode[0],
-                                    7217);
+                                    controller.argumentData[0]['idHR']);
                                 controller.screenString.value = controller.statuString[0];
                                 Get.back();
                               },
@@ -47,7 +49,7 @@ class TeamScreen extends GetView<TeamController> {
                                 controller.getMyTeamData(
                                     DateTime.now().toString(),
                                     controller.statuCode[1],
-                                    7217);
+                                    controller.argumentData[0]['idHR']);
                                 controller.screenString.value = controller.statuString[1];
                                 Get.back();
                               },
@@ -60,7 +62,7 @@ class TeamScreen extends GetView<TeamController> {
                                 controller.getMyTeamData(
                                     DateTime.now().toString(),
                                     controller.statuCode[2],
-                                    7217);
+                                    controller.argumentData[0]['idHR']);
                                 controller.screenString.value = controller.statuString[2];
                                 Get.back();
                               },
@@ -109,49 +111,60 @@ class TeamScreen extends GetView<TeamController> {
                                   mainAxisSpacing: 3.h,
                                   childAspectRatio: 0.12.h),
                           itemBuilder: (context, index) {
-                            return Container(
-                              decoration: AppConstant.homeButton,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ClipRRect(
-                                      borderRadius: BorderRadius.circular(50),
-                                      child: Container(
-                                          height: 7.h,
-                                          width: 7.h,
-                                          child: HomeController().baseToImage(
-                                              controller.myTeamModel!
-                                                  .data![index].pHOTOADDRESS
-                                                  .toString()))),
-                                  SizedBox(
-                                    height: .5.h,
-                                  ),
-                                  Container(
-                                    child: Center(
-                                        child: Text(
-                                      "${controller.myTeamModel!.data![index].eMPLOYEENAME} ${controller.myTeamModel!.data![index].eMPLOYEESURNAME}",
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500),
-                                      textAlign: TextAlign.center,
-                                    )),
-                                  ),
-                                  SizedBox(
-                                    height: .7.h,
-                                  ),
-                                  Container(
-                                    child: Center(
-                                        child: Text(
-                                      "${controller.myTeamModel!.data![index].pOSITIONNAME}",
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 3,
-                                      style: TextStyle(fontSize: 12),
-                                      textAlign: TextAlign.center,
-                                    )),
-                                  )
-                                ],
+                            return GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Paths.TEAMDETAIL, arguments: [
+                            {
+                              'idHR':
+                                  '${controller.myTeamModel!.data![index].iDHREMPLOYEE.toString()}'
+                            }
+
+                          ]);
+                              },
+                              child: Container(
+                                decoration: AppConstant.homeButton,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Container(
+                                            height: 7.h,
+                                            width: 7.h,
+                                            child: HomeController().baseToImage(
+                                                controller.myTeamModel!
+                                                    .data![index].pHOTOADDRESS
+                                                    .toString()))),
+                                    SizedBox(
+                                      height: .5.h,
+                                    ),
+                                    Container(
+                                      child: Center(
+                                          child: Text(
+                                        "${controller.myTeamModel!.data![index].eMPLOYEENAME} ${controller.myTeamModel!.data![index].eMPLOYEESURNAME}",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500),
+                                        textAlign: TextAlign.center,
+                                      )),
+                                    ),
+                                    SizedBox(
+                                      height: .7.h,
+                                    ),
+                                    Container(
+                                      child: Center(
+                                          child: Text(
+                                        "${controller.myTeamModel!.data![index].pOSITIONNAME}",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 3,
+                                        style: TextStyle(fontSize: 12),
+                                        textAlign: TextAlign.center,
+                                      )),
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           },

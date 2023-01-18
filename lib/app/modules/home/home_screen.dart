@@ -69,7 +69,9 @@ class HomeScreen extends GetView<HomeController> {
                                         .toString())))
                             : Container(
                                 child: Center(
-                                  child: CircularProgressIndicator(color: Color(0xff7f0000),),
+                                  child: CircularProgressIndicator(
+                                    color: Color(0xff7f0000),
+                                  ),
                                 ),
                               ),
                       ),
@@ -141,9 +143,9 @@ class HomeScreen extends GetView<HomeController> {
               //! LOGO Başlangıç
               centerTitle: true,
               title: GestureDetector(
-                onTap: () async{
+                onTap: () async {
                   await controller.getLandingPageInfoData();
-    await controller.getProfilPictureData();
+                  await controller.getProfilPictureData();
                 },
                 child: Container(
                   height: 12.2.h,
@@ -279,6 +281,14 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              } else if (index == 2) {
+                                                Get.toNamed(Paths.TEAM,
+                                                    arguments: [
+                                                      {
+                                                        'idHR':
+                                                            '${controller.getLandingPageInfoModel!.data!.idHrEmployee.toString()}'
+                                                      }
+                                                    ]);
                                               }
                                             }
                                             if (controller
@@ -295,6 +305,14 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              }else if (index == 2) {
+                                                Get.toNamed(Paths.TEAM,
+                                                    arguments: [
+                                                      {
+                                                        'idHR':
+                                                            '${controller.getLandingPageInfoModel!.data!.idHrEmployee.toString()}'
+                                                      }
+                                                    ]);
                                               }
                                             }
                                             if (controller
@@ -430,7 +448,9 @@ class HomeScreen extends GetView<HomeController> {
                                   : Container(
                                       height: 30.h,
                                       child: Center(
-                                        child: CircularProgressIndicator(color: Color(0xff7f0000),),
+                                        child: CircularProgressIndicator(
+                                          color: Color(0xff7f0000),
+                                        ),
                                       ),
                                     ),
                             ),
@@ -671,9 +691,8 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              controller.cacheToken="";
+                              controller.cacheToken = "";
                               controller.cacheRemoveAndGoToLogin();
-
                             },
                             child: Container(
                               height: 10.h,
