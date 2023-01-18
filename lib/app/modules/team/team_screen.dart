@@ -156,7 +156,7 @@ class TeamScreen extends GetView<TeamController> {
                             );
                           },
                         )
-                      :controller.isLoading ==true && controller.myTeamModel!.data!.length==0?Container(height: 70.h, child: Center(child: Text("Çalışan Bulunmamaktadır!\nFiltre Seçenekleri Değiştirip Tekrar Deneyiniz.", textAlign: TextAlign.center, style: TextStyle(color: Color(0xff7f0000), fontSize: 16, fontWeight: FontWeight.bold),),),):
+                      :controller.isLoading ==true && controller.myTeamModel!.data!.length==0?Container(height: 75.h, child: Center(child: Text("Çalışan Bulunmamaktadır!", textAlign: TextAlign.center, style: TextStyle(color: Color(0xff7f0000), fontSize: 16, fontWeight: FontWeight.bold),),),):
                        Container(
                               height: 80.h,
                               child: Center(
