@@ -8,6 +8,8 @@ abstract class Routes {
 
   static const LANGUAGE = Paths.LANGUAGE;
 
+  static const ACADEMY = Paths.ACADEMY;
+
   static const PAYROLL = Paths.PAYROLL;
   static const PAYROLLVIEW = Paths.PAYROLLVIEW;
 
@@ -37,6 +39,10 @@ abstract class Paths {
   static const HOME = "/home";
 
   static const LANGUAGE = '/language';
+
+
+  static const ACADEMY = '/academy';
+
 
 
 
