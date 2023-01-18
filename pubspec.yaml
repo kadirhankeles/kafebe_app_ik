@@ -57,8 +57,6 @@ dependencies:
 
 
   get_storage: ^2.0.3
-  intl: ^0.17.0
-
 
 
 
