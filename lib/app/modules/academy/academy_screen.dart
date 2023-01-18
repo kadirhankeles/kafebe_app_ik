@@ -41,8 +41,8 @@ class AcademyScreen extends GetView<AcademyController> {
                                 // controller.educationCompleteStatusControl(
                                 //     controller.statuCode[1]);
                                 statusString = controller.statuString[1];
-                              //  AcedemyCompletedModel completedModel2 = AcedemyCompletedModel(activitySuccessStatus2: activitySuccessStatus2, activityCompleteStatus2: activityCompleteStatus2) 
-                               // controller.addActivity2(activ2)
+                                //  AcedemyCompletedModel completedModel2 = AcedemyCompletedModel(activitySuccessStatus2: activitySuccessStatus2, activityCompleteStatus2: activityCompleteStatus2)
+                                // controller.addActivity2(activ2)
 
                                 Get.back();
                               },
@@ -145,8 +145,8 @@ class AcademyScreen extends GetView<AcademyController> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYSTARTDATE}-${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYENDDATE}",
                                               // "16.02.2023 17:09 - 31.01.2023 23:59",
+                                              "${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYSTARTDATE.toString().split("T").first}/${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYSTARTDATE.toString().split("T").last}-${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYENDDATE.toString().split("T").first}/${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYENDDATE.toString().split("T").last}",
                                               style:
                                                   TextStyle(color: Colors.grey),
                                             ),
@@ -171,7 +171,7 @@ class AcademyScreen extends GetView<AcademyController> {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(
-                                          right: .8.w, left: .8.w),
+                                          right: 3.w, left: 4.w,),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -183,8 +183,8 @@ class AcademyScreen extends GetView<AcademyController> {
                                           ),
                                           Text(
                                             // "Completed Date",
-                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE ?? "_"}",
-                                            //    .replaceRange(9, 22, "."),
+                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE?.split("T").first ?? "_"}",
+
                                             style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 2.h),
@@ -200,8 +200,16 @@ class AcademyScreen extends GetView<AcademyController> {
                                         children: [
                                           Text(
                                             // "0",
-                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYSCORE}"
-                                                .substring(0, 3),
+                                            // "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYSCORE}"
+                                            //     .substring(0, 3),
+                                            controller
+                                                .learningGlobalModel!
+                                                .data!
+                                                .talentActivityList![index]
+                                                .aCTIVITYSCORE
+                                                .toString()
+                                                .split(".")
+                                                .first,
                                             style: TextStyle(fontSize: 2.h),
                                           ),
                                           SizedBox(
@@ -248,9 +256,9 @@ class AcademyScreen extends GetView<AcademyController> {
                                             style: TextStyle(fontSize: 2.h),
                                           ),
                                         ],
-                                      ),
+                                      ), 
                                     )
-                                  ],
+                                  ],// buraaaaa
                                 ),
                               ),
                             );

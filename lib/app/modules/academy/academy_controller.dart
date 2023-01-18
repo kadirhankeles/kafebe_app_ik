@@ -53,6 +53,7 @@ class AcademyController extends GetxController {
   }
 
   getAcademyData() async {
+    
     isLoading.value = false;
     learningGlobalModel = await getAcademyService();
     learningGlobalModel!.data!.talentActivityList!.forEach((element) async {
@@ -86,4 +87,6 @@ class AcademyController extends GetxController {
         return "Devam ediyor";
     }
   }
+
+  
 }

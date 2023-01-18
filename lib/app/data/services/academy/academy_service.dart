@@ -8,7 +8,7 @@ Future<LearningGlobalModel?> getAcademyService() async {
   var headers = {
     'Accept': 'application/json',
     'vbtauthorization':
-        'AsxJhvdFiMRrT/+v4Y+Kx5cUoCaaneYE2gSGrjInKbFiorUybBWp4Kqovg5ohHmK~1694~string~638096376229714921',
+        'TvYsu26HUXWYomgz6zTmzbAmaeT2OnsqGIjDWOw+CAtWAg7rkYrZ4oMkkz3MyyHP~1694~string~638096538923023534',
   };
 
   var params = {
