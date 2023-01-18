@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/modules/academy/academy_binding.dart';
+import 'package:kafebe_app_ik/app/modules/academy/academy_screen.dart';
 
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
 
@@ -45,9 +47,12 @@ class AppPages {
 
   static final routes = [
     GetPage(
-        name: Paths.LANGUAGE,
-        page: () => LanguageScreen(),
-        binding: LanguageBinding()),
+
+      name: Paths.LANGUAGE,
+      page: () => LanguageScreen(),
+      binding: LanguageBinding(),
+    ),
+
     GetPage(
       name: Paths.SPLASH,
       page: () => SplashScreen(),
@@ -64,6 +69,11 @@ class AppPages {
       binding: HomeBinding(),
     ),
     
+    GetPage(
+      name: Paths.ACADEMY,
+      page: () => AcademyScreen(),
+      binding: AcademyBinding(),
+    ),
     GetPage(
       name: Paths.PAYROLL,
       page: () => PayrollScreen(),
@@ -126,6 +136,9 @@ class AppPages {
       page: () => TeamDetailScreen(),
       binding: TeamDetailBinding(),
     ),
+
+
+
 
 
   ];
