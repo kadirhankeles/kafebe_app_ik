@@ -41,7 +41,7 @@ class PayrollViewScreen extends GetView<PayrollViewController> {
                     controller.resultData!,
                   )
                 : const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(color: Color(0xff7f0000),),
                   ))));
   }
 }

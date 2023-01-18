@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:kafebe_app_ik/app/modules/approval/approval_controller.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../routes/app_pages.dart';
 import '../../widgets/detail_container.dart';
 
 class ApprovalScreen extends GetView<ApprovalController> {
@@ -11,7 +12,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
 
   @override
   Widget build(BuildContext context) {
-    String statusString = "Tümü";
+    String statusString = "Süreç Devam Ediyor";
     return Scaffold(
       backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
@@ -32,18 +33,19 @@ class ApprovalScreen extends GetView<ApprovalController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () {
-                                controller.getApprovalData(controller.statuCode[0]);
+                                controller
+                                    .getApprovalData(controller.statuCode[0]);
                                 statusString = controller.statuString[0];
                                 Get.back();
                               },
                               child: Text("Tümü")),
-                          
                           TextButton(
                               style: TextButton.styleFrom(
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () {
-                                controller.getApprovalData(controller.statuCode[1]);
+                                controller
+                                    .getApprovalData(controller.statuCode[1]);
                                 statusString = controller.statuString[1];
                                 Get.back();
                               },
@@ -53,7 +55,8 @@ class ApprovalScreen extends GetView<ApprovalController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () {
-                                controller.getApprovalData(controller.statuCode[2]);
+                                controller
+                                    .getApprovalData(controller.statuCode[2]);
                                 statusString = controller.statuString[2];
                                 Get.back();
                               },
@@ -63,9 +66,10 @@ class ApprovalScreen extends GetView<ApprovalController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () {
-                                controller.getApprovalData(controller.statuCode[3]);
+                                controller
+                                    .getApprovalData(controller.statuCode[3]);
                                 statusString = controller.statuString[3];
-                                 Get.back();
+                                Get.back();
                               },
                               child: Text("Reddedildi")),
                           TextButton(
@@ -73,9 +77,10 @@ class ApprovalScreen extends GetView<ApprovalController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () {
-                                controller.getApprovalData(controller.statuCode[4]);
+                                controller
+                                    .getApprovalData(controller.statuCode[4]);
                                 statusString = controller.statuString[4];
-                                 Get.back();
+                                Get.back();
                               },
                               child: Text("Revize Edildi")),
                           TextButton(
@@ -83,9 +88,10 @@ class ApprovalScreen extends GetView<ApprovalController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () {
-                                controller.getApprovalData(controller.statuCode[5]);
+                                controller
+                                    .getApprovalData(controller.statuCode[5]);
                                 statusString = controller.statuString[5];
-                                 Get.back();
+                                Get.back();
                               },
                               child: Text("Geri Gönderildi")),
                           TextButton(
@@ -111,7 +117,10 @@ class ApprovalScreen extends GetView<ApprovalController> {
               Container(
                 height: 3.h,
                 width: double.infinity,
-                child: Center(child: Obx(() =>  controller.isLoading==true?Text(statusString):Container())),
+                child: Center(
+                    child: Obx(() => controller.isLoading == true
+                        ? Text(statusString)
+                        : Container())),
               ),
               SizedBox(
                 height: 2.h,
@@ -123,62 +132,82 @@ class ApprovalScreen extends GetView<ApprovalController> {
       ),
     );
   }
+
   Obx requestData() {
     return Obx(
-                () => controller.isLoading == true
-                    ? Container(
+      () => controller.isLoading == true
+          ? Container(
               width: double.infinity,
               child: ListView.builder(
-                        padding: EdgeInsets.only(bottom: 1.h),
-                        shrinkWrap: true,
-                        itemCount: controller.getPendingRequestMasterMobileModel!.data!.totalCount,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  //Get.toNamed(Paths.REQUESTSDETAIL, arguments: [{'id': '${controller.getMyRequestMasterMobileModel!.data!.myRequestList![index].iDMASTER}'}]);
-                                },
-                                child: DetailContainer(
-                                    name1: DateTime.tryParse(controller
-                                            .getPendingRequestMasterMobileModel!
-                                            .data!
-                                            .pendingRequestList![index]
-                                            .rEQDATE!)
-                                        .toString()
-                                        .substring(0, 16),
-                                    description1:
-                                        "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].rEQNAME}",
-                                    name2: "Talep No",
-                                    description2:
-                                        "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].iDMASTER}",
-                                    name3: "Talep Eden",
-                                    description3: controller
-                                                .getPendingRequestMasterMobileModel!
-                                                .data!
-                                                .pendingRequestList![index]
-                                                .aSSIGNEMPLOYEE ==
-                                            null
-                                        ? "-"
-                                        : "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].rEQEMPLOYEE}",
-                                    name4: "Atanan Kişi",
-                                    description4:
-                                        "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].aSSIGNEMPLOYEE}",
-                                    name5: "Açıklama",
-                                    description5:
-                                        "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].eMPLOYEENAMESURNAME}",
-                                    icons: "assets/onaylarim.png"),
-                              ),
-                              SizedBox(
-                                height: 1.5.h,
-                              ),
-                            ],
-                          );
+                padding: EdgeInsets.only(bottom: 1.h),
+                shrinkWrap: true,
+                itemCount: controller
+                    .getPendingRequestMasterMobileModel!.data!.totalCount,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          print("******");
+                          print(controller.getPendingRequestMasterMobileModel!
+                              .data!.pendingRequestList![index].iDMASTER);
+                          Get.toNamed(Paths.APPROVALDETAIL, arguments: [
+                            {
+                              'id':
+                                  '${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].iDMASTER}'
+                            },
+                            {'detail': '2'}
+                          ])!
+                              .then((value) {
+                            print("dsadsada");
+                            controller.getApprovalData(-1);
+                          });
                         },
-                      )
-                    ,
-              ): Container(height: 80.h,child: Center(child: CircularProgressIndicator(),),),
-            );
+                        child: DetailContainer(
+                            name1: DateTime.tryParse(controller
+                                    .getPendingRequestMasterMobileModel!
+                                    .data!
+                                    .pendingRequestList![index]
+                                    .rEQDATE!)
+                                .toString()
+                                .substring(0, 16),
+                            description1:
+                                "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].rEQNAME}",
+                            name2: "Talep No",
+                            description2:
+                                "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].iDMASTER}",
+                            name3: "Talep Eden",
+                            description3: controller
+                                        .getPendingRequestMasterMobileModel!
+                                        .data!
+                                        .pendingRequestList![index]
+                                        .aSSIGNEMPLOYEE ==
+                                    null
+                                ? "-"
+                                : "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].rEQEMPLOYEE}",
+                            name4: "Atanan Kişi",
+                            description4:
+                                "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].aSSIGNEMPLOYEE}",
+                            name5: "Açıklama",
+                            description5:
+                                "${controller.getPendingRequestMasterMobileModel!.data!.pendingRequestList![index].eMPLOYEENAMESURNAME}",
+                            icons: "assets/onaylarim.png"),
+                      ),
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                    ],
+                  );
+                },
+              ),
+            )
+          : Container(
+              height: 80.h,
+              child: Center(
+                child: CircularProgressIndicator(color: Color(0xff7f0000),),
+              ),
+            ),
+    );
   }
 }

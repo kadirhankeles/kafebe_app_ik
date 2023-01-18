@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 
-import '../models/getLanding_PageInfo_model.dart';
+import '../../models/getLanding_PageInfo_model.dart';
 
 class LandingPageInfoService extends GetConnect {
   Future<GetLandingPageInfoModel?> getLandingPageInfoService() async {

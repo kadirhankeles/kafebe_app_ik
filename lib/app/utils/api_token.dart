@@ -1,6 +1,8 @@
-const String apiToken =
+
+import 'package:get_storage/get_storage.dart';
+
+final cacheToken = GetStorage();
 
 
-"6acxuxtmB279JhHfUYJqh5ehGrMBb4IPRcSYw5el3ycU856EYBtQUmG7w/5arDbc~2270~string~638096333119895278";
-
+ String apiToken = cacheToken.read("token") ?? "5ldhVpE+x0e1woIhKJDy0DZaWM5FX8fNrIFHVeQJljGU7GqDvXSnfcSDZCxoih/+~2270~string~638093270751002182";
 

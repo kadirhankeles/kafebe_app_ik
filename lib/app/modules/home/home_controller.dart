@@ -2,10 +2,12 @@ import 'dart:typed_data';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:kafebe_app_ik/app/data/services/home/getProfilPicture_service.dart';
+import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 import '../../data/models/getLanding_PageInfo_model.dart';
 import '../../data/models/get_ProfilPicture_model.dart';
-import '../../data/services/getLanding_Page_Info_service.dart';
+import '../../data/services/home/getLanding_Page_Info_service.dart';
 
 class HomeController extends GetxController {
   GetLandingPageInfoModel? getLandingPageInfoModel;
@@ -22,6 +24,8 @@ class HomeController extends GetxController {
   List<dynamic> employeeSun =[];
   List<dynamic> notificationCount = [];
   List<dynamic> menuName=[];
+
+  final cacheToken = GetStorage();
 @override
   void onInit() async {
     await getLandingPageInfoData();
@@ -31,6 +35,7 @@ class HomeController extends GetxController {
   }
 
   getLandingPageInfoData() async {
+    isLoading.value=false;
     getLandingPageInfoModel =
         await LandingPageInfoService().getLandingPageInfoService();
     isLoading.value = true;
@@ -38,6 +43,9 @@ class HomeController extends GetxController {
   }
 
   getProfilPictureData() async {
+    isProfilPicture.value=false;
+    isCategoryName.value=false;
+    isNotiCount.value=false;
     getProfilPictureModel =
         await ProfilPictureService().getProfilPictureService();
     await menuNameAndNotification(getLandingPageInfoModel, getLandingPageInfoModel!.data!.isManager, getLandingPageInfoModel!.data!.sunAkademi);    
@@ -95,5 +103,10 @@ class HomeController extends GetxController {
      notificationCount.add(getLandingPageInfoModel.data!.myRequestCount);
      notificationCount.add(getLandingPageInfoModel.data!.getMyApprovalCount);
      notificationCount.add(getLandingPageInfoModel.data!.getMyWorks);
+  }
+  //Model Sıfırlama eklenecek 
+  cacheRemoveAndGoToLogin() async{
+    await cacheToken.remove("token");
+    Get.offAllNamed(Routes.LOGIN);
   }
 }

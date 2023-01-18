@@ -49,11 +49,12 @@ class HomeScreen extends GetView<HomeController> {
               //!PROFİL FOTOĞRAFI VE BİLGİLENDİRME BUTONU
               leading: Column(
                 children: [
-                  SizedBox(height: 0.9.h,),
+                  SizedBox(
+                    height: 0.9.h,
+                  ),
                   Row(
                     children: [
                       SizedBox(width: 5.w),
-                      
                       Obx(
                         () => controller.isProfilPicture == true
                             ? ClipRRect(
@@ -68,7 +69,7 @@ class HomeScreen extends GetView<HomeController> {
                                         .toString())))
                             : Container(
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(color: Color(0xff7f0000),),
                                 ),
                               ),
                       ),
@@ -139,49 +140,62 @@ class HomeScreen extends GetView<HomeController> {
 
               //! LOGO Başlangıç
               centerTitle: true,
-              title: Container(
-                height: 12.2.h,
-                width: 9.h,
-                //color: Colors.white,
-                child: Image(
-                  image: AssetImage("assets/logo.png"),
-                  fit: BoxFit.cover,
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () async{
+                  await controller.getLandingPageInfoData();
+    await controller.getProfilPictureData();
+                },
+                child: Container(
+                  height: 12.2.h,
+                  width: 9.h,
+                  //color: Colors.white,
+                  child: Image(
+                    image: AssetImage("assets/logo.png"),
+                    fit: BoxFit.cover,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               //! LOGO Bitiş
 
               //! Bildirim başlangıç
               actions: [
-                  SizedBox(height: 1.h,),
-                Stack(
-                  children: [
-                     IconButton(
+                SizedBox(
+                  height: 1.h,
+                ),
+                Stack(children: [
+                  IconButton(
                       padding: EdgeInsets.only(top: 3.h),
-                      onPressed: () { Get.toNamed(Routes.NOTIFICATION);},
+                      onPressed: () {
+                        Get.toNamed(Routes.NOTIFICATION);
+                      },
                       icon: Icon(Icons.notifications_active),
                       color: Colors.yellow),
-                      Positioned(child: Obx(
-                        () => controller.isNotiCount==true && controller.getLandingPageInfoModel!.data!.unReadedNotificationCount!=0?Container(
-                                                    height: 2.h,
-                                                    width: 2.h,
-                                                    decoration:
-                                                        AppConstant.notiContainerWhite,
-                                                    child: Center(
-                                                        child: Text(
-                                                      "${controller.getLandingPageInfoModel!.data!.unReadedNotificationCount}",
-                                                      style: AppConstant.notiStyleBlack,
-                                                    )),
-                                                  ):Container(),
-
-                      ), top: 2.2.h, left: 6.4.w,)
-              ]),
+                  Positioned(
+                    child: Obx(
+                      () => controller.isNotiCount == true &&
+                              controller.getLandingPageInfoModel!.data!
+                                      .unReadedNotificationCount !=
+                                  0
+                          ? Container(
+                              height: 2.h,
+                              width: 2.h,
+                              decoration: AppConstant.notiContainerWhite,
+                              child: Center(
+                                  child: Text(
+                                "${controller.getLandingPageInfoModel!.data!.unReadedNotificationCount}",
+                                style: AppConstant.notiStyleBlack,
+                              )),
+                            )
+                          : Container(),
+                    ),
+                    top: 2.2.h,
+                    left: 6.4.w,
+                  )
+                ]),
                 SizedBox(
                   width: 3.w,
                 ),
-
-               
-
               ],
               //! Bildirim bitiş
             ),
@@ -195,7 +209,6 @@ class HomeScreen extends GetView<HomeController> {
                       width: double.infinity,
                       decoration: AppConstant.homeTopContainer,
                     )),
-                    
                     Padding(
                       padding: EdgeInsets.only(left: 3.h, right: 3.h),
                       child: Column(
@@ -252,35 +265,70 @@ class HomeScreen extends GetView<HomeController> {
                                       itemBuilder: (context, index) {
                                         return GestureDetector(
                                           onTap: () {
-                                            if(controller.getLandingPageInfoModel!.data!.isManager == true && controller.getLandingPageInfoModel!.data!.sunAkademi == true){
-                                              if(index==0){
+                                            if (controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .isManager ==
+                                                    true &&
+                                                controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .sunAkademi ==
+                                                    true) {
+                                              if (index == 0) {
                                                 Get.toNamed(Paths.REQUESTS);
-                                              }else if(index ==1){
+                                              } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
                                               }
                                             }
-                                            if(controller.getLandingPageInfoModel!.data!.isManager == true && controller.getLandingPageInfoModel!.data!.sunAkademi == false){
-                                              if(index==0){
+                                            if (controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .isManager ==
+                                                    true &&
+                                                controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .sunAkademi ==
+                                                    false) {
+                                              if (index == 0) {
                                                 Get.toNamed(Paths.REQUESTS);
-                                              }else if(index ==1){
+                                              } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
                                               }
                                             }
-                                            if(controller.getLandingPageInfoModel!.data!.isManager == false && controller.getLandingPageInfoModel!.data!.sunAkademi == true){
-                                              if(index==0){
+                                            if (controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .isManager ==
+                                                    false &&
+                                                controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .sunAkademi ==
+                                                    true) {
+                                              if (index == 0) {
                                                 Get.toNamed(Paths.REQUESTS);
-                                              }else if(index ==1){
+                                              } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
                                               }
                                             }
-                                            if(controller.getLandingPageInfoModel!.data!.isManager == false && controller.getLandingPageInfoModel!.data!.sunAkademi == false){
-                                              if(index==0){
+                                            if (controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .isManager ==
+                                                    false &&
+                                                controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .sunAkademi ==
+                                                    false) {
+                                              if (index == 0) {
                                                 Get.toNamed(Paths.REQUESTS);
-                                              }else if(index ==1){
+                                              } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
                                               }
                                             }
-
                                           },
                                           child: Stack(children: [
                                             Container(
@@ -351,17 +399,25 @@ class HomeScreen extends GetView<HomeController> {
                                             //! Bildirim Sıralaması başlangıç
                                             Positioned(
                                               child: Obx(
-                                                () => controller.isNotiCount==true && index <= 2 && controller.notificationCount[index]>0?Container(
-                                                  height: 2.4.h,
-                                                  width: 2.4.h,
-                                                  decoration:
-                                                      AppConstant.notiContainer,
-                                                  child: Center(
-                                                      child: Text(
-                                                    "${controller.notificationCount[index]}",
-                                                    style: AppConstant.notiStyle,
-                                                  )),
-                                                ): Container(),
+                                                () => controller.isNotiCount ==
+                                                            true &&
+                                                        index <= 2 &&
+                                                        controller.notificationCount[
+                                                                index] >
+                                                            0
+                                                    ? Container(
+                                                        height: 2.4.h,
+                                                        width: 2.4.h,
+                                                        decoration: AppConstant
+                                                            .notiContainer,
+                                                        child: Center(
+                                                            child: Text(
+                                                          "${controller.notificationCount[index]}",
+                                                          style: AppConstant
+                                                              .notiStyle,
+                                                        )),
+                                                      )
+                                                    : Container(),
                                               ),
                                               left: 21.w,
                                               top: 3.h,
@@ -374,7 +430,7 @@ class HomeScreen extends GetView<HomeController> {
                                   : Container(
                                       height: 30.h,
                                       child: Center(
-                                        child: CircularProgressIndicator(),
+                                        child: CircularProgressIndicator(color: Color(0xff7f0000),),
                                       ),
                                     ),
                             ),
@@ -452,6 +508,18 @@ class HomeScreen extends GetView<HomeController> {
                                           splashRadius: 1.h,
                                           onPressed: () {
                                             print("Tıklandı artı");
+                                            Get.toNamed(Routes.LEAVE_ADD,
+                                                arguments: [
+                                                  {
+                                                    "izin": controller
+                                                        .getLandingPageInfoModel!
+                                                        .data!
+                                                        .vacationInfo!
+                                                        .employeeEarnedRightsList![
+                                                            0]
+                                                        .nEXTLEAVEALLOWANCEDAYS
+                                                  }
+                                                ]);
                                           },
                                           icon: Icon(
                                             Icons.add,
@@ -603,7 +671,7 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print("ÇıkışYap");
+                              controller.cacheRemoveAndGoToLogin();
                             },
                             child: Container(
                               height: 10.h,
@@ -614,8 +682,9 @@ class HomeScreen extends GetView<HomeController> {
                                   SizedBox(
                                     width: 5.w,
                                   ),
-                                  AppConstant()
-                                      .homeCircularWhite("assets/exit.png",),
+                                  AppConstant().homeCircularWhite(
+                                    "assets/exit.png",
+                                  ),
                                   SizedBox(
                                     width: 3.w,
                                   ),

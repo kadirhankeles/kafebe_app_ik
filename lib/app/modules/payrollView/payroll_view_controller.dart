@@ -6,8 +6,8 @@ import 'package:kafebe_app_ik/app/data/models/payroll_list_data_model.dart';
 
 import '../../data/models/payroll_data_model.dart';
 import '../../data/models/payroll_period_model.dart';
-import '../../data/services/payroll_all_data_service.dart';
-import '../../data/services/payroll_month_service.dart';
+import '../../data/services/payroll/payroll_all_data_service.dart';
+import '../../data/services/payroll/payroll_month_service.dart';
 
 class PayrollViewController extends GetxController {
   PayrollMonthService monthService = PayrollMonthService();
