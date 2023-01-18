@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:kafebe_app_ik/app/data/models/academy_model/academy_completed_model.dart';
 import 'package:kafebe_app_ik/app/modules/academy/academy_controller.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
@@ -83,33 +84,38 @@ class AcademyScreen extends GetView<AcademyController> {
         padding: EdgeInsets.only(right: 5.w, left: 5.w, top: 2.h),
         child: Column(
           children: [
-            TextFormField(
-              cursorColor: AppConstant.loginCursor,
-              keyboardType: TextInputType.visiblePassword,
-              cursorHeight: 3.h,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                hintText: "Arama Yap",
-                hintStyle: TextStyle(fontSize: 2.2.h),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: AppConstant.globalRadius,
-                  borderSide: AppConstant.textFieldBorderColor,
-                ),
-                focusedBorder: OutlineInputBorder(
+            Container(
+              height: 6.h,
+              child: TextFormField(
+                
+                cursorColor: AppConstant.loginCursor,
+                keyboardType: TextInputType.visiblePassword,
+                cursorHeight: 3.h,
+                textAlignVertical: TextAlignVertical.center,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 1.5.h),
+                  hintText: "Arama Yap",
+                  hintStyle: TextStyle(fontSize: 2.2.h),
+                  enabledBorder: OutlineInputBorder(
                     borderRadius: AppConstant.globalRadius,
-                    borderSide: AppConstant.textFieldBorderColor),
-                prefixIcon: AppConstant.searchIcon,
+                    borderSide: AppConstant.textFieldBorderColor,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: AppConstant.globalRadius,
+                      borderSide: AppConstant.textFieldBorderColor),
+                  prefixIcon: AppConstant.academySearchIcon,
+                ),
               ),
             ),
             SizedBox(
-              height: 4.h,
+              height: 3.h,
             ),
             Text(
               statusString,
-              style: Theme.of(context).textTheme.headline6,
+              style: TextStyle(fontSize: 2.5.h),
             ),
             SizedBox(
-              height: 4.h,
+              height: 3.h,
             ),
             Container(
                 height: 69.h,
@@ -128,14 +134,15 @@ class AcademyScreen extends GetView<AcademyController> {
                               child: Padding(
                                 padding: EdgeInsets.all(1.h),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
                                       children: [
                                         SizedBox(
                                           height: 5.h,
                                           width: 10.w,
-                                          /* child: Image.asset(
-                                                "assets/myJobs.png") */
+                                           child: Image.asset(
+                                                "assets/my_jobs.png")
                                         ),
                                         SizedBox(
                                           width: 5.w,
@@ -171,7 +178,9 @@ class AcademyScreen extends GetView<AcademyController> {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(
-                                          right: 3.w, left: 4.w,),
+                                        right: 3.w,
+                                        left: 1.w,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -183,8 +192,18 @@ class AcademyScreen extends GetView<AcademyController> {
                                           ),
                                           Text(
                                             // "Completed Date",
-                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE?.split("T").first ?? "_"}",
-
+                                            // "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE?.split("T").first ?? "_"}",
+                                            //'${DateFormat("dd.MM.yyyy").format(DateTime.parse(controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE))}',
+                                            // "${DateFormat('dd.MM.yyyy').format(DateTime.parse(controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE))}",
+                                            controller
+                                                        .learningGlobalModel!
+                                                        .data!
+                                                        .talentActivityList![
+                                                            index]
+                                                        .cOMPLETIONDATE ==
+                                                    null
+                                                ? "_"
+                                                : '${DateFormat('dd.MM.yyyy').format(DateTime.parse(controller.learningGlobalModel!.data!.talentActivityList![index].cOMPLETIONDATE.toString()))}',
                                             style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 2.h),
@@ -193,7 +212,7 @@ class AcademyScreen extends GetView<AcademyController> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(right: 47.w),
+                                      padding: EdgeInsets.only(left: 1.2.w),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -256,9 +275,9 @@ class AcademyScreen extends GetView<AcademyController> {
                                             style: TextStyle(fontSize: 2.h),
                                           ),
                                         ],
-                                      ), 
+                                      ),
                                     )
-                                  ],// buraaaaa
+                                  ], // buraaaaa
                                 ),
                               ),
                             );

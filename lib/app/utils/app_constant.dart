@@ -26,6 +26,7 @@ class AppConstant {
   static const passwordTextFormFieldIcon = Icon(Icons.key, color: Color(0xffe53935));
   static const loginSufIcon = Icon(Icons.visibility, color: Colors.grey);
   static const searchIcon = Icon(Icons.search, color: Colors.grey,size: 40,);
+  static const academySearchIcon = Icon(Icons.search, color: Colors.grey,size: 30,);
 
   //TextStyle
 
