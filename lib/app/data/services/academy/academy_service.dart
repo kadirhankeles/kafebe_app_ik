@@ -8,7 +8,7 @@ Future<LearningGlobalModel?> getAcademyService() async {
   var headers = {
     'Accept': 'application/json',
     'vbtauthorization':
-        '0oEwdfQklSM9V2/kVGS1O4v+V+QX8TkfGc07n96LRJrNrbMUvhBYJ1F94qExE0rK~1694~string~638095742710838802',
+        'AsxJhvdFiMRrT/+v4Y+Kx5cUoCaaneYE2gSGrjInKbFiorUybBWp4Kqovg5ohHmK~1694~string~638096376229714921',
   };
 
   var params = {
@@ -23,6 +23,7 @@ Future<LearningGlobalModel?> getAcademyService() async {
     throw Exception('http.get error: statusCode= ${res.statusCode}');
   print(res.body);
   data = LearningGlobalModel.fromJson(jsonDecode(res.body));
+  
   print(data.data?.talentActivityList?[0].aCTIVITYNAME);
   return data;
 }

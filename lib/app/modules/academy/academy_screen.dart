@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/data/models/academy_model/academy_completed_model.dart';
 import 'package:kafebe_app_ik/app/modules/academy/academy_controller.dart';
 import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -35,10 +36,13 @@ class AcademyScreen extends GetView<AcademyController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () async {
+                                controller.activityIndex.value = 0;
                                 await controller.getAcademyData();
-                                controller.educationCompleteStatusControl(
-                                    controller.statuCode[1]);
+                                // controller.educationCompleteStatusControl(
+                                //     controller.statuCode[1]);
                                 statusString = controller.statuString[1];
+                              //  AcedemyCompletedModel completedModel2 = AcedemyCompletedModel(activitySuccessStatus2: activitySuccessStatus2, activityCompleteStatus2: activityCompleteStatus2) 
+                               // controller.addActivity2(activ2)
 
                                 Get.back();
                               },
@@ -48,9 +52,10 @@ class AcademyScreen extends GetView<AcademyController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () async {
+                                controller.activityIndex.value = 1;
                                 await controller.getAcademyData();
-                                controller.educationCompleteStatusControl(
-                                    controller.statuCode[2]);
+                                // controller.educationCompleteStatusControl(
+                                //     controller.statuCode[2]);
                                 statusString = controller.statuString[2];
 
                                 Get.back();
@@ -61,6 +66,7 @@ class AcademyScreen extends GetView<AcademyController> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () async {
+                                controller.activityIndex.value = 2;
                                 await controller.getAcademyData();
                                 statusString = controller.statuString[0];
                                 Get.back();
@@ -177,7 +183,7 @@ class AcademyScreen extends GetView<AcademyController> {
                                           ),
                                           Text(
                                             // "Completed Date",
-                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE}",
+                                            "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE ?? "_"}",
                                             //    .replaceRange(9, 22, "."),
                                             style: TextStyle(
                                                 color: Colors.grey,
