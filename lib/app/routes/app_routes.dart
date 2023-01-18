@@ -26,6 +26,9 @@ abstract class Routes {
   static const EMPLOYEELEAVE = Paths.EMPLOYEELEAVE;
 
 
+  static const TEAM = Paths.TEAM;
+  static const TEAMDETAIL = Paths.TEAMDETAIL;
+
 }
 
 abstract class Paths {
@@ -34,6 +37,7 @@ abstract class Paths {
   static const HOME = "/home";
 
   static const LANGUAGE = '/language';
+
 
 
   static const PAYROLL = "/payroll";
@@ -53,6 +57,10 @@ abstract class Paths {
 
   static const EMPLOYEELEAVE = "/employeeleave";
 
+  
+
+  static const TEAM = "/team";
+  static const TEAMDETAIL = "/teamdetail";
   
 
 
