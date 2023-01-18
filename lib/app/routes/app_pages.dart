@@ -32,6 +32,10 @@ import '../modules/login/login_screen.dart';
 import '../modules/payroll/payroll_screen.dart';
 import '../modules/requests/requests_binding.dart';
 import '../modules/requests_detail/request_detail_binding.dart';
+import '../modules/team/team_binding.dart';
+import '../modules/team/team_detail/team_detail_binding.dart';
+import '../modules/team/team_detail/team_detail_screen.dart';
+import '../modules/team/team_screen.dart';
 
 part 'app_routes.dart';
 
@@ -110,5 +114,19 @@ class AppPages {
       page: () => RequestDetailScreen(),
       binding: RequestDetailBinding(),
     ),
+
+    GetPage(
+      name: Paths.TEAM,
+      page: () => TeamScreen(),
+      binding: TeamBinding(),
+    ),
+
+    GetPage(
+      name: Paths.TEAMDETAIL,
+      page: () => TeamDetailScreen(),
+      binding: TeamDetailBinding(),
+    ),
+
+
   ];
 }
