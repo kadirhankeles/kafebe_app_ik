@@ -20,6 +20,7 @@ abstract class Routes {
   static const APPROVAL = Paths.APPROVAL;
 
   static const TEAM = Paths.TEAM;
+  static const TEAMDETAIL = Paths.TEAMDETAIL;
 
 }
 
@@ -45,6 +46,7 @@ abstract class Paths {
   
 
   static const TEAM = "/team";
+  static const TEAMDETAIL = "/teamdetail";
   
 
 }
