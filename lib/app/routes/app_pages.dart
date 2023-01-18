@@ -38,6 +38,8 @@ import '../modules/team/team_binding.dart';
 import '../modules/team/team_detail/team_detail_binding.dart';
 import '../modules/team/team_detail/team_detail_screen.dart';
 import '../modules/team/team_screen.dart';
+import '../modules/work/work_binding.dart';
+import '../modules/work/work_screen.dart';
 
 part 'app_routes.dart';
 
@@ -135,6 +137,11 @@ class AppPages {
       name: Paths.TEAMDETAIL,
       page: () => TeamDetailScreen(),
       binding: TeamDetailBinding(),
+    ),
+    GetPage(
+      name: Paths.WORK,
+      page: () => WorkScreen(),
+      binding: WorkBinding(),
     ),
 
 

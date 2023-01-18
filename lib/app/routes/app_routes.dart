@@ -31,6 +31,8 @@ abstract class Routes {
   static const TEAM = Paths.TEAM;
   static const TEAMDETAIL = Paths.TEAMDETAIL;
 
+  static const WORK = Paths.WORK;
+
 }
 
 abstract class Paths {
@@ -68,6 +70,7 @@ abstract class Paths {
   static const TEAM = "/team";
   static const TEAMDETAIL = "/teamdetail";
   
+  static const WORK = "/work";
 
 
 }
