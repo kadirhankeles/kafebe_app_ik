@@ -14,16 +14,45 @@ class LanguageScreen extends GetView<LanguageController> {
       appBar: AppBar(
         backgroundColor: Color(0xff850000),
       ),
-      body: Padding(
+      body: Obx(()=>Padding(
         padding: EdgeInsets.only(left: 5.w, right: 5.w, top: 2.h),
         child: Column(
           children: [
-            Expanded(
-                child: Obx(
-              () => controller.isLoading == true
-                  ? ListView.builder(
-                      itemCount: controller.getLanguageModel?.data?.length,
-                      itemBuilder: (context, index) => Container(
+             Expanded(
+                child: controller.isLoading == true
+                    ? ListView.builder(
+                        itemCount: controller.getLanguageModel?.data?.length,
+                        itemBuilder: (context, index) => Container(
+                            margin: EdgeInsets.only(bottom: 2.h),
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 2.h,
+                                    width: 2.h,
+                                    child: controller.baseToImage(controller
+                                        .getLanguageModel!
+                                        .data![index]
+                                        .lANGUAGELOGO
+                                        .toString()),
+                                  ),
+                                  SizedBox(
+                                    height: 10.w,
+                                    width: 5.w,
+                                  ),
+                                  Text(
+                                    "${controller.getLanguageModel?.data?[index].lANGUAGENAME}",
+                                  ),
+                                ],
+                              ),
+                            )),
+                      )
+                    : ListView.builder(
+                        itemCount: 6,
+                        itemBuilder: (context, index) => Container(
                           margin: EdgeInsets.only(bottom: 2.h),
                           child: GestureDetector(
                             onTap: () {
@@ -32,33 +61,29 @@ class LanguageScreen extends GetView<LanguageController> {
                             child: Row(
                               children: [
                                 Container(
-                                  height: 2.h,
-                                  width: 2.h,
-                                  child: controller.baseToImage(controller
-                                      .getLanguageModel!
-                                      .data![index]
-                                      .lANGUAGELOGO
-                                      .toString()),
+                                  height: 4.h,
+                                  width: 4.h,
+                                  child:
+                                      Image.asset("${controller.flag[index]}"),
                                 ),
                                 SizedBox(
                                   height: 10.w,
                                   width: 5.w,
                                 ),
                                 Text(
-                                  "${controller.getLanguageModel?.data?[index].lANGUAGENAME}",
+                                  controller.languageList[index],
+                                  style: TextStyle(fontSize: 2.h),
                                 ),
                               ],
                             ),
-                          )),
-                    )
-                  : Container(
-                      child: Center(
-                      child: CircularProgressIndicator(color:Color(0xff7f0000) ,),
-                    )),
-            ))
+                          ),
+                        ),
+                      ),
+              ),
+            
           ],
         ),
-      ),
+      ),)
     );
   }
 }
