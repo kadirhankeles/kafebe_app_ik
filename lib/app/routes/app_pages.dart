@@ -1,7 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
+import 'package:kafebe_app_ik/app/data/models/Leave/sub_employee_leave_model.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_binding.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_detail/leave_detail_binding.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_detail/leave_detail_screen.dart';
+import 'package:kafebe_app_ik/app/modules/leave/leave_screen.dart';
+import 'package:kafebe_app_ik/app/modules/leave/subEmployee/sub_employee_screen.dart';
+
 import 'package:kafebe_app_ik/app/modules/academy/academy_binding.dart';
 import 'package:kafebe_app_ik/app/modules/academy/academy_screen.dart';
+
 
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
 
@@ -41,6 +50,8 @@ import '../modules/team/team_screen.dart';
 import '../modules/work/work_binding.dart';
 import '../modules/work/work_screen.dart';
 
+//export sayfası yapılacak!
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -70,7 +81,6 @@ class AppPages {
       page: () => HomeScreen(),
       binding: HomeBinding(),
     ),
-    
     GetPage(
       name: Paths.ACADEMY,
       page: () => AcademyScreen(),
@@ -128,6 +138,18 @@ class AppPages {
     ),
 
     GetPage(
+      name: Paths.LEAVE,
+      page: () => LeaveScreen(),
+      binding: LeaveBinding(),
+    ),
+    GetPage(
+        name: Paths.LEAVE_DETAIL,
+        page: () => LeaveDetailScreen(),
+        binding: LeaveDetailBinding()),
+    GetPage(name: Paths.SUB_EMPLOYEE, page: () => SubEmployeeScreen())
+
+
+    GetPage(
       name: Paths.TEAM,
       page: () => TeamScreen(),
       binding: TeamBinding(),
@@ -143,6 +165,7 @@ class AppPages {
       page: () => WorkScreen(),
       binding: WorkBinding(),
     ),
+
 
 
 

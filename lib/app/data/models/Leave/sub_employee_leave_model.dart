@@ -1,11 +1,11 @@
-class EmployeeLeaveModel {
+class SubEmployeeLeaveModel {
   String? refreshToken;
   String? token;
   Data? data;
 
-  EmployeeLeaveModel({this.refreshToken, this.token, this.data});
+  SubEmployeeLeaveModel({this.refreshToken, this.token, this.data});
 
-  EmployeeLeaveModel.fromJson(Map<String, dynamic> json) {
+  SubEmployeeLeaveModel.fromJson(Map<String, dynamic> json) {
     refreshToken = json['RefreshToken'];
     token = json['Token'];
     data = json['Data'] != null ? new Data.fromJson(json['Data']) : null;
@@ -61,12 +61,12 @@ class EmployeeEarnedRightsList {
   int? iDHREMPLOYEE;
   String? eMPLOYEENAME;
   String? eMPLOYEESURNAME;
-  double? aNNUALLEAVEBALANCE;
+  dynamic? aNNUALLEAVEBALANCE;
   String? nEXTLEAVEALLOWANCEDATE;
   double? nEXTLEAVEALLOWANCEDAYS;
   bool? iSHEAD;
   String? pOSITIONNAME;
-  dynamic pHOTOADDRESS;
+  String? pHOTOADDRESS;
 
   EmployeeEarnedRightsList(
       {this.iDHREMPLOYEE,
@@ -107,23 +107,23 @@ class EmployeeEarnedRightsList {
 }
 
 class EmployeeLeaveList {
-  int? iDEMPLOYEEVACATION;
+  dynamic? iDEMPLOYEEVACATION;
   int? iDHREMPLOYEE;
   String? eMPLOYEENAME;
   String? eMPLOYEESURNAME;
   bool? iSDOCUMENT;
-  int? pICKLISTVACATIONTYPEID;
+  dynamic pICKLISTVACATIONTYPEID;
   String? pICKLISTVACATIONTYPENAME;
   String? eARNEDDATE;
-  int? eARNEDDAY;
+  dynamic eARNEDDAY;
   String? sDATE;
   String? eDATE;
   String? wDATE;
   String? sHOUR;
   String? eHOUR;
-  dynamic? dAY;
-  int? hOUR;
-  int? mINUTE;
+  dynamic dAY;
+  dynamic hOUR;
+  dynamic mINUTE;
   String? hOURMINUTE;
   String? aDDRESS;
   String? cOMMENT;
@@ -131,7 +131,7 @@ class EmployeeLeaveList {
   String? uSEDDATE;
   String? uSEDDESCRIPTION;
   bool? iSUSEDPARAMATER;
-  Null? bUTTONTYPE;
+  String? bUTTONTYPE;
 
   EmployeeLeaveList(
       {this.iDEMPLOYEEVACATION,
