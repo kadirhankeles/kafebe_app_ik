@@ -69,7 +69,9 @@ class HomeScreen extends GetView<HomeController> {
                                         .toString())))
                             : Container(
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(
+                                    color: Color(0xff7f0000),
+                                  ),
                                 ),
                               ),
                       ),
@@ -83,32 +85,45 @@ class HomeScreen extends GetView<HomeController> {
                             padding: EdgeInsets.zero,
                             splashRadius: 1.h,
                             onPressed: () {
-                              Get.defaultDialog(
-                                title: "Uyarı",
-                                middleText:
-                                    "Profilinizi güncellemeyi unutmayınız.",
-                                backgroundColor: Colors.grey.withOpacity(.9),
-                                titleStyle: TextStyle(color: Colors.white),
-                                middleTextStyle: TextStyle(color: Colors.white),
-                                radius: 10,
-                                actions: [
-                                  SizedBox(
-                                    width: 45.w,
-                                  ),
-                                  OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      side: BorderSide(
-                                          width: .1.h, color: Colors.white),
+                              Get.dialog(
+                                AlertDialog(
+                                  backgroundColor: Colors.white.withOpacity(.9),
+                                  content: Container(
+                                    height: 12.h,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Uyarı",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          height: 1.h,
+                                        ),
+                                        Text(
+                                            "Profilinizi güncellemeyi unutmayınız."),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                                child: Text(
+                                                  "TAMAM",
+                                                  style: TextStyle(
+                                                    color: Color(0xff7f0000),
+                                                  ),
+                                                )),
+                                          ],
+                                        )
+                                      ],
                                     ),
-                                    onPressed: () {
-                                      Get.back();
-                                    },
-                                    child: const Text(
-                                      'Close',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
                                   ),
-                                ],
+                                ),
                               );
                             },
                             icon: Icon(
@@ -140,14 +155,20 @@ class HomeScreen extends GetView<HomeController> {
 
               //! LOGO Başlangıç
               centerTitle: true,
-              title: Container(
-                height: 12.2.h,
-                width: 9.h,
-                //color: Colors.white,
-                child: Image(
-                  image: AssetImage("assets/logo.png"),
-                  fit: BoxFit.cover,
-                  color: Colors.white,
+              title: GestureDetector(
+                onTap: () async {
+                  await controller.getLandingPageInfoData();
+                  await controller.getProfilPictureData();
+                },
+                child: Container(
+                  height: 12.2.h,
+                  width: 9.h,
+                  //color: Colors.white,
+                  child: Image(
+                    image: AssetImage("assets/logo.png"),
+                    fit: BoxFit.cover,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               //! LOGO Bitiş
@@ -273,6 +294,18 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
+                                              } else if (index == 3) {
+                                                Get.toNamed(Paths.TEAM,
+                                                    arguments: [
+                                                      {
+                                                        'idHR':
+                                                            '${controller.getLandingPageInfoModel!.data!.idHrEmployee.toString()}'
+                                                      }
+                                                    ]);
+                                              }else if(index == 4){
+                                                Get.toNamed(Paths.ACADEMY);
                                               }
                                             }
                                             if (controller
@@ -289,6 +322,18 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
+                                              }else if (index == 3) {
+
+                                                Get.toNamed(Paths.TEAM,
+                                                    arguments: [
+                                                      {
+                                                        'idHR':
+                                                            '${controller.getLandingPageInfoModel!.data!.idHrEmployee.toString()}'
+                                                      }
+                                                    ]);
                                               }
                                             }
                                             if (controller
@@ -305,6 +350,10 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
+                                              }else if(index == 3){
+                                                Get.toNamed(Paths.ACADEMY);
                                               }
                                             }
                                             if (controller
@@ -321,6 +370,8 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
                                               }
                                             }
                                           },
@@ -424,7 +475,9 @@ class HomeScreen extends GetView<HomeController> {
                                   : Container(
                                       height: 30.h,
                                       child: Center(
-                                        child: CircularProgressIndicator(),
+                                        child: CircularProgressIndicator(
+                                          color: Color(0xff7f0000),
+                                        ),
                                       ),
                                     ),
                             ),
@@ -665,6 +718,7 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                           GestureDetector(
                             onTap: () {
+                              controller.cacheToken = "";
                               controller.cacheRemoveAndGoToLogin();
                             },
                             child: Container(

@@ -7,7 +7,7 @@ import 'package:kafebe_app_ik/app/data/models/language_model.dart';
 import 'package:kafebe_app_ik/app/routes/app_pages.dart';
 
 
-import '../../data/services/language_service.dart';
+import '../../data/services/language/language_service.dart';
 
 class LanguageController extends GetxController{
   LanguageModel? getLanguageModel;

@@ -33,7 +33,7 @@ Future<LoginModel?> getLoginService(String user, String password) async {
   print(res.body + "dasdas");
   loginData = LoginModel.fromJson(jsonDecode(res.body));
   if (res.statusCode == 200) {
-    Get.offAllNamed(Routes.HOME);
+Get.offAllNamed(Routes.HOME);
   } else {
     Get.defaultDialog(
       title: "Girmiş olduğunuz bilgiler hatalıdır",

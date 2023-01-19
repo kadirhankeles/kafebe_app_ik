@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +12,7 @@ import 'package:kafebe_app_ik/app/data/services/Leave/employe_leave_service.dart
 import 'package:kafebe_app_ik/app/data/services/Leave/leave_types_service.dart';
 import 'package:kafebe_app_ik/app/data/services/Leave/send_for_approval_service.dart';
 import 'package:kafebe_app_ik/app/data/services/Leave/work_start_date_service.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LeaveAddController extends GetxController {
   SendForApprovalService sendForApprovalService = SendForApprovalService();
@@ -131,15 +134,89 @@ class LeaveAddController extends GetxController {
     if (selectedValue.value == "Seçiniz..." ||
         tempStartDate.runtimeType != DateTime ||
         tempFinishDate.runtimeType != DateTime) {
-      Get.snackbar(
+      Get.dialog(
+        AlertDialog(
+          backgroundColor: Colors.white.withOpacity(.9),
+          content: Container(
+            height: 11.8.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Hata",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Text("Lütfen değerleri kontrol ediniz."),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: Text(
+                          "TAMAM",
+                          style: TextStyle(
+                            color: Color(0xff7f0000),
+                          ),
+                        )),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+
+      /* Get.snackbar(
         "Hata",
         "Lütfen Değerleri Kontrol Ediniz!",
-      );
+      ); */
       return false;
     } else {
       if ((daysOff(tempStartDate!, leaveDay!) > izinHakedis!)) {
-        Get.snackbar("Hata!",
-            "Yeterli İzin Hakkınız Yok! (İzin Hakkınız: $izinHakedis)");
+        Get.dialog(
+          AlertDialog(
+            backgroundColor: Colors.white.withOpacity(.9),
+            content: Container(
+              height: 12.h,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Hata!",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 1.h,
+                  ),
+                  Text(
+                      "Yeterli İzin Hakkınız Yok! (İzin Hakkınız: $izinHakedis)"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          child: Text(
+                            "TAMAM",
+                            style: TextStyle(
+                              color: Color(0xff7f0000),
+                            ),
+                          )),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+        /*  Get.snackbar("Hata!",
+            "Yeterli İzin Hakkınız Yok! (İzin Hakkınız: $izinHakedis)"); */
         return false;
       }
     }

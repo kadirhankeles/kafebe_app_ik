@@ -144,8 +144,11 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                           ),
                         ),
                         controller.idHR ==
-                                controller.getRequestByIdModel!.data!
-                                    .iDHREMPLOYEEASSIGN && controller.getLandingPageInfoModel!.data!.isManager==true
+                                    controller.getRequestByIdModel!.data!
+                                        .iDHREMPLOYEEASSIGN &&
+                                controller.getLandingPageInfoModel!.data!
+                                        .isManager ==
+                                    true
                             ? Padding(
                                 padding: EdgeInsets.all(1.h),
                                 child: GestureDetector(
@@ -588,8 +591,11 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                           ),
                         ),
                         controller.idHR ==
-                                controller.getRequestByIdModel!.data!
-                                    .iDHREMPLOYEEASSIGN && controller.getLandingPageInfoModel!.data!.isManager==true
+                                    controller.getRequestByIdModel!.data!
+                                        .iDHREMPLOYEEASSIGN &&
+                                controller.getLandingPageInfoModel!.data!
+                                        .isManager ==
+                                    true
                             ? Column(
                                 children: [
                                   Padding(
@@ -633,11 +639,12 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                                             onPressed: () {
                                               controller
                                                       .description.text.isEmpty
-                                                  ? Get.dialog(AlertDialog(
-                                                      backgroundColor: Colors
-                                                          .white
-                                                          .withOpacity(.9),
-                                                      content: Container(
+                                                  ? Get.dialog(
+                                                      AlertDialog(
+                                                        backgroundColor: Colors
+                                                            .white
+                                                            .withOpacity(.9),
+                                                        content: Container(
                                                           height: 12.h,
                                                           child: Column(
                                                             crossAxisAlignment:
@@ -678,12 +685,16 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                                                                 ],
                                                               )
                                                             ],
-                                                          ))))
-                                                  : Get.dialog(AlertDialog(
-                                                      backgroundColor: Colors
-                                                          .white
-                                                          .withOpacity(.9),
-                                                      content: Container(
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  : Get.dialog(
+                                                      AlertDialog(
+                                                        backgroundColor: Colors
+                                                            .white
+                                                            .withOpacity(.9),
+                                                        content: Container(
                                                           height: 15.h,
                                                           child: Column(
                                                             crossAxisAlignment:
@@ -731,7 +742,6 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                                                                             controller.getRequestByIdModel!.data!.iDMASTER.toString(),
                                                                             1000,
                                                                             controller.description.text.toString());
-                                                                            
                                                                       },
                                                                       child:
                                                                           Text(
@@ -745,7 +755,10 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                                                                 ],
                                                               )
                                                             ],
-                                                          ))));
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
                                             },
                                             child: Text("Reddet"),
                                           ),
@@ -807,11 +820,18 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                                                               TextButton(
                                                                   onPressed:
                                                                       () {
-                                                                        controller.getFinalizeRequestData(
-                                                                            controller.getRequestByIdModel!.data!.iDMASTER.toString(),
-                                                                            2000,
-                                                                            controller.description.text.toString());
-                                                                      },
+                                                                    controller.getFinalizeRequestData(
+                                                                        controller
+                                                                            .getRequestByIdModel!
+                                                                            .data!
+                                                                            .iDMASTER
+                                                                            .toString(),
+                                                                        2000,
+                                                                        controller
+                                                                            .description
+                                                                            .text
+                                                                            .toString());
+                                                                  },
                                                                   child: Text(
                                                                     "ONAYLA",
                                                                     style:
@@ -839,7 +859,13 @@ class ApprovalDetailScreen extends GetView<ApprovalDetailController> {
                   ),
                 ),
               )
-            : Container(height: 100.h, child: Center(child: CircularProgressIndicator(color:Color(0xff7f0000),)),),
+            : Container(
+                height: 100.h,
+                child: Center(
+                    child: CircularProgressIndicator(
+                  color: Color(0xff7f0000),
+                )),
+              ),
       ),
     );
   }

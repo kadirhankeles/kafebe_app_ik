@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/data/models/finalize_request_model.dart';
 import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 import 'package:http/http.dart' as http;
@@ -9,11 +10,14 @@ import 'package:http/http.dart' as http;
 class FinalizeRequestService extends GetConnect {
 Future<FinalizeRequestModel?> getFinalizeRequestService(String? idMaster, int? statu, String desc) async {
   FinalizeRequestModel? finalizeData = FinalizeRequestModel();
-   var headers = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'vbtauthorization': 'DOuOdnX2FEhrQv/Zjuu71jyyi+fUQSm9ovQltKf283XdNuhw6F90dmS9+BVabnDg~2270~string~638094734573015689',
-  };
+     String cacheToken=GetStorage().read("token");
+
+
+    Map<String,String> headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'vbtauthorization': cacheToken
+    };
 
   var data = { 
    "ID_MASTER": idMaster, 

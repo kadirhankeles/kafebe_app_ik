@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:kafebe_app_ik/app/data/models/login_model/login_model.dart';
 import 'package:kafebe_app_ik/app/data/models/saved_data_model.dart';
-import 'package:kafebe_app_ik/app/data/services/getProfilPicture_service.dart';
-import 'package:kafebe_app_ik/app/data/services/payroll_all_data_service.dart';
-import 'package:kafebe_app_ik/app/data/services/payroll_month_service.dart';
+import 'package:kafebe_app_ik/app/data/services/home/getProfilPicture_service.dart';
+import 'package:kafebe_app_ik/app/data/services/payroll/payroll_all_data_service.dart';
+import 'package:kafebe_app_ik/app/data/services/payroll/payroll_month_service.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -43,7 +43,7 @@ class LoginController extends GetxController {
     if (loginVisibility.value == false) {
       return Icon(
         Icons.visibility,
-        color: Colors.blue,
+        color: Color(0xff7f0000),
       );
     } else {
       return Icon(
@@ -129,11 +129,16 @@ class LoginController extends GetxController {
       isLoading.value = false;
     } else {
       loginModel = (await getLoginService(user, password))!;
+      print(loginModel.token);
+      print(loginModel.userID);
+      
       isLoading.value = false;
       await cacheToken.write("token", loginModel.token);
       await cacheToken.write("isManager", loginModel.isManager);
       await cacheToken.write("refleshToken", loginModel.refreshToken);
       await cacheToken.write("userId", loginModel.userID);
+      await cacheToken.write(loginModel.userID.toString(), loginModel.token);
+      
     }
   }
 
@@ -160,10 +165,11 @@ class LoginController extends GetxController {
 
   // }
 
-  // @override
-  // void onInit() {
-  //   savedData ??= SavedDataModel();
-  //   super.onInit();
-  // }
+   @override
+   void onInit() {
+    cacheToken.write("token", "");
+   savedData ??= SavedDataModel();
+     super.onInit();
+   }
 
 }

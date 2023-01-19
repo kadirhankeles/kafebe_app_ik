@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_controller.dart';
+import 'package:kafebe_app_ik/app/utils/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LeaveAddScreen extends GetView<LeaveAddController> {
@@ -230,14 +231,15 @@ class LeaveAddScreen extends GetView<LeaveAddController> {
                                 ))),
                       ],
                     )
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.red,
+                    : const Center(
+                        child: CircularProgressIndicator(
+                          color: Color(0xff7f0000),
+                        ),
                       ),
-                    ),
+              ),
             ),
           ),
-        ));
+        );
   }
 }
 

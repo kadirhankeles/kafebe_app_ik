@@ -12,7 +12,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
 
   @override
   Widget build(BuildContext context) {
-    String statusString = "Süreç Devam Ediyor";
+    
     return Scaffold(
       backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
@@ -35,7 +35,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
                               onPressed: () {
                                 controller
                                     .getApprovalData(controller.statuCode[0]);
-                                statusString = controller.statuString[0];
+                                controller.statusString.value = controller.statuString[0];
                                 Get.back();
                               },
                               child: Text("Tümü")),
@@ -46,7 +46,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
                               onPressed: () {
                                 controller
                                     .getApprovalData(controller.statuCode[1]);
-                                statusString = controller.statuString[1];
+                                controller.statusString.value = controller.statuString[1];
                                 Get.back();
                               },
                               child: Text("Süreç Devam Ediyor")),
@@ -57,7 +57,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
                               onPressed: () {
                                 controller
                                     .getApprovalData(controller.statuCode[2]);
-                                statusString = controller.statuString[2];
+                                controller.statusString.value = controller.statuString[2];
                                 Get.back();
                               },
                               child: Text("Onaylandı")),
@@ -68,7 +68,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
                               onPressed: () {
                                 controller
                                     .getApprovalData(controller.statuCode[3]);
-                                statusString = controller.statuString[3];
+                                controller.statusString.value = controller.statuString[3];
                                 Get.back();
                               },
                               child: Text("Reddedildi")),
@@ -79,7 +79,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
                               onPressed: () {
                                 controller
                                     .getApprovalData(controller.statuCode[4]);
-                                statusString = controller.statuString[4];
+                                controller.statusString.value = controller.statuString[4];
                                 Get.back();
                               },
                               child: Text("Revize Edildi")),
@@ -90,7 +90,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
                               onPressed: () {
                                 controller
                                     .getApprovalData(controller.statuCode[5]);
-                                statusString = controller.statuString[5];
+                                controller.statusString.value = controller.statuString[5];
                                 Get.back();
                               },
                               child: Text("Geri Gönderildi")),
@@ -119,7 +119,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
                 width: double.infinity,
                 child: Center(
                     child: Obx(() => controller.isLoading == true
-                        ? Text(statusString)
+                        ? Text(controller.statusString.value)
                         : Container())),
               ),
               SizedBox(

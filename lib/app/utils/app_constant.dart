@@ -7,23 +7,28 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class AppConstant {
   //Color
   static Color loginBackground = Color(0xff7f0000);
-  static Color loginLanguage = Color(0xffbdbdbd);
+  static Color loginLanguage = Colors.white;
   static const loginCursor = Color(0xff7f0000);
-  static const loginPrefix = Color(0xff7f0000);
   static const loginButton = Color(0xff7f0000);
+
   static const loginSw = Color(0xffe53935);
   static const loginSwTrack = Color(0xffef9a9a);
   static const loginInSw = Color(0xffe0e0e0);
   static const loginInSwTrack = Color(0xff9e9e9e);
+  static BorderSide textFieldBorderColor = BorderSide(color: Colors.grey);
+
+
 
   //BorderRadius
   static BorderRadius globalRadius = BorderRadius.circular(2.w);
 
   //Icon
   static const loginTextFieldIcon = Icons.person;
-  static const loginTextFormFieldIcon = Icon(Icons.person, color: Color(0xffe53935));
-  static const passwordTextFormFieldIcon = Icon(Icons.key, color: Color(0xffe53935));
+  static const loginTextFormFieldIcon = Icon(Icons.person, color: Color(0xff7f0000));
+  static const passwordTextFormFieldIcon = Icon(Icons.key, color: Color(0xff7f0000));
   static const loginSufIcon = Icon(Icons.visibility, color: Colors.grey);
+  static const searchIcon = Icon(Icons.search, color: Colors.grey,size: 40,);
+  static const academySearchIcon = Icon(Icons.search, color: Colors.grey,size: 30,);
 
   //TextStyle
 

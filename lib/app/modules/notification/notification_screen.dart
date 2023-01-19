@@ -44,6 +44,7 @@ class NotificationScreen extends GetView<NotificationController> {
                 ? IconButton(
                     onPressed: () {
                       Get.dialog(AlertDialog(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.w)),
                           actionsAlignment: MainAxisAlignment.center,
                           title: Center(child: Text("Dikkat!")),
                           actions: [
@@ -54,20 +55,20 @@ class NotificationScreen extends GetView<NotificationController> {
                                     ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.green),
-                                        onPressed: () {
+                                        onPressed: () async{
                                           BulkDeleteMessagesService()
                                               .bulkDeleteMessages(2);
-                                          controller.getPushMessagesData();
+                                          await controller.getPushMessagesData();
                                           Get.back();
                                         },
                                         child: const Text("Hepsini Sil!")),
                                     ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.green),
-                                        onPressed: () {
+                                        onPressed: () async{
                                           BulkDeleteMessagesService()
                                               .bulkDeleteMessages(1);
-                                          controller.getPushMessagesData();
+                                         await controller.getPushMessagesData();
                                           Get.back();
                                         },
                                         child: const Text(
@@ -116,6 +117,13 @@ class NotificationScreen extends GetView<NotificationController> {
                                               .notificationListModel!
                                               .data![index]
                                               .iDMASTER
+                                              .toString(),
+                                        },
+                                        {
+                                          "detail": controller
+                                              .notificationListModel!
+                                              .data![index]
+                                              .iDPUSHNOTIFICATIONDETAIL
                                               .toString()
                                         }
                                       ]);
@@ -135,14 +143,20 @@ class NotificationScreen extends GetView<NotificationController> {
                                                 .data![index]
                                                 .iDMASTER
                                                 .toString(),
-                                              
+                                          },
+                                          {
+                                            "detail": controller
+                                                .notificationListModel!
+                                                .data![index]
+                                                .iDPUSHNOTIFICATIONDETAIL
+                                                .toString()
                                           }
                                         ]);
                                   } else {
                                     print(
                                         "req2 --> reqtype else --> onaylarım detay");
 
-                                   /* Get.toNamed(Routes.APPROVALDETAIL,
+                                    Get.toNamed(Routes.APPROVALDETAIL,
                                         arguments: [
                                           {
                                             "id": controller
@@ -150,8 +164,15 @@ class NotificationScreen extends GetView<NotificationController> {
                                                 .data![index]
                                                 .iDMASTER
                                                 .toString()
+                                          },
+                                          {
+                                            "detail": controller
+                                                .notificationListModel!
+                                                .data![index]
+                                                .iDPUSHNOTIFICATIONDETAIL
+                                                .toString()
                                           }
-                                        ]);*/
+                                        ]);
                                   }
                                 } else {
                                   Get.toNamed(Routes.NOTIFICATION_DETAIL,
@@ -200,7 +221,7 @@ class NotificationScreen extends GetView<NotificationController> {
                   ))
             : const Center(
                 child: CircularProgressIndicator(
-                  color: Colors.red,
+                  color: Color(0xff7f0000),
                 ),
               )));
   }
@@ -232,7 +253,7 @@ class NotificationWidget extends StatelessWidget {
       width: 95.w,
       height: 12.h,
       decoration: BoxDecoration(
-          color: Colors.white60, borderRadius: BorderRadius.circular(3.w)),
+          color: Colors.white60,  borderRadius: BorderRadius.circular(3.w) ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -265,6 +286,7 @@ class NotificationWidget extends StatelessWidget {
             child: IconButton(
                 onPressed: () {
                   Get.defaultDialog(
+                    radius: 2.w,
                     title: "Dikkat!",
                     middleText: "Bildirimi Silmek Üzeresiniz",
                     cancel: ElevatedButton(
