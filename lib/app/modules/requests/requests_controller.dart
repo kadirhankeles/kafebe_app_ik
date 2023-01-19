@@ -8,7 +8,7 @@ class RequestsController extends GetxController {
   GetMyRequestMasterMobileModel? getMyRequestMasterMobileModel;
   RequestDetailController? requestDetailController;
   RxBool isLoading=false.obs;
-  RxString statusString="Tümü".obs;
+  RxString statusString="Süreç Devam Ediyor".obs;
   List<int> statuCode =[-1, 0, 1, 2, 4, 6];
   List<String> statuString=[
     "Tümü",
@@ -20,7 +20,7 @@ class RequestsController extends GetxController {
   ];
   @override
   void onInit() {
-    getRequestData(statuCode[0]);
+    getRequestData(statuCode[1]);
     super.onInit();
   }
 

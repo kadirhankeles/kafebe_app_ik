@@ -15,7 +15,7 @@ class AcademyScreen extends GetView<AcademyController> {
 
   @override
   Widget build(BuildContext context) {
-    String statusString = "Tümü";
+   // String statusString = "Tümü";
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xffF4F5FA),
@@ -81,210 +81,174 @@ class AcademyScreen extends GetView<AcademyController> {
         // ],
       ),
       body: Padding(
-        padding: EdgeInsets.only(right: 5.w, left: 5.w, top: 2.h),
-        child: Column(
-          children: [
-            // Container(
-            //   height: 6.h,
-            //   child: TextFormField(
-            //     cursorColor: AppConstant.loginCursor,
-            //     keyboardType: TextInputType.visiblePassword,
-            //     cursorHeight: 3.h,
-            //     textAlignVertical: TextAlignVertical.center,
-            //     decoration: InputDecoration(
-            //       contentPadding: EdgeInsets.only(top: 1.5.h),
-            //       hintText: "Arama Yap",
-            //       hintStyle: TextStyle(fontSize: 2.2.h),
-            //       enabledBorder: OutlineInputBorder(
-            //         borderRadius: AppConstant.globalRadius,
-            //         borderSide: AppConstant.textFieldBorderColor,
-            //       ),
-            //       focusedBorder: OutlineInputBorder(
-            //           borderRadius: AppConstant.globalRadius,
-            //           borderSide: AppConstant.textFieldBorderColor),
-            //       prefixIcon: AppConstant.academySearchIcon,
-            //     ),
-            //   ),
-            // ),
-            
-            Text(
-              statusString,
-              style: TextStyle(fontSize: 2.5.h),
-            ),
-            SizedBox(
-              height: 3.h,
-            ),
-            Container(
-                height: 82.h,
-                width: 100.w,
-                child: Obx(
-                  () => controller.isLoading.value == true
-                      ? ListView.builder(
-                          itemCount: controller.learningGlobalModel?.data
-                              ?.talentActivityList?.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: EdgeInsets.only(bottom: 2.h),
-                              height: 30.h,
-                              width: 100.w,
-                              decoration: AppConstant.homeButton,
-                              child: Padding(
-                                padding: EdgeInsets.all(1.h),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                            height: 5.h,
-                                            width: 10.w,
-                                            child: Image.asset(
-                                                "assets/my_jobs.png")),
-                                        SizedBox(
-                                          width: 5.w,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              // "16.02.2023 17:09 - 31.01.2023 23:59",
-                                              "${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYSTARTDATE.toString().split("T").first}/${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYSTARTDATE.toString().split("T").last}-${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYENDDATE.toString().split("T").first}/${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYENDDATE.toString().split("T").last}",
-                                              style:
-                                                  TextStyle(color: Colors.grey),
-                                            ),
-                                            SizedBox(
-                                              height: 1.h,
-                                            ),
-                                            SizedBox(
-                                              width: 65.w,
-                                              child: Text(
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYNAME}",
-                                                style: TextStyle(fontSize: 2.h),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 2.2.h,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        right: 3.w,
-                                        left: 1.w,
+        padding: EdgeInsets.only(right: 2.h, left: 2.h,),
+        child: SingleChildScrollView(
+          child: Container(
+            height: 90.h,
+              child: Obx(
+                () => controller.isLoading.value == true
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: controller.learningGlobalModel?.data
+                            ?.talentActivityList?.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.only(bottom: 2.h),
+                            height: 30.h,
+                            width: 100.w,
+                            decoration: AppConstant.homeButton,
+                            child: Padding(
+                              padding: EdgeInsets.all(2.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                          height: 5.h,
+                                          width: 10.w,
+                                          child: Image.asset(
+                                              "assets/my_jobs.png")),
+                                      SizedBox(
+                                        width: 5.w,
                                       ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Score",
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                          ),
-                                          Text(
-                                            // "Completed Date",
-                                            // "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE?.split("T").first ?? "_"}",
-                                            //'${DateFormat("dd.MM.yyyy").format(DateTime.parse(controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE))}',
-                                            // "${DateFormat('dd.MM.yyyy').format(DateTime.parse(controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE))}",
-                                            controller
-                                                        .learningGlobalModel!
-                                                        .data!
-                                                        .talentActivityList![
-                                                            index]
-                                                        .cOMPLETIONDATE ==
-                                                    null
-                                                ? "_"
-                                                : '${DateFormat('dd.MM.yyyy').format(DateTime.parse(controller.learningGlobalModel!.data!.talentActivityList![index].cOMPLETIONDATE.toString()))}',
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 2.h),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 1.2.w),
-                                      child: Column(
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            // "0",
-                                            // "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYSCORE}"
-                                            //     .substring(0, 3),
-                                            controller
-                                                .learningGlobalModel!
-                                                .data!
-                                                .talentActivityList![index]
-                                                .aCTIVITYSCORE
-                                                .toString()
-                                                .split(".")
-                                                .first,
-                                            style: TextStyle(fontSize: 2.h),
-                                          ),
-                                          SizedBox(
-                                            height: 1.5.h,
-                                          ),
-                                          Text(
-                                            "Status",
+                                            "${DateFormat('dd.MM.yyyy HH:mm').format(DateTime.parse(controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYSTARTDATE.toString()))}", style: TextStyle(color: Colors.grey.shade500, fontSize: 13),
+                                            // "16.02.2023 17:09 - 31.01.2023 23:59",
+                                           /* "${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYSTARTDATE.toString().split("T").first}/${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYSTARTDATE.toString().split("T").last}-${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYENDDATE.toString().split("T").first}/${controller.learningGlobalModel!.data!.talentActivityList![index].aCTIVITYENDDATE.toString().split("T").last}",
                                             style:
-                                                TextStyle(color: Colors.grey),
+                                                TextStyle(color: Colors.grey),*/
                                           ),
                                           SizedBox(
-                                            height: 0.5.h,
-                                          ),
-                                          Text(
-                                            controller
-                                                .learningGlobalModel!
-                                                .data!
-                                                .talentActivityList![index]
-                                                .aCTIVITYCOMPLETESTATUSTXT
-                                                .toString(),
-                                            // "Tamamlanmamış",
-                                            //   "${controller.educationCompleteStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
-                                            style: TextStyle(fontSize: 2.h),
+                                            height: 1.h,
                                           ),
                                           SizedBox(
-                                            height: 1.5.h,
-                                          ),
-                                          Text(
-                                            "Success Status",
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                          ),
-                                          SizedBox(
-                                            height: 0.5.h,
-                                          ),
-                                          Text(
-                                            controller
-                                                .learningGlobalModel!
-                                                .data!
-                                                .talentActivityList![index]
-                                                .aCTIVITYSUCCESSSTATUSTXT
-                                                .toString(), //"Devam Ediyor",
-                                            //  "${controller.educationSuccessStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
-                                            style: TextStyle(fontSize: 2.h),
+                                            width: 65.w,
+                                            child: Text(
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYNAME}",
+                                              style: TextStyle(fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         ],
-                                      ),
-                                    )
-                                  ], // buraaaaa
-                                ),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 2.2.h,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      right: 3.w,
+                                      left: 1.w,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Puan",
+                                          style: TextStyle(color: Colors.grey.shade500, fontSize: 13)
+                                        ),
+                                        Text(
+                                          // "Completed Date",
+                                          // "${controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE?.split("T").first ?? "_"}",
+                                          //'${DateFormat("dd.MM.yyyy").format(DateTime.parse(controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE))}',
+                                          // "${DateFormat('dd.MM.yyyy').format(DateTime.parse(controller.learningGlobalModel?.data?.talentActivityList?[index].cOMPLETIONDATE))}",
+                                          controller
+                                                      .learningGlobalModel!
+                                                      .data!
+                                                      .talentActivityList![
+                                                          index]
+                                                      .cOMPLETIONDATE ==
+                                                  null
+                                              ? "_"
+                                              : '${DateFormat('dd.MM.yyyy').format(DateTime.parse(controller.learningGlobalModel!.data!.talentActivityList![index].cOMPLETIONDATE.toString()))}',
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 2.h),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 1.2.w),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          // "0",
+                                          // "${controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYSCORE}"
+                                          //     .substring(0, 3),
+                                          controller
+                                              .learningGlobalModel!
+                                              .data!
+                                              .talentActivityList![index]
+                                              .aCTIVITYSCORE
+                                              .toString()
+                                              .split(".")
+                                              .first,
+                                        ),
+                                        SizedBox(
+                                          height: 1.5.h,
+                                        ),
+                                        Text(
+                                          "Durum",
+                                          style:TextStyle(color: Colors.grey.shade500, fontSize: 13)
+                                        ),
+                                        SizedBox(
+                                          height: 0.5.h,
+                                        ),
+                                        Text(
+                                          controller
+                                              .learningGlobalModel!
+                                              .data!
+                                              .talentActivityList![index]
+                                              .aCTIVITYCOMPLETESTATUSTXT
+                                              .toString(),
+                                          // "Tamamlanmamış",
+                                          //   "${controller.educationCompleteStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
+
+                                        ),
+                                        SizedBox(
+                                          height: 1.5.h,
+                                        ),
+                                        Text(
+                                          "Başarı Durumu",
+                                          style:TextStyle(color: Colors.grey.shade500, fontSize: 13)
+                                        ),
+                                        SizedBox(
+                                          height: 0.5.h,
+                                        ),
+                                        Text(
+                                          controller
+                                              .learningGlobalModel!
+                                              .data!
+                                              .talentActivityList![index]
+                                              .aCTIVITYSUCCESSSTATUSTXT
+                                              .toString(), //"Devam Ediyor",
+                                          //  "${controller.educationSuccessStatusControl(controller.learningGlobalModel?.data?.talentActivityList?[index].aCTIVITYCOMPLETESTATUS)}",
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ], // buraaaaa
                               ),
-                            );
-                          },
-                        )
-                      : Container(
-                          child: Center(
-                          child: CircularProgressIndicator(),
-                        )),
-                ))
-          ],
+                            ),
+                          );
+                        },
+                      )
+                    : Container(
+                        child: Center(
+                        child: CircularProgressIndicator(),
+                      )),
+              )),
         ),
       ),
     );

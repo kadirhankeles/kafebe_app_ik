@@ -294,6 +294,8 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
                                               } else if (index == 3) {
                                                 Get.toNamed(Paths.TEAM,
                                                     arguments: [
@@ -302,6 +304,8 @@ class HomeScreen extends GetView<HomeController> {
                                                             '${controller.getLandingPageInfoModel!.data!.idHrEmployee.toString()}'
                                                       }
                                                     ]);
+                                              }else if(index == 4){
+                                                Get.toNamed(Paths.ACADEMY);
                                               }
                                             }
                                             if (controller
@@ -319,6 +323,8 @@ class HomeScreen extends GetView<HomeController> {
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
 
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
                                               }else if (index == 3) {
 
                                                 Get.toNamed(Paths.TEAM,
@@ -344,6 +350,10 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
+                                              }else if(index == 3){
+                                                Get.toNamed(Paths.ACADEMY);
                                               }
                                             }
                                             if (controller
@@ -360,6 +370,8 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
+                                              } else if (index == 2){
+                                                Get.toNamed(Paths.WORK);
                                               }
                                             }
                                           },
