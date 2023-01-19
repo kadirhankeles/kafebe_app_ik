@@ -294,7 +294,7 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
-                                              } else if (index == 2){
+                                              } else if (index == 2) {
                                                 Get.toNamed(Paths.WORK);
                                               } else if (index == 3) {
                                                 Get.toNamed(Paths.TEAM,
@@ -304,7 +304,7 @@ class HomeScreen extends GetView<HomeController> {
                                                             '${controller.getLandingPageInfoModel!.data!.idHrEmployee.toString()}'
                                                       }
                                                     ]);
-                                              }else if(index == 4){
+                                              } else if (index == 4) {
                                                 Get.toNamed(Paths.ACADEMY);
                                               }
                                             }
@@ -322,11 +322,9 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
-
-                                              } else if (index == 2){
+                                              } else if (index == 2) {
                                                 Get.toNamed(Paths.WORK);
-                                              }else if (index == 3) {
-
+                                              } else if (index == 3) {
                                                 Get.toNamed(Paths.TEAM,
                                                     arguments: [
                                                       {
@@ -350,9 +348,9 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
-                                              } else if (index == 2){
+                                              } else if (index == 2) {
                                                 Get.toNamed(Paths.WORK);
-                                              }else if(index == 3){
+                                              } else if (index == 3) {
                                                 Get.toNamed(Paths.ACADEMY);
                                               }
                                             }
@@ -370,7 +368,7 @@ class HomeScreen extends GetView<HomeController> {
                                                 Get.toNamed(Paths.REQUESTS);
                                               } else if (index == 1) {
                                                 Get.toNamed(Paths.APPROVAL);
-                                              } else if (index == 2){
+                                              } else if (index == 2) {
                                                 Get.toNamed(Paths.WORK);
                                               }
                                             }
@@ -524,6 +522,7 @@ class HomeScreen extends GetView<HomeController> {
                           GestureDetector(
                             onTap: () {
                               print("Tıklandı izinlerim");
+                              Get.toNamed(Routes.LEAVE);
                             },
                             child: Container(
                               height: 27.h,

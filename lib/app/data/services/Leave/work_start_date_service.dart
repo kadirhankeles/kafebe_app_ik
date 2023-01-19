@@ -18,7 +18,7 @@ class WorkStartDateService extends GetConnect {
     final cacheToken = GetStorage();
 
     String apiToken = cacheToken.read("token");
-    
+
     var headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

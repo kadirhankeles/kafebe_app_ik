@@ -27,7 +27,15 @@ class LeaveScreen extends GetView<LeaveController> {
                     : controller.pageController.value == 0
                         ? IconButton(
                             onPressed: () {
-                              // Get.toNamed(Routes.LEAVE_ADD);
+                              Get.toNamed(Routes.LEAVE_ADD, arguments: [
+                                {
+                                  'izin': controller
+                                      .employeeLeaveModel
+                                      .data!
+                                      .employeeEarnedRightsList![0]
+                                      .aNNUALLEAVEBALANCE
+                                }
+                              ]);
                             },
                             icon: Icon(Icons.add))
                         : IconButton(

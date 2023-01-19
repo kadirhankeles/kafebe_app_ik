@@ -11,7 +11,6 @@ import 'package:kafebe_app_ik/app/modules/leave/subEmployee/sub_employee_screen.
 import 'package:kafebe_app_ik/app/modules/academy/academy_binding.dart';
 import 'package:kafebe_app_ik/app/modules/academy/academy_screen.dart';
 
-
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
 
 import 'package:kafebe_app_ik/app/modules/employeeLeave/employeeLeave_binding.dart';
@@ -60,12 +59,10 @@ class AppPages {
 
   static final routes = [
     GetPage(
-
       name: Paths.LANGUAGE,
       page: () => LanguageScreen(),
       binding: LanguageBinding(),
     ),
-
     GetPage(
       name: Paths.SPLASH,
       page: () => SplashScreen(),
@@ -136,7 +133,6 @@ class AppPages {
       page: () => RequestDetailScreen(),
       binding: RequestDetailBinding(),
     ),
-
     GetPage(
       name: Paths.LEAVE,
       page: () => LeaveScreen(),
@@ -146,15 +142,12 @@ class AppPages {
         name: Paths.LEAVE_DETAIL,
         page: () => LeaveDetailScreen(),
         binding: LeaveDetailBinding()),
-    GetPage(name: Paths.SUB_EMPLOYEE, page: () => SubEmployeeScreen())
-
-
+    GetPage(name: Paths.SUB_EMPLOYEE, page: () => SubEmployeeScreen()),
     GetPage(
       name: Paths.TEAM,
       page: () => TeamScreen(),
       binding: TeamBinding(),
     ),
-
     GetPage(
       name: Paths.TEAMDETAIL,
       page: () => TeamDetailScreen(),
@@ -165,11 +158,5 @@ class AppPages {
       page: () => WorkScreen(),
       binding: WorkBinding(),
     ),
-
-
-
-
-
-
   ];
 }

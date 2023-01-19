@@ -138,7 +138,7 @@ class LeaveAddController extends GetxController {
         AlertDialog(
           backgroundColor: Colors.white.withOpacity(.9),
           content: Container(
-            height: 11.8.h,
+            height: 12.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -182,7 +182,7 @@ class LeaveAddController extends GetxController {
           AlertDialog(
             backgroundColor: Colors.white.withOpacity(.9),
             content: Container(
-              height: 12.h,
+              height: 15.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

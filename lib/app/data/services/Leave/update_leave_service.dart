@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/Leave/update_leave_model.dart';
 import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
@@ -10,7 +11,13 @@ class UpdateLeaveService extends GetConnect {
   Future<UpdateLeaveModel> getUpdateLeave(
     id,
   ) async {
-    var headers = ServiceConstants.HEADER2;
+    String cacheToken = GetStorage().read("token");
+
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'vbtauthorization': cacheToken
+    };
 
     var params = {
       'idLeave': id,
