@@ -26,7 +26,7 @@ class NotificationDetailScreen extends GetView<NotificationDetailController> {
           padding: EdgeInsets.all(1.h),
           margin: EdgeInsets.all(2.w),
           width: 99.w,
-          height: 14.h,
+          height: 18.h,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(3.w)),
           child: Column(

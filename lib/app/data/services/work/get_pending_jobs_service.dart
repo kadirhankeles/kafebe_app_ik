@@ -1,15 +1,20 @@
 import 'dart:convert';
 
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/get_pending_jobs.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 Future<GetPendingJobsModel?> getPendingJobsService(String statu) async {
   GetPendingJobsModel? getPendingJobsModel = GetPendingJobsModel();
-  var headers = {
-    'Accept': 'application/json',
-    'vbtauthorization': apiToken,
-  };
+  String cacheToken=GetStorage().read("token");
+
+
+    Map<String,String> headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'vbtauthorization': cacheToken
+    };
 var params = {
     'ID_WORK_STATUS_ARRAY': statu,
   };

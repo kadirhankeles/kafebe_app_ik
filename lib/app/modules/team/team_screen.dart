@@ -12,7 +12,6 @@ class TeamScreen extends GetView<TeamController> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Color(0xffF4F5FA),
       appBar: AppBar(
@@ -37,7 +36,8 @@ class TeamScreen extends GetView<TeamController> {
                                     DateTime.now().toString(),
                                     controller.statuCode[0],
                                     controller.argumentData[0]['idHR']);
-                                controller.screenString.value = controller.statuString[0];
+                                controller.screenString.value =
+                                    controller.statuString[0];
                                 Get.back();
                               },
                               child: Text("Direkt Bağlı Çalışanlar")),
@@ -50,7 +50,8 @@ class TeamScreen extends GetView<TeamController> {
                                     DateTime.now().toString(),
                                     controller.statuCode[1],
                                     controller.argumentData[0]['idHR']);
-                                controller.screenString.value = controller.statuString[1];
+                                controller.screenString.value =
+                                    controller.statuString[1];
                                 Get.back();
                               },
                               child: Text("Vekaleten Bağlı Çalışanlar")),
@@ -63,7 +64,8 @@ class TeamScreen extends GetView<TeamController> {
                                     DateTime.now().toString(),
                                     controller.statuCode[2],
                                     controller.argumentData[0]['idHR']);
-                                controller.screenString.value = controller.statuString[2];
+                                controller.screenString.value =
+                                    controller.statuString[2];
                                 Get.back();
                               },
                               child: Text("Fonksiyonel Bağlı Çalışanlar")),
@@ -99,7 +101,8 @@ class TeamScreen extends GetView<TeamController> {
               child: Container(
                 width: 100.w,
                 child: Obx(
-                  () => controller.isLoading == true && controller.myTeamModel!.data!.length!=0
+                  () => controller.isLoading == true &&
+                          controller.myTeamModel!.data!.length != 0
                       ? GridView.builder(
                           shrinkWrap: true,
                           itemCount: controller.myTeamModel!.data!.length,
@@ -114,12 +117,11 @@ class TeamScreen extends GetView<TeamController> {
                             return GestureDetector(
                               onTap: () {
                                 Get.toNamed(Paths.TEAMDETAIL, arguments: [
-                            {
-                              'idHR':
-                                  '${controller.myTeamModel!.data![index].iDHREMPLOYEE.toString()}'
-                            }
-
-                          ]);
+                                  {
+                                    'idHR':
+                                        '${controller.myTeamModel!.data![index].iDHREMPLOYEE.toString()}'
+                                  }
+                                ]);
                               },
                               child: Container(
                                 decoration: AppConstant.homeButton,
@@ -169,8 +171,22 @@ class TeamScreen extends GetView<TeamController> {
                             );
                           },
                         )
-                      :controller.isLoading ==true && controller.myTeamModel!.data!.length==0?Container(height: 75.h, child: Center(child: Text("Çalışan Bulunmamaktadır!", textAlign: TextAlign.center, style: TextStyle(color: Color(0xff7f0000), fontSize: 16, fontWeight: FontWeight.bold),),),):
-                       Container(
+                      : controller.isLoading == true &&
+                              controller.myTeamModel!.data!.length == 0
+                          ? Container(
+                              height: 75.h,
+                              child: Center(
+                                child: Text(
+                                  "Çalışan Bulunmamaktadır!",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Color(0xff7f0000),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
+                          : Container(
                               height: 80.h,
                               child: Center(
                                 child: CircularProgressIndicator(

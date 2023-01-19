@@ -33,7 +33,7 @@ class LeaveController extends GetxController {
 
   getEmployeLeaveData() async {
     isLoadingLeave.value = false;
-    employeeLeaveModel = (await employeeLeaveService.getEmployeLeaveService())!;
+    employeeLeaveModel = (await employeeLeaveService.getEmployeLeaveService());
     if (employeeLeaveModel.data == null) {
       return null;
     } else {

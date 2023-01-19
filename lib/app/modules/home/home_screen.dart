@@ -161,12 +161,12 @@ class HomeScreen extends GetView<HomeController> {
                   await controller.getProfilPictureData();
                 },
                 child: Container(
-                  height: 12.2.h,
+                  height: 12.h,
                   width: 9.h,
                   //color: Colors.white,
                   child: Image(
-                    image: AssetImage("assets/logo.png"),
-                    fit: BoxFit.cover,
+                    image: AssetImage("assets/sunlogo.png"),
+                    fit: BoxFit.contain,
                     color: Colors.white,
                   ),
                 ),
@@ -547,31 +547,35 @@ class HomeScreen extends GetView<HomeController> {
                                               fontWeight: FontWeight.w500,
                                               fontSize: 18)),
                                       SizedBox(
-                                        width: 33.w,
+                                        width: 30.1.w,
                                       ),
-                                      IconButton(
-                                          splashColor: Colors.white,
-                                          splashRadius: 1.h,
-                                          onPressed: () {
-                                            print("Tıklandı artı");
-                                            Get.toNamed(Routes.LEAVE_ADD,
-                                                arguments: [
-                                                  {
-                                                    "izin": controller
-                                                        .getLandingPageInfoModel!
-                                                        .data!
-                                                        .vacationInfo!
-                                                        .employeeEarnedRightsList![
-                                                            0]
-                                                        .nEXTLEAVEALLOWANCEDAYS
-                                                  }
-                                                ]);
-                                          },
-                                          icon: Icon(
-                                            Icons.add,
-                                            color: Colors.black,
-                                            size: 32,
-                                          ))
+                                      Container(
+                                        
+                                        decoration: BoxDecoration(shape: BoxShape.circle,color: Color(0xff76d275),),
+                                        child: IconButton(
+                                            splashColor: Colors.white,
+                                            splashRadius: 1.h,
+                                            onPressed: () {
+                                              print("Tıklandı artı");
+                                              Get.toNamed(Routes.LEAVE_ADD,
+                                                  arguments: [
+                                                    {
+                                                      "izin": controller
+                                                          .getLandingPageInfoModel!
+                                                          .data!
+                                                          .vacationInfo!
+                                                          .employeeEarnedRightsList![
+                                                              0]
+                                                          .nEXTLEAVEALLOWANCEDAYS
+                                                    }
+                                                  ]);
+                                            },
+                                            icon: Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                              size: 32,
+                                            )),
+                                      )
                                     ],
                                   ),
                                   SizedBox(

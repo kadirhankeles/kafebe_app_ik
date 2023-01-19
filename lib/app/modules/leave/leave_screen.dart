@@ -53,7 +53,7 @@ class LeaveScreen extends GetView<LeaveController> {
                   labelColor: Colors.white,
                   labelStyle: TextStyle(fontSize: 18.sp),
                   labelPadding: EdgeInsets.all(1.w),
-                  unselectedLabelColor: Colors.grey,
+                  unselectedLabelColor: Colors.grey.shade400,
                   tabs: const [
                     Tab(
                       text: 'İzinlerim',

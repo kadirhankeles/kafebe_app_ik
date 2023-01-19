@@ -86,7 +86,7 @@ class CustomViewWidget extends StatelessWidget {
           height: 1.h,
         ),
         Container(
-          padding: EdgeInsets.only(top: 2.h, left: 1.w),
+          padding: EdgeInsets.only(top: 1.3.h, left: 1.w),
           width: 100.w,
           height: 5.h,
           color: Colors.white70,

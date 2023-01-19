@@ -19,6 +19,7 @@ class ApprovalScreen extends GetView<ApprovalController> {
         title: Text("Onaylarım"),
         backgroundColor: Color(0xff7f0000),
         centerTitle: true,
+        elevation: 0,
         actions: [
           IconButton(
               onPressed: () {
@@ -108,26 +109,20 @@ class ApprovalScreen extends GetView<ApprovalController> {
               },
               icon: Icon(Icons.filter_alt_rounded))
         ],
+        bottom: PreferredSize(
+          preferredSize: Size(double.infinity, 3.h),
+          child: Container(
+            color: Color(0xffF4F5FA),
+                  height: 3.h,
+                  width: double.infinity,
+                  child: Center(child: Obx(() =>  controller.isLoading==true?Text(controller.statusString.value):Container())),
+                ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 1.h, left: 3.h, right: 3.h),
-          child: Column(
-            children: [
-              Container(
-                height: 3.h,
-                width: double.infinity,
-                child: Center(
-                    child: Obx(() => controller.isLoading == true
-                        ? Text(controller.statusString.value)
-                        : Container())),
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              requestData(),
-            ],
-          ),
+          child: requestData(),
         ),
       ),
     );
