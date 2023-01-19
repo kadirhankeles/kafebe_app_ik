@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kafebe_app_ik/app/data/models/Leave/sub_employee_leave_model.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_binding.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_detail/leave_detail_binding.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_detail/leave_detail_screen.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_screen.dart';
+import 'package:kafebe_app_ik/app/modules/leave/subEmployee/sub_employee_screen.dart';
 
 import 'package:kafebe_app_ik/app/modules/leaveAdd/leave_add_binding.dart';
 
@@ -123,6 +125,7 @@ class AppPages {
     GetPage(
         name: Paths.LEAVE_DETAIL,
         page: () => LeaveDetailScreen(),
-        binding: LeaveDetailBinding())
+        binding: LeaveDetailBinding()),
+    GetPage(name: Paths.SUB_EMPLOYEE, page: () => SubEmployeeScreen())
   ];
 }

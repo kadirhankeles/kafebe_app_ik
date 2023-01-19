@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_detail/leave_detail_controller.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -21,14 +22,21 @@ class LeaveDetailScreen extends GetView<LeaveDetailController> {
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  //
                   CustomViewWidget(
-                      title: "Yıllık İzin", body: controller.listName),
+                      title: "İzin Türü", body: controller.listName),
                   CustomViewWidget(
-                      title: "İzin Başlangıç Tarihi", body: controller.sDate),
+                      title: "İzin Başlangıç Tarihi",
+                      body: DateFormat('dd.MM.yyyy')
+                          .format(DateTime.parse(controller.sDate))),
                   CustomViewWidget(
-                      title: "İzin Bitiş Tarihi", body: controller.eDate),
+                      title: "İzin Bitiş Tarihi",
+                      body: DateFormat('dd.MM.yyyy')
+                          .format(DateTime.parse(controller.eDate))),
                   CustomViewWidget(
-                      title: "İşe Başlama Tarihi", body: controller.wDate),
+                      title: "İşe Başlama Tarihi",
+                      body: DateFormat('dd.MM.yyyy')
+                          .format(DateTime.parse(controller.wDate))),
                   CustomViewWidget(
                       title: "İzin Gün Sayısı", body: controller.day),
                   CustomViewWidget(
@@ -45,8 +53,10 @@ class LeaveDetailScreen extends GetView<LeaveDetailController> {
                           : "-"),
                 ],
               )
-            : Center(
-                child: CircularProgressIndicator(),
+            : const Center(
+                child: CircularProgressIndicator(
+                  color: Color(0xff850000),
+                ),
               )),
       ),
     );

@@ -3,17 +3,14 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:kafebe_app_ik/app/data/models/Leave/update_leave_model.dart';
+import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart';
 import 'package:kafebe_app_ik/app/utils/api_token.dart';
 
 class UpdateLeaveService extends GetConnect {
   Future<UpdateLeaveModel> getUpdateLeave(
     id,
   ) async {
-    var headers = {
-      'Accept': 'application/json',
-      'vbtauthorization':
-          "ms6ewfHx5BXyx3hycKoHvpaLaZeXkgwuZg9Cj7SHyrAW36wWOrfEvQxtJ99fizP9~2270~string~638096594116293034",
-    };
+    var headers = ServiceConstants.HEADER2;
 
     var params = {
       'idLeave': id,

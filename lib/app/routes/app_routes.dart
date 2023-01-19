@@ -20,6 +20,7 @@ abstract class Routes {
   static const LEAVE_ADD = Paths.LEAVE_ADD;
   static const LEAVE = Paths.LEAVE;
   static const LEAVE_DETAIL = Paths.LEAVE_DETAIL;
+  static const SUB_EMPLOYEE = Paths.SUB_EMPLOYEE;
 
   static const APPROVAL = Paths.APPROVAL;
   static const APPROVALDETAIL = Paths.APPROVALDETAIL;
@@ -46,6 +47,7 @@ abstract class Paths {
   static const LEAVE_ADD = "/leaveadd";
   static const LEAVE = "/leave";
   static const LEAVE_DETAIL = "/leavedetail";
+  static const SUB_EMPLOYEE = "/sub_employee";
 
   static const APPROVAL = "/approval";
   static const APPROVALDETAIL = "/approvaldetail";

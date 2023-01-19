@@ -8,12 +8,7 @@ import 'package:kafebe_app_ik/app/data/services/constants/service_constants.dart
 class EmployeeLeaveService extends GetConnect {
   Future<EmployeeLeaveModel?> getEmployeLeaveService() async {
     try {
-      var headers = {
-        'Accept': 'application/json',
-        'vbtauthorization':
-            "ms6ewfHx5BXyx3hycKoHvpaLaZeXkgwuZg9Cj7SHyrAW36wWOrfEvQxtJ99fizP9~2270~string~638096594116293034",
-      };
-      ;
+      var headers = ServiceConstants.HEADER2;
 
       var url = Uri.parse(
           '${ServiceConstants.BASE_URL}${ServiceConstants.EMPLOYEE_LEAVE}');

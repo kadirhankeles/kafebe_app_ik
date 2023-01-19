@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kafebe_app_ik/app/modules/leave/leave_controller.dart';
+import 'package:kafebe_app_ik/app/modules/leave/subEmployee/sub_employee_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../routes/app_pages.dart';
@@ -42,6 +43,8 @@ class LeaveScreen extends GetView<LeaveController> {
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorColor: Colors.white,
                   labelColor: Colors.white,
+                  labelStyle: TextStyle(fontSize: 18.sp),
+                  labelPadding: EdgeInsets.all(1.w),
                   unselectedLabelColor: Colors.grey,
                   tabs: const [
                     Tab(
@@ -73,7 +76,7 @@ class LeaveScreen extends GetView<LeaveController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    TitleTextWidget(
+                                    const TitleTextWidget(
                                         text: "Yıllık İzin Bakiyesi"),
                                     ValueTextWidget(
                                         color: controller
@@ -97,7 +100,7 @@ class LeaveScreen extends GetView<LeaveController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    TitleTextWidget(
+                                    const TitleTextWidget(
                                       text: "İlgili Yıl İzin Hakediş Tarihi",
                                     ),
                                     ValueTextWidget(
@@ -115,7 +118,7 @@ class LeaveScreen extends GetView<LeaveController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    TitleTextWidget(
+                                    const TitleTextWidget(
                                         text:
                                             "İlgili Yıl İzin Hakediş Gün Sayısı"),
                                     ValueTextWidget(
@@ -130,7 +133,10 @@ class LeaveScreen extends GetView<LeaveController> {
                                 ),
                               ],
                             )
-                          : Center(child: CircularProgressIndicator())),
+                          : const Center(
+                              child: CircularProgressIndicator(
+                              color: Color(0xff850000),
+                            ))),
                     ),
                     Expanded(
                         child: Obx(() => controller.isLoadingLeave.value == true
@@ -201,8 +207,8 @@ class LeaveScreen extends GetView<LeaveController> {
                                           ]);
                                     },
                                     child: Container(
-                                      // padding: EdgeInsets.all(1.5.h),
-                                      margin: EdgeInsets.all(0.3.h),
+                                      padding: EdgeInsets.all(1.5.h),
+                                      margin: EdgeInsets.all(0.4.h),
                                       width: 100.w,
                                       height: 14.h,
                                       color: Colors.white,
@@ -248,7 +254,7 @@ class LeaveScreen extends GetView<LeaveController> {
                                                                             crossAxisAlignment:
                                                                                 CrossAxisAlignment.start,
                                                                             children: [
-                                                                              Text(
+                                                                              const Text(
                                                                                 "İzin Kullanım Bilgisi Güncelleme",
                                                                                 style: TextStyle(fontWeight: FontWeight.bold),
                                                                               ),
@@ -265,7 +271,7 @@ class LeaveScreen extends GetView<LeaveController> {
                                                                                       onPressed: () {
                                                                                         Get.back();
                                                                                       },
-                                                                                      child: Text(
+                                                                                      child: const Text(
                                                                                         "VAZGEÇ",
                                                                                         style: TextStyle(
                                                                                           color: Color(0xff7f0000),
@@ -277,7 +283,7 @@ class LeaveScreen extends GetView<LeaveController> {
                                                                                         controller.getEmployeLeaveData();
                                                                                         Get.back();
                                                                                       },
-                                                                                      child: Text(
+                                                                                      child: const Text(
                                                                                         "TAMAM",
                                                                                         style: TextStyle(
                                                                                           color: Colors.green,
@@ -288,12 +294,12 @@ class LeaveScreen extends GetView<LeaveController> {
                                                                             ],
                                                                           ))));
                                                         },
-                                                        icon: Icon(
+                                                        icon: const Icon(
                                                           Icons
                                                               .keyboard_arrow_down_rounded,
                                                           color: Colors.red,
                                                         ),
-                                                        label: Text(
+                                                        label: const Text(
                                                           "Kullanmadım",
                                                           style: TextStyle(
                                                               color:
@@ -316,20 +322,14 @@ class LeaveScreen extends GetView<LeaveController> {
                                               )
                                             ],
                                           ),
-                                          TextButton(
-                                              onPressed: () {
-                                                //textbutton izin süresi
-                                              },
-                                              child: Text(
-                                                controller
-                                                    .employeeLeaveModel
-                                                    .data!
-                                                    .employeeLeaveList![index]
-                                                    .dAY
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    color: Colors.green),
-                                              ))
+                                          Text(
+                                            controller.employeeLeaveModel.data!
+                                                .employeeLeaveList![index].dAY
+                                                .toString(),
+                                            style: TextStyle(
+                                                color: Colors.green,
+                                                fontSize: 18.sp),
+                                          )
                                         ],
                                       ),
                                     ),
@@ -337,11 +337,87 @@ class LeaveScreen extends GetView<LeaveController> {
                                   ;
                                 },
                               )
-                            : Center(child: CircularProgressIndicator())))
+                            : const Center(
+                                child: CircularProgressIndicator(
+                                color: Color(0xff850000),
+                              ))))
                   ],
                 ),
-                Icon(Icons.directions_transit, size: 350),
-                Icon(Icons.directions_car, size: 350),
+                SizedBox(
+                  width: 100.w,
+                  height: 80.h,
+                  child: Obx(() => controller.isLoadingSub.value == true
+                      ? ListView.builder(
+                          itemCount: controller.subEmployeeLeaveModel.data!
+                              .employeeEarnedRightsList!.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Routes.SUB_EMPLOYEE);
+                                controller.root.value = index;
+                              },
+                              child: Container(
+                                margin: EdgeInsets.all(1.h),
+                                padding: EdgeInsets.all(1.h),
+                                color: Colors.white,
+                                width: 100.w,
+                                height: 15.h,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Icon(
+                                          Icons.person,
+                                          size: 10.w,
+                                          color: Colors.grey,
+                                        ),
+                                        TitleTextWidget(
+                                            text:
+                                                "${controller.subEmployeeLeaveModel.data!.employeeEarnedRightsList![index].eMPLOYEENAME.toString().toUpperCase()} ${controller.subEmployeeLeaveModel.data!.employeeEarnedRightsList![index].eMPLOYEESURNAME.toString().toUpperCase()} "),
+                                        SizedBox(
+                                          width: 70.w,
+                                          child: Text(
+                                            controller
+                                                .subEmployeeLeaveModel
+                                                .data!
+                                                .employeeEarnedRightsList![
+                                                    index]
+                                                .pOSITIONNAME
+                                                .toString(),
+                                            maxLines: 3,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          //textbutton izin süresi
+                                        },
+                                        child: Text(
+                                          controller
+                                              .subEmployeeLeaveModel
+                                              .data!
+                                              .employeeEarnedRightsList![index]
+                                              .aNNUALLEAVEBALANCE
+                                              .toString(),
+                                          style: TextStyle(color: Colors.green),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      : const Center(child: CircularProgressIndicator())),
+                ),
+                const Icon(Icons.calendar_month, size: 350),
               ],
             ),
           ),
