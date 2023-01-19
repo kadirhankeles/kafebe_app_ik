@@ -83,10 +83,6 @@ class SendForApprovalService extends GetConnect {
           ),
         ),
       );
-      /* Get.snackbar(
-        "Durum",
-        "Servis Mesajı: ${SendForApprovalModel.fromJson(jsonDecode(res.body)).data!.mESSAGE}",
-      ); */
     } catch (e) {
       print(e);
       Get.dialog(
@@ -104,8 +100,10 @@ class SendForApprovalService extends GetConnect {
                 SizedBox(
                   height: 1.h,
                 ),
-                Text(
-                    "Servis Mesajı: ${ErrorModel.fromJson(jsonDecode(res.body)).message}"),
+                Text(("${ErrorModel.fromJson(jsonDecode(res.body)).message}") ==
+                        "GirdiÄiniz tarih aralÄ±ÄÄ±nda izin kaydÄ± mevcuttur!"
+                    ? "Girdiğiniz tarih aralığında izin kaydı mevcuttur!"
+                    : ("${ErrorModel.fromJson(jsonDecode(res.body)).message}")),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -133,3 +131,4 @@ class SendForApprovalService extends GetConnect {
     }
   }
 }
+//GirdiÄiniz tarih aralÄ±ÄÄ±nda izin kaydÄ± mevcuttur!
