@@ -46,6 +46,7 @@ class LeaveController extends GetxController {
     updateLeaveModel = await updateLeaveService.getUpdateLeave(
       employeeLeaveModel.data!.employeeLeaveList![index].iDEMPLOYEEVACATION,
     );
+    Get.snackbar('Durum', updateLeaveModel.data!,barBlur:20,duration: const Duration(milliseconds: 2500));
   }
 
   getSubEmployeeLeaveData() async {

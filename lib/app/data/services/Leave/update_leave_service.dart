@@ -21,7 +21,7 @@ class UpdateLeaveService extends GetConnect {
 
     var params = {
       'idLeave': id,
-      'isUsed': 'true',
+      'isUsed': true,
       'selfService': 'true',
     };
     var query = params.entries.map((p) => '${p.key}=${p.value}').join('&');
@@ -33,6 +33,7 @@ class UpdateLeaveService extends GetConnect {
       throw Exception('http.post error: statusCode= ${res.statusCode}');
     }
     print(res.body);
+   
     return UpdateLeaveModel.fromJson(jsonDecode(res.body));
   }
 }
