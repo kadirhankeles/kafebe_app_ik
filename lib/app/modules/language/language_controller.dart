@@ -16,7 +16,6 @@ class LanguageController extends GetxController {
     "Türkçe",
     "English",
     "Deutsch",
-    "Germany",
     "中国人",
     "Portugues",
     "Roman",
